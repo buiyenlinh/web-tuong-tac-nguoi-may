@@ -3,7 +3,7 @@ date_default_timezone_set('Asia/Saigon');
 session_start();
 
 $host = 'localhost';
-$database = 'webchym';
+$database = 'web_animal';
 $user = 'root';
 $pass = '';
 
@@ -23,7 +23,7 @@ try {
 }
 
 define('ROOT', __DIR__);
-define('BASE', '/webchym/');
+define('BASE', '/web-tuong-tac-nguoi-may/');
 
 // $user_logined = array();
 

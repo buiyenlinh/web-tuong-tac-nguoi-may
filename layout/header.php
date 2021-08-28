@@ -4,7 +4,7 @@
             <div class="header__inner row">
                 <div class="col-4">
                     <div class="logo pt-2">
-                        <b>BIRDS</b>
+                        <b>ANIMAL</b>
                     </div>
                 </div>
                 <div class="col-8">
