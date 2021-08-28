@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body .container {
+    max-width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* layout */
+.layout-wrap {
+    display: flex;
+    justify-content: start;
+}
+
+.layout-left {
+    width: 12%;
+    padding-right: 5px;
+    border-right: 1px solid #ddd;
+    min-height: 670px;
+}
+.layout-right {
+    width: 88%;
+    padding: 0px 10px;
+}
+
+
+/*LOGIN*/
+
+.login__right__inner {
+    display: table;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.login-form {
+    width: 70%;
+    margin: 0 auto;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+}
+
+.forget-password { cursor: pointer; }
