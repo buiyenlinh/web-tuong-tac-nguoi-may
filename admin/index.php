@@ -19,7 +19,7 @@ include './layout/header-only.php';
                     <div class="layout-right">
                         <div class="ad-main__right">
                             <div class="ad-main__right--title mt-2 mb-1">
-                                <h3>Chào mừng đến với trang web của chúng tôi</h3>
+                                <h3>Chào mừng đến với trang web của chúng tôi - Fix</h3>
                             </div>
                         </div>
                     </div>
