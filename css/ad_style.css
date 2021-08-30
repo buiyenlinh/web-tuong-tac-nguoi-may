@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body .container {
+    max-width: 100%;
+    padding: 0px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* layout */
+.layout-wrap {
+    display: flex;
+    justify-content: start;
+}
+
+.layout-left {
+    width: 12%;
+    border-right: 1px solid #ddd;
+    background: #0e768d;
+    height: 100vh;
+}
+.layout-right {
+    width: 88%;
+    padding: 0px 10px;
+}
+
+
+/*--------------------------------- MENU LEFT --------------------------------- */
+
+.menu-left ul li {
+    border-bottom: 1px solid #3e8787;
+}
+
+
+/*--------------------------------- LOGIN --------------------------------- */
+
+.login-form {
+    width: 25%;
+    margin: 150px auto;
+    padding: 20px;
+    border: 3px solid #0e768d;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+}
+
+.forget-password { cursor: pointer; }
+
+
+/*--------------------------------- ADMIN HEADER --------------------------------- */
+.header {
+    background: #0e768d;
+    border-bottom: 2px solid #ddd;
+}
+.header__logout { 
+    cursor: pointer;
+}
+
+/*--------------------------------- USERS --------------------------------- */
+.list-users { width: 60%; }
+.icon-delele-user { cursor: pointer; }
+.user-form { width: 40%; }
+
+
+/* --------------------------------- ACCOUNT --------------------------------- */
+.account__info__left--avt-file { display: none; }
+
+.account__info__left--avt img {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    background: #333;
+}
+
+.account__info__left--avt { position: relative; }
+.account__info__left--avt .icon-edit-avt {
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.icon-edit-avt:hover { color: #0e768d}
