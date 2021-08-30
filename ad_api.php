@@ -48,4 +48,127 @@ function to_slug($str) {
 
 $action = _getString('action');
 
+if ($action == 'login') {
+    $username = _getString('username');
+    $password = _getString('password');
+
+    if (empty($username) || empty($password)) {
+        _error('Vui lòng nhập đủ thông tin');
+    }
+    $password = md5($password);
+    $user = $db->query('SELECT * FROM nguoidung WHERE tendangnhap = ' . $db->quote($username) . ' AND matkhau = ' . $db->quote($password))->fetch();
+    if (empty($user)) {
+        _error('Tên đăng nhập hoặc mật khẩu không đúng');
+    }
+    $_SESSION['user'] = $user;
+    _success('OK', $password);
+} else if ($action == 'logout') {
+    if (empty($_SESSION['user'])) {
+        _error('');
+     }
+     unset($_SESSION['user']);
+     _success('OK');
+} 
+//  --------------------- Lấy danh sách user --------------------------
+else if ($action == 'get-list-users') {
+    $users = $db->query('SELECT * FROM nguoidung WHERE vaitro != 0')->fetchAll();
+    
+    _success('OK', $users);
+} 
+
+//  --------------------- Xóa user --------------------------
+else if ($action == 'delete-user') {
+    $user_id = _getInt('user_id');
+    if ($user_id == $_SESSION['user']['id']) {
+        _error('Đây là tài khoản của bạn. Không thể xóa');
+    }
+    $user_delete = $db->query('SELECT * FROM nguoidung WHERE id = ' . intval($user_id))->fetch();
+    if (empty($user_delete)) {
+        _error('Đã xảy ra lỗi! Vui lòng thử lại!');
+    }
+    if ($_SESSION['user']['vaitro'] >=  $user_delete['vaitro']) {
+        _error('Bạn không có quyền xóa người dùng này!');
+    }
+    $db->query('DELETE FROM nguoidung WHERE id = ' . intval($user_id));
+    _success('OK');
+} 
+
+//  --------------------- Lấy danh sách user --------------------------
+else if ($action == 'add-user'){
+    $username = _getString('username');
+    $password = _getString('password');
+    $role = _getInt('user_role');
+
+    if (empty($username) || empty($password)) {
+        _error('Vui lòng điền đủ thông tin các trường có dấu *');
+    }
+    $password = md5($password);
+
+    $check = $db->query('SELECT * FROM nguoidung WHERE tendangnhap = ' . $db->quote($username))->fetch();
+
+    if (!empty($check)) {
+        _error('Tên đăng nhập này đã được sử dụng! Vui lòng chọn tên khác!');
+    }
+
+    $db->query('INSERT INTO nguoidung (tendangnhap, matkhau, vaitro) VALUES (' 
+    . $db->quote($username) . ',' . $db->quote($password) . ',' . intval($role)
+    . ')');
+
+    $id = $db->lastInsertId();
+    $res = $db->query('SELECT * FROM nguoidung WHERE id =' . intval($id))->fetch();
+    _success('OK', $res);
+}
+
+//----------------------- cập nhật thông tin người dùng-----------------------
+
+else if ($action === 'update-info-account') {
+    $username = _getString('username');
+    $name = _getString('name');
+    // $avt = $_FILES['avt-user'];
+    $filename = '';
+
+    $check = $db->query('SELECT * FROM nguoidung WHERE tendangnhap = ' . $db->quote($username) . ' AND id != ' . intval($_SESSION['user']['id']))->fetchAll();
+
+    if (!empty($check)) {
+        _error('Tên đăng nhập này đã được dử dụng! Vui lòng nhập tên khác!');
+    }
+
+    $user = $db->query('SELECT * FROM nguoidung WHERE id =' . intval($_SESSION['user']['id']))->fetch();
+    if (isset($_FILES['avt-user'])) {
+        if (!empty($_FILES['avt-user']['name'])) {
+            $filename = 'avt/' . $_FILES['avt-user']['name'];
+            move_uploaded_file($_FILES['avt-user']['tmp_name'], $filename);
+        }
+    } else {
+        $filename = $user['anhdaidien'];
+    }
+
+    $db->query('UPDATE nguoidung 
+    SET tendangnhap = ' . $db->quote($username) . ', tenhienthi = ' . $db->quote($name) . ', anhdaidien=' . $db->quote($filename) . 
+    ' WHERE id = ' . intval($_SESSION['user']['id']));
+    _success('OK', $check);
+
+}
+
+//----------------------- Lấy thông tin người dùng -----------------------
+else if ($action == 'get-info-account') {
+    $user_info = $db->query('SELECT * FROM nguoidung WHERE id = ' . intval($_SESSION['user']['id']))->fetch();
+    _success('OK', $user_info);
+}
+
+else if ($action == 'change-password-account') {
+    $password = md5(_getString('password'));
+    $new_password = md5(_getString('new-password'));
+
+    $check = $db->query('SELECT * FROM nguoidung WHERE id = ' . intval($_SESSION['user']['id']))->fetch();
+    if ($password != $check['matkhau']) {
+        _error('Nhập mật khẩu cũ không đúng!');
+    }
+
+    $db->query('UPDATE nguoidung SET matkhau = ' . $db->quote($new_password) . ' WHERE id=' . intval($_SESSION['user']['id']));
+
+    
+    _success('OK', $check);
+}
+
 ?>

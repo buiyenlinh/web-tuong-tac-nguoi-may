@@ -6,7 +6,7 @@ include './layout/header-only.php';
 ?>
 
 <?php if (empty($_SESSION['user'])): ?>
-    <?php include './pages/dangnhap.php' ?>
+    <?php include './pages/login.php' ?>
 <?php else: ?>
     <?php include './layout/header.php'; ?>
     <div id="ad-main">
@@ -19,7 +19,7 @@ include './layout/header-only.php';
                     <div class="layout-right">
                         <div class="ad-main__right">
                             <div class="ad-main__right--title mt-2 mb-1">
-                                <h3>Chào mừng đến với trang </h3>
+                                <h3>Chào mừng đến với trang web của chúng tôi</h3>
                             </div>
                         </div>
                     </div>
