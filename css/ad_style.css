@@ -71,7 +71,8 @@ ul {
 
 /*--------------------------------- USERS --------------------------------- */
 .list-users { width: 60%; }
-.icon-delele-user { cursor: pointer; }
+.icon-delele-user,
+.icon-update-user { cursor: pointer; }
 .user-form { width: 40%; }
 
 

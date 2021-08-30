@@ -9,9 +9,9 @@ include './layout/header-only.php';
     <?php include './pages/login.php' ?>
 <?php else: ?>
     <?php include './layout/header.php'; ?>
-    <div id="ad-main">
+    <div id="main">
         <div class="container">
-            <div class="ad-main">
+            <div class="main">
                 <div class="layout-wrap">
                     <div class="layout-left">
                         <?php include './layout/menu-left.php'; ?>
