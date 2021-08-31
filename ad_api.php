@@ -181,7 +181,7 @@ else if ($action == 'update-user') {
     if (empty($check)) {
         _error('Người dùng không tồn tại');
     }
-
+    
     if ($_SESSION['user']['vaitro'] >= $check['vaitro']) {
 
         _error('Bạn không có quyền thay đổi tài khoản này!');
