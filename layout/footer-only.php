@@ -2,6 +2,7 @@
 
     <script>
         var BASE = '<?php echo BASE ?>'
+        var BASE_IMG = '<?php echo BASE_IMG ?>'
     </script>
 
     <script src="<?php echo BASE ?>js/jquery-3.6.0.min.js"></script>

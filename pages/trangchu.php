@@ -7,7 +7,7 @@
                    <p>Có tổng cộng 30 con vật</p>
                </div>
                <div class="home-list">
-                   <ul class="home-list-ul"></ul>
+                   <ul class="home-list-ul row"></ul>
                </div>
            </div>
        </div>

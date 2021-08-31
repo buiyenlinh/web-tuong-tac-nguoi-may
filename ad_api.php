@@ -172,4 +172,22 @@ else if ($action == 'change-password-account') {
     _success('OK', $check);
 }
 
+//  Cấp nhật tài khoản cho user
+else if ($action == 'update-user') {
+    $username = _getString('username');
+    $role = _getInt('role');
+    $user_id = _getInt('user_id');
+    $check = $db->query('SELECT * FROM nguoidung WHERE id = ' . intval($user_id))->fetch(); {}
+    if (empty($check)) {
+        _error('Người dùng không tồn tại');
+    }
+    if ($_SESSION['user']['vaitro'] >= $check['vaitro']) {
+        _error('Bạn không có quyền thay đổi tài khoản này!');
+    }
+
+    $db->query('UPDATE nguoidung SET tendangnhap = ' . $db->quote($username) . ', vaitro = ' . intval($role) . ' WHERE id = ' . intval($user_id));
+
+    _success('OK');
+}
+
 ?>

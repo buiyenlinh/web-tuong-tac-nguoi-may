@@ -23,7 +23,7 @@ include '../layout/header-only.php';
                                 <h3>Danh sách người dùng</h3>
                                 <table class="table table-striped table-bordered text-center">
                                   <thead class="bg-info text-light">
-                                    <th>Tên</th>
+                                    <th>Tên đăng nhập</th>
                                     <th>Quyền người dùng</th>
                                     <th>Thời gian tạo</th>
                                     <th>Thao tác</th>
