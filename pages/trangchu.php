@@ -4,7 +4,7 @@
            <div class="container">
                <div class="home-title">
                    <h3>Danh sách</h3>
-                   <p>Có tổng cộng 30 con vật</p>
+                   <p class="home-list-sum"></p>
                </div>
                <div class="home-list">
                    <ul class="home-list-ul row"></ul>

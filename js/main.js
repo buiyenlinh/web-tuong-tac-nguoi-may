@@ -21,22 +21,12 @@ function myPost(action, data, callback) {
 
 // --------------------------- Lấy danh sách động vật --------------------------------
 function getListAnimals() {
+    $('.home-list-ul').text('');
     myPost('get-list-animals', '', function(json) {
         if(json.status == 'OK') {
+            $('.home-list-sum').text('Tổng cộng có ' + json.data.length + ' con vật.');
             for (let i in json.data) {
-                var item = `
-                    <li class="col-md-3 col-sm-6 col-12">
-                        <div class="home-list-ul-item text-center p-3 mb-3 mt-3">
-                            <div class="home-list-ul-item-img">
-                                <a href="chi-tiet/` + json.data[i].duongdan + `">
-                                    <img src="` + BASE_IMG + json.data[i].hinh1 + `"/>
-                                </a>
-                            </div>
-                            <div class="home-list-ul-item-name mt-2">` + json.data[i].tenkhoahoc + `</div>
-                        </div>
-                    </li>
-                `
-                $('.home-list-ul').append(item);
+                createItemAnimal(json.data[i], '.home-list-ul');
             }
         } else {
             console.log(json.error);
@@ -88,6 +78,12 @@ function getAnimalInfo(animal_id) {
             `
             $('.details-maintain-info').append(maintain);
 
+
+            var distribution = `
+                <p><b>Phân bố: </b> ` + json.data.phanbo + `</p>
+                <p><b>Địa điểm: </b> ` + json.data.diadiem + `</p>
+            `
+            $('.details-distribution-info').append(distribution);
             // Show con vật tương tự
             getAnimalsListSameFamily(json.data.id);
         }
@@ -140,7 +136,65 @@ function showAnimalImgInDetails(img) {
     $('.details-content-img img').attr('src', BASE_IMG + img);
 }
 
+function searchAnimal() {
+    var text = $('.header-search-animal').val();
+    if (text == '') {
+        alert('Vui lòng nhập thông tin tìm kiếm!');
+        return;
+    }
+    myPost('search-animal', 'text=' + text, function(json) {
+        if (json.status == 'OK') {
+            console.log(json);
+            var locate = window.location.href;
+           
+                // Ở trang chi tiết
+            if (locate != 'http://localhost/tuongtacnguoimay/web-tuong-tac-nguoi-may/') {
+                $('.details-search-sum').text('Có ' + json.data.length + ' kết quả tương ứng cho tìm kiếm của bạn.');
+                $('.details-search-result').text('');
+                for (let i in json.data) {
+                    createItemAnimal(json.data[i], '.details-search-result');
+                }
+                $('.details-search-button').click();
+            } 
+                // Ở trang chủ
+            else {
+                $('.home-list-sum').text('Có ' + json.data.length + ' kết quả tương ứng cho tìm kiếm của bạn.');
+                $('.home-list-ul').text('');
+                for (let i in json.data) {
+                    createItemAnimal(json.data[i], '.home-list-ul');
+                }
+            }
+        }
+    })
+}
+
+function createItemAnimal(itemData, parentsElement) {
+    var item = `
+        <li class="col-md-3 col-sm-6 col-12">
+            <div class="home-list-ul-item text-center p-3 mb-3 mt-3">
+                <div class="home-list-ul-item-img">
+                    <a href="` + BASE + 'chi-tiet/' + itemData.duongdan + `">
+                        <img src="` + BASE_IMG + itemData.hinh1 + `"/>
+                    </a>
+                </div>
+                <div class="home-list-ul-item-name mt-2">` + itemData.tenkhoahoc + `</div>
+            </div>
+        </li>
+    `
+    $(parentsElement).append(item);
+}
+
 $(function() {
     // Lấy danh sách động vật
     getListAnimals();
+    // Search
+    $('.header-search-animal-button').on('click', function() {
+        searchAnimal();
+    })
+
+    $('.header-search-animal').on('keypress', function(e) {
+        if (e.code == 'Enter') {
+            searchAnimal();
+        }
+    })
 })

@@ -54,6 +54,7 @@ img {
     width: 100%;
     transform: scale(1);
     transition: all ease-in-out 0.5s;
+    border: 1px solid #ddd
 }
 
 .home-list-ul-item-img:hover img {
@@ -71,6 +72,8 @@ img {
 }
 
 /* CHI TIẾT */
+.details p { text-align: justify; }
+.details-content-img { border: 1px solid #17a2b8; }
 .details-content-img img {
     height: 300px;
     object-fit: cover;
@@ -89,6 +92,19 @@ img {
     cursor: pointer;
 }
 
+.details-title span{
+    text-transform: uppercase;
+    position: relative;
+}
+
+.details-title span:before {
+    content: '';
+    border-bottom: 3px solid #17a2b8;
+    position: absolute;
+    bottom: -5px;
+    left: 25%;
+    width: 50%;
+}
 
 /* FOOTER */
 .footer {
