@@ -69,22 +69,47 @@ function createItemUser(itemData) {
     var td_time = document.createElement('td');
     var td = document.createElement('td');
 
+
+    var input = document.createElement('input');
+    input.className = 'text-center form-control rounded-0 update-user-username' + itemData.id;
+    input.value = itemData.tendangnhap;
+    
+
     var icon_delete = document.createElement('i');
     icon_delete.onclick = function() {
         deleteUser(itemData.id);
     }
-    td_role.innerHTML = itemData['vaitro'];
+    icon_delete.className ="far fa-trash-alt text-danger icon-delele-user pl-1";
+
+
+    var icon_update = document.createElement('i');
+    icon_update.onclick = function() {
+        updateUser(itemData.id);
+    }
+    icon_update.className ="fas fa-save text-info icon-update-user pr-1";
+
+    var select = document.createElement('select');
+    var option1 = document.createElement('option');
+    var option2 = document.createElement('option');
+    option1.value = 1;
+    option1.innerHTML = 'Administrator';
+    option2.value = 2;
+    option2.innerHTML = 'Editor';
+    select.setAttribute('name', 'update_user_role');
+    select.className = 'form-control rounded-0 update-user-role' + itemData.id;
+
     if (itemData.vaitro == 1) {
-        td_role.innerHTML = 'Administrator';
+        option1.setAttribute('selected', true);
     } else {
-        td_role.innerHTML = 'Editor';
+        option2.setAttribute('selected', true);
     }
 
-    icon_delete.className ="far fa-trash-alt text-danger icon-delele-user";
-    td_name.innerHTML = itemData.tenhienthi || itemData.tendangnhap;
 
+    select.append(option1, option2);
+    td_role.append(select);
+    td_name.append(input);
     td_time.innerHTML = itemData.thoigianthem;
-    td.append(icon_delete);
+    td.append(icon_update, icon_delete);
 
     tr.append(td_name, td_role, td_time, td);
     $('.list-users-body').append(tr);
@@ -102,6 +127,19 @@ function deleteUser(user_id) {
             getListUsers();
         } else {
             alert(json['error']);
+        }
+    })
+}
+
+// ---------------------- Cập nhật người dùng trong admin ----------------------
+function updateUser(user_id) {
+    var username = $('.update-user-username' + user_id).val();
+    var role = $('.update-user-role' + user_id).val();
+    myPost('update-user', 'user_id=' + user_id + '&username=' + username + '&role=' + role, function(json) {
+        if (json.status == 'OK') {
+            console.log(json.data);
+        } else {
+            alert(json.error);
         }
     })
 }
