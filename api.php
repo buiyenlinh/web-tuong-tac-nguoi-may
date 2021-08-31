@@ -54,10 +54,22 @@ if ($action == 'get-list-animals') {
 }
 
 // Lấy thông tin 1 con vật
-else if ('get-animal-info') {
+else if ($action == 'get-animal-info') {
     $animal_id = _getInt('animal-id');
     $info = $db->query('SELECT * FROM dongvat WHERE id = ' . intval($animal_id))->fetch();
 
     _success('OK', $info);
 }
+
+// Lấy danh sách động vật tương tự
+else if ($action == 'get-animal-list-same-family') {
+    $animal_id = _getInt('animal_id');
+    $animal = $db->query('SELECT ho, bo FROM dongvat WHERE id = ' . intval($animal_id))->fetch();
+
+    $list = $db->query('SELECT id, tenkhoahoc, duongdan, hinh1 FROM dongvat 
+    WHERE ho LIKE "%' . $animal['ho'] . '%" AND bo LIKE "%' . $animal['bo'] . '%" AND id != ' . intval($animal_id))->fetchAll();
+
+    _success('OK', $list);
+}
+
 ?>

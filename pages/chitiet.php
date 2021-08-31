@@ -26,7 +26,18 @@
         </div>
       </div>
       <div class="details-info">
-        
+        <div class="details-title text-info font-weight-bold">Đặc điểm</div>
+        <div class="details-info-characteristic"></div>
+      </div>
+
+      <div class="details-maintain">
+        <div class="details-title text-info font-weight-bold">Bảo tồn</div>
+        <div class="details-maintain-info"></div>
+      </div>
+
+      <div class="details-same-family">
+        <div class="details-title text-info font-weight-bold">Tương tự</div>
+        <ul class="details-same-family-list-ul row"></ul>
       </div>
     </div>
   </div>
