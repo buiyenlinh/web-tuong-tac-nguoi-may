@@ -29,7 +29,7 @@ ul {
     width: 12%;
     border-right: 1px solid #ddd;
     background: #0e768d;
-    height: 100vh;
+    height: 2150px;
 }
 .layout-right {
     width: 88%;
@@ -99,3 +99,15 @@ ul {
 }
 
 .icon-edit-avt:hover { color: #0e768d}
+
+/*btn Thêm*/
+#form-cn {
+    margin-top: 100%;
+    display: none;
+}
+
+#btn-animal-cn{
+    float: right;
+}
+
+/*btn Thêm*/
