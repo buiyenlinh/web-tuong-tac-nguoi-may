@@ -183,6 +183,7 @@ else if ($action == 'update-user') {
     }
     
     if ($_SESSION['user']['vaitro'] >= $check['vaitro']) {
+
         _error('Bạn không có quyền thay đổi tài khoản này!');
     }
 

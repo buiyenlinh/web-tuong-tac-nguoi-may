@@ -71,7 +71,9 @@ function createItemUser(itemData) {
 
 
     var input = document.createElement('input');
-    input.className = 'text-center form-control rounded-0 update-user-username' + itemData.id;
+
+    input.className = 'text-center form-control rounded-0 update-user-username-' + itemData.id;
+
     input.value = itemData.tendangnhap;
     
 
@@ -96,7 +98,9 @@ function createItemUser(itemData) {
     option2.value = 2;
     option2.innerHTML = 'Editor';
     select.setAttribute('name', 'update_user_role');
-    select.className = 'form-control rounded-0 update-user-role' + itemData.id;
+
+    select.className = 'form-control rounded-0 update-user-role-' + itemData.id;
+
 
     if (itemData.vaitro == 1) {
         option1.setAttribute('selected', true);
@@ -133,8 +137,10 @@ function deleteUser(user_id) {
 
 // ---------------------- Cập nhật người dùng trong admin ----------------------
 function updateUser(user_id) {
+
     var username = $('.update-user-username' + user_id).val();
     var role = $('.update-user-role' + user_id).val();
+
     myPost('update-user', 'user_id=' + user_id + '&username=' + username + '&role=' + role, function(json) {
         if (json.status == 'OK') {
             console.log(json.data);
