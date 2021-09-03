@@ -54,10 +54,32 @@ if ($action == 'get-list-animals') {
 }
 
 // Lấy thông tin 1 con vật
-else if ('get-animal-info') {
+else if ($action == 'get-animal-info') {
     $animal_id = _getInt('animal-id');
     $info = $db->query('SELECT * FROM dongvat WHERE id = ' . intval($animal_id))->fetch();
 
     _success('OK', $info);
 }
+
+// Lấy danh sách động vật tương tự
+else if ($action == 'get-animal-list-same-family') {
+    $animal_id = _getInt('animal_id');
+    $animal = $db->query('SELECT ho, bo FROM dongvat WHERE id = ' . intval($animal_id))->fetch();
+
+    $list = $db->query('SELECT id, tenkhoahoc, duongdan, hinh1 FROM dongvat 
+    WHERE ho LIKE "%' . $animal['ho'] . '%" AND bo LIKE "%' . $animal['bo'] . '%" AND id != ' . intval($animal_id))->fetchAll();
+
+    _success('OK', $list);
+}
+
+// Search animal
+else if ($action == 'search-animal') {
+    $text = _getString('text');
+
+    $list = $db->query('SELECT * FROM dongvat WHERE CONCAT_WS(tenkhoahoc, tentiengviet, tendiaphuong, gioi, nganh, lop, bo, ho, hinh1, hinh2, hinh3, hinh4, hinh5,  hinhthai, sinhthai, giatri, iucn, sachdo, nghidinh, cities, phanbo, toado1, toado2, toado3, toado4, toado5, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap, created_at, updated_at, duongdan) LIKE "%' . $text . '%"')->fetchAll();
+
+    _success('OK', $list);
+
+}
+
 ?>

@@ -138,15 +138,17 @@ function deleteUser(user_id) {
 // ---------------------- Cập nhật người dùng trong admin ----------------------
 function updateUser(user_id) {
 
-    var username = $('.update-user-username' + user_id).val();
-    var role = $('.update-user-role' + user_id).val();
+    var username = $('.update-user-username-' + user_id).val();
+    var role = $('.update-user-role-' + user_id).val();
 
     myPost('update-user', 'user_id=' + user_id + '&username=' + username + '&role=' + role, function(json) {
         if (json.status == 'OK') {
+            alert('Cập nhật thành công');
             console.log(json.data);
         } else {
             alert(json.error);
         }
+        getListUsers();
     })
 }
 

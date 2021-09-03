@@ -5,7 +5,7 @@ include '../layout/header-only.php';
 ?>
 
 <?php if (empty($_SESSION['user'])): ?>
-    <?php include './pages/login.php' ?>
+    <?php header('Location:' . BASE . 'admin') ?>
 <?php else: ?>
     <?php include '../layout/header.php'; ?>
         <div class="container">
