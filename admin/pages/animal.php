@@ -17,7 +17,7 @@ include '../layout/header-only.php';
                     <!--Tìm kiếm -->
                     <div class="search-box search-animal">
                         <b style="font-size:20px; margin-left:400px;">Search Animal: </b>
-                        <input type="text" class="search-input" style="width:400px; padding-left:600px; margin-top:20px;";>
+                        <input type="text" class="search-input" autocomplete='off' style="width:400px; padding-left:600px; margin-top:20px;";></input>
                         <button class="btn btn-light">
                         <i class="fas fa-search text-info"></i>
                         </button>
@@ -52,6 +52,7 @@ include '../layout/header-only.php';
 
                     <!--Form THÊM -->
                     <div class="col-md-6 offset-md-3 mt-5" id="form-cn">
+                        <h3 class="text-center">THÊM ĐỘNG VẬT</h3>
                         <form action="themAnimal.php"  accept-charset="UTF-8" enctype="multipart/form-data" method="POST"  target="">
                             <div class="form-group">
                                 <label for="exampleInputName">Tên khoa học</label>
@@ -136,7 +137,7 @@ include '../layout/header-only.php';
                     ?>
                         <hr>
                         <form class="chitiet" id="form-chitiet">
-                            <P><b>SÁCH ĐỘNG VẬT</b></P>
+                            <h3 class="text-center">DANH SÁCH ĐỘNG VẬT</h3>
                             <table class="table table-striped table-bordered">
                                 <thead class="bg-info text-light">
                                     <tr>
