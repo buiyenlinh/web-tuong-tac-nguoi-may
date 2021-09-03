@@ -29,13 +29,16 @@ ul {
     width: 12%;
     border-right: 1px solid #ddd;
     background: #0e768d;
-    height: 2150px;
+    height: 100vh;
 }
 .layout-right {
     width: 88%;
     padding: 0px 10px;
 }
 
+.layout-left .menu-left{
+    height: 100vh;
+}
 
 /*--------------------------------- MENU LEFT --------------------------------- */
 
@@ -108,6 +111,34 @@ ul {
 
 #btn-animal-cn{
     float: right;
+    width: 200px;
 }
 
 /*btn Thêm*/
+
+
+#form-chitiet{
+    margin-top: none;
+    display: none;
+}
+
+#btn-animal-chitiet{
+    width: 200px;
+    margin-left: 125px;
+}
+
+.container .layout-wrap .layout-right .chitiet{
+    
+}
+
+.container .layout-wrap .layout-right .chitiet b{
+    font-size: 50px;
+    margin-left: 210px;
+} 
+
+.container .layout-wrap .layout-right .chitiet table th{
+    font-weight: border;
+    text-align: center;
+} 
+
+
