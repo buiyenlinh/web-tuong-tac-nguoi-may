@@ -20,7 +20,7 @@
                     </div>
                     <div class="button-group d-flex justify-content-between">
                         <button type="submit" class="btn btn-info" id="login_submit">Đăng nhập</button>
-                        <a href="trang-chu" class="pt-1"><b class="text-info">Trang chủ</b></a>
+                        <a href="<?php echo BASE?>" class="pt-1"><b class="text-info">Trang chủ</b></a>
                     </div>
                 </form>
             </div>

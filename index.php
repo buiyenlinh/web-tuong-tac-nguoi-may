@@ -36,7 +36,13 @@ if ($op == 'chi-tiet') {
         Header('Location: ' . BASE . 'loi');
         exit();
     } else {
-        $textSearch = str_replace('-', ' ', $level1);
+        if (!empty($level2)) {
+            Header('Location: ' . BASE . 'loi');
+            exit();
+        } else {
+            $textSearch = str_replace('-', ' ', $level1);
+        }
+        
     }
 }
 

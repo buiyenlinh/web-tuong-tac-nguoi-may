@@ -47,6 +47,26 @@ function logout() {
     })
 }
 
+// -------------------- Lấy danh sách vai trò người dùng --------------
+function getListRole() {
+    myPost('get-list-role', '', function(json) {
+        if (json.status == 'OK') {
+            console.log('get list role');
+            console.log(json.data);
+            for (let i in json.data) {
+                if (json.data[i].id != 1) {
+                    var option = document.createElement('option');
+                    option.innerHTML = json.data[i].tenvaitro;
+                    option.setAttribute('value', json.data[i].id);
+                    $('#user_role').append(option);
+                }
+                
+            }
+        }
+    })
+}
+
+
 // ---------------------- Lấy danh sách người dùng trong admin ----------------------
 
 function getListUsers() {
@@ -282,4 +302,6 @@ $(function() {
         changePasswordAccount(this.form);
         return false;
     })
+
+    getListRole();
 })

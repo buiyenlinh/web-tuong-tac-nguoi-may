@@ -5,6 +5,9 @@
             <b>ANIMALS</b>
         </div>
         <div class="header__logout">
+            <span class="header-avt-user">
+                <img src="<?php echo BASE?><?php echo $_SESSION['user']['anhdaidien']?>" alt="">
+            </span>
             <span class="header__logout pr-2 text-light" id="logout">
                 <i class="fas fa-sign-out-alt pr-1"></i><b>Logout</b>
             </span>

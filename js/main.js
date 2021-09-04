@@ -41,7 +41,9 @@ function toString(str) {
       var char = AccentsMap[i][0];
       str = str.replace(re, char);
     }
+    str = str.trim();
     str = str.replace(/\s+/g, '-').toLowerCase();
+    str = str.replace(/[\[\]&#,+()$~%.'":*?<>{}]/g, '');
     return str;
 }
 
