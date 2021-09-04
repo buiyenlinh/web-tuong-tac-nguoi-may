@@ -49,16 +49,30 @@ function to_slug($str) {
 $action = _getString('action');
 
 if ($action == 'get-list-animals') {
-    $animals = $db->query('SELECT tenkhoahoc, hinh1, duongdan FROM dongvat')->fetchAll();
-    _success('OK', $animals);
+    $animals = $db->query('SELECT id, tenkhoahoc, duongdan FROM dongvat')->fetchAll();
+    $res = array();
+    foreach($animals as $_anm) {
+        $hinh = $db->query('SELECT * FROM hinhanh WHERE dongvat_id = ' . intval($_anm['id']))->fetch();
+        $animal = array(
+            'img' => $hinh,
+            'animal' => $_anm
+        );
+        $res[] = $animal;
+    }
+    _success('OK', $res);
 }
 
 // Lấy thông tin 1 con vật
 else if ($action == 'get-animal-info') {
     $animal_id = _getInt('animal-id');
     $info = $db->query('SELECT * FROM dongvat WHERE id = ' . intval($animal_id))->fetch();
+    $img = $db->query('SELECT * FROM hinhanh WHERE dongvat_id = ' . intval($animal_id))->fetchAll();
+    $res = array(
+        'img' => $img,
+        'info' => $info
+    );
 
-    _success('OK', $info);
+    _success('OK', $res);
 }
 
 // Lấy danh sách động vật tương tự
@@ -66,19 +80,37 @@ else if ($action == 'get-animal-list-same-family') {
     $animal_id = _getInt('animal_id');
     $animal = $db->query('SELECT ho, bo FROM dongvat WHERE id = ' . intval($animal_id))->fetch();
 
-    $list = $db->query('SELECT id, tenkhoahoc, duongdan, hinh1 FROM dongvat 
+    $list = $db->query('SELECT id, tenkhoahoc, duongdan FROM dongvat 
     WHERE ho LIKE "%' . $animal['ho'] . '%" AND bo LIKE "%' . $animal['bo'] . '%" AND id != ' . intval($animal_id))->fetchAll();
+    $res = array();
+    foreach($list as $_list) {
+        $img = $db->query('SELECT * FROM hinhanh WHERE dongvat_id = ' . intval($_list['id']))->fetch();
+        $ani = array(
+            'img' => $img,
+            'animal' => $_list
+        );
+        $res[] = $ani;
+    }
 
-    _success('OK', $list);
+    _success('OK', $res);
 }
 
 // Search animal
-else if ($action == 'search-animal') {
+else if ($action == 'get-search-animal') {
     $text = _getString('text');
+    $toado = $db->query('SELECT id FROM toado WHERE toado LIKE "%' . $text . '%"')->fetchAll();
 
-    $list = $db->query('SELECT * FROM dongvat WHERE CONCAT_WS(tenkhoahoc, tentiengviet, tendiaphuong, gioi, nganh, lop, bo, ho, hinh1, hinh2, hinh3, hinh4, hinh5,  hinhthai, sinhthai, giatri, iucn, sachdo, nghidinh, cities, phanbo, toado1, toado2, toado3, toado4, toado5, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap, created_at, updated_at, duongdan) LIKE "%' . $text . '%"')->fetchAll();
-
-    _success('OK', $list);
+    $list = $db->query('SELECT * FROM dongvat WHERE CONCAT_WS(tenkhoahoc, tentiengviet, tendiaphuong, gioi, nganh, lop, bo, ho, hinhthai, sinhthai, giatri, iucn, sachdo, nghidinh, cities, phanbo, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap, created_at, updated_at, duongdan) LIKE "%' . $text . '%"')->fetchAll();
+    $res = array();
+    foreach($list as $_list) {
+        $img = $db->query('SELECT * FROM hinhanh WHERE dongvat_id = ' . intval($_list['id']))->fetch();
+        $animal = array(
+            'img' => $img,
+            'animal' => $_list
+        );
+        $res[] = $animal;
+    }
+    _success('OK', $res);
 
 }
 
