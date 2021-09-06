@@ -110,9 +110,88 @@ ul {
     cursor: pointer;
 }
 
-.icon-edit-avt:hover { color: #0e768d}
+.icon-edit-avt:hover { color: #17a2b8}
 
-/*btn Thêm*/
+
+/* Search */
+/* Styles for wrapping the search box */
+
+.main-search {
+  width: 50%;
+  margin: 50px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+ .search-box table{
+    margin: auto;
+}
+
+.search-box table input{
+    width: 500px;
+    border-radius: 5px;
+}
+#result{
+    position: absolute;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 500px;
+}
+
+#result a:hover{
+  background-color: lightblue;
+}
+
+/* Search */
+
+
+
+/* Input hình */
+input[type="file"] {
+    display: block;
+  }
+  .imageThumb {
+    max-height: 75px;
+    border: 2px solid;
+    padding: 1px;
+    cursor: pointer;
+  }
+  .pip {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+  }
+  .remove {
+    display: block;
+    background: #444;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+  }
+  .remove:hover {
+    background: white;
+    color: black;
+  }
+  
+/* Input hình */
+
+/*btn form Thêm*/
 #form-cn {
     margin-top: 100%;
     display: none;
@@ -122,28 +201,62 @@ ul {
     float: right;
     width: 200px;
 }
+/*btn form Thêm*/
 
-/*btn Thêm*/
+ /* Danh sách*/
+.gridtable tbody {
+    display: block;
+    max-height: 630px;
+    overflow-y: scroll;
+  }
+  .gridtable thead,
+  .gridtable tbody tr {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
+  .gridtable thead {
+    width: calc(100% - 1.1em);
+  }
+  .gridtable thead {
+    position: relative;
+  }
+  .gridtable thead th:last-child:after {
+    content: " ";
+    position: absolute;
+    background-color: #17a2b8;
+    width: 1.3em;
+    height: 50px;
+    right: -1.3em;
+    top: 0;
+    border-bottom: 2px solid #ddd;
+  }
 
-
-#form-chitiet{
-    margin-top: none;
-    display: none;
-}
-
-#btn-animal-chitiet{
-    width: 200px;
-    margin-left: 125px;
-}
-
-.container .layout-wrap .layout-right .chitiet b{
-    font-size: 50px;
-    margin-left: 210px;
-} 
-
-.container .layout-wrap .layout-right .chitiet table th{
-    font-weight: border;
+  .gridtable table th{
+    color: white;
+  }
+  /* Bảng chi tiết */
+  .chitiet table th{
+    color: white;
+  }
+  /* Bảng chi tiết */
+  .gridtable table td{
     text-align: center;
-} 
+    
+  }
+   /* Danh sách*/
 
+   /* Form sửa */
+#form-suachua  .gridtable tbody {
+    display: block;
+    max-height: 500px;
+    overflow-y: scroll;
+  }
 
+#form-suachua  .gridtable tbody {
+    text-align: center;
+  }
+  #form-suachua  .gridtable tbody input{
+    width: 100%;
+  }
+  /* Form sửa */
