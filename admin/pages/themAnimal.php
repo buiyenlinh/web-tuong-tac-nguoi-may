@@ -31,7 +31,7 @@
         $diadiem = $_POST['inputdiadiem'];
         $ngaythuthap = $_POST['inputngaythuthap'];
         $nguoithumau = $_POST['inputnguoithumau'];
-
+        $duongdan = $_POST['inputduongdan'];
                     //echo "$tenkhoahoc";
        /* $con=new mysqli("localhost","root","","web_animal");
         $con->set_charset("utf8");
@@ -46,8 +46,24 @@
                    // $con->close();*/
 
 
+        $con=new mysqli("localhost","root","","web_animal");
+        $con->set_charset("utf8");
 
 
+        $sql_1 = "INSERT INTO dongvat (tenkhoahoc, tentiengviet, tendiaphuong, gioi, nganh, lop, bo, ho, hinhthai, sinhthai, giatri,
+            iucn, sachdo, nghidinh, cities, phanbo, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap,duongdan) VALUES
+            ('".$tenkhoahoc."', '".$tentiengviet."', '".$tendiaphuong."', '".$gioi."', '".$nganh."', '".$lop."', '".$bo."', '".$ho."', '".$hinhthai."', '"
+            .$sinhthai."', '".$giatri."', '".$iunc."', '".$sachdo."', '".$ndcp."', '".$cites."', '".$phanbo."', '".$tinhtrang."', '".$sinhcanh."', '".$diadiem."', '".$ngaythuthap."', '".$nguoithumau."', '".$duongdan."');";
+        $con->query($sql_1);
+
+
+        $sqlmax = "SELECT MAX(id) as max FROM dongvat;";
+
+        echo $sqlmax;
+        $max = $con->query($sqlmax);
+        $row = $max->fetch_assoc();
+        echo $row['max'];
+        $maxx = $row['max'];
         if (($_SERVER['REQUEST_METHOD'] === 'POST') && (isset($_FILES['fileupload']))) {
 
             $files = $_FILES['fileupload'];
@@ -75,17 +91,17 @@
                 echo "Lưu tại: $tmp_names[$i] <br>";
                 echo "Cỡ file: $sizes[$i] <br><hr>";
                             //Code xử lý di chuyển file đến thư mục cần thiết ở đây (bạn tự thực hiện)
-                move_uploaded_file($tmp_names[$i], 'C:\xampp\htdocs\tuongtacnguoimay\uploads\\'.$names[$i]);
+                move_uploaded_file($tmp_names[$i], '../../../uploads/'.$names[$i]);
                           
-                $path = 'C:\xampp\htdocs\tuongtacnguoimay\uploads\\'.$names[$i];
+                $path = '../../../uploads/'.$names[$i];
                 
+                //$sql = "insert into hinhanh(duongdan, dongvat_id) values ('".'uploads/'.$names[$i]."', '".$maxx."');";
+
+         //       echo $sql;
+         //       $con->query($sql);
                     //$con->close();
                 }
-                //if($kt){
-                    //$hinhname[$i] = "unloads/" .$names[$i];
-                //}//else{
-                    //$hinhname[$i] = '';
-                //}
+                
             }
             echo "Tổng số file upload: " .$numfiles;
             //set_time_limit(500);
@@ -97,10 +113,15 @@
             $hinh5 = isset($names[4])?'uploads/'.$names[4]:null;
             $con=new mysqli("localhost","root","","web_animal");
             $con->set_charset("utf8");
-            
-            
+            for($i=0; $i < 5; $i ++){
+                $sql = "insert into hinhanh(duongdan, dongvat_id) values ('".'uploads/'.$names[$i]."', '".$maxx."');";
+         //       echo $sql;
+                $con->query($sql);
+            }
 
-            $sql = "INSERT INTO dongvat (tenkhoahoc, tentiengviet, tendiaphuong, gioi, nganh, lop, bo, ho, hinh1, hinh2, hinh3, hinh4, hinh5, hinhthai, sinhthai, giatri,
+
+
+            /*$sql = "INSERT INTO dongvat (tenkhoahoc, tentiengviet, tendiaphuong, gioi, nganh, lop, bo, ho, hinh1, hinh2, hinh3, hinh4, hinh5, hinhthai, sinhthai, giatri,
             iucn, sachdo, nghidinh, cities, phanbo, toado1, toado2, toado3, toado4, toado5, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap) VALUES
             ('".$tenkhoahoc."', '".$tentiengviet."', '".$tendiaphuong."', '".$gioi."', '".$nganh."', '".$lop."', '".$bo."', '".$ho."', '".$hinh1."', '".$hinh2."', '".$hinh3."', '".$hinh4."', '".$hinh5."', '".$hinhthai."', '"
             .$sinhthai."', '".$giatri."', '".$iunc."', '".$sachdo."', '".$ndcp."', '".$cites."', '".$phanbo."', '".$toado1."', '".$toado2."', '"
@@ -109,9 +130,19 @@
 
             //$sql = " INSERT INTO dongvat(hinh1, hinh2, hinh3, hinh4, hinh5) VALUES ('".$hinh1."', '".$hinh2."', '".$hinh3."', '".$hinh4."', '".$hinh5."') ";
             echo $sql;
-            $con->query($sql);
+            $con->query($sql);*/
                     
         }
-    }
+    //    echo $sql_1;
 
+        for($i = 0;$i < 5; $i ++){
+            $sql_2 = "insert into toado (toado, dongvat_id) values ('".$toado1."', '".$maxx."');";
+            $con->query($sql_2);
+    //        echo $sql_2; 
+        }
+        header ('Location: animal.php');
+    }else{
+            echo "Error";
+    }
+    
 ?>
