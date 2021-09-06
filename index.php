@@ -8,11 +8,13 @@ $level2 = isset($_GET['level2']) ? $_GET['level2'] : '';
 
 $array_op = array(
     '' => 'trangchu',
+    'tim-kiem' => 'timkiem',
     'chi-tiet' => 'chitiet',
     'loi' => 'error'
 );
 
 $id = 0; // id kiểm tra có tồn tại đường dẫn nhập trong bảng động vật -> 0 : ko tồn tại
+$textSearch = '';
 if ($op == 'chi-tiet') {
     if (empty($level1)) {
         header('Location: ' . BASE . 'loi');
@@ -28,6 +30,19 @@ if ($op == 'chi-tiet') {
     if ($id == 0) {
         header('Location: ' . BASE . 'loi');
         exit();
+    }
+} else if ($op == 'tim-kiem') {
+    if (empty($level1)) {
+        Header('Location: ' . BASE . 'loi');
+        exit();
+    } else {
+        if (!empty($level2)) {
+            Header('Location: ' . BASE . 'loi');
+            exit();
+        } else {
+            $textSearch = str_replace('-', ' ', $level1);
+        }
+        
     }
 }
 
@@ -47,8 +62,12 @@ include ROOT . '/layout/footer-only.php';
 <script>
     $(function() {
         var id = <?php echo $id ?>;
+        var textSearch = '<?php echo $textSearch ?>';
         if (id > 0) {
             getAnimalInfo(id);
+        }
+        if (textSearch != '') {
+            getSearchAnimal(textSearch);
         }
     })
 </script>
