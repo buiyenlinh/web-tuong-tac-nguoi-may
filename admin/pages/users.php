@@ -31,7 +31,7 @@ include '../layout/header-only.php';
                                   <tbody class="list-users-body"></tbody>
                                 </table>
                             </div>
-                            <?php if ($_SESSION['user']['vaitro'] == 0 || $_SESSION['user']['vaitro'] == 1): ?>
+                            <?php if ($_SESSION['user']['vaitro'] == 1 || $_SESSION['user']['vaitro'] == 2): ?>
                             <div class="user-form pl-3">
                               <h3>Thêm người dùng</h3>
                               <form action="" method="post">
@@ -45,10 +45,7 @@ include '../layout/header-only.php';
                                 </div>
                                 <div class="form-group">
                                   <label for=""><b>Quyền người dùng: <span class="text-danger">*</span></b></label>
-                                  <select name="user_role" id="user_role" class="form-control rounded-0">
-                                      <option value="1">Administrator</option>
-                                      <option value="2">Editor</option> 
-                                  </select>
+                                  <select name="user_role" id="user_role" class="form-control rounded-0"></select>
                                 </div>
                                 <div class="user-form__button">
                                   <button type="button" class="btn btn-info pl-4 pr-4 user-form__button__add rounded-0">Lưu</button>

@@ -46,6 +46,8 @@ ul {
     border-bottom: 1px solid #3e8787;
 }
 
+#users-page .menu-left ul .nav-item-user,
+#account-page .menu-left ul .nav-item-account { background: #0a4a5e }
 
 /*--------------------------------- LOGIN --------------------------------- */
 
@@ -70,6 +72,13 @@ ul {
 }
 .header__logout { 
     cursor: pointer;
+}
+
+.header-avt-user img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /*--------------------------------- USERS --------------------------------- */

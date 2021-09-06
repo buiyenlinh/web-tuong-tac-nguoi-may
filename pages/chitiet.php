@@ -1,10 +1,5 @@
 <div id="details">
   <div class="container">
-    <button class="btn btn-light d-none details-search-button" data-toggle="collapse" data-target="#details-search"></button>
-    <div id="details-search" class="details-search collapse">
-      <div class="details-search-sum pt-3"></div>
-      <ul class="details-search-result row mb-0"></ul>
-    </div>
     <div class="details pt-4">
       <div class="details-header mb-4 bg-info p-3">
         <b class="text-light"></b>

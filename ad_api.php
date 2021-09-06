@@ -191,4 +191,10 @@ else if ($action == 'update-user') {
     _success('OK');
 }
 
+// Lấy danh sách vai trò người dùng
+else if ($action == 'get-list-role') {
+    $listRole = $db->query('SELECT * FROM vaitro')-> fetchAll();
+    
+    _success('OK', $listRole);
+}
 ?>

@@ -1,6 +1,6 @@
 <div class="menu-left">
     <ul class="nav justify-content-center flex-column">
-        <li class="nav-item nav-item-product">
+        <li class="nav-item nav-item-animal">
             <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/animal.php">
                 <i class="fas fa-frog"></i></i>&nbsp; Động vật
             </a>
