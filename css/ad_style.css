@@ -26,13 +26,13 @@ ul {
 }
 
 .layout-left {
-    width: 12%;
+    width: 15%;
     border-right: 1px solid #ddd;
     background: #0e768d;
     height: 100vh;
 }
 .layout-right {
-    width: 88%;
+    width: 85%;
     padding: 0px 10px;
 }
 
@@ -47,7 +47,8 @@ ul {
 }
 
 #users-page .menu-left ul .nav-item-user,
-#account-page .menu-left ul .nav-item-account { background: #0a4a5e }
+#account-page .menu-left ul .nav-item-account,
+#animal-list .menu-left ul .nav-item-animal { background: #0a4a5e }
 
 /*--------------------------------- LOGIN --------------------------------- */
 
@@ -89,13 +90,14 @@ ul {
 
 
 /* --------------------------------- ACCOUNT --------------------------------- */
-.account__info__left--avt-file { display: none; }
+.account__info__left--avt-file { display: none !important; }
 
 .account__info__left--avt img {
-    width: 170px;
-    height: 170px;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
     background: #333;
+    border-radius: 10px;
 }
 
 .account__info__left--avt { position: relative; }
@@ -148,10 +150,17 @@ ul {
     border-radius: 5px;
 }
 #result{
-    position: absolute;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    width: 500px;
+    /* position: absolute; */
+    /* border: 1px solid lightgray; */
+    /* border-radius: 5px; */
+    width: 100%;
+}
+
+#result a{
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid lightgray;
 }
 
 #result a:hover{
@@ -193,20 +202,20 @@ input[type="file"] {
 
 /*btn form Thêm*/
 #form-cn {
-    margin-top: 100%;
+    /* margin-top: 100%; */
     display: none;
 }
 
-#btn-animal-cn{
+/* #btn-animal-cn{
     float: right;
     width: 200px;
-}
+} */
 /*btn form Thêm*/
 
  /* Danh sách*/
 .gridtable tbody {
     display: block;
-    max-height: 630px;
+    max-height: 450px;
     overflow-y: scroll;
   }
   .gridtable thead,

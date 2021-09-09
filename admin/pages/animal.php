@@ -8,6 +8,7 @@ include '../layout/header-only.php';
     <?php header('Location:' . BASE . 'admin') ?>
 <?php else: ?>
     <?php include '../layout/header.php'; ?>
+    <div id="animal-list">
         <div class="container">
             <div class="layout-wrap">
                 <div class="layout-left">
@@ -19,7 +20,17 @@ include '../layout/header-only.php';
                         <form action="danhsachtimkiem.php" accept-charset="UTF-8" enctype="multipart/form-data" method="POST">
                         <!-- Another variation with a button -->
                             <div class="input-group search-box" style="margin-top: -30px;">
-                                <table>
+                                <div class="input-group">
+                                    <input type="text" name="input_search" class="form-control rounded-0" placeholder="Search Animal" onkeyup='livesearch(this.value);'>
+                                    <div class="input-group-append">
+                                        <button type="submit" name="submit" class="btn btn-secondary rounded-0" type="button" style="background-color: #0e768d;">
+                                            <i class="fa fa-search"></i>
+                                        </button> 
+                                    </div>
+                                </div>
+
+                                <!-- <div id='result'></div> -->
+                                <!-- <table>
                                     <tr>
                                         <td>
                                             <input type="text" name="input_search" class="form-control" placeholder="Search Animal" onkeyup='livesearch(this.value);'>
@@ -38,7 +49,7 @@ include '../layout/header-only.php';
                                         </td>
                                         <td></td>
                                     </tr>
-                                </table>
+                                </table> -->
                             </div>
                         </form>
                     </div>
@@ -47,23 +58,30 @@ include '../layout/header-only.php';
 
 
                     <!--Button Thêm -->
-                   <hr> 
-                    <div class="row">
+                   <!-- <hr>  -->
+                    <!-- <div class="row">
                         <div class="col-12 col-lg-4 btn-submit">
                             
                         </div>
                         <div class="col-12 col-lg-4 btn-submit">
                             
                         </div>
-                        <div class="col-12 col-lg-4 btn-submit">
+                        <div class="col-12 col-lg-4 btn-submit"> -->
                         <!--    <button type="button" class="btn btn-primary" id="btn-animal-chitiet" onclick="HideShow_chitiet()" style="background-color: #0e768d;">
                             <b>Danh sách Animal</b>
                             </button>
                         -->
-                            <button type="button" class="btn btn-primary" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d;">
-                            <b>Thêm Animal</b>
+                            <!-- <button type="button" class="btn btn-primary" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d;">
+                                <b>Thêm Animal</b>
                             </button>
                         </div>
+                    </div> -->
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <h3 class="mb-0" id="animal-list-title">Danh sách động vật</h3>
+                        <button type="button" class="btn btn-primary rounded-0" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d;">
+                            <b>Thêm Animal</b>
+                        </button>
                     </div>
                     <!--Button Thêm -->
 
@@ -71,8 +89,8 @@ include '../layout/header-only.php';
 
 
                     <!--Form THÊM -->
-                    <div class="col-md-6 offset-md-3 mt-5" id="form-cn">
-                        <h3 class="text-center">THÊM ĐỘNG VẬT</h3>
+                    <div class="col-md-6 offset-md-3" id="form-cn">
+                        <!-- <h3 class="text-center">THÊM ĐỘNG VẬT</h3> -->
                         <form action="themAnimal.php"  accept-charset="UTF-8" enctype="multipart/form-data" method="POST"  target="">
                             <div class="form-group">
                                 <div class="gridtable">
@@ -300,7 +318,7 @@ include '../layout/header-only.php';
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <hr>
+                                                    <!-- <hr> -->
                                                     <div class="form-group mt-3 field">
                                                         <label for="exampleInputEmail1" required="required">Thêm hình</label>
                                                         <!--<input type="file" name="fileupload[]" multiple="multiple" /> -->
@@ -309,14 +327,14 @@ include '../layout/header-only.php';
                                                         <input type="file" id="files" name="fileupload[]" multiple="multiple" />
                                                         <!--<p><input type="submit" name="upload" value="Upload File"/></p>-->
                                                     </div>
-                                                    <hr>
+                                                    <!-- <hr> -->
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                 </td>
                                                 <td>
-                                                <button type="submit" class="btn btn-primary" name="submit" value="Upload File">Thêm Dộng Vật</button>
+                                                <button type="submit" class="btn btn-info" name="submit" value="Upload File">Thêm Dộng Vật</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -335,12 +353,12 @@ include '../layout/header-only.php';
                         // echo $sql;
                         $result = $con->query($sql);
                     ?>
-                        <hr>
+                        <!-- <hr> -->
                         <form class="danhsach" id="form-danhsach">
                             <div class="gridtable">
-                                <h3 class="text-center">DANH SÁCH ĐỘNG VẬT</h3>
+                                <!-- <h3 class="text-center">DANH SÁCH ĐỘNG VẬT</h3> -->
                                 <table class="table table-striped table-bordered">
-                                    <thead class="bg-primary text-center">
+                                    <thead class="bg-info text-center">
                                         <tr>
                                             <th>STT</th>
                                             <th>TÊN KHOA HỌC</th>
@@ -360,7 +378,7 @@ include '../layout/header-only.php';
                                                 //Ở sau  ko cần dấu ?idsp='". $var ."' Nên dùng  ?idsp=".$row['idsp']."'
                                                 echo "<td><a href='./chitiet.php?iddv=".$row['id']."'>Xem chi tiết</a></td>";
                                                 echo "<td><a href='suaAnimal.php?iddv=".$row['id']."'><i class='fas fa-pen'></i></a></td>";
-                                                echo "<td><a href='./xoaAnimal.php?iddv=".$row['id']."'><i class='fas fa-trash-alt'></i></a></td>";
+                                                echo "<td><a href='./xoaAnimal.php?iddv=".$row['id']."'><i class='fas fa-trash-alt text-danger'></i></a></td>";
                                                 echo "</tr>";
                                                 $i++;
                                                 }
@@ -375,7 +393,7 @@ include '../layout/header-only.php';
         </div>
         <!--Danh sách động vật -->
         
-
+    </div>
 
 
 
@@ -387,10 +405,12 @@ include '../layout/header-only.php';
                     document.getElementById('form-danhsach').style.display = "none";
                     document.getElementById('form-cn').style.display = "block";
                     document.getElementById('btn-animal-cn').innerHTML = 'Quay lại';
+                    document.getElementById('animal-list-title').innerHTML = "Thêm động vật";
                 }else{
                     document.getElementById('form-danhsach').style.display = "block";
                     document.getElementById('form-cn').style.display = "none";
                     document.getElementById('btn-animal-cn').innerHTML = 'Thêm Animal';
+                    document.getElementById('animal-list-title').innerHTML = "Danh sách động vật";
                 }
             }
 
