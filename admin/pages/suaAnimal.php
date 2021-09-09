@@ -67,11 +67,11 @@
             }
         }
         
-        $hinhanh1 = isset($hinh[1])?$hinh[1]:null;
-        $hinhanh2 = isset($hinh[2])?$hinh[2]:null;
-        $hinhanh3 = isset($hinh[3])?$hinh[3]:null;
-        $hinhanh4 = isset($hinh[4])?$hinh[4]:null;
-        $hinhanh5 = isset($hinh[5])?$hinh[5]:null;
+        $hinhanh1 = isset($hinh[1])?'../../../'.$hinh[1]:null;
+        $hinhanh2 = isset($hinh[2])?'../../../'.$hinh[2]:null;
+        $hinhanh3 = isset($hinh[3])?'../../../'.$hinh[3]:null;
+        $hinhanh4 = isset($hinh[4])?'../../../'.$hinh[4]:null;
+        $hinhanh5 = isset($hinh[5])?'../../../'.$hinh[5]:null;
 
         $td1 = isset($toado[1])?$toado[1]:null;
         $td2 = isset($toado[2])?$toado[2]:null;
@@ -131,23 +131,33 @@
                     </tr>
                     <tr>
                         <td>Hình 1:</td>
-                        <td><input type="file" size="20" name="hinh1sua" /></td>
+                        <td><input type="file" size="20" name="hinh1sua" />
+                        <?php echo "<img src='".$hinhanh1."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; ?>
+                    </td>
                     </tr>
                     <tr>
                         <td>Hình 2:</td>
-                        <td><input type="file" size="20" name="hinh2sua" /></td>
+                        <td><input type="file" size="20" name="hinh2sua" />
+                        <?php echo "<img src='".$hinhanh2."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; ?>
+                    </td>
                     </tr>
                     <tr>
                         <td>Hình 3:</td>
-                        <td><input type="file" size="20" name="hinh3sua" /></td>
+                        <td><input type="file" size="20" name="hinh3sua" />
+                        <?php echo "<img src='".$hinhanh3."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; ?>
+                    </td>
                     </tr>
                     <tr>
                         <td>Hình 4:</td>
-                        <td><input type="file" size="20" name="hinh4sua" /></td>
+                        <td><input type="file" size="20" name="hinh4sua" />
+                        <?php echo "<img src='".$hinhanh4."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; ?>                    
+                    </td>
                     </tr>
                     <tr>
                         <td>Hình 5:</td>
-                        <td><input type="file" size="20" name="hinh5sua" /></td>
+                        <td><input type="file" size="20" name="hinh5sua" />
+                        <?php echo "<img src='".$hinhanh5."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; ?>
+                    </td>
                     </tr>
                     <tr>
                         <td>Mô tả đặc điểm hình thái:</td>

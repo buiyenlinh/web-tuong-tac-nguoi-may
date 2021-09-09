@@ -61,7 +61,7 @@ include '../layout/header-only.php';
                             </button>
                         -->
                             <button type="button" class="btn btn-primary" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d;">
-                            <b>Thêm Animal</b>
+                            Thêm Animal
                             </button>
                         </div>
                     </div>
@@ -393,20 +393,6 @@ include '../layout/header-only.php';
                     document.getElementById('btn-animal-cn').innerHTML = 'Thêm Animal';
                 }
             }
-
-            function HideShow_chitiet() {
-                let star_current = document.getElementById('form-chitiet').style.display;
-                if (star_current === "none") {
-                    document.getElementById('form-chitiet').style.display = "block";
-                    document.getElementById('btn-animal-chitiet').innerHTML = 'Quay lại';
-                }else{
-                    document.getElementById('form-chitiet').style.display = "none";
-                    document.getElementById('btn-animal-chitiet').innerHTML = 'Danh sách Animal';
-                }
-            }
-
-
-
 
             function livesearch(data){
                 var xmlhttp;
