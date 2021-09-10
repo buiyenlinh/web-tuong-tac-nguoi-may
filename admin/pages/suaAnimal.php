@@ -132,31 +132,56 @@
                     <tr>
                         <td>Hình 1:</td>
                         <td><input type="file" size="20" name="hinh1sua" />
-                        <?php echo "<img src='".$hinhanh1."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; ?>
+                        <?php 
+                            if($hinhanh1 != null){
+                                echo "<img src='".$hinhanh1."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
+                            }
+                         
+                        ?>
                     </td>
                     </tr>
                     <tr>
                         <td>Hình 2:</td>
                         <td><input type="file" size="20" name="hinh2sua" />
-                        <?php echo "<img src='".$hinhanh2."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; ?>
+                        <?php
+                            if($hinhanh2 != null){
+                                echo "<img src='".$hinhanh2."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
+                            }
+                          
+                         ?>
                     </td>
                     </tr>
                     <tr>
                         <td>Hình 3:</td>
                         <td><input type="file" size="20" name="hinh3sua" />
-                        <?php echo "<img src='".$hinhanh3."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; ?>
+                        <?php
+                        if($hinhanh3 != null){
+                            echo "<img src='".$hinhanh3."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
+                        }
+                          
+                         ?>
                     </td>
                     </tr>
                     <tr>
                         <td>Hình 4:</td>
                         <td><input type="file" size="20" name="hinh4sua" />
-                        <?php echo "<img src='".$hinhanh4."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; ?>                    
+                        <?php 
+                        if($hinhanh4 != null){
+                            echo "<img src='".$hinhanh4."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
+                        }
+                         
+                        ?>                    
                     </td>
                     </tr>
                     <tr>
                         <td>Hình 5:</td>
                         <td><input type="file" size="20" name="hinh5sua" />
-                        <?php echo "<img src='".$hinhanh5."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; ?>
+                        <?php 
+                        if($hinhanh5 != null){
+                            echo "<img src='".$hinhanh5."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; 
+                        }
+                        
+                        ?>
                     </td>
                     </tr>
                     <tr>
