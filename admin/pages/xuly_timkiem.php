@@ -16,8 +16,15 @@ if(isset($_GET['data'])){
     $sql = "SELECT DISTINCT tenkhoahoc, id FROM dongvat WHERE tenkhoahoc LIKE '$data%' or tentiengviet LIKE '$data%' or tendiaphuong LIKE '$data%'".";";
     $result = mysqli_query($con, $sql);
     $row = $result->fetch_assoc();
+    $i=1;
     while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-    echo "<a href='./chitiet.php?iddv=".$row['id']."'>".$row['tenkhoahoc']."</a>"."</br>";
+        if($i < 4){
+            echo "<a href='./chitiet.php?iddv=".$row['id']."'>".$row['tenkhoahoc']."</a>"."</br>";
+            $i ++;
+        }else{
+            break;
+        }
+        
     }
    // return "<a href='./chitiet.php?iddv=".$row['id']."'>".$row['tenkhoahoc']."</a>";
     //Đóng kết nối
