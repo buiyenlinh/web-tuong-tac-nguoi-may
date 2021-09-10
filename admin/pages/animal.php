@@ -29,27 +29,7 @@ include '../layout/header-only.php';
                                     </div>
                                 </div>
 
-                                <!-- <div id='result'></div> -->
-                                <!-- <table>
-                                    <tr>
-                                        <td>
-                                            <input type="text" name="input_search" class="form-control" placeholder="Search Animal" onkeyup='livesearch(this.value);'>
-                                            <div class="input-group-append">
-                                        </td>
-                                        <td>
-                                            <button type="submit" name="submit" class="btn btn-secondary" type="button" style="background-color: #0e768d;">
-                                                <i class="fa fa-search"></i>
-                                            </button> 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div id='result'>
-                                            </div>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                </table> -->
+                                 <div id='result'></div>
                             </div>
                         </form>
                     </div>
@@ -57,25 +37,6 @@ include '../layout/header-only.php';
 
 
 
-                    <!--Button Thêm -->
-                   <!-- <hr>  -->
-                    <!-- <div class="row">
-                        <div class="col-12 col-lg-4 btn-submit">
-                            
-                        </div>
-                        <div class="col-12 col-lg-4 btn-submit">
-                            
-                        </div>
-                        <div class="col-12 col-lg-4 btn-submit"> -->
-                        <!--    <button type="button" class="btn btn-primary" id="btn-animal-chitiet" onclick="HideShow_chitiet()" style="background-color: #0e768d;">
-                            <b>Danh sách Animal</b>
-                            </button>
-                        -->
-                            <!-- <button type="button" class="btn btn-primary" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d;">
-                                <b>Thêm Animal</b>
-                            </button>
-                        </div>
-                    </div> -->
 
                     <div class="d-flex justify-content-between mb-3">
                         <h3 class="mb-0" id="animal-list-title">Danh sách động vật</h3>
@@ -413,20 +374,6 @@ include '../layout/header-only.php';
                     document.getElementById('animal-list-title').innerHTML = "Danh sách động vật";
                 }
             }
-
-            function HideShow_chitiet() {
-                let star_current = document.getElementById('form-chitiet').style.display;
-                if (star_current === "none") {
-                    document.getElementById('form-chitiet').style.display = "block";
-                    document.getElementById('btn-animal-chitiet').innerHTML = 'Quay lại';
-                }else{
-                    document.getElementById('form-chitiet').style.display = "none";
-                    document.getElementById('btn-animal-chitiet').innerHTML = 'Danh sách Animal';
-                }
-            }
-
-
-
 
             function livesearch(data){
                 var xmlhttp;
