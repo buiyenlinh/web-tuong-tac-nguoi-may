@@ -53,49 +53,62 @@ include '../layout/header-only.php';
                             </div>
                             <hr>
                             <div class="profile-details">
-                                <h3>Thông tin chi tiết</h3>
-                                <div class="profile-details-info">
-                                    <form action="" method="post">
-                                        <div class="form-group">
-                                            <label for=""><b>Tên đăng nhập <span class="text-danger">*</span></b></label>
-                                            <input type="text" class="account__info__center__form--username form-control rounded-0" name="account_username" >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for=""><b>Tên hiển thị: </b></label>
-                                            <input type="text" class="account__info__center__form--name form-control rounded-0" name="account_name" placeholder="Tên hiển thị...">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for=""><b>Số điện thoại: </b></label>
-                                            <input type="text" class="account__info__center__form--name form-control rounded-0" name="account_name" placeholder="Tên hiển thị...">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for=""><b>Ngày sinh: </b></label>
-                                            <input type="date" class="account__info__center__form--birthday form-control rounded-0" name="account_birthday" placeholder="Tên hiển thị...">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for=""><b>Giới tính: </b></label><br>
-                                            <div class="form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input male" value="1" name="account_gender">Nam
-                                                </label>
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-toggle="tab" class="active" href="#profile-details-info">Thông tin</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#change-password">Mật khẩu</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="profile-details-info" class="tab-pane fade in active show">
+                                        <form action="" method="post">
+                                            <div class="form-group">
+                                                <label for=""><b>Tên đăng nhập <span class="text-danger">*</span></b></label>
+                                                <input type="text" class="account__info__center__form--username form-control rounded-0" name="account_username" >
                                             </div>
-                                            <div class="form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input female" value="0" name="account_gender">Nữ
-                                                </label>
+                                            <div class="form-group">
+                                                <label for=""><b>Tên hiển thị: </b></label>
+                                                <input type="text" class="account__info__center__form--name form-control rounded-0" name="account_name" placeholder="Tên hiển thị...">
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for=""><b>Địa chỉ: </b></label>
-                                            <input type="text" class=" form-control rounded-0" name="account_birthday" placeholder="Tên hiển thị...">
-                                        </div>
-                                        <div class="account__center__btn">
-                                            <button type="submit" class="btn btn-info rounded-0 account__info__center__form--btn-change-info">Lưu thay đổi</button>
-                                        </div>
-                                    </form>
+                                            <div class="form-group">
+                                                <label for=""><b>Số điện thoại: </b></label>
+                                                <input type="text" class="account__info__center__form--name form-control rounded-0" name="account_name" placeholder="Tên hiển thị...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for=""><b>Ngày sinh: </b></label>
+                                                <input type="date" class="account__info__center__form--birthday form-control rounded-0" name="account_birthday" placeholder="Tên hiển thị...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for=""><b>Giới tính: </b></label><br>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input male" value="1" name="account_gender">Nam
+                                                    </label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input female" value="0" name="account_gender">Nữ
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for=""><b>Địa chỉ: </b></label>
+                                                <input type="text" class=" form-control rounded-0" name="account_birthday" placeholder="Tên hiển thị...">
+                                            </div>
+                                            <div class="account__center__btn">
+                                                <button type="submit" class="btn btn-info rounded-0 account__info__center__form--btn-change-info">Lưu thay đổi</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div id="change-password" class="tab-pane fade">
+                                        Change password
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
