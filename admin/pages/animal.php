@@ -29,29 +29,24 @@ include '../layout/header-only.php';
                                     </div>
                                 </div>
 
-                                 <div id='result'></div>
+                                <div id='result'></div>
                             </div>
                         </form>
                     </div>
                     <!--Tìm kiếm -->
 
-
-
-
+                    <!--Button Thêm -->
                     <div class="d-flex justify-content-between mb-3">
-                        <h3 class="mb-0" id="animal-list-title">Danh sách động vật</h3>
+                        <h3 class="mb-0" id="animal-list-title text-center"></h3>
                         <button type="button" class="btn btn-primary rounded-0" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d;">
                             <b>Thêm Animal</b>
                         </button>
                     </div>
                     <!--Button Thêm -->
 
-
-
-
                     <!--Form THÊM -->
                     <div class="col-md-6 offset-md-3" id="form-cn">
-                        <!-- <h3 class="text-center">THÊM ĐỘNG VẬT</h3> -->
+                        <h3 class="text-center">THÊM ĐỘNG VẬT</h3>
                         <form action="themAnimal.php"  accept-charset="UTF-8" enctype="multipart/form-data" method="POST"  target="">
                             <div class="form-group">
                                 <div class="gridtable">
@@ -202,7 +197,7 @@ include '../layout/header-only.php';
                                                 <label for="exampleInputEmail1" required="required">Tọa độ 2</label>
                                                 </td>
                                                 <td>
-                                                <input type="email" name="inputtoado2" class="form-control" id="inputtoado2" aria-describedby="emailHelp" placeholder="Nhập tên địa Tọa độ 2">
+                                                <input type="email" name="inputtoado2" class="form-control" id="inputtoado2" aria-describedby="emailHelp" placeholder="Nhập Tọa độ 2">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -317,7 +312,7 @@ include '../layout/header-only.php';
                         <!-- <hr> -->
                         <form class="danhsach" id="form-danhsach">
                             <div class="gridtable">
-                                <!-- <h3 class="text-center">DANH SÁCH ĐỘNG VẬT</h3> -->
+                                <h3 class="text-center">DANH SÁCH ĐỘNG VẬT</h3>
                                 <table class="table table-striped table-bordered">
                                     <thead class="bg-info text-center">
                                         <tr>
