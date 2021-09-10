@@ -86,11 +86,11 @@
         <?php include '../layout/menu-left.php'; ?>
     </div>
     <div class="layout-right">
-    <h3 class="text-center">CHỈNH SỬA ĐỘNG VẬT</h3>
+    <h3 class="text-center mt-4 mb-2">CHỈNH SỬA ĐỘNG VẬT</h3>
     <form class="chinhsua" id="form-suachua" action="" method="post" enctype="multipart/form-data">
         <div class="gridtable">    
             <table class="table table-striped table-bordered">
-                <thead class="bg-primary text-center">
+                <thead class="bg-info text-center">
                     <tr>
                         <th>Thông tin</th>
                         <th>Dữ liệu</th>
@@ -239,7 +239,7 @@
                 </tbody>
             </table>
         </div>
-        <button type="submit" class="btn btn-primary" name="apply" value="Upload File" style="float:right;">Cập nhật</button>
+        <button type="submit" class="btn btn-info rounded-0" name="apply" value="Upload File" style="float:right;">Cập nhật</button>
     </form>
 </div>
 <?php

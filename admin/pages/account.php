@@ -22,82 +22,77 @@ include '../layout/header-only.php';
                 </div>
                 <div class="layout-right">
                     <div class="account__right p-3">
-                        <div class="account__right--title mt-2 mb-1">
-                            <h3>Tài khoản</h3>
-                        </div>
-
                         <div class="account__right__info">
                             <div class="row">
                                 <div class="col-2">
                                     <div class="account__info__left--avt">
-                                        <img src="" class="rounded-circle" alt="">
+                                        <img src="" alt="">
                                         <i class="fas fa-edit  icon-edit-avt" title="Thay đổi ảnh đại diện"></i>
                                         <input type="file" class="account__info__left--avt-file" id="account__info__left--avt-file">
                                     </div>
-                                    <div class="account__info__left--name text-center text-info font-weight-bold"></div>
                                 </div>
-                                <div class="col-5">
-                                    <div class="account__info__center">
-                                        <div class="account__info__center__form">
-                                            <form action="" method="post">
-                                                <div class="form-group">
-                                                    <label for=""><b>Tên đăng nhập <span class="text-danger">*</span></b></label>
-                                                    <input type="text" class="account__info__center__form--username form-control rounded-0" name="account_username" >
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for=""><b>Tên hiển thị: </b></label>
-                                                    <input type="text" class="account__info__center__form--name form-control rounded-0" name="account_name" placeholder="Tên hiển thị...">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for=""><b>Ngày sinh: </b></label>
-                                                    <input type="date" class="account__info__center__form--birthday form-control rounded-0" name="account_birthday" placeholder="Tên hiển thị...">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for=""><b>Giới tính: </b></label><br>
-                                                    <div class="form-check-inline">
-                                                        <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input male" value="1" name="account_gender">Nam
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check-inline">
-                                                        <label class="form-check-label">
-                                                            <input type="radio" class="form-check-input female" value="0" name="account_gender">Nữ
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="account__center__btn">
-                                                    <button type="submit" class="btn btn-info rounded-0 account__info__center__form--btn-change-info">Lưu thay đổi</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-5">
+                                <div class="col-10">
                                     <div class="account__info__right">
-                                        <div class="account__info__right--title mb-3 text-info">
-                                            <i class="far fa-hand-point-right"></i> Thay đổi mật khẩu
-                                        </div>
-                                        <div class="account__info__right__form">
-                                            <form action="" method="post">
-                                                <div class="form-group">
-                                                    <label for=""><b>Mật khẩu cũ <span class="text-danger">*</span> </b></label>
-                                                    <input type="password" class="account__info__right__form--password form-control rounded-0" name="account_password" placeholder="Mật khẩu...">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for=""><b>Mật khẩu mới <span class="text-danger">*</span> </b></label>
-                                                    <input type="password" class="account__info__right__form--new_password form-control rounded-0" name="account_new_password" placeholder="Mật khẩu mới...">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for=""><b>Nhập lại mật khẩu mới <span class="text-danger">*</span> </b></label>
-                                                    <input type="password" class="account__info__right__form--re_new_password form-control rounded-0" name="account_re_new_password" placeholder="Nhập lại mật khẩu mới...">
-                                                </div>
-                                                <div class="account__left__btn">
-                                                    <button type="submit" class="btn btn-info rounded-0 account__info__right__form--btn-change-password">Đổi mật khẩu</button>
-                                                    <button type="reset" class="account__left__btn-reset d-none"></button>
-                                                </div>
-                                            </form>
+                                        <h3 class="account__info__right--name"></h3>
+                                        <div class="d-flex">
+                                            <div class="account__info__right--role pr-3">
+                                                <i class="far fa-user-circle"></i>
+                                                <span></span>
+                                            </div>
+                                            <div class="account__info__right--phone pr-3">
+                                                <i class="fas fa-phone-alt"></i>
+                                                <span>0987654321</span>
+                                            </div>
+                                            <div class="account__info__right--address">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span>Cần Thơ</span>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="profile-details">
+                                <h3>Thông tin chi tiết</h3>
+                                <div class="profile-details-info">
+                                    <form action="" method="post">
+                                        <div class="form-group">
+                                            <label for=""><b>Tên đăng nhập <span class="text-danger">*</span></b></label>
+                                            <input type="text" class="account__info__center__form--username form-control rounded-0" name="account_username" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><b>Tên hiển thị: </b></label>
+                                            <input type="text" class="account__info__center__form--name form-control rounded-0" name="account_name" placeholder="Tên hiển thị...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><b>Số điện thoại: </b></label>
+                                            <input type="text" class="account__info__center__form--name form-control rounded-0" name="account_name" placeholder="Tên hiển thị...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><b>Ngày sinh: </b></label>
+                                            <input type="date" class="account__info__center__form--birthday form-control rounded-0" name="account_birthday" placeholder="Tên hiển thị...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><b>Giới tính: </b></label><br>
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input male" value="1" name="account_gender">Nam
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input female" value="0" name="account_gender">Nữ
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""><b>Địa chỉ: </b></label>
+                                            <input type="text" class=" form-control rounded-0" name="account_birthday" placeholder="Tên hiển thị...">
+                                        </div>
+                                        <div class="account__center__btn">
+                                            <button type="submit" class="btn btn-info rounded-0 account__info__center__form--btn-change-info">Lưu thay đổi</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

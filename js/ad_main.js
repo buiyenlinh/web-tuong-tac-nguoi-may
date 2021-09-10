@@ -236,7 +236,17 @@ function getInfoAccount() {
             $('.account__info__center__form--name').val(json['data']['tenhienthi']);
             $('.account__info__left--avt img').attr('src', BASE + json['data']['anhdaidien']);
             $('.account__info__center__form--birthday').val(json['data']['ngaysinh']);
-            $('.account__info__left--name').text(json.data.tenhienthi || json.data.tendangnhap);
+            $('.account__info__right--name').text(json.data.tenhienthi || json.data.tendangnhap);
+            var role = "";
+            if (json.data.vaitro == 0) {
+                role = "Super admin";
+            } else if (json.data.vaitro == 1) { 
+                role = "Administrator";
+            } else {
+                role = "Editor";
+            }
+            $('.account__info__right--role span').text(role); 
+
             if (json['data']['gioitinh'] == 0) {
                 $('.female').attr('checked', true);
             } else {
