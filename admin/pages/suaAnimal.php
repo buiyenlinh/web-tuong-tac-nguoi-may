@@ -80,192 +80,203 @@
         $td5 = isset($toado[5])?$toado[5]:null;
     }
 ?>
-<?php include '../layout/header.php'; ?>
+
 <div class="layout-wrap">
     <div class="layout-left">
         <?php include '../layout/menu-left.php'; ?>
     </div>
     <div class="layout-right">
-    <h3 class="text-center mt-4 mb-2">CHỈNH SỬA ĐỘNG VẬT</h3>
-    <form class="chinhsua" id="form-suachua" action="" method="post" enctype="multipart/form-data">
-        <div class="gridtable">    
-            <table class="table table-striped table-bordered">
-                <thead class="bg-info text-center">
-                    <tr>
-                        <th>Thông tin</th>
-                        <th>Dữ liệu</th>
-                    </tr>
-                </thead>    
-                <tbody>
-                    <tr>
-                        <td>Tên khoa học:</td>
-                        <td><input type="text" size="20" name="tenkhoahocsua" value='<?php echo $tenkhoahoc; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tên tiếng Việt:</td>
-                        <td><input type="text" size="20" name="tentiengvietsua" value='<?php echo $tentiengviet; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tên địa phương:</td>
-                        <td><input type="text" size="20" name="tendiaphuongsua" value='<?php echo $tendiaphuong; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Giới:</td>
-                        <td><input type="text" size="20" name="gioisua" value='<?php echo $gioi; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Bộ:</td>
-                        <td><input type="text" size="20" name="nganhsua" value='<?php echo $bo; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Lớp:</td>
-                        <td><input type="text" size="20" name="lopsua" value='<?php echo $lop; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Ngành:</td>
-                        <td><input type="text" size="20" name="bosua" value='<?php echo $nganh; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Họ:</td>
-                        <td><input type="text" size="20" name="hosua" value='<?php echo $ho; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Hình 1:</td>
-                        <td><input type="file" size="20" name="hinh1sua" />
-                        <?php 
-                            if($hinhanh1 != null){
-                                echo "<img src='".$hinhanh1."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
-                            }
-                         
-                        ?>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>Hình 2:</td>
-                        <td><input type="file" size="20" name="hinh2sua" />
-                        <?php
-                            if($hinhanh2 != null){
-                                echo "<img src='".$hinhanh2."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
-                            }
-                          
-                         ?>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>Hình 3:</td>
-                        <td><input type="file" size="20" name="hinh3sua" />
-                        <?php
-                        if($hinhanh3 != null){
-                            echo "<img src='".$hinhanh3."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
-                        }
-                          
-                         ?>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>Hình 4:</td>
-                        <td><input type="file" size="20" name="hinh4sua" />
-                        <?php 
-                        if($hinhanh4 != null){
-                            echo "<img src='".$hinhanh4."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
-                        }
-                         
-                        ?>                    
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>Hình 5:</td>
-                        <td><input type="file" size="20" name="hinh5sua" />
-                        <?php 
-                        if($hinhanh5 != null){
-                            echo "<img src='".$hinhanh5."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; 
-                        }
-                        
-                        ?>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>Mô tả đặc điểm hình thái:</td>
-                        <td><input type="text" size="20" name="hinhthaisua" value='<?php echo $hinhthai; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Mô tả đặc điểm sinh thái:</td>
-                        <td><input type="text" size="20" name="sinhthaisua" value='<?php echo $sinhthai; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Giá trị sử dụng:</td>
-                        <td><input type="text" size="20" name="giatrisua" value='<?php echo $giatri; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tình trạng bảo tồn theo IUCN:</td>
-                        <td><input type="text" size="20" name="iucnsua" value='<?php echo $iucn; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tình trạng bảo tồn theo sách đỏ Việt Nam:</td>
-                        <td><input type="text" size="20" name="sachdosua" value='<?php echo $sachdo; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</td>
-                        <td><input type="text" size="20" name="ndcpsua" value='<?php echo $nghidinh; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</td>
-                        <td><input type="text" size="20" name="citessua" value='<?php echo $cities; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Phân bố:</td>
-                        <td><input type="text" size="20" name="phanbosua" value='<?php echo $phanbo; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tọa độ 1:</td>
-                        <td><input type="text" size="20" name="toado1sua" value='<?php echo $td1; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tọa độ 2:</td>
-                        <td><input type="text" size="20" name="toado2sua" value='<?php echo $td2; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tọa độ 3:</td>
-                        <td><input type="text" size="20" name="toado3sua" value='<?php echo $td3; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tọa độ 4:</td>
-                        <td><input type="text" size="20" name="toado4sua" value='<?php echo $td4; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tọa độ 5:</td>
-                        <td><input type="text" size="20" name="toado5sua" value='<?php echo $td5; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Tình trạng mẫu vật:</td>
-                        <td><input type="text" size="20" name="tinhtrangsua" value='<?php echo $tinhtrang; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Sinh cảnh:</td>
-                        <td><input type="text" size="20" name="sinhcanhsua" value='<?php echo $sinhcanh; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Địa điểm:</td>
-                        <td><input type="text" size="20" name="diadiemsua" value='<?php echo $diadiem; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Ngày thu mẫu:</td>
-                        <td><input type="text" size="20" name="ngaythuthapsua" value='<?php echo $ngaythuthap; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Người thu mẫu:</td>
-                        <td><input type="text" size="20" name="nguoithuthapsua" value='<?php echo $nguoithuthap; ?>' /></td>
-                    </tr>
-                    <tr>
-                        <td>Đường dẫn:</td>
-                        <td><input type="text" size="20" name="duongdansua" value='<?php echo $duongdan; ?>' /></td>
-                        <input type="text" name="id" hidden value="<?php echo $iddv;?>">
-                    </tr>
-                </tbody>
-            </table>
+        <div class="layout-right-header">
+            <?php include '../layout/header.php'; ?>
         </div>
-        <button type="submit" class="btn btn-info rounded-0" name="apply" value="Upload File" style="float:right;">Cập nhật</button>
-    </form>
+        <div class="layout-right-content">
+            <div class="layout-right-content-details">
+                <div class="p-3">
+                    <h3 class="text-center mt-4 mb-2">CHỈNH SỬA ĐỘNG VẬT</h3>
+                    <form class="chinhsua" id="form-suachua" action="" method="post" enctype="multipart/form-data">
+                        <div class="gridtable">    
+                            <table class="table table-striped table-bordered">
+                                <thead class="bg-info text-center text-light">
+                                    <tr>
+                                        <th>Thông tin</th>
+                                        <th>Dữ liệu</th>
+                                    </tr>
+                                </thead>    
+                                <tbody>
+                                    <tr>
+                                        <td>Tên khoa học:</td>
+                                        <td><input type="text" class="form-control" size="20" name="tenkhoahocsua" value='<?php echo $tenkhoahoc; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tên tiếng Việt:</td>
+                                        <td><input type="text" class="form-control" size="20" name="tentiengvietsua" value='<?php echo $tentiengviet; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tên địa phương:</td>
+                                        <td><input type="text" class="form-control" size="20" name="tendiaphuongsua" value='<?php echo $tendiaphuong; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Giới:</td>
+                                        <td><input type="text" class="form-control" size="20" name="gioisua" value='<?php echo $gioi; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bộ:</td>
+                                        <td><input type="text" class="form-control" size="20" name="nganhsua" value='<?php echo $bo; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lớp:</td>
+                                        <td><input type="text" class="form-control" size="20" name="lopsua" value='<?php echo $lop; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ngành:</td>
+                                        <td><input type="text" class="form-control" size="20" name="bosua" value='<?php echo $nganh; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Họ:</td>
+                                        <td><input type="text" class="form-control" size="20" name="hosua" value='<?php echo $ho; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hình 1:</td>
+                                        <td><input type="file" size="20" name="hinh1sua" />
+                                        <?php 
+                                            if($hinhanh1 != null){
+                                                echo "<img src='".$hinhanh1."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
+                                            }
+                                        
+                                        ?>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hình 2:</td>
+                                        <td><input type="file" size="20" name="hinh2sua" />
+                                        <?php
+                                            if($hinhanh2 != null){
+                                                echo "<img src='".$hinhanh2."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
+                                            }
+                                        
+                                        ?>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hình 3:</td>
+                                        <td><input type="file" size="20" name="hinh3sua" />
+                                        <?php
+                                        if($hinhanh3 != null){
+                                            echo "<img src='".$hinhanh3."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
+                                        }
+                                        
+                                        ?>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hình 4:</td>
+                                        <td><input type="file" size="20" name="hinh4sua" />
+                                        <?php 
+                                        if($hinhanh4 != null){
+                                            echo "<img src='".$hinhanh4."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>";
+                                        }
+                                        
+                                        ?>                    
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hình 5:</td>
+                                        <td><input type="file" size="20" name="hinh5sua" />
+                                        <?php 
+                                        if($hinhanh5 != null){
+                                            echo "<img src='".$hinhanh5."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'>"; 
+                                        }
+                                        
+                                        ?>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mô tả đặc điểm hình thái:</td>
+                                        <td><input type="text" class="form-control" size="20" name="hinhthaisua" value='<?php echo $hinhthai; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mô tả đặc điểm sinh thái:</td>
+                                        <td><input type="text" class="form-control" size="20" name="sinhthaisua" value='<?php echo $sinhthai; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Giá trị sử dụng:</td>
+                                        <td><input type="text" class="form-control" size="20" name="giatrisua" value='<?php echo $giatri; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tình trạng bảo tồn theo IUCN:</td>
+                                        <td><input type="text" class="form-control" size="20" name="iucnsua" value='<?php echo $iucn; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tình trạng bảo tồn theo sách đỏ Việt Nam:</td>
+                                        <td><input type="text" class="form-control" size="20" name="sachdosua" value='<?php echo $sachdo; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</td>
+                                        <td><input type="text" class="form-control" size="20" name="ndcpsua" value='<?php echo $nghidinh; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</td>
+                                        <td><input type="text" class="form-control" size="20" name="citessua" value='<?php echo $cities; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phân bố:</td>
+                                        <td><input type="text" class="form-control" size="20" name="phanbosua" value='<?php echo $phanbo; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tọa độ 1:</td>
+                                        <td><input type="text" class="form-control" size="20" name="toado1sua" value='<?php echo $td1; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tọa độ 2:</td>
+                                        <td><input type="text" class="form-control" size="20" name="toado2sua" value='<?php echo $td2; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tọa độ 3:</td>
+                                        <td><input type="text" class="form-control" size="20" name="toado3sua" value='<?php echo $td3; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tọa độ 4:</td>
+                                        <td><input type="text" class="form-control" size="20" name="toado4sua" value='<?php echo $td4; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tọa độ 5:</td>
+                                        <td><input type="text" class="form-control" size="20" name="toado5sua" value='<?php echo $td5; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tình trạng mẫu vật:</td>
+                                        <td><input type="text" class="form-control" size="20" name="tinhtrangsua" value='<?php echo $tinhtrang; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sinh cảnh:</td>
+                                        <td><input type="text" class="form-control" size="20" name="sinhcanhsua" value='<?php echo $sinhcanh; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Địa điểm:</td>
+                                        <td><input type="text" class="form-control" size="20" name="diadiemsua" value='<?php echo $diadiem; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ngày thu mẫu:</td>
+                                        <td><input type="text" class="form-control" size="20" name="ngaythuthapsua" value='<?php echo $ngaythuthap; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Người thu mẫu:</td>
+                                        <td><input type="text" class="form-control" size="20" name="nguoithuthapsua" value='<?php echo $nguoithuthap; ?>' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Đường dẫn:</td>
+                                        <td><input type="text" class="form-control" size="20" name="duongdansua" value='<?php echo $duongdan; ?>' /></td>
+                                        <input type="text" name="id" hidden value="<?php echo $iddv;?>">
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <button type="submit" class="btn btn-info rounded-0" name="apply" value="Upload File" style="float:right;">Cập nhật</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 </div>
 <?php
     //session_start();
@@ -351,3 +362,5 @@
         }
     }
 ?>
+
+<?php include '../layout/footer-only.php' ?>

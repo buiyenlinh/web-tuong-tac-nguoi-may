@@ -71,10 +71,32 @@ if ($action == 'login') {
 } 
 //  --------------------- Lấy danh sách user --------------------------
 else if ($action == 'get-list-users') {
-    $users = $db->query('SELECT * FROM nguoidung WHERE vaitro != 0')->fetchAll();
-    
-    _success('OK', $users);
+    $users = $db->query('SELECT * FROM nguoidung WHERE vaitro != 1')->fetchAll();
+    $res = array();
+    foreach ($users as $_us) {
+        $vaitro = $db->query('SELECT tenvaitro FROM vaitro WHERE id = ' . intval($_us['vaitro']))->fetch();
+        $birthday = $db->query('SELECT date(ngaysinh) from nguoidung WHERE id = ' . intval($_us['id']))->fetchColumn(); 
+        $_us['vaitro'] = $vaitro['tenvaitro'];  
+        if ($_us['gioitinh'] == 0) {
+            $_us['gioitinh'] = 'Nữ';
+        } else {
+            $_us['gioitinh'] = 'Nam'; 
+        }
+
+        $_us['ngaysinh'] = $birthday;
+        $res[] = $_us;
+    }
+    _success('OK', $res);
 } 
+
+// Lấy thông tin người dùng
+else if ($action == 'get-info-user') {
+    $id = _getInt('id');
+    $user = $db->query('SELECT * FROM nguoidung WHERE id = ' . intval($id))->fetch();
+    $birthday = $db->query('SELECT date(ngaysinh) FROM nguoidung WHERE id = ' . intval($id))->fetchColumn();
+    $user['ngaysinh'] = $birthday;
+    _success('OK', $user);
+}
 
 //  --------------------- Xóa user --------------------------
 else if ($action == 'delete-user') {
@@ -93,11 +115,15 @@ else if ($action == 'delete-user') {
     _success('OK');
 } 
 
-//  --------------------- Lấy danh sách user --------------------------
+//  --------------------- Thêm user --------------------------
 else if ($action == 'add-user'){
     $username = _getString('username');
     $password = _getString('password');
     $role = _getInt('user_role');
+
+    if ($_SESSION['user']['vaitro'] >= $role || $_SESSION['user']['vaitro'] == 3) {
+        _error('Không có quyền thêm!');
+    }
 
     if (empty($username) || empty($password)) {
         _error('Vui lòng điền đủ thông tin các trường có dấu *');
@@ -126,6 +152,8 @@ else if ($action === 'update-info-account') {
     $name = _getString('name');
     $birthday = _getString('birthday');
     $gender = _getInt('gender');
+    $phone = _getInt('phone');
+    $address = _getInt('address');
     $filename = '';
 
     $check = $db->query('SELECT * FROM nguoidung WHERE tendangnhap = ' . $db->quote($username) . ' AND id != ' . intval($_SESSION['user']['id']))->fetchAll();
@@ -146,7 +174,7 @@ else if ($action === 'update-info-account') {
 
     $db->query('UPDATE nguoidung 
     SET tendangnhap = ' . $db->quote($username) . ', tenhienthi = ' . $db->quote($name) . ', anhdaidien=' . $db->quote($filename) . 
-    ', ngaysinh=' . $db->quote($birthday) . ', gioitinh=' . intval($gender) .' WHERE id = ' . intval($_SESSION['user']['id']));
+    ', ngaysinh=' . $db->quote($birthday) . ', gioitinh=' . intval($gender) . ', sodienthoai=' . $db->quote($phone) . ', diachi=' . $db->quote($address) .' WHERE id = ' . intval($_SESSION['user']['id']));
     _success('OK', $check);
 
 }
@@ -154,6 +182,10 @@ else if ($action === 'update-info-account') {
 //----------------------- Lấy thông tin người dùng -----------------------
 else if ($action == 'get-info-account') {
     $user_info = $db->query('SELECT * FROM nguoidung WHERE id = ' . intval($_SESSION['user']['id']))->fetch();
+    $birthday = $db->query('SELECT date(ngaysinh) from nguoidung WHERE id = ' . intval($_SESSION['user']['id']))->fetchColumn();
+    $user_info['ngaysinh'] = $birthday;
+    $role = $db->query('SELECT tenvaitro FROM vaitro where id = ' . intval($user_info['vaitro']))->fetchColumn();
+    $user_info['vaitro'] = $role;
     _success('OK', $user_info);
 }
 
@@ -176,17 +208,43 @@ else if ($action == 'change-password-account') {
 else if ($action == 'update-user') {
     $username = _getString('username');
     $role = _getInt('role');
+    $gender = _getInt('gender');
     $user_id = _getInt('user_id');
+    $name = _getString('name');
+    $address = _getString('address');
+    $phone = _getString('phone');
+    $birthday = _getString('birthday');
+
+    if (!empty($phone) && !preg_match('/^0[0-9]{9,}$/', $phone)) {
+        _error('Số điện thoại không hợp lệ!');
+    }
+
     $check = $db->query('SELECT * FROM nguoidung WHERE id = ' . intval($user_id))->fetch(); {}
     if (empty($check)) {
         _error('Người dùng không tồn tại');
     }
     
-    if ($_SESSION['user']['vaitro'] >= $check['vaitro']) {
-        _error('Bạn không có quyền thay đổi tài khoản này!');
+    $check_username = $db->query('SELECT * from nguoidung WHERE tendangnhap = ' . $db->quote($username) . ' AND id != ' . intval($user_id))->fetch();
+
+    if (!empty($check_username)) {
+        _error('Tên đăng nhập đã được dùng!');
     }
 
-    $db->query('UPDATE nguoidung SET tendangnhap = ' . $db->quote($username) . ', vaitro = ' . intval($role) . ' WHERE id = ' . intval($user_id));
+    if ($_SESSION['user']['vaitro'] >= $check['vaitro']) {
+        _error('Không có quyền thay đổi!');
+    }
+
+
+    $db->query('UPDATE nguoidung 
+        SET tendangnhap = ' . $db->quote($username)
+        . ', tenhienthi = ' . $db->quote($name)
+        . ', ngaysinh = ' . $db->quote($birthday)
+        . ', gioitinh = ' . intval($gender)
+        . ', sodienthoai = ' . $db->quote($phone)
+        . ', diachi = ' . $db->quote($address)
+        . ', vaitro = ' . intval($role)
+        . ' WHERE id = ' . intval($user_id)
+    );
 
     _success('OK');
 }
@@ -196,5 +254,17 @@ else if ($action == 'get-list-role') {
     $listRole = $db->query('SELECT * FROM vaitro')-> fetchAll();
     
     _success('OK', $listRole);
+}
+
+else if ($action == 'get-sum-animal-post') {
+    $sum = $db->query('SELECT COUNT(*) FROM dongvat')->fetchColumn();
+    $sum_post = $db->query('SELECT COUNT(*) FROM dongvat WHERE nguoitao = ' . intval($_SESSION['user']['id']))->fetchColumn();
+    $percent = round(($sum_post / $sum) * 100, 3);
+    
+    $res = array(
+        'sum' => $sum_post,
+        'percent' => $percent
+    );
+    _success('OK', $res);
 }
 ?>

@@ -58,7 +58,7 @@ function getListRole() {
                     var option = document.createElement('option');
                     option.innerHTML = json.data[i].tenvaitro;
                     option.setAttribute('value', json.data[i].id);
-                    $('#user_role').append(option);
+                    $('.user_role_list').append(option);
                 }
                 
             }
@@ -84,58 +84,43 @@ function getListUsers() {
     // ---------------------- Tạo một hàng trong bảng danh sách user ----------------------
 function createItemUser(itemData) {
     var tr = document.createElement('tr');
+    var td_username = document.createElement('td');
     var td_name = document.createElement('td');
+    var td_birthday = document.createElement('td');
+    var td_gender = document.createElement('td');
+    var td_phone = document.createElement('td');
+    var td_address = document.createElement('td');
     var td_role = document.createElement('td');
     var td_time = document.createElement('td');
     var td = document.createElement('td');
 
+    td_username.innerHTML = itemData.tendangnhap;
+    td_name.innerHTML = itemData.tenhienthi;
+    td_role.innerHTML = itemData.vaitro;
+    td_birthday.innerHTML = itemData.ngaysinh;
+    td_gender.innerHTML = itemData.gioitinh;
+    td_phone.innerHTML = itemData.sodienthoai;
+    td_address.innerHTML = itemData.diachi;
+    td_time.innerHTML = itemData.thoigianthem;
 
-    var input = document.createElement('input');
-
-    input.className = 'text-center form-control rounded-0 update-user-username-' + itemData.id;
-
-    input.value = itemData.tendangnhap;
-    
-
-    var icon_delete = document.createElement('i');
+    var icon_delete = document.createElement('button');
     icon_delete.onclick = function() {
         deleteUser(itemData.id);
     }
-    icon_delete.className ="far fa-trash-alt text-danger icon-delele-user pl-1";
+    icon_delete.setAttribute('title', 'Xóa');
+    icon_delete.className ="far fa-trash-alt text-light icon-delele-user btn btn-danger btn-sm";
 
-
-    var icon_update = document.createElement('i');
+    var icon_update = document.createElement('button');
+    icon_update.setAttribute('title', 'Cập nhật');
     icon_update.onclick = function() {
-        updateUser(itemData.id);
+        getInfoUser(itemData.id);
     }
-    icon_update.className ="fas fa-save text-info icon-update-user pr-1";
-
-    var select = document.createElement('select');
-    var option1 = document.createElement('option');
-    var option2 = document.createElement('option');
-    option1.value = 1;
-    option1.innerHTML = 'Administrator';
-    option2.value = 2;
-    option2.innerHTML = 'Editor';
-    select.setAttribute('name', 'update_user_role');
-
-    select.className = 'form-control rounded-0 update-user-role-' + itemData.id;
-
-
-    if (itemData.vaitro == 1) {
-        option1.setAttribute('selected', true);
-    } else {
-        option2.setAttribute('selected', true);
-    }
-
-
-    select.append(option1, option2);
-    td_role.append(select);
-    td_name.append(input);
-    td_time.innerHTML = itemData.thoigianthem;
+    icon_update.className ="fas fa-save text-light icon-update-user btn btn-info btn-sm mr-2";
+    icon_update.setAttribute('data-toggle', 'modal');
+    icon_update.setAttribute('data-target', '#update-user-modal');
     td.append(icon_update, icon_delete);
 
-    tr.append(td_name, td_role, td_time, td);
+    tr.append(td_username, td_name, td_role, td_birthday, td_gender, td_phone, td_address, td_time, td);
     $('.list-users-body').append(tr);
 }
 
@@ -154,21 +139,46 @@ function deleteUser(user_id) {
         }
     })
 }
+//  Lấy thông tin người dùng
+var user_update_id = 0;
+function getInfoUser (id) {
+    myPost('get-info-user', 'id=' + id, function(json) {
+        if (json.status == 'OK') {
+            console.log(json.data);
+            $('.update-user-username').val(json.data.tendangnhap);
+            $('.update-user-name').val(json.data.tenhienthi);
+            $('.update-user-birthday').val(json.data.ngaysinh);
+            $('.update-user-phone').val(json.data.sodienthoai);
+            $('.update-user-address').val(json.data.diachi);
+
+            $('.update-user-gender input[name=gender]').filter('[value=' + json.data.gioitinh + ']').prop('checked', true);
+            
+            $('.user_role_list option[value=' + json.data.vaitro + ']').attr('selected','selected');
+            user_update_id = id;
+        }
+    });
+}
+
 
 // ---------------------- Cập nhật người dùng trong admin ----------------------
-function updateUser(user_id) {
-
-    var username = $('.update-user-username-' + user_id).val();
-    var role = $('.update-user-role-' + user_id).val();
-
-    myPost('update-user', 'user_id=' + user_id + '&username=' + username + '&role=' + role, function(json) {
+function updateUser() {
+    var form = document.forms['user-update-form'];
+    var phone = form.phone.value;
+    if (phone != '' && !(/^0[0-9]{9}$/).test(phone)) {
+        alert('Số điện thoại không hợp lệ');
+        return;
+    }
+    var data = $(form).serialize();
+    console.log(data);
+    myPost('update-user', 'user_id=' + user_update_id + '&' + data, function(json) {
         if (json.status == 'OK') {
-            alert('Cập nhật thành công');
             console.log(json.data);
+            $('.close-modal-update-user').click();
+            alert('Cập nhật thành công');
+            getListUsers();
         } else {
             alert(json.error);
         }
-        getListUsers();
     })
 }
 
@@ -184,6 +194,7 @@ function addUser(form) {
         if (json['status'] == 'OK') {
             getListUsers();
             $('.user-form__button__reset').click();
+            $('.close-modal-add-user').click();
         } else {
             alert(json['error']);
         }
@@ -196,7 +207,8 @@ function updateInfoAccount(form) {
     var name = form.account_name.value;
     var birthday = form.account_birthday.value;
     var gender = form.account_gender.value;
-    
+    var phone = form.account_phone.value;
+    var address = form.account_address.value;
     if (username == '') {
         alert('Tên đăng nhập khác rỗng!');
         return;
@@ -210,6 +222,8 @@ function updateInfoAccount(form) {
     formData.append('name', name);
     formData.append('birthday', birthday);
     formData.append('gender', gender);
+    formData.append('phone' , phone);
+    formData.append('address' , address);
     $.ajax({
         url: api,
         type: 'post',
@@ -232,25 +246,29 @@ function getInfoAccount() {
     myPost('get-info-account', '', function(json) {
         if (json['status'] == 'OK') {
             console.log(json['data']);
-            $('.account__info__center__form--username').val(json['data']['tendangnhap']);
-            $('.account__info__center__form--name').val(json['data']['tenhienthi']);
+            $('.account__info__right--phone span').text(json.data.sodienthoai);
+            $('.account__info__right--address span').text(json.data.diachi);
+            $('.account__info__right--role span').text(json.data.vaitro); 
             $('.account__info__left--avt img').attr('src', BASE + json['data']['anhdaidien']);
-            $('.account__info__center__form--birthday').val(json['data']['ngaysinh']);
+            $('.profile-details-info--username').val(json['data']['tendangnhap']);
+            $('.profile-details-info--name').val(json['data']['tenhienthi']);
+            $('.profile-details-info--birthday').val(json['data']['ngaysinh']);
             $('.account__info__right--name').text(json.data.tenhienthi || json.data.tendangnhap);
-            var role = "";
-            if (json.data.vaitro == 0) {
-                role = "Super admin";
-            } else if (json.data.vaitro == 1) { 
-                role = "Administrator";
-            } else {
-                role = "Editor";
-            }
-            $('.account__info__right--role span').text(role); 
+            $('.profile-details-info--phone').val(json.data.sodienthoai);
+            $('.profile-details-info--address').val(json.data.diachi);
 
+            // avt header
+            $('.header-avt-user img').attr('src', BASE + json.data.anhdaidien);
             if (json['data']['gioitinh'] == 0) {
-                $('.female').attr('checked', true);
+                $('.account_female').attr('checked', true);
             } else {
-                $('.male').attr('checked', true);
+                $('.account_male').attr('checked', true);
+            }
+
+            if (json.data.vaitro == 'Editor') {
+                $('.btn-add-user').attr('disabled', true);
+                $('.icon-update-user').attr('disabled', true);
+                $('.icon-delele-user').attr('disabled', true);
             }
         } else {
             alert(json['error']);
@@ -263,6 +281,10 @@ function changePasswordAccount(form) {
     var password = form.account_password.value;
     var new_password = form.account_new_password.value;
     var re_new_password = form.account_re_new_password.value;
+    if (password == '' || new_password == '' || re_new_password == '') {
+        alert('Vui lòng điền đủ thông tin có dấu *');
+        return;
+    }
     if (new_password != re_new_password) {
         alert('Nhập lại mật khẩu mới không đúng!');
         return;
@@ -275,6 +297,17 @@ function changePasswordAccount(form) {
             alert('Thay đổi mật khẩu thành công!');
         } else {
             alert(json['error']);
+        }
+    })
+}
+
+// Lấy tổng số bài đăng của account
+function getSumAnimalPost() {
+    myPost('get-sum-animal-post', '', function(json) {
+        if (json.status == 'OK') {
+            console.log(json);
+            $('.account-post-number .sum-animal').text(json.data.sum);
+            $('.account-post-number .percent').text(json.data.percent);
         }
     })
 }
@@ -299,14 +332,17 @@ $(function() {
     $('.icon-edit-avt').on('click', function() {
         $('.account__info__left--avt-file').click();
     })
+
         // -------------- thay đổi username, name, avt ----------------
-    $('form').on('click', '.account__info__center__form--btn-change-info', function() {
+    $('form').on('click', '.profile-details-info--btn-change-info', function() {
         updateInfoAccount(this.form);
         return false;
     })
     
         // ------------------- Lấy thông tin user -------------------
     getInfoAccount();
+    getSumAnimalPost();
+
         // ------------------- Thay đổi mật khẩu -------------------
     $('form').on('click', '.account__info__right__form--btn-change-password', function() {
         changePasswordAccount(this.form);
@@ -314,4 +350,13 @@ $(function() {
     })
 
     getListRole();
+
+    $('.close-modal-add-user').on('click', function() {
+        $('.user-form__button__reset').click();
+    })
+
+    // Cập nhật user
+    $('.update-user-button').on('click', function() {
+        updateUser();
+    })
 })
