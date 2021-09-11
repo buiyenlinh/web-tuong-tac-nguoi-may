@@ -81,10 +81,9 @@
 
 ?>
 
-<?php include '../layout/header.php'; ?>
 <div class="layout-wrap">
-    <div class="layout-left" style="height:auto;">
-        <div class="menu-left">
+    <div class="layout-left">
+        <!-- <div class="menu-left">
             <ul class="nav justify-content-center flex-column">
                 <li class="nav-item nav-item-animal">
                     <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/animal.php">
@@ -107,211 +106,223 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> -->
+        <?php include '../layout/menu-left.php'; ?>
     </div>
     <div class="layout-right">
-        <h3 class="text-center">THÔNG TIN ĐỘNG VẬT</h3>
-        <ol class="list-numbered">
-            <li>
-                <?php 
-                    echo "<b>Tên khoa học</b> </br>";
-                    echo $tenkhoahoc;
-                ?>
-            </li>
-            <li>
-            <?php
-                echo "<b>Tên tiếng việt</b> </br>"; 
-                echo $tentiengviet;
-                 
-            ?>
-            </li>
-            <li>
-            <?php
-                echo "<b>Tên địa phương</b> </br>"; 
-                echo $tendiaphuong;
-                
-            ?>
+        <div class="layout-right-header">
+            <?php include '../layout/header.php'; ?>
+        </div>
+        <div class="layout-right-content">
+            <div class="layout-right-content-details">
+                <div class="p-3">
+                    <h3 class="text-center">THÔNG TIN ĐỘNG VẬT</h3>
+                    <ol class="list-numbered">
+                        <li>
+                            <?php 
+                                echo "<b>Tên khoa học</b> </br>";
+                                echo $tenkhoahoc;
+                            ?>
+                        </li>
+                        <li>
+                        <?php
+                            echo "<b>Tên tiếng việt</b> </br>"; 
+                            echo $tentiengviet;
+                            
+                        ?>
+                        </li>
+                        <li>
+                        <?php
+                            echo "<b>Tên địa phương</b> </br>"; 
+                            echo $tendiaphuong;
+                            
+                        ?>
 
-            </li>
-            <li>
-            <?php
-                echo "<b>Giới</b> </br>";
-                echo $gioi;
-                
-            ?>
-            </li>
-            <li>
-            <?php
-                echo "<b>Ngành:</b> </br>"; 
-                echo $nganh;
-                
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Lớp:</b> </br>";
-                echo $lop;
-                
-            ?>
+                        </li>
+                        <li>
+                        <?php
+                            echo "<b>Giới</b> </br>";
+                            echo $gioi;
+                            
+                        ?>
+                        </li>
+                        <li>
+                        <?php
+                            echo "<b>Ngành:</b> </br>"; 
+                            echo $nganh;
+                            
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Lớp:</b> </br>";
+                            echo $lop;
+                            
+                        ?>
 
-            </li>
-            <li>
-            <?php 
-                echo "<b>Bộ:</b> </br>";
-                echo $bo;
-                
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Họ:</b> </br>";
-                echo $ho;
-            ?>
-            </li>
-            <li>
-            <?php
-                echo "<b>Hình ảnh:</b> </br>"; 
-                for($i=1; $i <= 5; $i ++){
-                    if($hinhanh[$i] != null){
-                        echo "<img src='".$hinhanh[$i]."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
-                    }
-                    
-                }
-                /*echo "<img src='".$hinhanh1."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
-                echo "<img src='".$hinhanh2."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
-                echo "<img src='".$hinhanh3."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
-                echo "<img src='".$hinhanh4."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
-                echo "<img src='".$hinhanh5."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";*/
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Mô tả đặc điểm hình thái:</b> </br>";
-                echo $hinhthai;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Mô tả đặc điểm sinh thái:</b> </br>";
-                echo $sinhthai;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Giá trị sử dụng</b> </br>";
-                echo $giatri;              
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Tình trạng bảo tồn theo IUCN:</b> </br>";
-                echo $iucn;   
-            ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Bộ:</b> </br>";
+                            echo $bo;
+                            
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Họ:</b> </br>";
+                            echo $ho;
+                        ?>
+                        </li>
+                        <li>
+                        <?php
+                            echo "<b>Hình ảnh:</b> </br>"; 
+                            for($i=1; $i <= 5; $i ++){
+                                if($hinhanh[$i] != null){
+                                    echo "<img src='".$hinhanh[$i]."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
+                                }
+                                
+                            }
+                            /*echo "<img src='".$hinhanh1."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
+                            echo "<img src='".$hinhanh2."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
+                            echo "<img src='".$hinhanh3."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
+                            echo "<img src='".$hinhanh4."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
+                            echo "<img src='".$hinhanh5."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";*/
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Mô tả đặc điểm hình thái:</b> </br>";
+                            echo $hinhthai;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Mô tả đặc điểm sinh thái:</b> </br>";
+                            echo $sinhthai;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Giá trị sử dụng</b> </br>";
+                            echo $giatri;              
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Tình trạng bảo tồn theo IUCN:</b> </br>";
+                            echo $iucn;   
+                        ?>
 
-            </li>
-            <li>
-            <?php 
-                echo "<b>Tình trạng bảo tồn theo sách đỏ Việt Nam:</b> </br>";
-                echo $sachdo;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</b> </br>";
-                echo $nghidinh;  
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</b> </br>";
-                echo $cities;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Phân bố:</b> </br>";
-                echo $phanbo;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Tọa độ 1:</b> </br>";
-                echo $td1;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Tọa độ 2:</b> </br>";
-                echo $td2;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Tọa độ 3:</b> </br>";
-                echo $td3;      
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Tọa độ 4:</b> </br>";
-                echo $td4;   
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Tọa độ 5:</b> </br>";
-                echo $td5;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Tình trạng mẫu vật:</b> </br>";
-                echo $tinhtrang;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Sinh cảnh:</b> </br>";
-                echo $sinhcanh;            
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Địa điểm:</b> </br>";
-                echo $diadiem;   
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Ngày thu mẫu:</b> </br>";
-                echo $ngaythuthap;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Người thu mẫu:</b> </br>";
-                echo $nguoithuthap;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Create at:</b> </br>";
-                echo $created_at;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Update at:</b> </br>";
-                echo $updated_at;
-            ?>
-            </li>
-            <li>
-            <?php 
-                echo "<b>Đường dẫn:</b> </br>";
-                echo $duongdan;
-            ?>
-            </li>
-        </ol>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Tình trạng bảo tồn theo sách đỏ Việt Nam:</b> </br>";
+                            echo $sachdo;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</b> </br>";
+                            echo $nghidinh;  
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</b> </br>";
+                            echo $cities;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Phân bố:</b> </br>";
+                            echo $phanbo;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Tọa độ 1:</b> </br>";
+                            echo $td1;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Tọa độ 2:</b> </br>";
+                            echo $td2;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Tọa độ 3:</b> </br>";
+                            echo $td3;      
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Tọa độ 4:</b> </br>";
+                            echo $td4;   
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Tọa độ 5:</b> </br>";
+                            echo $td5;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Tình trạng mẫu vật:</b> </br>";
+                            echo $tinhtrang;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Sinh cảnh:</b> </br>";
+                            echo $sinhcanh;            
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Địa điểm:</b> </br>";
+                            echo $diadiem;   
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Ngày thu mẫu:</b> </br>";
+                            echo $ngaythuthap;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Người thu mẫu:</b> </br>";
+                            echo $nguoithuthap;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Create at:</b> </br>";
+                            echo $created_at;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Update at:</b> </br>";
+                            echo $updated_at;
+                        ?>
+                        </li>
+                        <li>
+                        <?php 
+                            echo "<b>Đường dẫn:</b> </br>";
+                            echo $duongdan;
+                        ?>
+                        </li>
+                    </ol>
+                </div>
+                
+            </div>
+        </div>
+        
 
 <!--    <h3 class="text-center">THÔNG TIN ĐỘNG VẬT</h3>
     <form class="chitiet" id="form-chitiet">

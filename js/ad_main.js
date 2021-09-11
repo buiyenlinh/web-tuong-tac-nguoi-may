@@ -103,19 +103,19 @@ function createItemUser(itemData) {
     td_address.innerHTML = itemData.diachi;
     td_time.innerHTML = itemData.thoigianthem;
 
-    var icon_delete = document.createElement('i');
+    var icon_delete = document.createElement('button');
     icon_delete.onclick = function() {
         deleteUser(itemData.id);
     }
     icon_delete.setAttribute('title', 'Xóa');
-    icon_delete.className ="far fa-trash-alt text-danger icon-delele-user pl-1";
+    icon_delete.className ="far fa-trash-alt text-light icon-delele-user btn btn-danger btn-sm";
 
-    var icon_update = document.createElement('i');
+    var icon_update = document.createElement('button');
     icon_update.setAttribute('title', 'Cập nhật');
     icon_update.onclick = function() {
         getInfoUser(itemData.id);
     }
-    icon_update.className ="fas fa-save text-info icon-update-user pr-1";
+    icon_update.className ="fas fa-save text-light icon-update-user btn btn-info btn-sm mr-2";
     icon_update.setAttribute('data-toggle', 'modal');
     icon_update.setAttribute('data-target', '#update-user-modal');
     td.append(icon_update, icon_delete);
@@ -150,11 +150,9 @@ function getInfoUser (id) {
             $('.update-user-birthday').val(json.data.ngaysinh);
             $('.update-user-phone').val(json.data.sodienthoai);
             $('.update-user-address').val(json.data.diachi);
-            if (json.data.gioitinh == 1) {
-                $('.male').attr('checked', true);
-            } else {
-                $('.female').attr('checked', true); 
-            }
+
+            $('.update-user-gender input[name=gender]').filter('[value=' + json.data.gioitinh + ']').prop('checked', true);
+            
             $('.user_role_list option[value=' + json.data.vaitro + ']').attr('selected','selected');
             user_update_id = id;
         }
@@ -259,10 +257,18 @@ function getInfoAccount() {
             $('.profile-details-info--phone').val(json.data.sodienthoai);
             $('.profile-details-info--address').val(json.data.diachi);
 
+            // avt header
+            $('.header-avt-user img').attr('src', BASE + json.data.anhdaidien);
             if (json['data']['gioitinh'] == 0) {
-                $('.female').attr('checked', true);
+                $('.account_female').attr('checked', true);
             } else {
-                $('.male').attr('checked', true);
+                $('.account_male').attr('checked', true);
+            }
+
+            if (json.data.vaitro == 'Editor') {
+                $('.btn-add-user').attr('disabled', true);
+                $('.icon-update-user').attr('disabled', true);
+                $('.icon-delele-user').attr('disabled', true);
             }
         } else {
             alert(json['error']);

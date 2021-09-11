@@ -25,4 +25,13 @@ try {
 define('ROOT', __DIR__);
 define('BASE', '/tuongtacnguoimay/web-tuong-tac-nguoi-may/');
 define('BASE_IMG', '/tuongtacnguoimay/');
+
+if (isset($_SESSION['user'])) {
+    $row = $db->query('SELECT * FROM nguoidung WHERE id = ' . intval($_SESSION['user']['id']))->fetch();
+    if (!empty($row)) {
+        $_SESSION['user'] = $row;
+    } else {
+        unset($_SESSION['user']);
+    }
+}
 ?>

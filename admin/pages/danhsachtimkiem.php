@@ -29,12 +29,12 @@ if(isset($_POST["submit"])) {
             <div class="gridtable">
                 <h3 class="text-center">DANH SÁCH ĐỘNG VẬT</h3>
                 <table class="table table-striped table-bordered">
-                    <thead class="bg-primary text-center">
+                    <thead class="bg-info text-center text-light">
                         <tr>
                             <th>STT</th>
-                            <th>TÊN KHOA HỌC</th>
-                            <th>TÊN TIẾNG VIỆT</th>
-                            <th colspan=3>Lựa chọn</th>
+                            <th>Tên khoa học</th>
+                            <th>Tên tiếng việt</th>
+                            <th colspan=3>Thao tác</th>
                         </tr>
                     </thead>    
                     <tbody>

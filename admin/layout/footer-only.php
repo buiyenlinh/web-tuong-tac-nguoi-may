@@ -1,5 +1,4 @@
     
-    <hr>
     <script>
         var BASE = '<?php echo BASE ?>'
     </script>

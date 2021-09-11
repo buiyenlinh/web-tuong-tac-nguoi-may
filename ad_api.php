@@ -121,6 +121,10 @@ else if ($action == 'add-user'){
     $password = _getString('password');
     $role = _getInt('user_role');
 
+    if ($_SESSION['user']['vaitro'] >= $role || $_SESSION['user']['vaitro'] == 3) {
+        _error('Không có quyền thêm!');
+    }
+
     if (empty($username) || empty($password)) {
         _error('Vui lòng điền đủ thông tin các trường có dấu *');
     }
