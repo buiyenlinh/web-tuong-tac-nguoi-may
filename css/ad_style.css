@@ -83,10 +83,10 @@ ul {
 }
 
 /*--------------------------------- USERS --------------------------------- */
-.list-users { width: 60%; }
+.list-users { width: 100%; }
 .icon-delele-user,
 .icon-update-user { cursor: pointer; }
-.user-form { width: 40%; }
+
 
 
 /* --------------------------------- ACCOUNT --------------------------------- */
@@ -113,7 +113,21 @@ ul {
 }
 
 .icon-edit-avt:hover { color: #17a2b8}
+.profile-details .nav-tabs .nav-link { color: black; }
+.profile-details .nav-tabs .nav-link.active {
+  color: #0e768d;
+  font-weight: bold;
+ }
+.profile-details .tab-content {
+  border: 1px solid #ddd;
+  padding: 25px;
+  border-top: none;
+}
 
+.account-post-number li {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
 
 /* Search */
 /* Styles for wrapping the search box */
