@@ -276,9 +276,18 @@ input[type="file"] {
 /*btn form Thêm*/
 #form-cn {
     margin: 0 auto;
-    display: none;
+    display: block;
 }
 
+.btn-them a{
+  text-decoration: none;
+}
+#btn-animal-cn a:hover{
+  color: white;
+}
+#btn-animal-cn b{
+  color: white;
+}
 /* #btn-animal-cn{
     float: right;
     width: 200px;

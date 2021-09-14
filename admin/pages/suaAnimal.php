@@ -336,12 +336,12 @@
             $sql = "SELECT id as top from hinhanh WHERE dongvat_id = ".$iddv." LIMIT 1;";
             $idtop = $con->query($sql);
             $row = $idtop->fetch_assoc();
-            echo $row['top'];
+    //        echo $row['top'];
             $top = $row['top'];
             //echo $hinhanh[$i]['name'];
             if(!empty($hinhanh[$i]['name'])){
                 $sql = "UPDATE hinhanh SET duongdan = '".$hinhanh[$i]['name']."' WHERE id = ".($top+$i).";";
-                echo $sql."<br>";
+    //            echo $sql."<br>";
                 $con->query($sql);
             }
         }
@@ -352,11 +352,11 @@
             $sql = "SELECT id as top from toado WHERE dongvat_id = ".$iddv." LIMIT 1;";
             $idtop = $con->query($sql);
             $row = $idtop->fetch_assoc();
-            echo $row['top'];
+    //        echo $row['top'];
             $top = $row['top'];
             if(!empty($tdo[$i])){
                 $sql = " UPDATE toado SET toado = '".$tdo[$i]."' WHERE id = ".($top+$i).";";
-                echo $sql."<br>";
+    //            echo $sql."<br>";
                 $con->query($sql);
             }
         }
