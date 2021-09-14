@@ -107,7 +107,8 @@ ul {
 
 /*--------------------------------- LOGIN --------------------------------- */
 
-.login-form {
+.login-form,
+.forget-password-form {
     width: 25%;
     margin: 150px auto;
     padding: 20px;
@@ -118,7 +119,18 @@ ul {
     margin-bottom: 20px;
 }
 
-.forget-password { cursor: pointer; }
+.login-alert-username,
+.login-alert-password,
+.forget-alert-username,
+.forget-alert-password,
+.forget-alert-check-password { display: none; }
+
+.go-home:hover { text-decoration: none; }
+
+.forget-password-form { 
+  display: none; 
+}
+.go-forget-password { cursor: pointer; }
 
 
 /*--------------------------------- ADMIN HEADER --------------------------------- */
@@ -142,7 +154,19 @@ ul {
 .icon-delele-user,
 .icon-update-user { cursor: pointer; }
 
+.user-success-alert {
+  margin-bottom: 0;
+  padding: 8px 10px;
+  display: none;
+}
 
+.add-user-error-alert,
+.user-form__username-alert,
+.user-form__password-alert,
+.update-user-username-alert,
+.update-user-error-alert { display: none; }
+
+.toggle-delete-modal { display: none; }
 
 /* --------------------------------- ACCOUNT --------------------------------- */
 .account__info__left--avt-file { display: none !important; }
@@ -183,6 +207,16 @@ ul {
   padding: 10px;
   border: 1px solid #ddd;
 }
+
+.profile-details-info--username-alert,
+.profile-details-info-alert { display: none; }
+
+  /* update password account admin */
+.change-password-alert,
+.change-password-old-password-alert,
+.change-password-new-password-alert,
+.change-password-check-new-password-alert { display: none; }
+
 
 /* Search */
 /* Styles for wrapping the search box */
