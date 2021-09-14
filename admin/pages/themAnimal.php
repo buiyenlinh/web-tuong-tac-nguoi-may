@@ -21,11 +21,11 @@
         $ndcp = $_POST['inputndcp'];
          $cites = $_POST['inputcites'];
         $phanbo = $_POST['inputphanbo'];
-        $toado1 = $_POST['inputtoado1'];
-        $toado2 = $_POST['inputtoado2'];
-        $toado3 = $_POST['inputtoado3'];
-        $toado4 = $_POST['inputtoado4'];
-        $toado5 = $_POST['inputtoado5'];
+        $toado[1] = $_POST['inputtoado1'];
+        $toado[2] = $_POST['inputtoado2'];
+        $toado[3] = $_POST['inputtoado3'];
+        $toado[4] = $_POST['inputtoado4'];
+        $toado[5] = $_POST['inputtoado5'];
         $tinhtrang = $_POST['inputtinhtrang'];
         $sinhcanh = $_POST['inputsinhcanh'];
         $diadiem = $_POST['inputdiadiem'];
@@ -59,10 +59,10 @@
 
         $sqlmax = "SELECT MAX(id) as max FROM dongvat;";
 
-        echo $sqlmax;
+    //    echo $sqlmax;
         $max = $con->query($sqlmax);
         $row = $max->fetch_assoc();
-        echo $row['max'];
+    //    echo $row['max'];
         $maxx = $row['max'];
         if (($_SERVER['REQUEST_METHOD'] === 'POST') && (isset($_FILES['fileupload']))) {
 
@@ -86,10 +86,10 @@
                 if ($errors[$i] == 0){
                 $numfiles++;
                 $kt =true;
-                echo "Bạn upload file thứ $numfiles:<br>";
+              /*  echo "Bạn upload file thứ $numfiles:<br>";
                 echo "Tên file: $names[$i] <br>";
                 echo "Lưu tại: $tmp_names[$i] <br>";
-                echo "Cỡ file: $sizes[$i] <br><hr>";
+                echo "Cỡ file: $sizes[$i] <br><hr>"; */
                             //Code xử lý di chuyển file đến thư mục cần thiết ở đây (bạn tự thực hiện)
                 move_uploaded_file($tmp_names[$i], '../../../uploads/'.$names[$i]);
                           
@@ -103,7 +103,7 @@
                 }
                 
             }
-            echo "Tổng số file upload: " .$numfiles;
+        //    echo "Tổng số file upload: " .$numfiles;
             //set_time_limit(500);
 
             $hinh1 = isset($names[0])?'uploads/'.$names[0]:null;
@@ -135,8 +135,8 @@
         }
     //    echo $sql_1;
 
-        for($i = 0;$i < 5; $i ++){
-            $sql_2 = "insert into toado (toado, dongvat_id) values ('".$toado1."', '".$maxx."');";
+        for($i = 1;$i <= 5; $i ++){
+            $sql_2 = "insert into toado (toado, dongvat_id) values ('".$toado[1]."', '".$maxx."');";
             $con->query($sql_2);
     //        echo $sql_2; 
         }
