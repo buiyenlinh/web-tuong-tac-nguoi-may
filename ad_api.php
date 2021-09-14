@@ -133,7 +133,7 @@ else if ($action == 'add-user'){
     $check = $db->query('SELECT * FROM nguoidung WHERE tendangnhap = ' . $db->quote($username))->fetch();
 
     if (!empty($check)) {
-        _error('Tên đăng nhập này đã được sử dụng! Vui lòng chọn tên khác!');
+        _error('Tên đăng nhập này đã được sử dụng!');
     }
 
     $db->query('INSERT INTO nguoidung (tendangnhap, matkhau, vaitro) VALUES (' 
@@ -159,7 +159,7 @@ else if ($action === 'update-info-account') {
     $check = $db->query('SELECT * FROM nguoidung WHERE tendangnhap = ' . $db->quote($username) . ' AND id != ' . intval($_SESSION['user']['id']))->fetchAll();
 
     if (!empty($check)) {
-        _error('Tên đăng nhập này đã được dử dụng! Vui lòng nhập tên khác!');
+        _error('Tên đăng nhập này đã được sử dụng!');
     }
 
     $user = $db->query('SELECT * FROM nguoidung WHERE id =' . intval($_SESSION['user']['id']))->fetch();
@@ -267,4 +267,19 @@ else if ($action == 'get-sum-animal-post') {
     );
     _success('OK', $res);
 }
+
+// Quên mật khẩu
+else if ($action == 'forget-password') {
+    $username = _getString('username');
+    $new_password = _getString('new_password');
+
+    $check = $db->query('SELECT * FROM nguoidung WHERE tendangnhap = ' . $db->quote($username))->fetch();
+    if (empty($check)) {
+        _error('Tên đăng nhập không tồn tại!');
+    }
+    $new_password = md5($new_password);
+    $db->query('UPDATE nguoidung SET matkhau = ' . $db->quote($new_password) . ' WHERE tendangnhap = ' . $db->quote($username));
+    _success('OK');
+}
+
 ?>

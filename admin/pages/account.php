@@ -74,10 +74,16 @@ include '../layout/header-only.php';
                                     </ul>
                                     <div class="tab-content">
                                         <div id="profile-details-info" class="tab-pane active">
+                                            <div class="alert alert-success profile-details-info-alert">
+                                                Cập nhật thành công!
+                                            </div>
                                             <form action="" method="post">
                                                 <div class="form-group">
                                                     <label for=""><b>Tên đăng nhập <span class="text-danger">*</span></b></label>
                                                     <input type="text" class="profile-details-info--username form-control rounded-0" name="account_username" >
+                                                    <div class="alert alert-dismissible fade show text-danger profile-details-info--username-alert">
+                                                        Tên đang nhập là bắt buộc!
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for=""><b>Tên hiển thị: </b></label>
@@ -114,19 +120,34 @@ include '../layout/header-only.php';
                                             </form>
                                         </div>
                                         <div id="change-password" class="tab-pane fade">
+                                            <div class="alert alert-success change-password-alert">
+                                                Đổi mật khẩu thành công!
+                                            </div>
                                             <form action="" method="post">
                                                 <div class="form-group">
                                                     <label for=""><b>Mật khẩu cũ <span class="text-danger">*</span> </b></label>
                                                     <input type="password" class="account__info__right__form--password form-control rounded-0" name="account_password" placeholder="Mật khẩu...">
+                                                    <div class="alert text-danger change-password-old-password-alert">
+                                                        Mật khẩu cũ là bắt buộc!
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for=""><b>Mật khẩu mới <span class="text-danger">*</span> </b></label>
                                                     <input type="password" class="account__info__right__form--new_password form-control rounded-0" name="account_new_password" placeholder="Mật khẩu mới...">
+
+                                                    <div class="alert text-danger change-password-new-password-alert">
+                                                        Mật khẩu mới là bắt buộc!
+                                                    </div>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for=""><b>Nhập lại mật khẩu mới <span class="text-danger">*</span> </b></label>
+                                                    <label for=""><b>Xác nhận mật khẩu mới <span class="text-danger">*</span> </b></label>
                                                     <input type="password" class="account__info__right__form--re_new_password form-control rounded-0" name="account_re_new_password" placeholder="Nhập lại mật khẩu mới...">
+                                                    <div class="alert text-danger change-password-check-new-password-alert">
+                                                        Xác nhận mật khẩu mới là bắt buộc!
+                                                    </div>
                                                 </div>
+
                                                 <div class="account__left__btn">
                                                     <button type="submit" class="btn btn-info rounded-0 account__info__right__form--btn-change-password">Đổi mật khẩu</button>
                                                     <button type="reset" class="account__left__btn-reset d-none"></button>

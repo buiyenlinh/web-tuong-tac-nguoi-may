@@ -83,30 +83,6 @@
 
 <div class="layout-wrap">
     <div class="layout-left">
-        <!-- <div class="menu-left">
-            <ul class="nav justify-content-center flex-column">
-                <li class="nav-item nav-item-animal">
-                    <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/animal.php">
-                        <i class="fas fa-frog"></i></i>&nbsp; Động vật
-                    </a>
-                </li>
-                <li class="nav-item nav-item-user">
-                    <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/users.php">
-                        <i class="fas fa-users"></i>&nbsp; Người dùng
-                    </a>
-                </li>
-                <li class="nav-item nav-item-account">
-                    <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/account.php">
-                        <i class="fas fa-user-circle"></i>&nbsp;Tài khoản
-                    </a>
-                </li>
-                <li class="nav-item nav-item-install">
-                    <a class="nav-link text-light" href="">
-                        <i class="fas fa-cog"></i>&nbsp;Cài đặt
-                    </a>
-                </li>
-            </ul>
-        </div> -->
         <?php include '../layout/menu-left.php'; ?>
     </div>
     <div class="layout-right">
@@ -322,92 +298,7 @@
                 
             </div>
         </div>
-        
-
-<!--    <h3 class="text-center">THÔNG TIN ĐỘNG VẬT</h3>
-    <form class="chitiet" id="form-chitiet">
-        <div style="overflow-x:auto; max-height: 800px">
-            
-            <table class="table table-striped table-bordered">
-                <thead class="bg-primary text-center">
-                    <tr>
-                        <th>Tên khoa học</th>
-                        <th>Tên tiếng Việt</th>
-                        <th>Tên địa phương</th>
-                        <th>Giới</th>
-                        <th>Ngành</th>
-                        <th>Lớp</th>
-                        <th>Bộ</th>
-                        <th>Họ</th>
-                        <th>Hình 1</th>
-                        <th>Hình 2</th>
-                        <th>Hình 3</th>
-                        <th>Hình 4</th>
-                        <th>Hình 5</th>
-                        <th>Mô tả đặc điểm hình thái</th>
-                        <th>Mô tả đặc điểm sinh thái</th>
-                        <th>Giá trị sử dụng</th>
-                        <th>Tình trạng bảo tồn theo IUCN</th>
-                        <th>Tình trạng bảo tồn theo sách đỏ Việt Nam</th>
-                        <th>Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP</th>
-                        <th>Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)</th>
-                        <th>Phân bố</th>
-                        <th>Tọa độ 1</th>
-                        <th>Tọa độ 2</th>
-                        <th>Tọa độ 3</th>
-                        <th>Tọa độ 4</th>
-                        <th>Tọa độ 5</th>
-                        <th>Tình trạng mẫu vật</th>
-                        <th>Sinh cảnh</th>
-                        <th>Địa điểm</th>
-                        <th>Ngày thu mẫu</th>
-                        <th>Người thu mẫu</th>
-                        <th>Create at</th>
-                        <th>Update at</th>
-                        <th>Đường dẫn</th>
-                    </tr>
-                </thead>    
-                <tbody>
-                    <?php
-/*                        echo "<tr>";
-                        echo "<td>".$tenkhoahoc."</td>";
-                        echo "<td>".$tentiengviet."</td>";
-                        echo "<td>".$tendiaphuong."</td>";
-                        echo "<td>".$gioi."</td>";
-                        echo "<td>".$nganh."</td>";
-                        echo "<td>".$lop."</td>";
-                        echo "<td>".$bo."</td>";
-                        echo "<td>".$ho."</td>";
-                        echo "<td><img src='".$hinhanh1."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'></td>";
-                        echo "<td><img src='".$hinhanh2."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'></td>";
-                        echo "<td><img src='".$hinhanh3."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'></td>";
-                        echo "<td><img src='".$hinhanh4."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'></td>";
-                        echo "<td><img src='".$hinhanh5."' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px;'></td>";
-                        echo "<td>".$hinhthai."</td>";
-                        echo "<td>".$sinhthai."</td>";
-                        echo "<td>".$giatri."</td>";
-                        echo "<td>".$iucn."</td>";
-                        echo "<td>".$sachdo."</td>";
-                        echo "<td>".$nghidinh."</td>";
-                        echo "<td>".$cities."</td>";
-                        echo "<td>".$phanbo."</td>";
-                        echo "<td>".$td1."</td>";
-                        echo "<td>".$td2."</td>";
-                        echo "<td>".$td3."</td>";
-                        echo "<td>".$td4."</td>";
-                        echo "<td>".$td5."</td>";
-                        echo "<td>".$tinhtrang."</td>";
-                        echo "<td>".$sinhcanh."</td>";
-                        echo "<td>".$diadiem."</td>";
-                        echo "<td>".$ngaythuthap."</td>";
-                        echo "<td>".$nguoithuthap."</td>";
-                        echo "<td>".$created_at."</td>";
-                        echo "<td>".$updated_at."</td>";
-                        echo "<td>".$duongdan."</td>";
-                        echo "</tr>"
-*/                    ?> 
-                </tbody>
-            </table>
-        </div>
-    </form>
+    </div>
 </div>
+
+<?php include '../layout/footer-only.php' ?>
