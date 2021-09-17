@@ -106,14 +106,14 @@
         //    echo "Tổng số file upload: " .$numfiles;
             //set_time_limit(500);
 
-            $hinh1 = isset($names[0])?'uploads/'.$names[0]:null;
+ /*           $hinh1 = isset($names[0])?'uploads/'.$names[0]:null;
             $hinh2 = isset($names[1])?'uploads/'.$names[1]:null;
             $hinh3 = isset($names[2])?'uploads/'.$names[2]:null;
             $hinh4 = isset($names[3])?'uploads/'.$names[3]:null;
             $hinh5 = isset($names[4])?'uploads/'.$names[4]:null;
-            $con=new mysqli("localhost","root","","web_animal");
+            $con=new mysqli("localhost","root","","web_animal"); */
             $con->set_charset("utf8");
-            for($i=0; $i < 5; $i ++){
+            for($i = 0; $i < $numfiles; $i ++){
                 $sql = "insert into hinhanh(duongdan, dongvat_id) values ('".'uploads/'.$names[$i]."', '".$maxx."');";
          //       echo $sql;
                 $con->query($sql);
@@ -134,10 +134,17 @@
                     
         }
     //    echo $sql_1;
+    $tdo[1]=isset($toado[1])?$toado[1]:null;
+    $tdo[2]=isset($toado[2])?$toado[2]:null;
+    $tdo[3]=isset($toado[3])?$toado[3]:null;
+    $tdo[4]=isset($toado[4])?$toado[4]:null;
+    $tdo[5]=isset($toado[5])?$toado[5]:null;
 
         for($i = 1;$i <= 5; $i ++){
-            $sql_2 = "insert into toado (toado, dongvat_id) values ('".$toado[1]."', '".$maxx."');";
-            $con->query($sql_2);
+            if(!empty($tdo[$i])){
+                $sql_2 = "insert into toado (toado, dongvat_id) values ('".$toado[$i]."', '".$maxx."');";
+                $con->query($sql_2);
+            }           
     //        echo $sql_2; 
         }
         header ('Location: animal.php');
