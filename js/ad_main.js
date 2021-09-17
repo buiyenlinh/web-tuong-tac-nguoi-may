@@ -19,10 +19,20 @@ function myPost(action, data, callback) {
 }
 
 function login(form) {
-    if (form.username.value == '' || form.password.value == '') {
-        alert('Vui lòng nhập đủ thông tin');
+    var checkEmpty = false;
+    if (form.username.value == '') {
+        $('.login-alert-username').show();
+        checkEmpty = true;
+    }
+
+    if (form.password.value == '') {
+        $('.login-alert-password').show();
+        checkEmpty = true;
+    }
+    if (checkEmpty) {
         return;
     }
+
     var data = $(form).serialize();
     myPost('login', data, function(json) {
         if (json['status'] == 'OK') {
@@ -35,9 +45,9 @@ function login(form) {
 }
 
 function logout() {
-    if (!confirm('Bạn có muốn đăng xuất?')) {
-        return;
-    }
+    // if (!confirm('Bạn có muốn đăng xuất?')) {
+    //     return;
+    // }
     myPost('logout', '', function(json) {
         if (json['status'] == 'OK') {
             window.location = BASE + 'admin/';
@@ -66,9 +76,7 @@ function getListRole() {
     })
 }
 
-
 // ---------------------- Lấy danh sách người dùng trong admin ----------------------
-
 function getListUsers() {
     $('.list-users-body').text('');
     myPost('get-list-users', '', function(json) {
@@ -105,17 +113,35 @@ function createItemUser(itemData) {
 
     var icon_delete = document.createElement('button');
     icon_delete.onclick = function() {
-        deleteUser(itemData.id);
+        $('.btn-group-modal-delete-user').text('');
+        $('.text-modal-delete-user b').text(itemData.tenhienthi || itemData.tendangnhap);
+        var btn_delete = document.createElement('button');
+        btn_delete.className = "btn btn-danger btn-sm rounded-0 mr-2";
+        btn_delete.innerHTML = "Xóa";
+
+        var btn_cancel = document.createElement('button');
+        btn_cancel.className = "btn btn-secondary btn-sm rounded-0 cancel-modal-delete-user";
+        btn_cancel.setAttribute('data-dismiss', 'modal');
+        btn_cancel.innerHTML = "Hủy";
+
+        $('.btn-group-modal-delete-user').prepend(btn_delete, btn_cancel);
+        btn_delete.onclick = function() {
+            deleteUser(itemData.id);
+            $('.cancel-modal-delete-user').click();
+        }
+
+        $('.toggle-delete-modal').click();
     }
+
     icon_delete.setAttribute('title', 'Xóa');
-    icon_delete.className ="far fa-trash-alt text-light icon-delele-user btn btn-danger btn-sm";
+    icon_delete.className ="far fa-trash-alt text-light icon-delele-user btn btn-danger btn-sm rounded-0";
 
     var icon_update = document.createElement('button');
     icon_update.setAttribute('title', 'Cập nhật');
     icon_update.onclick = function() {
         getInfoUser(itemData.id);
     }
-    icon_update.className ="fas fa-save text-light icon-update-user btn btn-info btn-sm mr-2";
+    icon_update.className ="fas fa-save text-light icon-update-user btn btn-info btn-sm mr-2 rounded-0";
     icon_update.setAttribute('data-toggle', 'modal');
     icon_update.setAttribute('data-target', '#update-user-modal');
     td.append(icon_update, icon_delete);
@@ -126,17 +152,26 @@ function createItemUser(itemData) {
 
 // ---------------------- Xóa người dùng trong admin ----------------------
 function deleteUser(user_id) {
-    if (!confirm('Bạn có muốn xóa người dùng này?')) {
-        return;
-    }
+    
     myPost('delete-user', 'user_id=' + user_id, function(json) {
-        if (json['status'] == 'OK') {
+        if (json.status == 'OK') {
             $('.list-users-body').text('');
-            alert('Đã xóa người dùng thành công');
             getListUsers();
+
+            $('.user-success-alert').text('Xóa người dùng thành công!');
+            $('.user-success-alert').show();
+            setTimeout(function() {
+                $('.user-success-alert').hide();
+            }, 4000)
+
         } else {
-            alert(json['error']);
+            $('.update-user-error-alert').text(json.error);
+            $('.update-user-error-alert').show();
         }
+        setTimeout(function() {
+            $('.update-user-error-alert').hide();
+        }, 4000)
+
     })
 }
 //  Lấy thông tin người dùng
@@ -159,10 +194,15 @@ function getInfoUser (id) {
     });
 }
 
-
 // ---------------------- Cập nhật người dùng trong admin ----------------------
 function updateUser() {
     var form = document.forms['user-update-form'];
+
+    if (form.username.value == '') {
+        $('.update-user-username-alert').show();
+        return;
+    }
+
     var phone = form.phone.value;
     if (phone != '' && !(/^0[0-9]{9}$/).test(phone)) {
         alert('Số điện thoại không hợp lệ');
@@ -174,20 +214,41 @@ function updateUser() {
         if (json.status == 'OK') {
             console.log(json.data);
             $('.close-modal-update-user').click();
-            alert('Cập nhật thành công');
             getListUsers();
+
+            $('.user-success-alert').text('Cập nhật người dùng thành công!');
+            $('.user-success-alert').show();
+            setTimeout(function() {
+                $('.user-success-alert').hide();
+            }, 4000)
+
         } else {
-            alert(json.error);
+            $('.update-user-error-alert').text(json.error);
+            $('.update-user-error-alert').show();
         }
+        setTimeout(function() {
+            $('.update-user-error-alert').hide();
+        }, 4000)
     })
 }
 
 // ---------------------- Thêm người dùng mới trong admin ----------------------
 function addUser(form) {
-    if (form.username.value == '' || form.password.value == '') {
-        alert('Vui lòng nhập đủ thông tin!');
+    var checkEmpty = false;
+    if (form.username.value == '') {
+        $('.user-form__username-alert').show();
+        checkEmpty = true;
+    }
+
+    if (form.password.value == '') {
+        $('.user-form__password-alert').show();
+        checkEmpty = true;
+    }
+
+    if (checkEmpty) {
         return;
     }
+
     var data = $(form).serialize();
     console.log(data)
     myPost('add-user', data, function(json) {
@@ -195,8 +256,19 @@ function addUser(form) {
             getListUsers();
             $('.user-form__button__reset').click();
             $('.close-modal-add-user').click();
+
+            $('.user-success-alert').text('Thêm người dùng thành công!');
+            $('.user-success-alert').show();
+            setTimeout(function() {
+                $('.user-success-alert').hide();
+            }, 4000)
+
         } else {
-            alert(json['error']);
+            $('.add-user-error-alert').text(json.error);
+            $('.add-user-error-alert').show();
+            setTimeout(function() {
+                $('.add-user-error-alert').hide();
+            }, 4000)
         }
     })
 }
@@ -233,14 +305,21 @@ function updateInfoAccount(form) {
         processData: false,
         success: function(json) {
             if (json['status'] == 'OK') {
-                alert('Cập nhật thông tin thành công!');
+                $('.profile-details-info-alert').text('Cập nhật thông tin thành công!');
             } else {
-                alert(json['error']);
+                $('.profile-details-info-alert').addClass('alert-danger');
+                $('.profile-details-info-alert').text(json.error);
             }
+            $('.profile-details-info-alert').show();
+            setTimeout(function() {
+                $('.profile-details-info-alert').hide();
+                $('.profile-details-info-alert').removeClass('alert-danger');
+            }, 4000);
             getInfoAccount();
         }
     })
 }
+
 // ------------------- Lấy thông tin user -------------------
 function getInfoAccount() {
     myPost('get-info-account', '', function(json) {
@@ -281,23 +360,48 @@ function changePasswordAccount(form) {
     var password = form.account_password.value;
     var new_password = form.account_new_password.value;
     var re_new_password = form.account_re_new_password.value;
-    if (password == '' || new_password == '' || re_new_password == '') {
-        alert('Vui lòng điền đủ thông tin có dấu *');
+    var checkEmpty = false;
+    if (password == '') {
+        $('.change-password-old-password-alert').show();
+        checkEmpty = true;
+    }
+
+    if (new_password == '') {
+        $('.change-password-new-password-alert').show();
+        checkEmpty = true;
+    }
+
+    if (re_new_password == '') {
+        $('.change-password-check-new-password-alert').show();
+        checkEmpty = true;
+    }
+
+    if (re_new_password != new_password && new_password != '') {
+        $('.change-password-check-new-password-alert').text('Xác nhận mật khẩu mới sai!');
+        $('.change-password-check-new-password-alert').show();
+        checkEmpty = true;
+    }
+
+    if (checkEmpty) {
         return;
     }
-    if (new_password != re_new_password) {
-        alert('Nhập lại mật khẩu mới không đúng!');
-        return;
-    }
+
+    
     myPost('change-password-account', 'password=' + password + '&new-password=' + new_password, function(json) {
         if (json['status'] == 'OK') {
             console.log('changePassword');
             console.log(json);
             $('.account__left__btn-reset').click();
-            alert('Thay đổi mật khẩu thành công!');
+            $('.change-password-alert').text('Đổi mật khẩu thành công!');
         } else {
-            alert(json['error']);
+            $('.change-password-alert').addClass('alert-danger');
+            $('.change-password-alert').text(json.error);
         }
+        $('.change-password-alert').show();
+        setTimeout(function() {
+            $('.change-password-alert').removeClass('alert-danger');
+            $('.change-password-alert').hide();
+        }, 4000);
     })
 }
 
@@ -312,6 +416,50 @@ function getSumAnimalPost() {
     })
 }
 
+
+// Quên mật khẩu
+function forgetPassword(form) {
+    var data = $(form).serialize();
+    var username = form.username.value;
+    var new_password = form.new_password.value;
+    var check_password = form.check_password.value;
+    var checkEmpty = false;
+
+    if (username == '') {
+        $('.forget-alert-username').show();
+        checkEmpty = true;
+    }
+
+    if (new_password == '') {
+        $('.forget-alert-password').show();
+        checkEmpty = true;
+    }
+
+    if (check_password == '') {
+        $('.forget-alert-check-password').show();
+        checkEmpty = true;
+    }
+
+    if (checkEmpty) {
+        return;
+    }
+
+    if (new_password != check_password) {
+        $('.forget-alert-check-password span').text('Xác nhận mật khẩu không đúng!');
+        $('.forget-alert-check-password').css('display', 'block');
+        checkEmpty = true;
+    }
+
+    myPost('forget-password', data, function(json) {
+        if (json.status == 'OK') {
+            console.log(json);
+            $('.login-back').click();
+        } else {
+            alert(json.error);
+        }
+    })
+}
+
 $(function() {
     getListUsers();
     $('form').on('click', '#login_submit', function() {
@@ -320,7 +468,20 @@ $(function() {
     })
 
     $('#logout').on('click', function() {
-        logout();
+        $('.btn-group-logout').text('');
+        var btn_logout = document.createElement('button');
+        btn_logout.className = "btn btn-danger btn-sm rounded-0 mr-2";
+        btn_logout.innerHTML = "Đăng xuất";
+        btn_logout.onclick = function() {
+            logout();
+        }
+
+        var btn_cancel = document.createElement('button');
+        btn_cancel.className = "btn btn-secondary btn-sm rounded-0 cancel-modal-logout";
+        btn_cancel.setAttribute('data-dismiss', 'modal');
+        btn_cancel.innerHTML = "Hủy";
+
+        $('.btn-group-logout').prepend(btn_logout, btn_cancel);
     })
 
     $('form').on('click', '.user-form__button__add', function() {
@@ -358,5 +519,120 @@ $(function() {
     // Cập nhật user
     $('.update-user-button').on('click', function() {
         updateUser();
+    })
+
+    // Quên mật khẩu
+    $('.go-forget-password').on('click', function() {
+        $('.forget-password-form').show();
+        $('.login-form').hide();
+    })
+    $('.login-back').on('click', function() {
+        $('.forget-password-form').hide();
+        $('.login-form').show();
+    })
+
+    $('form').on('click', '#forget_password_submit', function() {
+        forgetPassword(this.form);
+        return false;
+    })
+
+        // login close
+    $('#login_username').on('keyup', function() {
+        if ($('#login_username').val() == '') {
+            $('.login-alert-username').show();
+        } else {
+            $('.login-alert-username').hide();
+        }
+    })
+
+    $('#login_password').on('keyup', function() {
+        if ($('#login_password').val() == '') {
+            $('.login-alert-password').show();
+        } else {
+            $('.login-alert-password').css('display', 'none');
+        }
+    })
+
+    $('#forget_username').on('keyup', function() {
+        if ($('#forget_username').val() == '') {
+            $('.forget-alert-username').show();
+        } else {
+            $('.forget-alert-username').hide();
+        }
+    })
+
+    $('#forget_new_password').on('keyup', function() {
+        if ($('#forget_new_password').val() == '') {
+            $('.forget-alert-password').show();
+        } else {
+            $('.forget-alert-password').hide();
+        }
+    })
+
+    $('#forget_check_password').on('keyup', function() {
+        if ($('#forget_check_password').val() == '') {
+            $('.forget-alert-check-password').show();
+        } else {
+            $('.forget-alert-check-password').hide();
+        }
+    })
+
+    // acount admin
+    $('.profile-details-info--username').on('keyup', function() {
+        if ($('.profile-details-info--username').val() == '') {
+            $('.profile-details-info--username-alert').show();
+        } else {
+            $('.profile-details-info--username-alert').hide();
+        }
+    })
+
+        // update password account admin
+    $('.account__info__right__form--password').on('keyup', function() {
+        if ($('.account__info__right__form--password').val() == '') {
+            $('.change-password-old-password-alert').show();
+        } else {
+            $('.change-password-old-password-alert').hide();
+        }
+    })
+
+    $('.account__info__right__form--new_password').on('keyup', function() {
+        if ($('.account__info__right__form--new_password').val() == '') {
+            $('.change-password-new-password-alert').show();
+        } else {
+            $('.change-password-new-password-alert').hide();
+        }
+    })
+
+    $('.account__info__right__form--re_new_password').on('keyup', function() {
+        if ($('.account__info__right__form--re_new_password').val() == '') {
+            $('.change-password-check-new-password-alert').show();
+        } else {
+            $('.change-password-check-new-password-alert').hide();
+        }
+    })
+
+    // UPDATE USER
+    $('.user-form__username').on('keyup', function() {
+        if($('.user-form__username').val() == '') {
+            $('.user-form__username-alert').show();
+        } else {
+            $('.user-form__username-alert').hide();
+        }
+    })
+
+    $('.user-form__password').on('keyup', function() {
+        if($('.user-form__password').val() == '') {
+            $('.user-form__password-alert').show();
+        } else {
+            $('.user-form__password-alert').hide();
+        }
+    })
+
+    $('.update-user-username').on('keyup', function() {
+        if($('.update-user-username').val() == '') {
+            $('.update-user-username-alert').show();
+        } else {
+            $('.update-user-username-alert').hide();
+        }
     })
 })

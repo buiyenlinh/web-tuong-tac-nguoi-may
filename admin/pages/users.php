@@ -24,6 +24,7 @@ include '../layout/header-only.php';
                     <div class="list-users">
                       <div class="d-flex justify-content-between mb-2">
                         <h3>Danh sách người dùng</h3>
+                        <div class="alert alert-success text-success user-success-alert"></div>
                         <button type="button" class="btn btn-info btn-sm rounded-0 btn-add-user" data-toggle="modal" data-target="#add-user-modal">
                           <i class="fas fa-plus"></i> Thêm
                         </button>
@@ -53,14 +54,21 @@ include '../layout/header-only.php';
                                 <button type="button" class="close close-modal-add-user" data-dismiss="modal">x</button>
                               </div>
                               <div class="modal-body">
-                                
+                                <div class="alert alert-danger text-danger add-user-error-alert"></div>
                                 <div class="form-group">
                                   <label for="">Tên đăng nhập: <span class="text-danger">*</span></label>
                                   <input type="text" class="user-form__username form-control rounded-0" name="username" placeholder="Tên đăng nhập...">
+                                  <div class="alert text-danger user-form__username-alert">
+                                    Tên đăng nhập là bắt buộc!
+                                  </div>
                                 </div>
                                 <div class="form-group">
                                   <label for="">Mật khẩu: <span class="text-danger">*</span></label>
                                   <input type="password" class="user-form__password form-control rounded-0" name="password" placeholder="Mật khẩu...">
+                                  
+                                  <div class="alert text-danger user-form__password-alert">
+                                    Mật khẩu là bắt buộc!
+                                  </div>
                                 </div>
                                 <div class="form-group">
                                   <label for="">Quyền người dùng: <span class="text-danger">*</span></label>
@@ -86,10 +94,17 @@ include '../layout/header-only.php';
                                 <button type="button" class="close close-modal-add-user" data-dismiss="modal">x</button>
                               </div>
                               <div class="modal-body">
+                                <div class="alert alert-danger text-danger update-user-error-alert"></div>
+
                                 <form action="" method="post" name="user-update-form" class="row">
                                   <div class="form-group col-md-6">
                                     <label for="">Tên đăng nhập: <span class="text-danger">*</span></label>
                                     <input type="text" class="update-user-username form-control rounded-0" name="username" placeholder="Tên đăng nhập...">
+
+                                    <div class="alert text-danger update-user-username-alert">
+                                      Tên đăng nhập là bắt buộc!
+                                    </div>
+
                                   </div>
                                   
                                   <div class="form-group col-md-6">
@@ -137,6 +152,18 @@ include '../layout/header-only.php';
                                 <button type="button" class="btn btn-info pl-4 pr-4 update-user-button rounded-0">Lưu</button>
                                 <button type="button" class="btn btn-light rounded-0 close-modal-update-user" data-dismiss="modal">Close</button>
                               </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <button class="btn btn-light toggle-delete-modal" type="button" data-toggle="modal" data-target="#delete-user-modal"></button>
+                      <div class="modal fade" id="delete-user-modal">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <div class="text-modal-delete-user">Bạn muốn xóa người dùng <b></b> ?</div>
+                              <div class="text-right btn-group-modal-delete-user"></div>
+                            </div>
                           </div>
                         </div>
                       </div>
