@@ -259,7 +259,7 @@ include '../layout/header-only.php';
                                                         <!--<p><input type="submit" name="upload" value="Upload File"/></p>-->
                                                         <input type="file" name="fileupload[]" id="files" multiple class="form-control" required>
                                                         <div class="form-group">
-                                                            <div id="image_preview" style="width:100%;">
+                                                            <div id="image_preview" style="width:200px;height:200px;">
                                                             </div>
                                                         </div>
                                                         <!-- <hr> -->
