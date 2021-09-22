@@ -3,7 +3,21 @@ include '../../config.php';
 include '../layout/header-only.php';
 ?>
 <?php
-//session_start();
+
+function to_slug($str) { 
+    $str = trim(mb_strtolower($str));
+    $str = preg_replace('/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/', 'a', $str);
+    $str = preg_replace('/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/', 'e', $str);
+    $str = preg_replace('/(ì|í|ị|ỉ|ĩ)/', 'i', $str);
+    $str = preg_replace('/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/', 'o', $str);
+    $str = preg_replace('/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/', 'u', $str);
+    $str = preg_replace('/(ỳ|ý|ỵ|ỷ|ỹ)/', 'y', $str);
+    $str = preg_replace('/(đ)/', 'd', $str);
+    $str = preg_replace('/[^a-z0-9-\s]/', '', $str);
+    $str = preg_replace('/([\s]+)/', '-', $str);
+    return $str;
+}
+
 if (isset($_POST["submit"])) {
     $tenkhoahoc = $_POST['inputkhoahoc'];
     $tentiengviet = $_POST['inputtiengviet'];
@@ -31,7 +45,7 @@ if (isset($_POST["submit"])) {
     $diadiem = $_POST['inputdiadiem'];
     $ngaythuthap = $_POST['inputngaythuthap'];
     $nguoithumau = $_POST['inputnguoithumau'];
-    $duongdan = $_POST['inputduongdan'];
+    $duongdan = to_slug($tenkhoahoc);
     //echo "$tenkhoahoc";
     /* $con=new mysqli("localhost","root","","web_animal");
         $con->set_charset("utf8");
@@ -51,9 +65,9 @@ if (isset($_POST["submit"])) {
 
 
     $sql_1 = "INSERT INTO dongvat (tenkhoahoc, tentiengviet, tendiaphuong, gioi, nganh, lop, bo, ho, hinhthai, sinhthai, giatri,
-            iucn, sachdo, nghidinh, cities, phanbo, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap,duongdan) VALUES
+            iucn, sachdo, nghidinh, cities, phanbo, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap, duongdan, nguoitao) VALUES
             ('" . $tenkhoahoc . "', '" . $tentiengviet . "', '" . $tendiaphuong . "', '" . $gioi . "', '" . $nganh . "', '" . $lop . "', '" . $bo . "', '" . $ho . "', '" . $hinhthai . "', '"
-        . $sinhthai . "', '" . $giatri . "', '" . $iunc . "', '" . $sachdo . "', '" . $ndcp . "', '" . $cites . "', '" . $phanbo . "', '" . $tinhtrang . "', '" . $sinhcanh . "', '" . $diadiem . "', '" . $ngaythuthap . "', '" . $nguoithumau . "', '" . $duongdan . "');";
+        . $sinhthai . "', '" . $giatri . "', '" . $iunc . "', '" . $sachdo . "', '" . $ndcp . "', '" . $cites . "', '" . $phanbo . "', '" . $tinhtrang . "', '" . $sinhcanh . "', '" . $diadiem . "', '" . $ngaythuthap . "', '" . $nguoithumau . "', '" . $duongdan . "', " . $_SESSION['user']['id'] . ");";
     $con->query($sql_1);
 
 

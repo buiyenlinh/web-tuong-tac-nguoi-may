@@ -326,9 +326,14 @@ input[type="file"] {
   /* Bảng chi tiết */
 
   .list-numbered img {
-    display: block;
-    margin: 1em 0;
+    /* display: block;
+    margin: 1em 0; */
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
   }
+
   .list-numbered ul,
   ol {
     margin: 0 0 1.5em 2em;
@@ -380,7 +385,7 @@ input[type="file"] {
   /*Thêm hình*/
   .img-div {
     position: relative;
-    width: 46%;
+    /* width: 46%; */
     float: left;
     margin-right: 5px;
     margin-left: 5px;
@@ -419,3 +424,8 @@ input[type="file"] {
 
 
 
+#image_preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}

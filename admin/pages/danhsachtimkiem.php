@@ -69,3 +69,5 @@ if(isset($_POST["submit"])) {
         //Đóng kết nối
         //mysqli_close($con);
 ?>
+
+<?php include '../layout/footer-only.php' ?>
