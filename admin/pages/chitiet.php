@@ -53,30 +53,34 @@
         }
     }
 
-    $sql = "SELECT * FROM toado WHERE dongvat_id = ".$iddv."";
- // echo $sql;
-    $result = $con->query($sql);
-    if($result -> num_rows > 0) {
-        $i = 1; //Dat bien i truoc tien de khoi tao chay trong while
-        while($row = $result->fetch_assoc()) {
-            $toado[$i] = $row['toado'];
- //           echo $toado[$i];
-//            echo "<br>";
-            $i++;
-        }
-    }
-    
-    $hinhanh[1] = isset($hinh[1])?'../../../'.$hinh[1]:null;
-    $hinhanh[2] = isset($hinh[2])?'../../../'.$hinh[2]:null;
-    $hinhanh[3] = isset($hinh[3])?'../../../'.$hinh[3]:null;
-    $hinhanh[4] = isset($hinh[4])?'../../../'.$hinh[4]:null;
-    $hinhanh[5] = isset($hinh[5])?'../../../'.$hinh[5]:null;
+    // $sql = "SELECT * FROM toado WHERE dongvat_id = ".$iddv."";
 
-    $td1 = isset($toado[1])?$toado[1]:null;
-    $td2 = isset($toado[2])?$toado[2]:null;
-    $td3 = isset($toado[3])?$toado[3]:null;
-    $td4 = isset($toado[4])?$toado[4]:null;
-    $td5 = isset($toado[5])?$toado[5]:null;
+    $hinhanhList = $db->query('Select * from hinhanh where dongvat_id = ' . intval($iddv))->fetchAll();
+    $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv))->fetchAll();
+
+ // echo $sql;
+//     $result = $con->query($sql);
+//     if($result -> num_rows > 0) {
+//         $i = 1; //Dat bien i truoc tien de khoi tao chay trong while
+//         while($row = $result->fetch_assoc()) {
+//             $toado[$i] = $row['toado'];
+//  //           echo $toado[$i];
+// //            echo "<br>";
+//             $i++;
+//         }
+//     }
+    
+    // $hinhanh[1] = isset($hinh[1])?'../../../'.$hinh[1]:null;
+    // $hinhanh[2] = isset($hinh[2])?'../../../'.$hinh[2]:null;
+    // $hinhanh[3] = isset($hinh[3])?'../../../'.$hinh[3]:null;
+    // $hinhanh[4] = isset($hinh[4])?'../../../'.$hinh[4]:null;
+    // $hinhanh[5] = isset($hinh[5])?'../../../'.$hinh[5]:null;
+
+    // $td1 = isset($toado[1])?$toado[1]:null;
+    // $td2 = isset($toado[2])?$toado[2]:null;
+    // $td3 = isset($toado[3])?$toado[3]:null;
+    // $td4 = isset($toado[4])?$toado[4]:null;
+    // $td5 = isset($toado[5])?$toado[5]:null;
 
 
 ?>
@@ -113,7 +117,6 @@
                             echo $tendiaphuong;
                             
                         ?>
-
                         </li>
                         <li>
                         <?php
@@ -151,20 +154,10 @@
                         ?>
                         </li>
                         <li>
-                        <?php
-                            echo "<b>Hình ảnh:</b> </br>"; 
-                            for($i=1; $i <= 5; $i ++){
-                                if($hinhanh[$i] != null){
-                                    echo "<img src='".$hinhanh[$i]."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
-                                }
-                                
-                            }
-                            /*echo "<img src='".$hinhanh1."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
-                            echo "<img src='".$hinhanh2."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
-                            echo "<img src='".$hinhanh3."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
-                            echo "<img src='".$hinhanh4."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";
-                            echo "<img src='".$hinhanh5."' alt='hinhdongvat' style='width: 100px; height: 100px;'>";*/
-                        ?>
+                            <b>Hình ảnh:</b></br>
+                            <?php foreach($hinhanhList as $ha): ?>
+                                <img src="<?php echo BASE_IMG . $ha["duongdan"] ?>" alt="anh dong vat">
+                            <?php endforeach; ?>
                         </li>
                         <li>
                         <?php 
@@ -216,35 +209,16 @@
                         ?>
                         </li>
                         <li>
-                        <?php 
-                            echo "<b>Tọa độ 1:</b> </br>";
-                            echo $td1;
-                        ?>
+                            <b>Tọa độ:</b></br>
+                            <ol style="margin: 0px">
+                            <?php foreach ($toaDoList as $tdo): ?>
+                                <li>
+                                    <?php echo $tdo["toado"]; ?>
+                                </li>
+                            <?php endforeach; ?>
+                            </ol>
                         </li>
-                        <li>
-                        <?php 
-                            echo "<b>Tọa độ 2:</b> </br>";
-                            echo $td2;
-                        ?>
-                        </li>
-                        <li>
-                        <?php 
-                            echo "<b>Tọa độ 3:</b> </br>";
-                            echo $td3;      
-                        ?>
-                        </li>
-                        <li>
-                        <?php 
-                            echo "<b>Tọa độ 4:</b> </br>";
-                            echo $td4;   
-                        ?>
-                        </li>
-                        <li>
-                        <?php 
-                            echo "<b>Tọa độ 5:</b> </br>";
-                            echo $td5;
-                        ?>
-                        </li>
+                        
                         <li>
                         <?php 
                             echo "<b>Tình trạng mẫu vật:</b> </br>";
