@@ -2,7 +2,9 @@
 include '../../config.php';
 include '../layout/header-only.php';
 ?>
-
+<?php 
+ob_start();
+?>
 <?php
 if (isset($_GET["iddv"])) {
     $iddv = $_GET['iddv'];
@@ -196,7 +198,7 @@ if (isset($_GET["iddv"])) {
                                     for ($i = 0; $i < $tongtoado; $i++) {
                                         if ($td[$i] != null) {
                                             echo "<tr>";
-                                            echo "<td>Tạo độ " . $i + 1 . ":</td>";
+                                            echo "<td>Tạo độ " . ($i + 1) . ":</td>";
                                             echo "<td><input type='text' class='form-control' size='20' name='toado" . $i . "' value='" . $td[$i] . "'></td>";
                                             echo "</tr>";
                                         }
@@ -278,11 +280,11 @@ if (isset($_GET["iddv"])) {
                         });
 
                         // Old code here
-                        $("<img></img>", {
+                        /*$("<img></img>", {
                           class: "imageThumb",
                           src: e.target.result,
                           title: file.name + " | Click to remove"
-                        }).insertAfter("#files").click(function(){$(this).remove();});
+                        }).insertAfter("#files").click(function(){$(this).remove();});*/
                     };
                     fileReader.readAsDataURL(f);
                 }
@@ -305,7 +307,7 @@ if (isset($_GET["iddv"])) {
             e.preventDefault();
             if (x < max_fields) { //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div><input type="text" name="inputtoado' + x + '"/><a href="#" class="remove_field">Xóa</a></div>'); //add input box
+                $(wrapper).append('<div><input type="text" class="form-control" name="inputtoado' + x + '" style="margin-bottom:5px; margin-top:5px;" /><a href="#" class="remove_field">Xóa</a></div>'); //add input box
             }
         });
 
@@ -346,8 +348,10 @@ if (isset($_POST["apply"])) {
         $tdo[$i] = $_POST["toado" . $i . ""];
     }*/
     for ($i = 1; $i < 10; $i++) {
-        $tdo[$i] = $_POST["inputtoado" . $i . ""];
-        //echo $td[$i];
+        if(!empty($_POST["inputtoado" . $i . ""])){
+            $tdo[$i] = $_POST["inputtoado" . $i . ""];
+            //echo $tdo[$i];
+        }
     }
     $tinhtrang = $_POST['tinhtrangsua'];
     $sinhcanh = $_POST['sinhcanhsua'];
@@ -446,8 +450,10 @@ if (isset($_POST["apply"])) {
             $con->query($sql);
         }
     }
+
     header('Location: animal.php');
 }
+ob_flush();
 ?>
 
 <?php include '../layout/footer-only.php' ?>

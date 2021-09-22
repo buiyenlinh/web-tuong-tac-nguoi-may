@@ -82,7 +82,7 @@ include '../layout/header-only.php';
                                                     //Ở sau  ko cần dấu ?idsp='". $var ."' Nên dùng  ?idsp=".$row['idsp']."'
                                                     echo "<td><a href='./chitiet.php?iddv=" . $row['id'] . "'>Xem chi tiết</a></td>";
                                                     echo "<td><a href='suaAnimal.php?iddv=" . $row['id'] . "'><i class='fas fa-pen'></i></a></td>";
-                                                    echo "<td><a href='./xoaAnimal.php?iddv=" . $row['id'] . "' onclick='myFunction()'><i class='fas fa-trash-alt text-danger'></i></a></td>";
+                                                    echo "<td><a href='./xoaAnimal.php?iddv=" . $row['id'] . "' class='confirmation'><i class='fas fa-trash-alt text-danger'></i></a></td>";
                                                     echo "</tr>";
                                                     $i++;
                                                 }
@@ -103,9 +103,13 @@ include '../layout/header-only.php';
 
     <!-- JS-->
 
-    <script>
-        function myFunction() {
-            alert("Bạn đã xóa 1 ĐỘNG VẬT");
+    <script type="text/javascript">
+        var elems = document.getElementsByClassName('confirmation');
+        var confirmIt = function(e) {
+            if (!confirm('Bạn có chắc muốn xóa ĐỘNG VẬT này?')) e.preventDefault();
+        };
+        for (var i = 0, l = elems.length; i < l; i++) {
+            elems[i].addEventListener('click', confirmIt, false);
         }
     </script>
 
