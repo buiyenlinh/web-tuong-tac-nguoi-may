@@ -255,38 +255,109 @@ include '../layout/header-only.php';
                                                             <!--<input type="file" name="fileupload[]" multiple="multiple" /> -->
                                                     </td>
                                                     <td>
-                                                        <input type="file" id="files" name="fileupload[]" multiple="multiple" />
+                                                        <!--<input type="file" id="files" name="fileupload[]" multiple="multiple" />-->
                                                         <!--<p><input type="submit" name="upload" value="Upload File"/></p>-->
+                                                        <input type="file" name="fileupload[]" id="files" multiple class="form-control" required>
+                                                        <div class="form-group">
+                                                            <div id="image_preview" style="width:100%;">
+                                                            </div>
+                                                        </div>
+                                                        <!-- <hr> -->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                    </td>
+                                                    <td>
+                                                        <button type="submit" class="btn btn-info" name="submit"  value="Upload File">Thêm Động Vật</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <!-- <hr> -->
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        </td>
-                                        <td>
-                                            <button type="submit" class="btn btn-info" name="submit"  value="Upload File">Thêm Động Vật</button>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                    </table>
                                 </div>
+                            </form>
                         </div>
-                        </form>
+                        <!--Form THÊM -->
                     </div>
-                    <!--Form THÊM -->
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
     </script>
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
     <script>
         $(document).ready(function() {
+            var fileArr = [];
+            $("#files").change(function() {
+                // check if fileArr length is greater than 0
+                if (fileArr.length > 0) fileArr = [];
+
+                $("#image_preview").html("");
+                var total_file = document.getElementById("files").files;
+                if (!total_file.length) return;
+                for (var i = 0; i < total_file.length; i++) {
+                    if (total_file[i].size > 1048576) {
+                        return false;
+                    } else {
+                        fileArr.push(total_file[i]);
+                        $("#image_preview").append(
+                            "<div class='img-div' id='img-div" +
+                            i +
+                            "'><img src='" +
+                            URL.createObjectURL(event.target.files[i]) +
+                            "' class='img-responsive image img-thumbnail' title='" +
+                            total_file[i].name +
+                            "'><div class='middle'><button id='action-icon' value='img-div" +
+                            i +
+                            "' class='btn btn-danger' role='" +
+                            total_file[i].name +
+                            "'><i class='fa fa-trash'></i></button></div></div>"
+                        );
+                    }
+                }
+            });
+
+            $("body").on("click", "#action-icon", function(evt) {
+                var divName = this.value;
+                var fileName = $(this).attr("role");
+                $(`#${divName}`).remove();
+
+                for (var i = 0; i < fileArr.length; i++) {
+                    if (fileArr[i].name === fileName) {
+                        fileArr.splice(i, 1);
+                    }
+                }
+                document.getElementById("files").files = FileListItem(fileArr);
+                evt.preventDefault();
+            });
+
+            function FileListItem(file) {
+                file = [].slice.call(Array.isArray(file) ? file : arguments);
+                for (var c, b = (c = file.length), d = !0; b-- && d;)
+                    d = file[b] instanceof File;
+                if (!d)
+                    throw new TypeError(
+                        "expected argument to FileList is File or array of File objects"
+                    );
+                for (b = new ClipboardEvent("").clipboardData || new DataTransfer(); c--;)
+                    b.items.add(file[c]);
+                return b.files;
+            }
+        });
+    </script>
+
+    <script>
+        /*        $(document).ready(function() {
             if (window.File && window.FileList && window.FileReader) {
                 $("#files").on("change", function(e) {
                     var files = e.target.files,
@@ -316,15 +387,15 @@ include '../layout/header-only.php';
                               src: e.target.result,
                               title: file.name + " | Click to remove"
                             }).insertAfter("#files").click(function(){$(this).remove();});*/
-                        };
-                        fileReader.readAsDataURL(f);
+        /*                        };
+                                fileReader.readAsDataURL(f);
+                            }
+                            console.log(files);
+                        });
+                    } else {
+                        alert("Your browser doesn't support to File API");
                     }
-                    console.log(files);
-                });
-            } else {
-                alert("Your browser doesn't support to File API");
-            }
-        });
+                });*/
     </script>
 <?php endif; ?>
 <?php include '../layout/footer-only.php' ?>
