@@ -2,7 +2,9 @@
 include '../../config.php';
 include '../layout/header-only.php';
 ?>
-
+<?php
+ob_start();
+?>
 <?php
 if (isset($_GET["iddv"])) {
     $iddv = $_GET['iddv'];
@@ -157,7 +159,11 @@ if (isset($_GET["iddv"])) {
                                     <tr>
                                         <td>Hình ảnh mới:</td>
                                         <td>
-                                            <input type="file" id="files" name="fileupload[]" multiple="multiple" />
+                                            <input type="file" name="fileupload[]" id="files" multiple class="form-control">
+                                            <div class="form-group">
+                                                <div id="image_preview" style="width:100%;">
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -251,9 +257,75 @@ if (isset($_GET["iddv"])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
 </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 <script>
     $(document).ready(function() {
+        var fileArr = [];
+        $("#files").change(function() {
+            // check if fileArr length is greater than 0
+            if (fileArr.length > 0) fileArr = [];
+
+            $("#image_preview").html("");
+            var total_file = document.getElementById("files").files;
+            if (!total_file.length) return;
+            for (var i = 0; i < total_file.length; i++) {
+                if (total_file[i].size > 1048576) {
+                    return false;
+                } else {
+                    fileArr.push(total_file[i]);
+                    $("#image_preview").append(
+                        "<div class='img-div' id='img-div" +
+                        i +
+                        "'><img src='" +
+                        URL.createObjectURL(event.target.files[i]) +
+                        "' class='img-responsive image img-thumbnail' title='" +
+                        total_file[i].name +
+                        "'><div class='middle'><button id='action-icon' value='img-div" +
+                        i +
+                        "' class='btn btn-danger' role='" +
+                        total_file[i].name +
+                        "'><i class='fa fa-trash'></i></button></div></div>"
+                    );
+                }
+            }
+        });
+
+        $("body").on("click", "#action-icon", function(evt) {
+            var divName = this.value;
+            var fileName = $(this).attr("role");
+            $(`#${divName}`).remove();
+
+            for (var i = 0; i < fileArr.length; i++) {
+                if (fileArr[i].name === fileName) {
+                    fileArr.splice(i, 1);
+                }
+            }
+            document.getElementById("files").files = FileListItem(fileArr);
+            evt.preventDefault();
+        });
+
+        function FileListItem(file) {
+            file = [].slice.call(Array.isArray(file) ? file : arguments);
+            for (var c, b = (c = file.length), d = !0; b-- && d;)
+                d = file[b] instanceof File;
+            if (!d)
+                throw new TypeError(
+                    "expected argument to FileList is File or array of File objects"
+                );
+            for (b = new ClipboardEvent("").clipboardData || new DataTransfer(); c--;)
+                b.items.add(file[c]);
+            return b.files;
+        }
+    });
+</script>
+
+
+<script>
+    /*    $(document).ready(function() {
         if (window.File && window.FileList && window.FileReader) {
             $("#files").on("change", function(e) {
                 var files = e.target.files,
@@ -283,15 +355,15 @@ if (isset($_GET["iddv"])) {
                           src: e.target.result,
                           title: file.name + " | Click to remove"
                         }).insertAfter("#files").click(function(){$(this).remove();});*/
-                    };
-                    fileReader.readAsDataURL(f);
-                }
-                console.log(files);
-            });
-        } else {
-            alert("Your browser doesn't support to File API");
-        }
-    });
+    /*                    };
+                        fileReader.readAsDataURL(f);
+                    }
+                    console.log(files);
+                });
+            } else {
+                alert("Your browser doesn't support to File API");
+            }
+        });*/
 </script>
 
 <script>
@@ -305,7 +377,7 @@ if (isset($_GET["iddv"])) {
             e.preventDefault();
             if (x < max_fields) { //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div><input type="text" name="inputtoado' + x + '"/><a href="#" class="remove_field">Xóa</a></div>'); //add input box
+                $(wrapper).append('<div><input type="text" class="form-control" name="inputtoado' + x + '" style="margin-bottom:5px; margin-top:5px;" /><a href="#" class="remove_field">Xóa</a></div>'); //add input box
             }
         });
 
@@ -346,8 +418,10 @@ if (isset($_POST["apply"])) {
         $tdo[$i] = $_POST["toado" . $i . ""];
     }*/
     for ($i = 1; $i < 10; $i++) {
-        $tdo[$i] = $_POST["inputtoado" . $i . ""];
-        //echo $td[$i];
+        if (!empty($_POST["inputtoado" . $i . ""])) {
+            $tdo[$i] = $_POST["inputtoado" . $i . ""];
+            //echo $tdo[$i];
+        }
     }
     $tinhtrang = $_POST['tinhtrangsua'];
     $sinhcanh = $_POST['sinhcanhsua'];
@@ -446,8 +520,10 @@ if (isset($_POST["apply"])) {
             $con->query($sql);
         }
     }
+
     header('Location: animal.php');
 }
+ob_flush();
 ?>
 
 <?php include '../layout/footer-only.php' ?>
