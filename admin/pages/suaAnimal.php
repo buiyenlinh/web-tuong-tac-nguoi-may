@@ -112,41 +112,41 @@ if (isset($_GET["iddv"])) {
                                 <tbody>
                                     <tr>
                                         <td>Tên khoa học:</td>
-                                        <td><input type="text" class="form-control" size="20" name="tenkhoahocsua" value='<?php echo $tenkhoahoc; ?>' placeholder="Tên khoa học"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="tenkhoahocsua" value='<?php echo $tenkhoahoc; ?>' placeholder="Tên khoa học" /></td>
                                     </tr>
                                     <tr>
                                         <td>Tên tiếng Việt:</td>
-                                        <td><input type="text" class="form-control" size="20" name="tentiengvietsua" value='<?php echo $tentiengviet; ?>' placeholder="Tên tiếng Việt"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="tentiengvietsua" value='<?php echo $tentiengviet; ?>' placeholder="Tên tiếng Việt" /></td>
                                     </tr>
                                     <tr>
                                         <td>Tên địa phương:</td>
-                                        <td><input type="text" class="form-control" size="20" name="tendiaphuongsua" value='<?php echo $tendiaphuong; ?>' placeholder="Tên địa phương"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="tendiaphuongsua" value='<?php echo $tendiaphuong; ?>' placeholder="Tên địa phương" /></td>
                                     </tr>
                                     <tr>
                                         <td>Giới:</td>
-                                        <td><input type="text" class="form-control" size="20" name="gioisua" value='<?php echo $gioi; ?>' placeholder="Giới"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="gioisua" value='<?php echo $gioi; ?>' placeholder="Giới" /></td>
                                     </tr>
                                     <tr>
                                         <td>Bộ:</td>
-                                        <td><input type="text" class="form-control" size="20" name="nganhsua" value='<?php echo $bo; ?>' placeholder="Bộ"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="nganhsua" value='<?php echo $bo; ?>' placeholder="Bộ" /></td>
                                     </tr>
                                     <tr>
                                         <td>Lớp:</td>
-                                        <td><input type="text" class="form-control" size="20" name="lopsua" value='<?php echo $lop; ?>' placeholder="Lớp"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="lopsua" value='<?php echo $lop; ?>' placeholder="Lớp" /></td>
                                     </tr>
                                     <tr>
                                         <td>Ngành:</td>
-                                        <td><input type="text" class="form-control" size="20" name="bosua" value='<?php echo $nganh; ?>' placeholder="Ngành"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="bosua" value='<?php echo $nganh; ?>' placeholder="Ngành" /></td>
                                     </tr>
                                     <tr>
                                         <td>Họ:</td>
-                                        <td><input type="text" class="form-control" size="20" name="hosua" value='<?php echo $ho; ?>' placeholder="Họ"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="hosua" value='<?php echo $ho; ?>' placeholder="Họ" /></td>
                                     </tr>
                                     <?php
                                     for ($i = 0; $i < $tonghinh; $i++) {
                                         if ($hinhanh[$i] != null) {
                                             echo "<tr>";
-                                            echo "<td>Hình ảnh" . $i + 1 . ":</td>";
+                                            echo "<td>Hình ảnh " . $i + 1 . ":</td>";
                                             echo "<td><input type='file' class='form-control' size='20' name='hinhanh" . $i . "'>";
                                             echo "<img src='" . $hinhanh[$i] . "' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px; margin-right: 10px;'>";
                                             echo "</td>";
@@ -157,82 +157,83 @@ if (isset($_GET["iddv"])) {
                                     <tr>
                                         <td>Hình ảnh mới:</td>
                                         <td>
-                                                <input type="file" id="files" name="fileupload[]" multiple="multiple" />
+                                            <input type="file" id="files" name="fileupload[]" multiple="multiple" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Mô tả đặc điểm hình thái:</td>
-                                        <td><input type="text" class="form-control" size="20" name="hinhthaisua" value='<?php echo $hinhthai; ?>' placeholder="Mô tả đặc điểm hình thái"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="hinhthaisua" value='<?php echo $hinhthai; ?>' placeholder="Mô tả đặc điểm hình thái" /></td>
                                     </tr>
                                     <tr>
                                         <td>Mô tả đặc điểm sinh thái:</td>
-                                        <td><input type="text" class="form-control" size="20" name="sinhthaisua" value='<?php echo $sinhthai; ?>' placeholder="Mô tả đặc điểm sinh thái"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="sinhthaisua" value='<?php echo $sinhthai; ?>' placeholder="Mô tả đặc điểm sinh thái" /></td>
                                     </tr>
                                     <tr>
                                         <td>Giá trị sử dụng:</td>
-                                        <td><input type="text" class="form-control" size="20" name="giatrisua" value='<?php echo $giatri; ?>' placeholder="Giá trị sử dụng"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="giatrisua" value='<?php echo $giatri; ?>' placeholder="Giá trị sử dụng" /></td>
                                     </tr>
                                     <tr>
                                         <td>Tình trạng bảo tồn theo IUCN:</td>
-                                        <td><input type="text" class="form-control" size="20" name="iucnsua" value='<?php echo $iucn; ?>' placeholder="Tình trạng bảo tồn theo IUCN"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="iucnsua" value='<?php echo $iucn; ?>' placeholder="Tình trạng bảo tồn theo IUCN" /></td>
                                     </tr>
                                     <tr>
                                         <td>Tình trạng bảo tồn theo sách đỏ Việt Nam:</td>
-                                        <td><input type="text" class="form-control" size="20" name="sachdosua" value='<?php echo $sachdo; ?>' placeholder="Tình trạng bảo tồn theo sách đỏ Việt Nam"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="sachdosua" value='<?php echo $sachdo; ?>' placeholder="Tình trạng bảo tồn theo sách đỏ Việt Nam" /></td>
                                     </tr>
                                     <tr>
                                         <td>Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</td>
-                                        <td><input type="text" class="form-control" size="20" name="ndcpsua" value='<?php echo $nghidinh; ?>' placeholder="Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="ndcpsua" value='<?php echo $nghidinh; ?>' placeholder="Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP" /></td>
                                     </tr>
                                     <tr>
                                         <td>Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</td>
-                                        <td><input type="text" class="form-control" size="20" name="citessua" value='<?php echo $cities; ?>' placeholder="Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="citessua" value='<?php echo $cities; ?>' placeholder="Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)" /></td>
                                     </tr>
                                     <tr>
                                         <td>Phân bố:</td>
-                                        <td><input type="text" class="form-control" size="20" name="phanbosua" value='<?php echo $phanbo; ?>' placeholder="Phân bố"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="phanbosua" value='<?php echo $phanbo; ?>' placeholder="Phân bố" /></td>
                                     </tr>
                                     <?php
                                     for ($i = 0; $i < $tongtoado; $i++) {
-                                        if ($hinhanh[$i] != null) {
+                                        if ($td[$i] != null) {
                                             echo "<tr>";
-                                            echo "<td>Tạo độ" . $i + 1 . ":</td>";
+                                            echo "<td>Tạo độ " . $i + 1 . ":</td>";
                                             echo "<td><input type='text' class='form-control' size='20' name='toado" . $i . "' value='" . $td[$i] . "'></td>";
-                                            echo "</tr>";
-                                        }
-                                    }
-                                    for($i = $tongtoado; $i < 5; $i++) {
-                                        if($tongtoado <= 5){
-                                            echo "<tr>";
-                                            echo "<td>Tạo độ" . $i+1 . ":</td>";
-                                            echo "<td><input type='text' class='form-control' size='20' name='toado" . $i . "' value=''  placeholder='Tạo độ'></td>";
                                             echo "</tr>";
                                         }
                                     }
                                     ?>
                                     <tr>
+                                        <td>Thêm tọa độ</td>
+                                        <td>
+                                            <div class="input_fields_wrap">
+                                                <button class="add_field_button btn btn-info rounded-0">Thêm tọa độ</button>
+                                                <div><input type="text" class="form-control" name="inputtoado1"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td>Tình trạng mẫu vật:</td>
-                                        <td><input type="text" class="form-control" size="20" name="tinhtrangsua" value='<?php echo $tinhtrang; ?>' placeholder="Tình trạng mẫu vật"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="tinhtrangsua" value='<?php echo $tinhtrang; ?>' placeholder="Tình trạng mẫu vật" /></td>
                                     </tr>
                                     <tr>
                                         <td>Sinh cảnh:</td>
-                                        <td><input type="text" class="form-control" size="20" name="sinhcanhsua" value='<?php echo $sinhcanh; ?>' placeholder="Sinh cảnh"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="sinhcanhsua" value='<?php echo $sinhcanh; ?>' placeholder="Sinh cảnh" /></td>
                                     </tr>
                                     <tr>
                                         <td>Địa điểm:</td>
-                                        <td><input type="text" class="form-control" size="20" name="diadiemsua" value='<?php echo $diadiem; ?>' placeholder="Địa điểm"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="diadiemsua" value='<?php echo $diadiem; ?>' placeholder="Địa điểm" /></td>
                                     </tr>
                                     <tr>
                                         <td>Ngày thu mẫu:</td>
-                                        <td><input type="text" class="form-control" size="20" name="ngaythuthapsua" value='<?php echo $ngaythuthap; ?>' placeholder="Ngày thu mẫu"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="ngaythuthapsua" value='<?php echo $ngaythuthap; ?>' placeholder="Ngày thu mẫu" /></td>
                                     </tr>
                                     <tr>
                                         <td>Người thu mẫu:</td>
-                                        <td><input type="text" class="form-control" size="20" name="nguoithuthapsua" value='<?php echo $nguoithuthap; ?>' placeholder="Người thu mẫu"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="nguoithuthapsua" value='<?php echo $nguoithuthap; ?>' placeholder="Người thu mẫu" /></td>
                                     </tr>
                                     <tr>
                                         <td>Đường dẫn:</td>
-                                        <td><input type="text" class="form-control" size="20" name="duongdansua" value='<?php echo $duongdan; ?>' placeholder="Đường dẫn"/></td>
+                                        <td><input type="text" class="form-control" size="20" name="duongdansua" value='<?php echo $duongdan; ?>' placeholder="Đường dẫn" /></td>
                                         <input type="text" name="id" hidden value="<?php echo $iddv; ?>">
                                     </tr>
                                 </tbody>
@@ -292,6 +293,29 @@ if (isset($_GET["iddv"])) {
         }
     });
 </script>
+
+<script>
+    $(document).ready(function() {
+        var max_fields = 10; //maximum input boxes allowed
+        var wrapper = $(".input_fields_wrap"); //Fields wrapper
+        var add_button = $(".add_field_button"); //Add button ID
+
+        var x = 1; //initlal text box count
+        $(add_button).click(function(e) { //on add input button click
+            e.preventDefault();
+            if (x < max_fields) { //max input box allowed
+                x++; //text box increment
+                $(wrapper).append('<div><input type="text" name="inputtoado' + x + '"/><a href="#" class="remove_field">Xóa</a></div>'); //add input box
+            }
+        });
+
+        $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+        })
+    });
+</script>
 <?php
 //session_start();
 if (isset($_POST["apply"])) {
@@ -318,8 +342,12 @@ if (isset($_POST["apply"])) {
     for ($i = 0; $i < $tongtoado; $i++) {
         $tdo[$i] = $_POST["toado" . $i . ""];
     }
-    for ($i = $tongtoado; $i < 5; $i ++){
+    /*for ($i = $tongtoado; $i < 5; $i++) {
         $tdo[$i] = $_POST["toado" . $i . ""];
+    }*/
+    for ($i = 1; $i < 10; $i++) {
+        $tdo[$i] = $_POST["inputtoado" . $i . ""];
+        //echo $td[$i];
     }
     $tinhtrang = $_POST['tinhtrangsua'];
     $sinhcanh = $_POST['sinhcanhsua'];
@@ -385,39 +413,40 @@ if (isset($_POST["apply"])) {
         $numfiles = 0;
 
         $hinhname = array();
-        for ($i = 0; $i < $numitems; $i ++) {
+        for ($i = 0; $i < $numitems; $i++) {
             //Kiểm tra file thứ $i trong mảng file, up thành công không
             //$so=$i + 1;
             $kt = false;
-            if ($errors[$i] == 0){
-            $numfiles++;
-            $kt =true;
+            if ($errors[$i] == 0) {
+                $numfiles++;
+                $kt = true;
                 //Code xử lý di chuyển file đến thư mục cần thiết ở đây (bạn tự thực hiện)
-            move_uploaded_file($tmp_names[$i], '../../../uploads/'.$names[$i]);
-                      
-            $path = '../../../uploads/'.$names[$i];
+                move_uploaded_file($tmp_names[$i], '../../../uploads/' . $names[$i]);
+
+                $path = '../../../uploads/' . $names[$i];
             }
-            
         }
         //echo "Tổng số file upload: " .$numfiles;
         $con->set_charset("utf8");
-        for($i = 0; $i < $numfiles; $i ++){
-            $sql = "insert into hinhanh(duongdan, dongvat_id) values ('".'uploads/'.$names[$i]."', '".$iddv."');";
-     //       echo $sql;
+        for ($i = 0; $i < $numfiles; $i++) {
+            $sql = "insert into hinhanh(duongdan, dongvat_id) values ('" . 'uploads/' . $names[$i] . "', '" . $iddv . "');";
+            //       echo $sql;
             $con->query($sql);
         }
     }
 
-    for ($i = $tongtoado; $i < 5; $i++) {
+    //for ($i = $tongtoado; $i < 5; $i++) {
+    for ($i = 1; $i < 10; $i++) {
         $row = $result->fetch_assoc();
         $con = new mysqli("localhost", "root", "", "web_animal");
         $con->set_charset("utf8");
         if (!empty($tdo[$i])) {
-            $sql = "insert into toado (toado, dongvat_id) values ('".$tdo[$i]."', '".$iddv."');";
+            $sql = "insert into toado (toado, dongvat_id) values ('" . $tdo[$i] . "', '" . $iddv . "');";
             //echo $sql . "<br>";
             $con->query($sql);
         }
     }
+    header('Location: animal.php');
 }
 ?>
 
