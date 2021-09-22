@@ -146,7 +146,7 @@ if (isset($_GET["iddv"])) {
                                     for ($i = 0; $i < $tonghinh; $i++) {
                                         if ($hinhanh[$i] != null) {
                                             echo "<tr>";
-                                            echo "<td>Hình ảnh " . $i + 1 . ":</td>";
+                                            echo "<td>Hình ảnh " . (($i + 1)) . ":</td>";
                                             echo "<td><input type='file' class='form-control' size='20' name='hinhanh" . $i . "'>";
                                             echo "<img src='" . $hinhanh[$i] . "' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px; margin-right: 10px;'>";
                                             echo "</td>";
@@ -196,7 +196,7 @@ if (isset($_GET["iddv"])) {
                                     for ($i = 0; $i < $tongtoado; $i++) {
                                         if ($td[$i] != null) {
                                             echo "<tr>";
-                                            echo "<td>Tạo độ " . $i + 1 . ":</td>";
+                                            echo "<td>Tạo độ " . ($i + 1) . ":</td>";
                                             echo "<td><input type='text' class='form-control' size='20' name='toado" . $i . "' value='" . $td[$i] . "'></td>";
                                             echo "</tr>";
                                         }
