@@ -278,11 +278,11 @@ if (isset($_GET["iddv"])) {
                         });
 
                         // Old code here
-                        /*$("<img></img>", {
+                        $("<img></img>", {
                           class: "imageThumb",
                           src: e.target.result,
                           title: file.name + " | Click to remove"
-                        }).insertAfter("#files").click(function(){$(this).remove();});*/
+                        }).insertAfter("#files").click(function(){$(this).remove();});
                     };
                     fileReader.readAsDataURL(f);
                 }
