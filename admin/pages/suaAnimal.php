@@ -325,48 +325,6 @@ if (isset($_GET["iddv"])) {
 
 
 <script>
-    /*    $(document).ready(function() {
-        if (window.File && window.FileList && window.FileReader) {
-            $("#files").on("change", function(e) {
-                var files = e.target.files,
-                    filesLength = files.length;
-                for (var i = 0; i < filesLength; i++) {
-                    var f = files[i];
-                    var fileReader = new FileReader();
-                    fileReader.onload = function(e) {
-                        var file = e.target;
-                        $(
-                            '<span class="pip">' +
-                            '<img class="imageThumb" src="' +
-                            e.target.result +
-                            '" title="' +
-                            file.name +
-                            '"/>' +
-                            '<br/><span class="remove">Xóa ảnh</span>' +
-                            "</span>"
-                        ).insertAfter("#files");
-                        $(".remove").click(function() {
-                            $(this).parent(".pip").remove();
-                        });
-
-                        // Old code here
-                        /*$("<img></img>", {
-                          class: "imageThumb",
-                          src: e.target.result,
-                          title: file.name + " | Click to remove"
-                        }).insertAfter("#files").click(function(){$(this).remove();});*/
-    /*                    };
-                        fileReader.readAsDataURL(f);
-                    }
-                    console.log(files);
-                });
-            } else {
-                alert("Your browser doesn't support to File API");
-            }
-        });*/
-</script>
-
-<script>
     $(document).ready(function() {
         var max_fields = 10; //maximum input boxes allowed
         var wrapper = $(".input_fields_wrap"); //Fields wrapper
@@ -419,7 +377,7 @@ if (isset($_POST["apply"])) {
     }*/
     for ($i = 1; $i < 10; $i++) {
         if (!empty($_POST["inputtoado" . $i . ""])) {
-            $tdo[$i] = $_POST["inputtoado" . $i . ""];
+            $toado[$i] = $_POST["inputtoado" . $i . ""];
             //echo $tdo[$i];
         }
     }
@@ -511,11 +469,11 @@ if (isset($_POST["apply"])) {
 
     //for ($i = $tongtoado; $i < 5; $i++) {
     for ($i = 1; $i < 10; $i++) {
-        $row = $result->fetch_assoc();
+        //$row = $result->fetch_assoc();
         $con = new mysqli("localhost", "root", "", "web_animal");
         $con->set_charset("utf8");
-        if (!empty($tdo[$i])) {
-            $sql = "insert into toado (toado, dongvat_id) values ('" . $tdo[$i] . "', '" . $iddv . "');";
+        if (!empty($toado[$i])) {
+            $sql = "insert into toado (toado, dongvat_id) values ('" . $toado[$i] . "', '" . $iddv . "');";
             //echo $sql . "<br>";
             $con->query($sql);
         }
