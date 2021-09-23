@@ -65,9 +65,9 @@ if (isset($_POST["submit"])) {
 
 
     $sql_1 = "INSERT INTO dongvat (tenkhoahoc, tentiengviet, tendiaphuong, gioi, nganh, lop, bo, ho, hinhthai, sinhthai, giatri,
-            iucn, sachdo, nghidinh, cities, phanbo, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap, duongdan, nguoitao) VALUES
+            iucn, sachdo, nghidinh, cities, phanbo, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap, created_at,updated_at, duongdan, nguoitao) VALUES
             ('" . $tenkhoahoc . "', '" . $tentiengviet . "', '" . $tendiaphuong . "', '" . $gioi . "', '" . $nganh . "', '" . $lop . "', '" . $bo . "', '" . $ho . "', '" . $hinhthai . "', '"
-        . $sinhthai . "', '" . $giatri . "', '" . $iunc . "', '" . $sachdo . "', '" . $ndcp . "', '" . $cites . "', '" . $phanbo . "', '" . $tinhtrang . "', '" . $sinhcanh . "', '" . $diadiem . "', '" . $ngaythuthap . "', '" . $nguoithumau . "', '" . $duongdan . "', " . $_SESSION['user']['id'] . ");";
+        . $sinhthai . "', '" . $giatri . "', '" . $iunc . "', '" . $sachdo . "', '" . $ndcp . "', '" . $cites . "', '" . $phanbo . "', '" . $tinhtrang . "', '" . $sinhcanh . "', '" . $diadiem . "', '" . $ngaythuthap . "', '" . $nguoithumau . "', now(), now(), '" . $duongdan . "', " . $_SESSION['user']['id'] . ");";
     $con->query($sql_1);
 
 
