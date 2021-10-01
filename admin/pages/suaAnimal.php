@@ -94,7 +94,7 @@ if (isset($_GET["iddv"])) {
     $row = $count->fetch_assoc();
     //echo $row['tonghinh'];
     $tongtoado = $row['tongtoado'];
-    echo $tongtoado;
+    //echo $tongtoado;
     for ($i = 0; $i < $tongtoado; $i++) {
         $td[$i] = isset($toado[$i]) ? $toado[$i] : null;
     }
@@ -502,7 +502,7 @@ if (isset($_POST["apply"])) {
         }
     }
 
-    //header('Location: animal.php');
+    header('Location: animal.php');
 }
 ob_flush();
 ?>

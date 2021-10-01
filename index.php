@@ -24,6 +24,7 @@ if ($op == 'chi-tiet') {
     foreach($animals as $_anm) {
         if($level1 == $_anm['duongdan']) {
             $id = $_anm['id'];
+            $_SESSION["animal_id"] = $id;
             break;
         }
     }
@@ -64,6 +65,7 @@ include ROOT . '/layout/footer-only.php';
         var id = <?php echo $id ?>;
         var textSearch = '<?php echo $textSearch ?>';
         if (id > 0) {
+            
             getAnimalInfo(id);
         }
         if (textSearch != '') {

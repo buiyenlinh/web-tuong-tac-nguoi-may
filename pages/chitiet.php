@@ -21,7 +21,84 @@
             </div>
           </div>
           <div class="col-2">
-            This is map
+            <div id="map-canvas" style="height: 425px; width: 150px;"></div>
+            <?php
+            $iddv = $_SESSION['animal_id'];
+            $con = new mysqli("localhost", "root", "", "web_animal");
+            $con->set_charset("utf8");
+            $sql = "SELECT * FROM toado WHERE dongvat_id = " . $iddv . "";
+            $result = $con->query($sql);
+            if ($result->num_rows > 0) {
+              $i = 1; //Dat bien i truoc tien de khoi tao chay trong while
+              while ($row = $result->fetch_assoc()) {
+                $toado[$i] = "new google.maps.LatLng(" . $row['toado'] . ")";
+                //echo $toado[$i]."<br>";
+                $i++;
+              }
+            }
+            $str = "";
+            for ($j = 1; $j < $i; $j++) {
+              if (empty($str)) {
+                $str = $str . $toado[$j];
+              } else {
+                $str = $str . ", " . $toado[$j];
+              }
+            }
+            //echo $str;
+            ?>
+            <script type="text/javascript">
+              var draggablePolygon;
+
+              function InitMap() {
+                var location = new google.maps.LatLng(9.571747, 105.736019);
+                var mapOptions = {
+                  zoom: 13,
+                  center: location,
+                  mapTypeId: google.maps.MapTypeId.RoadMap
+                };
+                var map = new google.maps.Map(document.getElementById('map-canvas'),
+                  mapOptions);
+
+
+                var shapeCoordinates = [
+                  <?php
+                  echo $str;
+                  ?>
+                  /*new google.maps.LatLng(9.563974, 105.742907),
+                  new google.maps.LatLng(9.574045, 105.734023),
+                  new google.maps.LatLng(9.575835, 105.739572),
+                  new google.maps.LatLng(9.566833, 105.733836)*/
+                ];
+                // Construct the polygon
+                draggablePolygon = new google.maps.Polygon({
+                  paths: shapeCoordinates,
+                  draggable: true,
+                  editable: true,
+                  strokeColor: '',
+                  strokeOpacity: 0.8,
+                  strokeWeight: 2,
+                  fillColor: '#ADFF2F',
+                  fillOpacity: 0.5
+                });
+                draggablePolygon.setMap(map);
+                google.maps.event.addListener(draggablePolygon, "dragend", Getpolygoncoordinates);
+                google.maps.event.addListener(draggablePolygon.getPath(), "insert_at", Getpolygoncoordinates);
+                google.maps.event.addListener(draggablePolygon.getPath(), "remove_at", Getpolygoncoordinates);
+                google.maps.event.addListener(draggablePolygon.getPath(), "set_at", Getpolygoncoordinates);
+              }
+
+              function Getpolygoncoordinates() {
+                var len = draggablePolygon.getPath().getLength();
+                var strArray = "";
+                for (var i = 0; i < len; i++) {
+                  strArray += draggablePolygon.getPath().getAt(i).toUrlValue(5) + "<br>";
+                }
+                document.getElementById('info').innerHTML = strArray;
+              }
+            </script>
+            <?php
+            //echo $_SESSION['animal_id'];
+            ?>
           </div>
         </div>
       </div>
