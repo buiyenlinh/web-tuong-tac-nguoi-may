@@ -13,7 +13,7 @@ if(isset($_GET['data'])){
     echo "Lỗi kết nối: " . mysqli_connect_error();
     }
     
-    $sql = "SELECT DISTINCT tenkhoahoc, id FROM dongvat WHERE tenkhoahoc LIKE '$data%' or tentiengviet LIKE '$data%' or tendiaphuong LIKE '$data%'".";";
+    $sql = "SELECT DISTINCT tenkhoahoc, id FROM dongvat WHERE tenkhoahoc LIKE '%$data%' or tentiengviet LIKE '%$data%' or tendiaphuong LIKE '%$data%'".";";
     $result = mysqli_query($con, $sql);
     $row = $result->fetch_assoc();
     $i=1;

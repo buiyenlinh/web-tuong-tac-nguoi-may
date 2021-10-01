@@ -94,7 +94,7 @@ if (isset($_GET["iddv"])) {
     $row = $count->fetch_assoc();
     //echo $row['tonghinh'];
     $tongtoado = $row['tongtoado'];
-    //echo $tongtoado;
+    echo $tongtoado;
     for ($i = 0; $i < $tongtoado; $i++) {
         $td[$i] = isset($toado[$i]) ? $toado[$i] : null;
     }
@@ -217,7 +217,7 @@ if (isset($_GET["iddv"])) {
                                     for ($i = 0; $i < $tongtoado; $i++) {
                                         if ($td[$i] != null) {
                                             echo "<tr>";
-                                            echo "<td>Tạo độ " . ($i + 1) . ":</td>";
+                                            echo "<td>Tọa độ " . ($i + 1) . ":</td>";
                                             echo "<td><input type='text' class='form-control' size='20' name='toado" . $i . "' value='" . $td[$i] . "'></td>";
                                             echo "</tr>";
                                         }
@@ -389,14 +389,15 @@ if (isset($_POST["apply"])) {
     $cites = $_POST['citessua'];
     $phanbo = $_POST['phanbosua'];
     for ($i = 0; $i < $tongtoado; $i++) {
-        $tdo[$i] = $_POST["toado" . $i . ""];
+        $tdo[$i] = $_POST["toado" . $i];
+        echo $tdo[$i]."<br>";
     }
     /*for ($i = $tongtoado; $i < 5; $i++) {
         $tdo[$i] = $_POST["toado" . $i . ""];
     }*/
     for ($i = 1; $i < 10; $i++) {
-        if (!empty($_POST["inputtoado" . $i . ""])) {
-            $toado[$i] = $_POST["inputtoado" . $i . ""];
+        if (!empty($_POST["inputtoado" . $i])) {
+            $addtoado[$i] = $_POST["inputtoado" . $i];
             //echo $tdo[$i];
         }
     }
@@ -423,8 +424,8 @@ if (isset($_POST["apply"])) {
     //echo $sql."<br>";
     $con->query($sql);
 
-    $sql = "SELECT * from hinhanh WHERE dongvat_id = " . $iddv . ";";
-    $result = $con->query($sql);
+    $sql_1 = "SELECT * from hinhanh WHERE dongvat_id = " . $iddv . ";";
+    $result = $con->query($sql_1);
     //$row = $count->fetch_assoc();
     for ($i = 0; $i < $tonghinh; $i++) {
         $row = $result->fetch_assoc();
@@ -432,21 +433,21 @@ if (isset($_POST["apply"])) {
         $con = new mysqli("localhost", "root", "", "web_animal");
         $con->set_charset("utf8");
         if (!empty($hinhanh[$i]['name'])) {
-            $sql = "UPDATE hinhanh SET duongdan = '" . 'uploads/' . $hinhanh[$i]['name'] . "' WHERE id = " . $row['id'] . ";";
+            $sql_2 = "UPDATE hinhanh SET duongdan = '" . 'uploads/' . $hinhanh[$i]['name'] . "' WHERE id = " . $row['id'] . ";";
             //echo $sql . "<br>";
-            $con->query($sql);
+            $con->query($sql_2);
         }
     }
-    $sql = "SELECT * from toado WHERE dongvat_id = " . $iddv . ";";
-    $result = $con->query($sql);
+    $sql_3 = "SELECT * from toado WHERE dongvat_id = " . $iddv . ";";
+    $result = $con->query($sql_3);
     for ($i = 0; $i < $tongtoado; $i++) {
         $row = $result->fetch_assoc();
         $con = new mysqli("localhost", "root", "", "web_animal");
         $con->set_charset("utf8");
         if (!empty($tdo[$i])) {
-            $sql = " UPDATE toado SET toado = '" . $tdo[$i] . "' WHERE id = " . $row['id'] . ";";
-            //echo $sql . "<br>";
-            $con->query($sql);
+            $sql_4 = " UPDATE toado SET toado = '" . $tdo[$i] . "' WHERE id = " . $row['id'] . ";";
+            echo $sql_4 . "<br>";
+            $con->query($sql_4);
         }
     }
 
@@ -483,9 +484,9 @@ if (isset($_POST["apply"])) {
         //echo "Tổng số file upload: " .$numfiles;
         $con->set_charset("utf8");
         for ($i = 0; $i < $numfiles; $i++) {
-            $sql = "insert into hinhanh(duongdan, dongvat_id) values ('" . 'uploads/' . $names[$i] . "', '" . $iddv . "');";
+            $sql_5 = "insert into hinhanh(duongdan, dongvat_id) values ('" . 'uploads/' . $names[$i] . "', '" . $iddv . "');";
             //       echo $sql;
-            $con->query($sql);
+            $con->query($sql_5);
         }
     }
 
@@ -494,14 +495,14 @@ if (isset($_POST["apply"])) {
         //$row = $result->fetch_assoc();
         $con = new mysqli("localhost", "root", "", "web_animal");
         $con->set_charset("utf8");
-        if (!empty($toado[$i])) {
-            $sql = "insert into toado (toado, dongvat_id) values ('" . $toado[$i] . "', '" . $iddv . "');";
-            //echo $sql . "<br>";
-            $con->query($sql);
+        if (!empty($addtoado[$i])) {
+            $sql_6 = "insert into toado (toado, dongvat_id) values ('" . $addtoado[$i] . "', '" . $iddv . "');";
+            echo $sql_6 . "<br>";
+            $con->query($sql_6);
         }
     }
 
-    header('Location: animal.php');
+    //header('Location: animal.php');
 }
 ob_flush();
 ?>
