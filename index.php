@@ -15,10 +15,17 @@ $array_op = array(
 
 $id = 0; // id kiểm tra có tồn tại đường dẫn nhập trong bảng động vật -> 0 : ko tồn tại
 $textSearch = '';
+
+if (!isset($array_op[$op])) {
+    header('Location: ' . BASE . 'loi');
+    exit();
+} 
+
 if ($op == 'chi-tiet') {
     if (empty($level1)) {
         header('Location: ' . BASE . 'loi');
         exit();
+        // $op = 'loi';
     }
     $animals = $db->query('SELECT id, duongdan FROM dongvat')->fetchAll();
     foreach($animals as $_anm) {
@@ -40,6 +47,7 @@ if ($op == 'chi-tiet') {
         if (!empty($level2)) {
             Header('Location: ' . BASE . 'loi');
             exit();
+            // $op = 'loi';
         } else {
             $textSearch = str_replace('-', ' ', $level1);
         }

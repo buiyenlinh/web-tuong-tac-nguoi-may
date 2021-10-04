@@ -29,22 +29,22 @@ include '../layout/header-only.php';
                           <i class="fas fa-plus"></i> Thêm
                         </button>
                       </div>
-                      
-                      <table class="table table-striped table-bordered text-center">
-                        <thead class="bg-info text-light">
-                          <th>Tên đăng nhập</th>
-                          <th>Tên hiển thị</th>
-                          <th>Quyền người dùng</th>
-                          <th>Ngày sinh</th>
-                          <th>Giới tính</th>
-                          <th>Số điện thoại</th>
-                          <th>Địa chỉ</th>
-                          <th>Thời gian tạo</th>
-                          <th>Thao tác</th>
-                        </thead>
-                        <tbody class="list-users-body"></tbody>
-                      </table>
-                      
+                      <div class="table-responsive">
+                        <table class="table table-striped table-bordered text-center">
+                          <thead class="bg-info text-light">
+                            <th>Tên đăng nhập</th>
+                            <th>Tên hiển thị</th>
+                            <th>Quyền người dùng</th>
+                            <th>Ngày sinh</th>
+                            <th>Giới tính</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <th>Thời gian tạo</th>
+                            <th>Thao tác</th>
+                          </thead>
+                          <tbody class="list-users-body"></tbody>
+                        </table>
+                      </div>
                       <div class="modal fade" id="add-user-modal">
                         <div class="modal-dialog modal-dialog-scrollable">
                           <div class="modal-content">
@@ -79,7 +79,7 @@ include '../layout/header-only.php';
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-info pl-4 pr-4 user-form__button__add rounded-0">Lưu</button>
                                 <button type="reset" class="user-form__button__reset d-none"></button>
-                                <button type="button" class="btn btn-light rounded-0 close-modal-add-user" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-light rounded-0 close-modal-add-user" data-dismiss="modal">Thoát</button>
                               </div>
                               </form>
                           </div>

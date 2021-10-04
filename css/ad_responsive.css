@@ -1,0 +1,37 @@
+@media screen and (max-width: 950px) {
+  .layout-wrap {
+    position: relative;
+  }
+
+  .layout-left {
+    position: absolute;
+    left: -200px;
+    z-index: 100;
+    top: 63px;
+    transition: all ease-in-out 0.3s;
+  }
+
+  .layout-right {
+    width: 100%;
+    border-left: none;
+  }
+
+  #icon-bars {
+    display: inline-block !important;
+  }
+
+  .table th,
+  .table td {
+    white-space: nowrap;
+  }
+
+  .login-form, .forget-password-form {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .login-form, .forget-password-form {
+    width: 90%;
+  }
+}

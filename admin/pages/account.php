@@ -25,14 +25,14 @@ include '../layout/header-only.php';
                         <div class="account__right p-3">
                             <div class="account__right__info">
                                 <div class="row">
-                                    <div class="col-2">
+                                    <div class="col-md-2 col-sm-5 col-xs-12 mb-2">
                                         <div class="account__info__left--avt">
                                             <img src="" alt="">
                                             <i class="fas fa-edit  icon-edit-avt" title="Thay đổi ảnh đại diện"></i>
                                             <input type="file" class="account__info__left--avt-file" id="account__info__left--avt-file">
                                         </div>
                                     </div>
-                                    <div class="col-10">
+                                    <div class="col-md-10 col-sm-7 col-xs-12">
                                         <div class="account__info__right">
                                             <h3 class="account__info__right--name"></h3>
                                             <div class="d-flex">

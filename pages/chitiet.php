@@ -6,7 +6,7 @@
       </div>
       <div class="details-content mt-3 ">
         <div class="row">
-          <div class="col-5">
+          <div class="col-md-4 col-sm-12 col-xs-12">
             <div class="details-content-left">
               <div class="details-content-img mb-3 p-2">
                 <img src="" alt="">
@@ -14,14 +14,15 @@
               <ul class="details-content-img-list d-flex"></ul>
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-md-5 col-sm-12 col-xs-12">
             <div class="details-content-center">
-              <div class="text-info pb-2 font-weight-bold">THÔNG TIN</div>
+              <!-- <div class="text-info pb-2 font-weight-bold">THÔNG TIN</div> -->
+              <div class="details-title text-info font-weight-bold pb-2 pt-2"><span>THÔNG TIN</span></div>
               <ul class="details-content-center-info"></ul>
             </div>
           </div>
-          <div class="col-2">
-            <div id="map-canvas" style="height: 425px; width: 150px;"></div>
+          <div class="col-md-3 col-sm-12 col-xs-12" style="margin-bottom: 10px;">
+            <div id="map-canvas" style="height: 300px; width: 100%;"></div>
             <?php
             $iddv = $_SESSION['animal_id'];
             $con = new mysqli("localhost", "root", "", "web_animal");

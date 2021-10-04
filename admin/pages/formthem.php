@@ -25,254 +25,256 @@ include '../layout/header-only.php';
                             <form action="themAnimal.php" accept-charset="UTF-8" enctype="multipart/form-data" method="POST" target="">
                                 <div class="form-group">
                                     <div class="gridtable">
-                                        <table class="table table-striped table-bordered">
-                                            <thead class="bg-primary text-center">
-                                                <tr>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail">Tên khoa học</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputkhoahoc" class="form-control" id="inputkhoahoc" placeholder="Nhập tên khoa học" required="required">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tên tiếng Việt</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputtiengviet" class="form-control" id="inputtiengviet" required="required" placeholder="Nhập tên tiếng Việt">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tên địa phương</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputdiaphuong" class="form-control" id="inputdiaphuong" required="required" placeholder="Nhập tên địa phương">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Giới</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputgioi" class="form-control" id="inputgioi" required="required" placeholder="Nhập giới">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Ngành</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputnganh" class="form-control" id="inputnganh" required="required" placeholder="Nhập ngành">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Lớp</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputlop" class="form-control" id="inputlop" required="required" placeholder="Nhập lớp">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Bộ</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputbo" class="form-control" id="inputbo" required="required" placeholder="Nhập bộ">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Họ</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputho" class="form-control" id="inputho" required="required" placeholder="Nhập họ">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail">Mô tả đặc điểm hình thái</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputhinhthai" class="form-control" id="inputhinhthai" placeholder="Nhập đặc điểm hình thái">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Mô tả đặc điểm sinh thái</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputsinhthai" class="form-control" id="inputsinhthai" placeholder="Nhập đặc Điểm sinh thái">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Giá trị sử dụng:</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputgiatri" class="form-control" id="inputgiatri" placeholder="Nhập giá trị sử dụng">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tình trạng bảo tồn theo IUCN:</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputiucn" class="form-control" id="inputiucn" placeholder="Nhập IUCN">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tình trạng bảo tồn theo sách đỏ Việt Nam:</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputsachdo" class="form-control" id="inputsachdo" placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputndcp" class="form-control" id="inputndcp" placeholder="Nhập NĐCP">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputcites" class="form-control" id="inputcites" placeholder="Nhập CITES">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Phân bố:</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputphanbo" class="form-control" id="inputphanbo" placeholder="Nhập phân bố">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tọa độ 1</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputtoado1" class="form-control" id="inputtoado1" placeholder="Nhập tọa độ 1">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tọa độ 2</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputtoado2" class="form-control" id="inputtoado2" placeholder="Nhập tọa độ 2">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tọa độ 3</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputtoado3" class="form-control" id="inputtoado3" placeholder="Nhập tọa độ 3">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tọa độ 4</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputtoado4" class="form-control" id="inputtoado4" placeholder="Nhập tọa độ 4">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tọa độ 5</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputtoado5" class="form-control" id="inputtoado5" placeholder="Nhập tọa độ 5">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Tình trạng mẫu vật:</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputtinhtrang" class="form-control" id="inputtinhtrang" placeholder="Nhập tình trạng mẫu vật">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Sinh cảnh</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputsinhcanh" class="form-control" id="inputsinhcanh" placeholder="Nhập sinh cảnh">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Địa điểm</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputdiadiem" class="form-control" id="inputdiadiem" placeholder="Nhập địa điểm">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Ngày thu mẫu</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputngaythuthap" class="form-control" id="inputngaythuthap" placeholder="Nhập ngày thu mẫu">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label for="inputAnimail" required="required">Người thu mẫu</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="inputnguoithumau" class="form-control" id="inputnguoithumau" placeholder="Nhập người thu mẫu">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <!-- <td>
-                                                        <label for="inputAnimail" required="required">Đường dẫn</label>
-                                                    </td> -->
-                                                    <!-- <td>
-                                                        <input type="text" name="inputduongdan" class="form-control" id="inputduongdan" placeholder="Đường dẫn">
-                                                    </td> -->
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <!-- <hr> -->
-                                                        <div class="form-group mt-3 field">
-                                                            <label for="inputAnimail" required="required">Thêm hình</label>
-                                                            <!--<input type="file" name="fileupload[]" multiple="multiple" /> -->
-                                                    </td>
-                                                    <td>
-                                                        <!--<input type="file" id="files" name="fileupload[]" multiple="multiple" />-->
-                                                        <!--<p><input type="submit" name="upload" value="Upload File"/></p>-->
-                                                        <input type="file" name="fileupload[]" id="files" multiple required>
-                                                        <div class="form-group">
-                                                            <div id="image_preview"></div>
-                                                        </div>
-                                                        <!-- <hr> -->
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                        <button type="submit" class="btn btn-info" name="submit"  value="Upload File">Thêm Động Vật</button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered">
+                                                <thead class="bg-primary text-center">
+                                                    <tr>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail">Tên khoa học</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputkhoahoc" class="form-control" id="inputkhoahoc" placeholder="Nhập tên khoa học" required="required">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tên tiếng Việt</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtiengviet" class="form-control" id="inputtiengviet" required="required" placeholder="Nhập tên tiếng Việt">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tên địa phương</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputdiaphuong" class="form-control" id="inputdiaphuong" required="required" placeholder="Nhập tên địa phương">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Giới</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputgioi" class="form-control" id="inputgioi" required="required" placeholder="Nhập giới">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Ngành</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputnganh" class="form-control" id="inputnganh" required="required" placeholder="Nhập ngành">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Lớp</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputlop" class="form-control" id="inputlop" required="required" placeholder="Nhập lớp">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Bộ</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputbo" class="form-control" id="inputbo" required="required" placeholder="Nhập bộ">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Họ</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputho" class="form-control" id="inputho" required="required" placeholder="Nhập họ">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail">Mô tả đặc điểm hình thái</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputhinhthai" class="form-control" id="inputhinhthai" placeholder="Nhập đặc điểm hình thái">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Mô tả đặc điểm sinh thái</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputsinhthai" class="form-control" id="inputsinhthai" placeholder="Nhập đặc Điểm sinh thái">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Giá trị sử dụng:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputgiatri" class="form-control" id="inputgiatri" placeholder="Nhập giá trị sử dụng">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tình trạng bảo tồn theo IUCN:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputiucn" class="form-control" id="inputiucn" placeholder="Nhập IUCN">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tình trạng bảo tồn theo sách đỏ Việt Nam:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputsachdo" class="form-control" id="inputsachdo" placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputndcp" class="form-control" id="inputndcp" placeholder="Nhập NĐCP">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputcites" class="form-control" id="inputcites" placeholder="Nhập CITES">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Phân bố:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputphanbo" class="form-control" id="inputphanbo" placeholder="Nhập phân bố">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tọa độ 1</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtoado1" class="form-control" id="inputtoado1" placeholder="Nhập tọa độ 1">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tọa độ 2</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtoado2" class="form-control" id="inputtoado2" placeholder="Nhập tọa độ 2">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tọa độ 3</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtoado3" class="form-control" id="inputtoado3" placeholder="Nhập tọa độ 3">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tọa độ 4</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtoado4" class="form-control" id="inputtoado4" placeholder="Nhập tọa độ 4">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tọa độ 5</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtoado5" class="form-control" id="inputtoado5" placeholder="Nhập tọa độ 5">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tình trạng mẫu vật:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtinhtrang" class="form-control" id="inputtinhtrang" placeholder="Nhập tình trạng mẫu vật">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Sinh cảnh</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputsinhcanh" class="form-control" id="inputsinhcanh" placeholder="Nhập sinh cảnh">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Địa điểm</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputdiadiem" class="form-control" id="inputdiadiem" placeholder="Nhập địa điểm">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Ngày thu mẫu</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputngaythuthap" class="form-control" id="inputngaythuthap" placeholder="Nhập ngày thu mẫu">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Người thu mẫu</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputnguoithumau" class="form-control" id="inputnguoithumau" placeholder="Nhập người thu mẫu">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <!-- <td>
+                                                            <label for="inputAnimail" required="required">Đường dẫn</label>
+                                                        </td> -->
+                                                        <!-- <td>
+                                                            <input type="text" name="inputduongdan" class="form-control" id="inputduongdan" placeholder="Đường dẫn">
+                                                        </td> -->
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <!-- <hr> -->
+                                                            <div class="form-group mt-3 field">
+                                                                <label for="inputAnimail" required="required">Thêm hình</label>
+                                                                <!--<input type="file" name="fileupload[]" multiple="multiple" /> -->
+                                                        </td>
+                                                        <td>
+                                                            <!--<input type="file" id="files" name="fileupload[]" multiple="multiple" />-->
+                                                            <!--<p><input type="submit" name="upload" value="Upload File"/></p>-->
+                                                            <input type="file" name="fileupload[]" id="files" multiple required>
+                                                            <div class="form-group">
+                                                                <div id="image_preview"></div>
+                                                            </div>
+                                                            <!-- <hr> -->
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-info" name="submit"  value="Upload File">Thêm Động Vật</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </form>

@@ -69,7 +69,7 @@ function getAnimalInfo(animal_id) {
     myPost('get-animal-info', 'animal-id=' + animal_id, function(json) {
         if (json.status == 'OK') {
             console.log(json.data)
-            $('.details-header b').text(json.data.tenkhoahoc);
+            $('.details-header b').text(json.data.info.tenkhoahoc);
 
             for (let i in json.data.img) {
                 if (i ==0) {

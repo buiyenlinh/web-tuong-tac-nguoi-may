@@ -6,8 +6,8 @@ body {
 }
 
 .container {
-    width: 1100px;
-    padding: 0px;
+    width: 1100px;  
+    margin: 0 auto;
 }
 
 ul { 
@@ -32,7 +32,6 @@ img {
 .header {
     padding: 20px 10px;
 }
-
 
 /* TRANG CHỦ */
 .home-list-ul-item {
@@ -106,21 +105,23 @@ img {
     width: 50%;
 }
 
+/* search page */
+.search-page {
+    min-height: 650px;
+}
+
 /* FOOTER */
-.footer {
-    padding: 3rem;
-    border-top: 1px solid #ddd; 
+
+#footer {
+    border-top: 1px solid #ddd;
+    padding: 15px 0px;
+    background-color: #333;
+    color: #fff;
+    position: sticky;
+    bottom: 0px;
 }
 
-.footer__left__logo img {
-    width: 200px;
-}
-
-.footer__left__contact .fas {
-    color: #17a2b8;
-}
-
-
-.copyright {
-    background: black;
+/* error page */
+.error {
+    min-height: 650px;
 }
