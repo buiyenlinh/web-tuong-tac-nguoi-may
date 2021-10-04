@@ -1,4 +1,7 @@
 <div class="menu-left">
+    <div class="p-3">
+        <b class="text-light">DANH MỤC</b>
+    </div>
     <ul class="nav justify-content-center flex-column">
         <li class="nav-item nav-item-animal">
             <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/animal.php">

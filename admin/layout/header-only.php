@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo BASE?>bootstrap/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href=" <?php echo BASE ?>css/ad_style.css" >
+    <link rel="stylesheet" href=" <?php echo BASE ?>css/ad_responsive.css" >
 </head>
 <body>
     

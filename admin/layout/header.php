@@ -1,5 +1,6 @@
 <div id="header">
     <div class="header d-flex justify-content-between p-3">
+        <i class="fas fa-bars text-light" style="font-size: 25px; display: none" id="icon-bars"></i>
         <div class="header__slogan text-light">
             <i class="fas fa-frog"></i>
             <b>ANIMALS</b>
@@ -8,9 +9,31 @@
             <span class="header-avt-user">
                 <img src="" alt="">
             </span>
-            <span class="header__logout pr-2 text-light" id="logout" data-target="#logout-modal" data-toggle="modal">
-                <i class="fas fa-sign-out-alt pr-1"></i><b>Logout</b>
-            </span>
+            <div class="header-account">
+                <ul>
+                    <li style="display: flex; align-items: center">
+                        <img src="" alt="">
+                        <div class="ml-2">
+                            <span class="header-account-name"></span>
+                            <span class="header-account-username" style="font-size: 14px"></span>
+                        </div>
+                    </li>
+                    <li class="mt-2">
+                        <span
+                            class="pr-2 text-light"
+                            id="logout"
+                            data-target="#logout-modal"
+                            data-toggle="modal"
+                        >
+                            <span class="text-info text-logout">
+                                <i class="fas fa-sign-out-alt pr-1"></i><b>Đăng xuất</b>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+                
+            </div>
+            
         </div>
     </div>
 

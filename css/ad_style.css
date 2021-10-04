@@ -47,18 +47,41 @@ ul {
     height: 100%;
 }
 .layout-right {
-    /* width: 85%;
-    padding: 0px 10px; */
     float: left;
     width: calc(100% - 200px);
     height: 100%;
-    /* background: #eee; */
     border-left: 1px solid #ddd;
 }
 
 .layout-right-header {
   width: 100%;
-  /* height: 80px; */
+}
+
+.header__logout {
+  position: relative;
+}
+
+.header-account {
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  z-index: 10;
+  width: 220px;
+  background-color: #fff;
+  display: none;
+  padding: 10px;
+  border: 1px solid #0a4a5e;
+}
+
+.header-account:hover {
+  display: inline-block;
+}
+
+.header-avt-user {
+  padding: 20px 10px;
+}
+.header-avt-user:hover + .header-account {
+  display: inline-block;
 }
 
 .layout-right-content {
@@ -141,10 +164,20 @@ ul {
 .header__logout { 
   cursor: pointer;
 }
+#logout:hover .text-logout{
+  color: #0a4a5e !important;
+}
 
 .header-avt-user img {
   width: 30px;
   height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.header-account img {
+  width: 45px;
+  height: 45px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -167,6 +200,7 @@ ul {
 .update-user-error-alert { display: none; }
 
 .toggle-delete-modal { display: none; }
+
 
 /* --------------------------------- ACCOUNT --------------------------------- */
 .account__info__left--avt-file { display: none !important; }
@@ -223,7 +257,8 @@ ul {
 
 .main-search {
   width: 50%;
-  margin: 50px auto;
+  /* margin: 50px auto; */
+  position: relative;
 }
 
 /* Bootstrap 4 text input with search icon */

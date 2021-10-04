@@ -261,12 +261,6 @@
                             echo $updated_at;
                         ?>
                         </li>
-                        <li>
-                        <?php 
-                            echo "<b>Đường dẫn:</b> </br>";
-                            echo $duongdan;
-                        ?>
-                        </li>
                     </ol>
                 </div>
                 

@@ -4,6 +4,7 @@
             <div class="login-form pt-3">
                 <h2 class="text-info">Đăng nhập !!!</h2>
                 <form action="" method="post">
+                    <div class="text-danger error-login"></div>
                     <div class="form-group">
                         <label for="login_username"><b>Tên đăng nhập <i class="text-danger">*</i></b></label>
                         <input type="text" class="form-control" id="login_username" name="username" placeholder="Nhập...">
@@ -36,6 +37,7 @@
             <div class="forget-password-form">
                 <h2 class="text-info mb-4">Quên mật khẩu !!!</h2>
                 <form action="" method="post">
+                    <div class="text-danger error-change-password"></div>
                     <div class="form-group">
                         <label for="login_username"><b>Tên đăng nhập <i class="text-danger">*</i></b></label>
                         <input type="text" class="form-control" id="forget_username" name="username" placeholder="Nhập...">

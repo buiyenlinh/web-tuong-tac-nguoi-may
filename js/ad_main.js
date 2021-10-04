@@ -36,10 +36,9 @@ function login(form) {
     var data = $(form).serialize();
     myPost('login', data, function(json) {
         if (json['status'] == 'OK') {
-            console.log('Đăng nhập thành công');
             window.location.reload();
         } else {
-            alert(json['error']);
+            $('.error-login').text(json['error']);
         }
     })
 }
@@ -338,6 +337,9 @@ function getInfoAccount() {
 
             // avt header
             $('.header-avt-user img').attr('src', BASE + json.data.anhdaidien);
+            $('.header-account img').attr('src', BASE + json.data.anhdaidien);
+            $('.header-account-name').text(json.data.tenhienthi)
+            $('.header-account-username').text(json.data.tendangnhap)
             if (json['data']['gioitinh'] == 0) {
                 $('.account_female').attr('checked', true);
             } else {
@@ -450,14 +452,15 @@ function forgetPassword(form) {
         checkEmpty = true;
     }
 
-    myPost('forget-password', data, function(json) {
-        if (json.status == 'OK') {
-            console.log(json);
-            $('.login-back').click();
-        } else {
-            alert(json.error);
-        }
-    })
+    if (!checkEmpty) {
+        myPost('forget-password', data, function(json) {
+            if (json.status == 'OK') {
+                $('.login-back').click();
+            } else {
+                $('.error-change-password').text(json.error);
+            }
+        })
+    }
 }
 
 $(function() {
@@ -525,10 +528,15 @@ $(function() {
     $('.go-forget-password').on('click', function() {
         $('.forget-password-form').show();
         $('.login-form').hide();
+        $('#login_username').val('')
+        $('#login_password').val('')
     })
     $('.login-back').on('click', function() {
         $('.forget-password-form').hide();
         $('.login-form').show();
+        $('#forget_username').val('')
+        $('#forget_new_password').val('')
+        $('#forget_check_password').val('')
     })
 
     $('form').on('click', '#forget_password_submit', function() {
@@ -634,5 +642,15 @@ $(function() {
         } else {
             $('.update-user-username-alert').hide();
         }
+    })
+
+    var checkBars = false;
+    $('#icon-bars').on('click', function() {
+        if (!checkBars) {
+            $('.layout-left').css('left', '0px');
+        } else {
+            $('.layout-left').css('left', '-200px');
+        }
+        checkBars = !checkBars;
     })
 })

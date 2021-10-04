@@ -1,4 +1,4 @@
-<div class="search">
+<div class="search-page">
   <div class="container">
     <div class="search-result mt-3">
       <div class="search-title">
