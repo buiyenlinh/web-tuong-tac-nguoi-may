@@ -28,27 +28,31 @@ ul {
     margin: 0px;
 }
 
+
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: none;
+}
+.back-to-top i {
+  font-size: 30px;
+}
+
 /* layout */
 .layout-wrap {
-    /* display: flex;
-    justify-content: start; */
     width: 100%;
     height: 100%;
 }
 
 .layout-left {
-    /* width: 15%;
-    border-right: 1px solid #ddd;
-    background: #0e768d;
-    height: 100vh; */
-
     float: left;
-    width: 200px;
+    width: 230px;
     height: 100%;
 }
 .layout-right {
     float: left;
-    width: calc(100% - 200px);
+    width: calc(100% - 230px);
     height: 100%;
     border-left: 1px solid #ddd;
 }
@@ -113,7 +117,8 @@ ul {
 #main,
 #account-page,
 #users-page,
-#animal-list {
+#animal-list,
+#install-page {
   width: 100%;
   height: 100%;
 }
@@ -126,7 +131,8 @@ ul {
 
 #users-page .menu-left ul .nav-item-user,
 #account-page .menu-left ul .nav-item-account,
-#animal-list .menu-left ul .nav-item-animal { background: #0a4a5e }
+#animal-list .menu-left ul .nav-item-animal,
+#install-page .menu-left ul .nav-item-install { background: #0a4a5e }
 
 /*--------------------------------- LOGIN --------------------------------- */
 
@@ -463,4 +469,9 @@ input[type="file"] {
   width: 100px;
   height: 100px;
   object-fit: cover;
+}
+
+
+#install-favicon {
+  display: none;
 }

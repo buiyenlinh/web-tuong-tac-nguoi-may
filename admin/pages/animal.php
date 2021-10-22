@@ -1,5 +1,5 @@
 <?php
-include '../../config.php';
+// include '../../config.php';
 include '../layout/header-only.php';
 
 ?>
@@ -97,15 +97,13 @@ include '../layout/header-only.php';
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!--Danh sách động vật -->
         
     </div>
-
+                                            
     <!-- JS-->
-
     <script type="text/javascript">
         var elems = document.getElementsByClassName('confirmation');
         var confirmIt = function(e) {
@@ -153,11 +151,7 @@ include '../layout/header-only.php';
             xmlhttp.send();
         }
     </script>
-
     <!-- JS-->
-
-
-
 
 <?php endif; ?>
 <?php include '../layout/footer-only.php' ?>

@@ -19,7 +19,7 @@
             </a>
         </li>
         <li class="nav-item nav-item-install">
-            <a class="nav-link text-light" href="">
+            <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/install.php">
                 <i class="fas fa-cog"></i>&nbsp;Cài đặt
             </a>
         </li>

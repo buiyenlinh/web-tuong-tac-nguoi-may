@@ -286,6 +286,7 @@ function updateInfoAccount(form) {
     }
 
     var avt = $('#account__info__left--avt-file')[0].files[0];
+    
     var formData = new FormData();
     formData.append('action', 'update-info-account');
     formData.append('avt-user', avt);
@@ -463,7 +464,64 @@ function forgetPassword(form) {
     }
 }
 
+function updateInfoInstall(form) {
+    var website_name = form.website_name.value || '';
+    var footer_info = form.footer_info.value || '';
+    var favicon = $('#install-favicon')[0].files[0] || '';
+    var formData = new FormData();
+    formData.append('action', 'update-info-install');
+    formData.append('website_name', website_name);
+    formData.append('footer_info', footer_info);
+    formData.append('favicon', favicon);
+
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        url: api,
+        data: formData,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
+    }).done(function(json) {
+        if (json.status == 'OK') {
+            location.reload();
+        } else {
+            alert(json.error);
+        }
+    })
+}
+
+function getInfoInstall() {
+    myPost('get-info-install', '', function(json) {
+        if (json.status == 'OK') {
+            console.log('heerere');
+            console.log(json.data);
+            $('.website_name').val(json.data['tenwebsite']);
+            $('.footer_info').val(json.data['thongtinfooter']);
+        } else {
+            alert(json.error);
+        }
+    })
+}
+
+
 $(function() {
+    // scrollTop
+    $('.layout-right-content-details').scroll(function () {
+        if ($('.layout-right-content-details').scrollTop() > 30) {
+            $('#back-to-top').fadeIn();
+        } else {
+            $('#back-to-top').fadeOut();
+        }
+    });
+    
+    $('#back-to-top').on('click', function () {
+        $('.layout-right-content-details').animate({
+            scrollTop: 0
+        }, 400);
+        return false;
+    });
+    
     getListUsers();
     $('form').on('click', '#login_submit', function() {
         login(this.form);
@@ -497,12 +555,19 @@ $(function() {
         $('.account__info__left--avt-file').click();
     })
 
+    $('.account__info__left--avt-file').change(function() {
+        var avt = $('#account__info__left--avt-file')[0].files[0];
+        var previewAvatar = URL.createObjectURL(avt);
+        $('.account__info__left--avt img').attr('src', previewAvatar);
+    })
+
         // -------------- thay đổi username, name, avt ----------------
     $('form').on('click', '.profile-details-info--btn-change-info', function() {
         updateInfoAccount(this.form);
         return false;
     })
-    
+
+
         // ------------------- Lấy thông tin user -------------------
     getInfoAccount();
     getSumAnimalPost();
@@ -652,5 +717,16 @@ $(function() {
             $('.layout-left').css('left', '-200px');
         }
         checkBars = !checkBars;
+    })
+
+    $('form').on('click', '.install-btn-submit', function() {
+        updateInfoInstall(this.form);
+        return false;
+    })
+
+    getInfoInstall();
+
+    $('.install-btn-change-favicon').on('click', function() {
+        $('#install-favicon').click();
     })
 })

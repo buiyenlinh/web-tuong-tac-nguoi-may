@@ -280,6 +280,53 @@ else if ($action == 'forget-password') {
     $new_password = md5($new_password);
     $db->query('UPDATE nguoidung SET matkhau = ' . $db->quote($new_password) . ' WHERE tendangnhap = ' . $db->quote($username));
     _success('OK');
+
+} 
+
+// Cập nhật thông tin chung của webiste
+else if ($action == 'update-info-install') {
+    $website_name = _getString('website_name');
+    $footer_info = _getString('footer_info');
+
+    $install = $db->query('select * from caidat')->fetch();
+    $filename = '';
+
+    if ($website_name == '') {
+        $website_name = $install['tenwebsite'];
+    }
+
+    if ($footer_info == '') {
+        $footer_info = $install['thongtinfooter'];
+    }
+
+    if (isset($_FILES['favicon'])) {
+        if (!empty($_FILES['favicon']['name'])) {
+            $filename = 'avt/' . $_FILES['favicon']['name'];
+            move_uploaded_file($_FILES['favicon']['tmp_name'], $filename);
+        }
+    } else {
+        $filename = $install['favicon'];
+    }
+    if ($install) {
+        $db->query('update caidat
+        set tenwebsite = ' . $db->quote($website_name)
+        . ', thongtinfooter=' . $db->quote($footer_info)
+        . ', favicon=' . $db->quote($filename));
+    } else {
+        $db->query('insert caidat(tenwebsite, thongtinfooter, favicon)
+            values (' .  $db->quote($website_name)
+            . ', ' . $db->quote($footer_info)
+            . ', ' . $db->quote($filename) . ')');
+    }
+    
+    $install = $db->query('select * from caidat')->fetch();
+    _success('OK', $install);
+}
+
+// Get info install page
+else if ($action == 'get-info-install') {
+    $install = $db->query('select * from caidat')->fetch();
+    _success('OK', $install);
 }
 
 ?>

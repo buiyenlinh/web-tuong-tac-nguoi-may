@@ -189,6 +189,22 @@ function searchAnimal() {
 }
 
 $(function() {
+    $(window).scroll(function (){
+        if ($('html').scrollTop() > 70) {
+            $('#home-back-to-top').fadeIn();
+        } else {
+            $('#home-back-to-top').fadeOut();
+        }
+    });
+    
+    
+    $('#home-back-to-top').on('click', function () {
+        $('html').animate({
+            scrollTop: 0
+        }, 400);
+        return false;
+    });
+
     // Lấy danh sách động vật
     getListAnimals();
     // Search

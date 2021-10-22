@@ -2,11 +2,13 @@
     <div class="header">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-12 col-xs-12" style="display: flex; align-items: center">
-                    <a href="<?php echo BASE ?>" title="Trang chủ" style="margin-right: 5px"><i class="fas fa-home text-white"></i></a>
-                    <b class="text-white">ANIMALS</b>
+                <div class="col-md-3 col-sm-12 col-xs-12" style="display: flex; align-items: center">
+                    <a href="<?php echo BASE ?>" title="Trang chủ" style="margin-right: 5px">
+                        <i class="fas fa-home text-white"></i>
+                        <b class="text-white">HOME</b>
+                    </a>
                 </div>
-                <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="col-md-9 col-sm-12 col-xs-12">
                     <div class="search">
                         <div class="input-group">
                                 <input type="text" name="header_search" placeholder="Tìm kiếm..." class="rounded-0 form-control header-search-animal">
