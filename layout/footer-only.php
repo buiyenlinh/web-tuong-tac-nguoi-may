@@ -1,5 +1,7 @@
     
-
+<a id="home-back-to-top" href="#" class="btn btn-info rounded-circle home-back-to-top" role="button">
+  <i class="fas fa-caret-up"></i>
+</a>
     <script>
         var BASE = '<?php echo BASE ?>'
         var BASE_IMG = '<?php echo BASE_IMG ?>'
