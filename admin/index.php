@@ -2,6 +2,10 @@
 <?php
 include '../config.php';
 $install = $db->query('select * from caidat')->fetch();
+if ($install['tenwebsite'] == '') {
+    $install['tenwebsite'] = 'Tiêu đề website';
+}
+
 ?>
 
 <!DOCTYPE html>

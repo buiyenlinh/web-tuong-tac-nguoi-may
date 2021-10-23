@@ -1,6 +1,13 @@
 <?php
 $install = $db->query('select * from caidat')->fetch();
 
+if ($install['tenwebsite'] == '') {
+    $install['tenwebsite'] = 'Tiêu đề website';
+}
+
+if ($install['thongtinfooter'] == '') {
+    $install['thongtinfooter'] = 'Thông tin footer website của bạn';
+}
 ?>
 
 <!DOCTYPE html>

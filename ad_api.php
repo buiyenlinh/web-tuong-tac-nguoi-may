@@ -301,7 +301,7 @@ else if ($action == 'update-info-install') {
 
     if (isset($_FILES['favicon'])) {
         if (!empty($_FILES['favicon']['name'])) {
-            $filename = 'avt/' . $_FILES['favicon']['name'];
+            $filename = 'favicon/' . $_FILES['favicon']['name'];
             move_uploaded_file($_FILES['favicon']['tmp_name'], $filename);
         }
     } else {
