@@ -27,7 +27,7 @@ include '../layout/header-only.php';
                                         <!-- Another variation with a button -->
                                         <div class="input-group search-box">
                                             <div class="input-group">
-                                                <input type="text" name="input_search" class="form-control rounded-0" placeholder="Search Animal" onkeyup='livesearch(this.value);'>
+                                                <input type="text" name="input_search" class="form-control rounded-0" placeholder="Tìm kiếm động vật..." onkeyup='livesearch(this.value);'>
                                                 <div class="input-group-append">
                                                     <button type="submit" name="submit" class="btn btn-secondary rounded-0" type="button" style="background-color: #0e768d;">
                                                         <i class="fa fa-search"></i>
