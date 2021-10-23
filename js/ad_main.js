@@ -140,7 +140,7 @@ function createItemUser(itemData) {
     icon_update.onclick = function() {
         getInfoUser(itemData.id);
     }
-    icon_update.className ="fas fa-save text-light icon-update-user btn btn-info btn-sm mr-2 rounded-0";
+    icon_update.className ="fas fa-edit text-light icon-update-user btn btn-info btn-sm mr-2 rounded-0";
     icon_update.setAttribute('data-toggle', 'modal');
     icon_update.setAttribute('data-target', '#update-user-modal');
     td.append(icon_update, icon_delete);
@@ -156,20 +156,11 @@ function deleteUser(user_id) {
         if (json.status == 'OK') {
             $('.list-users-body').text('');
             getListUsers();
-
-            $('.user-success-alert').text('Xóa người dùng thành công!');
-            $('.user-success-alert').show();
-            setTimeout(function() {
-                $('.user-success-alert').hide();
-            }, 4000)
-
+            $('.users-noti-content').text('Xóa người dùng thành công!');
         } else {
-            $('.update-user-error-alert').text(json.error);
-            $('.update-user-error-alert').show();
+            $('.users-noti-content').text(json.error);
         }
-        setTimeout(function() {
-            $('.update-user-error-alert').hide();
-        }, 4000)
+        $('.users-page-show-dialog').click();
 
     })
 }
@@ -215,19 +206,11 @@ function updateUser() {
             $('.close-modal-update-user').click();
             getListUsers();
 
-            $('.user-success-alert').text('Cập nhật người dùng thành công!');
-            $('.user-success-alert').show();
-            setTimeout(function() {
-                $('.user-success-alert').hide();
-            }, 4000)
-
+            $('.users-noti-content').text('Cập nhật thông tin người dùng thành công');
         } else {
-            $('.update-user-error-alert').text(json.error);
-            $('.update-user-error-alert').show();
+            $('.users-noti-content').text(json.error);
         }
-        setTimeout(function() {
-            $('.update-user-error-alert').hide();
-        }, 4000)
+        $('.users-page-show-dialog').click();
     })
 }
 
@@ -255,20 +238,12 @@ function addUser(form) {
             getListUsers();
             $('.user-form__button__reset').click();
             $('.close-modal-add-user').click();
-
-            $('.user-success-alert').text('Thêm người dùng thành công!');
-            $('.user-success-alert').show();
-            setTimeout(function() {
-                $('.user-success-alert').hide();
-            }, 4000)
+            $('.users-noti-content').text('Thêm người dùng thành công!');
 
         } else {
-            $('.add-user-error-alert').text(json.error);
-            $('.add-user-error-alert').show();
-            setTimeout(function() {
-                $('.add-user-error-alert').hide();
-            }, 4000)
+            $('.users-noti-content').text(json.error);
         }
+        $('.users-page-show-dialog').click();
     })
 }
 
@@ -281,7 +256,6 @@ function updateInfoAccount(form) {
     var phone = form.account_phone.value;
     var address = form.account_address.value;
     if (username == '') {
-        alert('Tên đăng nhập khác rỗng!');
         return;
     }
 
@@ -305,16 +279,11 @@ function updateInfoAccount(form) {
         processData: false,
         success: function(json) {
             if (json['status'] == 'OK') {
-                $('.profile-details-info-alert').text('Cập nhật thông tin thành công!');
+                $('.account-noti-content').text('Cập nhật thông tin thành công');
             } else {
-                $('.profile-details-info-alert').addClass('alert-danger');
-                $('.profile-details-info-alert').text(json.error);
+                $('.account-noti-content').text(json.error);
             }
-            $('.profile-details-info-alert').show();
-            setTimeout(function() {
-                $('.profile-details-info-alert').hide();
-                $('.profile-details-info-alert').removeClass('alert-danger');
-            }, 4000);
+            $('.account-page-show-dialog').click();
             getInfoAccount();
         }
     })
@@ -395,16 +364,12 @@ function changePasswordAccount(form) {
             console.log('changePassword');
             console.log(json);
             $('.account__left__btn-reset').click();
-            $('.change-password-alert').text('Đổi mật khẩu thành công!');
+            $('.account-noti-content').text('Đổi mật khẩu thành công!');
+            
         } else {
-            $('.change-password-alert').addClass('alert-danger');
-            $('.change-password-alert').text(json.error);
+            $('.account-noti-content').text(json.error);
         }
-        $('.change-password-alert').show();
-        setTimeout(function() {
-            $('.change-password-alert').removeClass('alert-danger');
-            $('.change-password-alert').hide();
-        }, 4000);
+       $('.account-page-show-dialog').click();
     })
 }
 
@@ -467,6 +432,15 @@ function forgetPassword(form) {
 function updateInfoInstall(form) {
     var website_name = form.website_name.value || '';
     var footer_info = form.footer_info.value || '';
+
+    if (website_name == '') {
+        return;
+    }
+
+    if (footer_info == '') {
+        return;
+    }
+
     var favicon = $('#install-favicon')[0].files[0] || '';
     var formData = new FormData();
     formData.append('action', 'update-info-install');
@@ -494,10 +468,9 @@ function updateInfoInstall(form) {
 function getInfoInstall() {
     myPost('get-info-install', '', function(json) {
         if (json.status == 'OK') {
-            console.log('heerere');
-            console.log(json.data);
             $('.website_name').val(json.data['tenwebsite']);
             $('.footer_info').val(json.data['thongtinfooter']);
+            $('.install-favicon-preview').attr('src', BASE + json.data['favicon']);
         } else {
             alert(json.error);
         }
@@ -506,6 +479,23 @@ function getInfoInstall() {
 
 
 $(function() {
+
+    $('.website_name').on('keyup', function() {
+        if ($('.website_name').val() == '') {
+            $('.website-name-error').text('Tên website là bắt buộc');
+        } else {
+            $('.website-name-error').text('');
+        }
+    })
+
+    $('.footer_info').on('keyup', function() {
+        if ($('.footer_info').val() == '') {
+            $('.footer-info-error').text('Thông tin footer là bắt buộc');
+        } else {
+            $('.footer-info-error').text('');
+        }
+    })
+
     // scrollTop
     $('.layout-right-content-details').scroll(function () {
         if ($('.layout-right-content-details').scrollTop() > 30) {
@@ -714,7 +704,7 @@ $(function() {
         if (!checkBars) {
             $('.layout-left').css('left', '0px');
         } else {
-            $('.layout-left').css('left', '-200px');
+            $('.layout-left').css('left', '-230px');
         }
         checkBars = !checkBars;
     })
@@ -728,5 +718,11 @@ $(function() {
 
     $('.install-btn-change-favicon').on('click', function() {
         $('#install-favicon').click();
+    })
+
+    $('#install-favicon').change(function() {
+        var avt = $('#install-favicon')[0].files[0];
+        var previewAvatar = URL.createObjectURL(avt);
+        $('.install-favicon-preview').attr('src', previewAvatar);
     })
 })

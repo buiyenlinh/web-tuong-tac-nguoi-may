@@ -24,7 +24,6 @@ include '../layout/header-only.php';
                     <div class="list-users">
                       <div class="d-flex justify-content-between mb-2">
                         <h3>Danh sách người dùng</h3>
-                        <div class="alert alert-success text-success user-success-alert"></div>
                         <button type="button" class="btn btn-info btn-sm rounded-0 btn-add-user" data-toggle="modal" data-target="#add-user-modal">
                           <i class="fas fa-plus"></i> Thêm
                         </button>
@@ -94,8 +93,6 @@ include '../layout/header-only.php';
                                 <button type="button" class="close close-modal-add-user" data-dismiss="modal">x</button>
                               </div>
                               <div class="modal-body">
-                                <div class="alert alert-danger text-danger update-user-error-alert"></div>
-
                                 <form action="" method="post" name="user-update-form" class="row">
                                   <div class="form-group col-md-6">
                                     <label for="">Tên đăng nhập: <span class="text-danger">*</span></label>
@@ -172,9 +169,26 @@ include '../layout/header-only.php';
                 </div>
               </div>
             </div>
-            
           </div>
       </div>
     </div>
+
+    <button class="users-page-show-dialog" style="display: none" data-toggle="modal" data-target="#users-page-modal"></button>
+    <div class="modal fade" id="users-page-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <b>Thông báo</b>
+                </div>
+                <div class="modal-body">
+                    <div class="users-noti-content"></div>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-info btn-sm rounded-0" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <?php endif; ?>
 <?php include '../layout/footer-only.php' ?>

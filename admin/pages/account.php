@@ -74,9 +74,6 @@ include '../layout/header-only.php';
                                     </ul>
                                     <div class="tab-content">
                                         <div id="profile-details-info" class="tab-pane active">
-                                            <div class="alert alert-success profile-details-info-alert">
-                                                Cập nhật thành công!
-                                            </div>
                                             <form action="" method="post">
                                                 <div class="form-group">
                                                     <label for=""><b>Tên đăng nhập <span class="text-danger">*</span></b></label>
@@ -120,9 +117,6 @@ include '../layout/header-only.php';
                                             </form>
                                         </div>
                                         <div id="change-password" class="tab-pane fade">
-                                            <div class="alert alert-success change-password-alert">
-                                                Đổi mật khẩu thành công!
-                                            </div>
                                             <form action="" method="post">
                                                 <div class="form-group">
                                                     <label for=""><b>Mật khẩu cũ <span class="text-danger">*</span> </b></label>
@@ -159,6 +153,23 @@ include '../layout/header-only.php';
                             </div>
                             
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="account-page-show-dialog" style="display: none" data-toggle="modal" data-target="#account-page-modal"></button>
+
+    <div class="modal fade" id="account-page-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <b>Thông báo</b>
+                </div>
+                <div class="modal-body">
+                    <div class="account-noti-content"></div>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-info btn-sm rounded-0" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
