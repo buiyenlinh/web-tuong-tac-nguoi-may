@@ -110,7 +110,7 @@ function createItemUser(itemData) {
     td_address.innerHTML = itemData.diachi;
     td_time.innerHTML = itemData.thoigianthem;
 
-    var icon_delete = document.createElement('button');
+    var icon_delete = document.createElement('i');
     icon_delete.onclick = function() {
         $('.btn-group-modal-delete-user').text('');
         $('.text-modal-delete-user b').text(itemData.tenhienthi || itemData.tendangnhap);
@@ -133,14 +133,14 @@ function createItemUser(itemData) {
     }
 
     icon_delete.setAttribute('title', 'Xóa');
-    icon_delete.className ="far fa-trash-alt text-light icon-delele-user btn btn-danger btn-sm rounded-0";
+    icon_delete.className ="far fa-trash-alt text-danger icon-delele-user  rounded-0";
 
-    var icon_update = document.createElement('button');
+    var icon_update = document.createElement('i');
     icon_update.setAttribute('title', 'Cập nhật');
     icon_update.onclick = function() {
         getInfoUser(itemData.id);
     }
-    icon_update.className ="fas fa-edit text-light icon-update-user btn btn-info btn-sm mr-2 rounded-0";
+    icon_update.className ="fas fa-edit text-info icon-update-user mr-2 rounded-0";
     icon_update.setAttribute('data-toggle', 'modal');
     icon_update.setAttribute('data-target', '#update-user-modal');
     td.append(icon_update, icon_delete);
