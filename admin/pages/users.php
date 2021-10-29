@@ -25,7 +25,7 @@ include '../layout/header-only.php';
                       <div class="d-flex justify-content-between mb-2">
                         <h3>Danh sách người dùng</h3>
                         <button type="button" class="btn btn-info btn-sm rounded-0 btn-add-user" data-toggle="modal" data-target="#add-user-modal">
-                          <i class="fas fa-plus"></i> Thêm
+                          + Thêm
                         </button>
                       </div>
                       <div class="table-responsive">
@@ -147,7 +147,7 @@ include '../layout/header-only.php';
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-info pl-4 pr-4 update-user-button rounded-0">Lưu</button>
-                                <button type="button" class="btn btn-light rounded-0 close-modal-update-user" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-light rounded-0 close-modal-update-user" data-dismiss="modal">Đóng</button>
                               </div>
                           </div>
                         </div>
@@ -183,7 +183,7 @@ include '../layout/header-only.php';
                 <div class="modal-body">
                     <div class="users-noti-content"></div>
                     <div class="text-right">
-                        <button type="button" class="btn btn-info btn-sm rounded-0" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-info btn-sm rounded-0" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>
             </div>
