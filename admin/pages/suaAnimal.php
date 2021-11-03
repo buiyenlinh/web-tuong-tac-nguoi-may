@@ -247,7 +247,7 @@ if (isset($_GET["iddv"])) {
                                         </tr>
                                         <tr>
                                             <td>Ngày thu mẫu:</td>
-                                            <td><input type="text" class="form-control" size="20" name="ngaythuthapsua" value='<?php echo $ngaythuthap; ?>' placeholder="Nhập ngày thu mẫu" /></td>
+                                            <td><input type="date" class="form-control" size="20" name="ngaythuthapsua" value='<?php echo $ngaythuthap; ?>' placeholder="Nhập ngày thu mẫu" /></td>
                                         </tr>
                                         <tr>
                                             <td>Người thu mẫu:</td>

@@ -229,7 +229,7 @@ include '../layout/header-only.php';
                                                             <label for="inputAnimail" required="required">Ngày thu mẫu</label>
                                                         </td>
                                                         <td>
-                                                            <input type="text" name="inputngaythuthap" class="form-control" id="inputngaythuthap" placeholder="Nhập ngày thu mẫu">
+                                                            <input type="date" name="inputngaythuthap" class="form-control" id="inputngaythuthap" placeholder="Nhập ngày thu mẫu">
                                                         </td>
                                                     </tr>
                                                     <tr>
