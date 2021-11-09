@@ -267,9 +267,13 @@ include '../layout/header-only.php';
                                                     </tr>
                                                     <tr>
                                                         <td>
+                                                            
                                                         </td>
                                                         <td>
-                                                            <button type="submit" class="btn btn-info" name="submit"  value="Upload File">Thêm Động Vật</button>
+                                                            <button type="submit" class="btn btn-info" name="submit"  value="Upload File"><i class="fas fa-plus-circle"></i> Thêm Động Vật</button>
+                                                            <button type="button" class="btn btn-info" onclick="reset_text()">
+                                                            <i class="fas fa-trash-restore"></i> Làm mới
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -397,5 +401,38 @@ include '../layout/header-only.php';
                     }
                 });*/
     </script>
+
+    <!--RESET ALL INPUT EMPTY-->
+    <script>
+        function reset_text() {
+            $("#inputkhoahoc").val("");
+            $('#inputtiengviet').val('');
+            $('#inputdiaphuong').val('');
+            $('#inputgioi').val('');
+            $('#inputnganh').val('');
+            $('#inputlop').val('');
+            $('#inputbo').val('');
+            $("#inputho").val("");
+            $('#inputhinhthai').val('');
+            $('#inputsinhthai').val('');
+            $('#inputgiatri').val('');
+            $('#inputiucn').val('');
+            $('#inputsachdo').val('');
+            $('#inputndcp').val('');
+            $("#inputcites").val("");
+            $('#inputphanbo').val('');
+            $('#inputtoado1').val('');
+            $('#inputtoado2').val('');
+            $('#inputtoado3').val('');
+            $('#inputtoado4').val('');
+            $('#inputtoado5').val('');
+            $('#inputtinhtrang').val('');
+            $('#inputsinhcanh').val('');
+            $('#inputdiadiem').val('');
+            $('#inputngaythuthap').val('');
+            $('#inputnguoithumau').val('');
+        }
+    </script>
+
 <?php endif; ?>
 <?php include '../layout/footer-only.php' ?>

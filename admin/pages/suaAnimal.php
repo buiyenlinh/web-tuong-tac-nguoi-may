@@ -266,7 +266,7 @@ if (isset($_GET["iddv"])) {
                                 </table>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-info rounded-0" name="apply"  value="Upload File" style="float:right;">Cập nhật</button>
+                        <button type="submit" class="btn btn-info rounded-0" name="apply"  value="Upload File" style="float:right;"><i class="fas fa-plus-circle"></i> Cập nhật</button>
                     </form>
                 </div>
             </div>
@@ -282,6 +282,37 @@ if (isset($_GET["iddv"])) {
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<!--RESET ALL INPUT EMPTY-->
+<script>
+        function reset_text() {
+            $("#inputkhoahoc").val("");
+            $('#inputtiengviet').val('');
+            $('#inputdiaphuong').val('');
+            $('#inputgioi').val('');
+            $('#inputnganh').val('');
+            $('#inputlop').val('');
+            $('#inputbo').val('');
+            $("#inputho").val("");
+            $('#inputhinhthai').val('');
+            $('#inputsinhthai').val('');
+            $('#inputgiatri').val('');
+            $('#inputiucn').val('');
+            $('#inputsachdo').val('');
+            $('#inputndcp').val('');
+            $("#inputcites").val("");
+            $('#inputphanbo').val('');
+            $('#inputtoado1').val('');
+            $('#inputtoado2').val('');
+            $('#inputtoado3').val('');
+            $('#inputtoado4').val('');
+            $('#inputtoado5').val('');
+            $('#inputtinhtrang').val('');
+            $('#inputsinhcanh').val('');
+            $('#inputdiadiem').val('');
+            $('#inputngaythuthap').val('');
+            $('#inputnguoithumau').val('');
+        }
+    </script>
 
 <script>
     $(document).ready(function() {
