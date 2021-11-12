@@ -64,19 +64,21 @@ if (isset($_POST["submit"])) {
     $con->set_charset("utf8");
 
 
-    $sql_1 = "INSERT INTO dongvat (tenkhoahoc, tentiengviet, tendiaphuong, gioi, nganh, lop, bo, ho, hinhthai, sinhthai, giatri,
+    $sql_1 = "INSERT INTO dongvat (tenkhoahoc, tentiengviet, tendiaphuong, ho_id, hinhthai, sinhthai, giatri,
             iucn, sachdo, nghidinh, cities, phanbo, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap, created_at,updated_at, duongdan, nguoitao) VALUES
-            ('" . $tenkhoahoc . "', '" . $tentiengviet . "', '" . $tendiaphuong . "', '" . $gioi . "', '" . $nganh . "', '" . $lop . "', '" . $bo . "', '" . $ho . "', '" . $hinhthai . "', '"
-        . $sinhthai . "', '" . $giatri . "', '" . $iunc . "', '" . $sachdo . "', '" . $ndcp . "', '" . $cites . "', '" . $phanbo . "', '" . $tinhtrang . "', '" . $sinhcanh . "', '" . $diadiem . "', '" . $ngaythuthap . "', '" . $nguoithumau . "', now(), now(), '" . $duongdan . "', " . $_SESSION['user']['id'] . ");";
+            ('" . $tenkhoahoc . "', '" . $tentiengviet . "', '" . $tendiaphuong . "', '" . $ho . "', '" . $hinhthai . "', '"
+        . $sinhthai . "', '" . $giatri . "', '" . $iunc . "', '" . $sachdo . "', '" . $ndcp . "', '" . $cites . "', '" .
+         $phanbo . "', '" . $tinhtrang . "', '" . $sinhcanh . "', '" . $diadiem . "', '" . $ngaythuthap . "', '" . $nguoithumau .
+          "', now(), now(), '" . $duongdan . "', " . $_SESSION['user']['id'] . ");";
     $con->query($sql_1);
-
+    //echo $sql_1."<br>";
 
     $sqlmax = "SELECT MAX(id) as max FROM dongvat;";
 
     //    echo $sqlmax;
     $max = $con->query($sqlmax);
     $row = $max->fetch_assoc();
-    //    echo $row['max'];
+        //echo $row['max']."<br>";
     $maxx = $row['max'];
     if (($_SERVER['REQUEST_METHOD'] === 'POST') && (isset($_FILES['fileupload']))) {
 
@@ -128,7 +130,7 @@ if (isset($_POST["submit"])) {
         $con->set_charset("utf8");
         for ($i = 0; $i < $numfiles; $i++) {
             $sql = "insert into hinhanh(duongdan, dongvat_id) values ('" . 'uploads/' . $names[$i] . "', '" . $maxx . "');";
-            //       echo $sql;
+            //       echo $sql."<br>";
             $con->query($sql);
         }
 
@@ -157,7 +159,7 @@ if (isset($_POST["submit"])) {
             $sql_2 = "insert into toado (toado, dongvat_id) values ('" . $toado[$i] . "', '" . $maxx . "');";
             $con->query($sql_2);
         }
-        //        echo $sql_2; 
+            //    echo $sql_2."<br>"; 
     }
     header('Location: animal.php');
 } else {

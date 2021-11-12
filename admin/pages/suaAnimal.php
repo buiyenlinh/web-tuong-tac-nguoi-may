@@ -7,7 +7,8 @@ ob_start();
 ?>
 <?php
 
-function to_slug($str) { 
+function to_slug($str)
+{
     $str = trim(mb_strtolower($str));
     $str = preg_replace('/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/', 'a', $str);
     $str = preg_replace('/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/', 'e', $str);
@@ -34,11 +35,11 @@ if (isset($_GET["iddv"])) {
         $tenkhoahoc = $row['tenkhoahoc'];
         $tentiengviet = $row['tentiengviet'];
         $tendiaphuong = $row['tendiaphuong'];
-        $gioi = $row['gioi'];
-        $nganh = $row['nganh'];
-        $lop = $row['lop'];
-        $bo = $row['bo'];
-        $ho = $row['ho'];
+        //$gioi = $row['gioi'];
+        //$nganh = $row['nganh'];
+        //$lop = $row['lop'];
+        //$bo = $row['bo'];
+        $ho = $row['ho_id'];
         $hinhthai = $row['hinhthai'];
         $sinhthai = $row['sinhthai'];
         $giatri = $row['giatri'];
@@ -115,164 +116,249 @@ if (isset($_GET["iddv"])) {
         </div>
         <div class="layout-right-content">
             <div class="layout-right-content-details">
-                <div class="p-3">
-                    <h3 class="text-center mt-2 mb-2">CHỈNH SỬA ĐỘNG VẬT</h3>
-                    <form class="chinhsua" id="form-suachua" action="" method="post" enctype="multipart/form-data">
-                        <div class="gridtable">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered">
-                                    <thead class="bg-info text-center text-light">
-                                        <tr>
-                                            <th>Thông tin</th>
-                                            <th>Dữ liệu</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tên khoa học:</td>
-                                            <td><input type="text" class="form-control" size="20" name="tenkhoahocsua" value='<?php echo $tenkhoahoc; ?>' placeholder="Nhập tên khoa học" required /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tên tiếng Việt:</td>
-                                            <td><input type="text" class="form-control" size="20" name="tentiengvietsua" value='<?php echo $tentiengviet; ?>' placeholder="Nhập tên tiếng Việt" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tên địa phương:</td>
-                                            <td><input type="text" class="form-control" size="20" name="tendiaphuongsua" value='<?php echo $tendiaphuong; ?>' placeholder="Nhập tên địa phương" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Giới:</td>
-                                            <td><input type="text" class="form-control" size="20" name="gioisua" value='<?php echo $gioi; ?>' placeholder="Nhập giới" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bộ:</td>
-                                            <td><input type="text" class="form-control" size="20" name="nganhsua" value='<?php echo $bo; ?>' placeholder="Nhập bộ" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lớp:</td>
-                                            <td><input type="text" class="form-control" size="20" name="lopsua" value='<?php echo $lop; ?>' placeholder="Nhập lớp" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ngành:</td>
-                                            <td><input type="text" class="form-control" size="20" name="bosua" value='<?php echo $nganh; ?>' placeholder="Nhập ngành" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Họ:</td>
-                                            <td><input type="text" class="form-control" size="20" name="hosua" value='<?php echo $ho; ?>' placeholder="Nhập họ" /></td>
-                                        </tr>
+
+                <h3 class="text-center mt-2 mb-2">CHỈNH SỬA ĐỘNG VẬT</h3>
+                <form class="chinhsua" id="form-suachua" action="" method="post" enctype="multipart/form-data">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-12 col-lg-4">
+                                    <label for="inputSupplierName">Tên khoa học:</label>
+                                    <input type="text" class="form-control" size="20" name="tenkhoahocsua" value='<?php echo $tenkhoahoc; ?>' placeholder="Nhập tên khoa học" required />
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <label for="inputSupplierName">Tên tiếng việt:</label>
+                                    <input type="text" class="form-control" size="20" name="tentiengvietsua" value='<?php echo $tentiengviet; ?>' placeholder="Nhập tên tiếng Việt" />
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <label for="inputSupplierName">Tên tiếng việt:</label>
+                                    <input type="text" class="form-control" size="20" name="tendiaphuongsua" value='<?php echo $tendiaphuong; ?>' placeholder="Nhập tên địa phương" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-lg-4">
+                                    <label for="gioisua">Giới:</label>
+                                    <select name="gioisua" class="form-control">
+                                        <?php
+                                        $con = new mysqli("localhost", "root", "", "web_animal");
+                                        $con->set_charset("utf8");
+                                        $sql = "SELECT * FROM gioi ;";
+                                        $result = $con->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <label for="inputnganh">Ngành:</label>
+                                    <select name="nganhsua" class="form-control">
+                                        <?php
+                                        $con = new mysqli("localhost", "root", "", "web_animal");
+                                        $con->set_charset("utf8");
+                                        $sql = "SELECT * FROM nganh ;";
+                                        $result = $con->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <label for="inputlop">Lớp</label>
+                                    <select name="lopsua" class="form-control">
+                                        <?php
+                                        $con = new mysqli("localhost", "root", "", "web_animal");
+                                        $con->set_charset("utf8");
+                                        $sql = "SELECT * FROM lop ;";
+                                        $result = $con->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-lg-6">
+                                    <label for="bosua">Bộ:</label>
+                                    <select name="bosua" class="form-control">
+                                        <?php
+                                        $con = new mysqli("localhost", "root", "", "web_animal");
+                                        $con->set_charset("utf8");
+                                        $sql = "SELECT * FROM bo ;";
+                                        $result = $con->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="inputho">Họ:</label>
+                                    <select name="hosua" class="form-control">
+                                        <?php
+                                        $con = new mysqli("localhost", "root", "", "web_animal");
+                                        $con->set_charset("utf8");
+                                        $sql = "SELECT * FROM ho ;";
+                                        $result = $con->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-lg-6">
+                                    <label for="inputSupplierName">Đặc điểm hình thái:</label>
+                                    <textarea class="form-control" id="inputhinhthai" placeholder="Nhập đặc điểm hình thái" name="hinhthaisua" rows="3" class="form-control"><?php echo $hinhthai; ?></textarea>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="inputSupplierName">Đặc điểm sinh thái:</label>
+                                    <textarea class="form-control" id="inputsinhthai" placeholder="Nhập đặc điểm sinh thái" name="sinhthaisua" rows="3" class="form-control"><?php echo $sinhthai; ?></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-lg-3">
+                                    <label for="inputSupplierName">Giá trị:</label>
+                                    <input type="text" class="form-control" size="20" name="giatrisua" value='<?php echo $giatri; ?>' placeholder="Nhập giá trị sử dụng" />
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <label for="inputSupplierName">IUCN:</label>
+                                    <input type="text" class="form-control" size="20" name="iucnsua" value='<?php echo $iucn; ?>' placeholder="Nhập IUCN" />
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <label for="inputSupplierName">Sách đỏ:</label>
+                                    <input type="text" class="form-control" size="20" name="sachdosua" value='<?php echo $sachdo; ?>' placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam" />
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <label for="inputSupplierName">Nghị định:</label>
+                                    <input type="text" class="form-control" size="20" name="ndcpsua" value='<?php echo $nghidinh; ?>' placeholder="Nhập NĐCP" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-lg-3">
+                                    <label for="inputSupplierName">CITES:</label>
+                                    <input type="text" class="form-control" size="20" name="citessua" value='<?php echo $cities; ?>' placeholder="Nhập CITES" />
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <label for="inputSupplierName">Phân bố:</label>
+                                    <input type="text" class="form-control" size="20" name="phanbosua" value='<?php echo $phanbo; ?>' placeholder="Nhập phân bố" />
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <label for="inputSupplierName">Tình trạng:</label>
+                                    <input type="text" class="form-control" size="20" name="tinhtrangsua" value='<?php echo $tinhtrang; ?>' placeholder="hập tình trạng mẫu vật" />
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <label for="inputSupplierName">Sinh cảnh:</label>
+                                    <input type="text" class="form-control" size="20" name="sinhcanhsua" value='<?php echo $sinhcanh; ?>' placeholder="Nhập sinh cảnh" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-lg-4">
+                                    <label for="inputSupplierName">Địa điểm:</label>
+                                    <input type="text" class="form-control" size="20" name="diadiemsua" value='<?php echo $diadiem; ?>' placeholder="Nhập địa điểm" />
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <label for="inputSupplierName">Người thu mẩu:</label>
+                                    <input type="text" class="form-control" size="20" name="nguoithuthapsua" value='<?php echo $nguoithuthap; ?>' placeholder="Nhập người thu mẫu" />
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <label for="inputSupplierName">Ngày thu thập:</label>
+                                    <input type="date" class="form-control" size="20" name="ngaythuthapsua" value='<?php echo $ngaythuthap; ?>' placeholder="Nhập ngày thu mẫu" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-lg-4">
+                                    <label for="inputSupplierName">Ngày cập nhật:</label>
+                                    <input type="text" class="form-control" size="20" name="ngaycapnhatsua" value='<?php echo $updated_at; ?>' disabled />
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <label for="inputSupplierName">Đường dẫn:</label>
+                                    <input type="text" class="form-control" size="20" disabled name="duongdansua" value='<?php echo $duongdan; ?>' placeholder="Nhập đường dẫn" />
+                                    <input type="text" name="id" hidden value="<?php echo $iddv; ?>">
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="form-group">
                                         <?php
                                         for ($i = 0; $i < $tonghinh; $i++) {
                                             if ($hinhanh[$i] != null) {
-                                                echo "<tr>";
-                                                echo "<td>Hình ảnh " . (($i + 1)) . ":</td>";
-                                                echo "<td><input type='file' size='20' name='hinhanh" . $i . "'>";
-                                                echo "<img src='" . $hinhanh[$i] . "' alt='hinhdongvat' class='imgSize' style='width: 100px; height: 100px; margin-right: 10px;'>";
-                                                echo "</td>";
-                                                echo "</tr>";
+                                                echo "<img src='" . $hinhanh[$i] . "' alt='hinhdongvat' class='imgSize' style='width: 50px; height: 50px; margin-right: 10px;'>";
                                             }
                                         }
                                         ?>
-                                        <tr>
-                                            <td>Hình ảnh mới:</td>
-                                            <td>
-                                                <input type="file" name="fileupload[]" id="files" multiple>
-                                                <div class="form-group">
-                                                    <div id="image_preview">
-                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-lg-3">
+                                    <label for="inputAnimail" required="required">Thêm hình</label>
+                                    <input type="file" name="fileupload[]" id="files" multiple required>
+                                    <div class="form-group">
+                                        <div id="image_preview"></div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-9">
+                                    <div class="form-group row">
+                                        <div class="col-12 col-lg-3">
+                                            <label for="inputAnimail" required="required">Thêm tọa độ</label>
+                                            <div class="input_fields_wrap">
+                                                <button class="add_field_button btn btn-info rounded-0">Thêm tọa độ</button>
+                                                <div>
+                                                    <input type="text" class="form-control" name="inputtoado1">
                                                 </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mô tả đặc điểm hình thái:</td>
-                                            <td><input type="text" class="form-control" size="20" name="hinhthaisua" value='<?php echo $hinhthai; ?>' placeholder="Nhập điểm hình thái" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mô tả đặc điểm sinh thái:</td>
-                                            <td><input type="text" class="form-control" size="20" name="sinhthaisua" value='<?php echo $sinhthai; ?>' placeholder="Nhập điểm sinh thái" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Giá trị sử dụng:</td>
-                                            <td><input type="text" class="form-control" size="20" name="giatrisua" value='<?php echo $giatri; ?>' placeholder="Nhập giá trị sử dụng" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tình trạng bảo tồn theo IUCN:</td>
-                                            <td><input type="text" class="form-control" size="20" name="iucnsua" value='<?php echo $iucn; ?>' placeholder="Nhập IUCN" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tình trạng bảo tồn theo sách đỏ Việt Nam:</td>
-                                            <td><input type="text" class="form-control" size="20" name="sachdosua" value='<?php echo $sachdo; ?>' placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</td>
-                                            <td><input type="text" class="form-control" size="20" name="ndcpsua" value='<?php echo $nghidinh; ?>' placeholder="Nhập NĐCP" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</td>
-                                            <td><input type="text" class="form-control" size="20" name="citessua" value='<?php echo $cities; ?>' placeholder="Nhập CITES" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Phân bố:</td>
-                                            <td><input type="text" class="form-control" size="20" name="phanbosua" value='<?php echo $phanbo; ?>' placeholder="Nhập phân bố" /></td>
-                                        </tr>
+                                            </div>
+                                        </div>
                                         <?php
                                         for ($i = 0; $i < $tongtoado; $i++) {
                                             if ($td[$i] != null) {
-                                                echo "<tr>";
-                                                echo "<td>Tọa độ " . ($i + 1) . ":</td>";
-                                                echo "<td><input type='text' class='form-control' size='20' name='toado" . $i . "' value='" . $td[$i] . "'></td>";
-                                                echo "</tr>";
+                                                echo "<div class='col-12 col-lg-3'>";
+                                                echo "<label for='inputAnimail' required='required'>Tọa độ " . ($i + 1) . ":</label>";
+                                                echo "<input type='text' class='form-control' size='20' name='toado" . $i . "' value='" . $td[$i] . "'></td>";
+                                                echo "</div>";
                                             }
                                         }
                                         ?>
-                                        <tr>
-                                            <td>Thêm tọa độ</td>
-                                            <td>
-                                                <div class="input_fields_wrap">
-                                                    <button class="add_field_button btn btn-info rounded-0">Thêm tọa độ</button>
-                                                    <div><input type="text" class="form-control" name="inputtoado1"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tình trạng mẫu vật:</td>
-                                            <td><input type="text" class="form-control" size="20" name="tinhtrangsua" value='<?php echo $tinhtrang; ?>' placeholder="hập tình trạng mẫu vật" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sinh cảnh:</td>
-                                            <td><input type="text" class="form-control" size="20" name="sinhcanhsua" value='<?php echo $sinhcanh; ?>' placeholder="Nhập sinh cảnh" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Địa điểm:</td>
-                                            <td><input type="text" class="form-control" size="20" name="diadiemsua" value='<?php echo $diadiem; ?>' placeholder="Nhập địa điểm" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ngày thu mẫu:</td>
-                                            <td><input type="date" class="form-control" size="20" name="ngaythuthapsua" value='<?php echo $ngaythuthap; ?>' placeholder="Nhập ngày thu mẫu" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Người thu mẫu:</td>
-                                            <td><input type="text" class="form-control" size="20" name="nguoithuthapsua" value='<?php echo $nguoithuthap; ?>' placeholder="Nhập người thu mẫu" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ngày cập nhật:</td>
-                                            <td><input type="text" class="form-control" size="20" name="ngaycapnhatsua" value='<?php echo $updated_at; ?>' disabled /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Đường dẫn:</td>
-                                            <td><input type="text" class="form-control" size="20" disabled name="duongdansua" value='<?php echo $duongdan; ?>' placeholder="Nhập đường dẫn" /></td>
-                                            <input type="text" name="id" hidden value="<?php echo $iddv; ?>">
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <button type="submit" class="btn btn-info rounded-0" name="apply"  value="Upload File" style="float:right;"><i class="fas fa-plus-circle"></i> Cập nhật</button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
+                        </div>
+                        
+                        <div class="modal-footer p-2">
+                            <button type="submit" class="btn btn-info rounded-0" name="apply"  value="Upload File" style="float:right;">
+                                <i class="fas fa-plus-circle"></i>
+                                Cập nhật
+                            </button>
+                        </div>
+                    </div>
+            </div>
+            </form>
+
+        </div>
     </div>
+
+</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
@@ -281,38 +367,6 @@ if (isset($_GET["iddv"])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<!--RESET ALL INPUT EMPTY-->
-<script>
-        function reset_text() {
-            $("#inputkhoahoc").val("");
-            $('#inputtiengviet').val('');
-            $('#inputdiaphuong').val('');
-            $('#inputgioi').val('');
-            $('#inputnganh').val('');
-            $('#inputlop').val('');
-            $('#inputbo').val('');
-            $("#inputho").val("");
-            $('#inputhinhthai').val('');
-            $('#inputsinhthai').val('');
-            $('#inputgiatri').val('');
-            $('#inputiucn').val('');
-            $('#inputsachdo').val('');
-            $('#inputndcp').val('');
-            $("#inputcites").val("");
-            $('#inputphanbo').val('');
-            $('#inputtoado1').val('');
-            $('#inputtoado2').val('');
-            $('#inputtoado3').val('');
-            $('#inputtoado4').val('');
-            $('#inputtoado5').val('');
-            $('#inputtinhtrang').val('');
-            $('#inputsinhcanh').val('');
-            $('#inputdiadiem').val('');
-            $('#inputngaythuthap').val('');
-            $('#inputnguoithumau').val('');
-        }
-    </script>
 
 <script>
     $(document).ready(function() {
@@ -410,9 +464,9 @@ if (isset($_POST["apply"])) {
     $lop = $_POST['lopsua'];
     $bo = $_POST['bosua'];
     $ho = $_POST['hosua'];
-    for ($i = 0; $i < $tonghinh; $i++) {
+/*    for ($i = 0; $i < $tonghinh; $i++) {
         $hinhanh[$i] = $_FILES["hinhanh" . $i . ""];
-    }
+    }*/
     $hinhthai = $_POST['hinhthaisua'];
     $sinhthai = $_POST['sinhthaisua'];
     $giatri = $_POST['giatrisua'];
@@ -423,7 +477,7 @@ if (isset($_POST["apply"])) {
     $phanbo = $_POST['phanbosua'];
     for ($i = 0; $i < $tongtoado; $i++) {
         $tdo[$i] = $_POST["toado" . $i];
-        echo $tdo[$i]."<br>";
+        echo $tdo[$i] . "<br>";
     }
     /*for ($i = $tongtoado; $i < 5; $i++) {
         $tdo[$i] = $_POST["toado" . $i . ""];
@@ -448,8 +502,7 @@ if (isset($_POST["apply"])) {
     $con->set_charset("utf8");
     $sql = " UPDATE dongvat
         SET tenkhoahoc = '" . $tenkhoahoc . "' ,tentiengviet = '" . $tentiengviet . "',
-            tendiaphuong = '" . $tendiaphuong . "' ,gioi = '" . $gioi . "' ,nganh = '" . $nganh . "' ,lop = '" . $lop . "' ,
-            bo = '" . $bo . "' ,ho = '" . $ho . "' ,hinhthai = '" . $hinhthai . "' ,sinhthai = '" . $sinhthai . "' ,giatri = '" . $giatri . "' ,iucn = '" . $iucn . "' ,sachdo = '" . $sachdo
+            tendiaphuong = '" . $tendiaphuong . "' ,ho_id = '" . $ho . "' ,hinhthai = '" . $hinhthai . "' ,sinhthai = '" . $sinhthai . "' ,giatri = '" . $giatri . "' ,iucn = '" . $iucn . "' ,sachdo = '" . $sachdo
         . "' ,nghidinh = '" . $ndcp . "' ,cities = '" . $cities . "' ,phanbo = '" . $phanbo . "' ,tinhtrang = '" . $tinhtrang . "' ,sinhcanh = '" . $sinhcanh
         . "' ,diadiem = '" . $diadiem . "' ,ngaythuthap = '" . $ngaythuthap . "' ,nguoithuthap = '" . $nguoithumau . "' ,updated_at = now(), duongdan = '" . $duongdan . "'
         WHERE id = " . $iddv . ";";
@@ -460,17 +513,18 @@ if (isset($_POST["apply"])) {
     $sql_1 = "SELECT * from hinhanh WHERE dongvat_id = " . $iddv . ";";
     $result = $con->query($sql_1);
     //$row = $count->fetch_assoc();
-    for ($i = 0; $i < $tonghinh; $i++) {
+/*    for ($i = 0; $i < $tonghinh; $i++) {
         $row = $result->fetch_assoc();
         move_uploaded_file($hinhanh[$i]['tmp_name'], '../../../uploads/' . $hinhanh[$i]['name']);
         $con = new mysqli("localhost", "root", "", "web_animal");
         $con->set_charset("utf8");
         if (!empty($hinhanh[$i]['name'])) {
             $sql_2 = "UPDATE hinhanh SET duongdan = '" . 'uploads/' . $hinhanh[$i]['name'] . "' WHERE id = " . $row['id'] . ";";
-            //echo $sql . "<br>";
-            $con->query($sql_2);
+            echo $sql . "<br>";
+            //$con->query($sql_2);
         }
-    }
+    }*/
+
     $sql_3 = "SELECT * from toado WHERE dongvat_id = " . $iddv . ";";
     $result = $con->query($sql_3);
     for ($i = 0; $i < $tongtoado; $i++) {
@@ -479,7 +533,7 @@ if (isset($_POST["apply"])) {
         $con->set_charset("utf8");
         if (!empty($tdo[$i])) {
             $sql_4 = " UPDATE toado SET toado = '" . $tdo[$i] . "' WHERE id = " . $row['id'] . ";";
-            echo $sql_4 . "<br>";
+            //echo $sql_4 . "<br>";
             $con->query($sql_4);
         }
     }
@@ -530,7 +584,7 @@ if (isset($_POST["apply"])) {
         $con->set_charset("utf8");
         if (!empty($addtoado[$i])) {
             $sql_6 = "insert into toado (toado, dongvat_id) values ('" . $addtoado[$i] . "', '" . $iddv . "');";
-            echo $sql_6 . "<br>";
+            //echo $sql_6 . "<br>";
             $con->query($sql_6);
         }
     }
