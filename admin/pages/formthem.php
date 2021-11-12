@@ -23,214 +23,261 @@ include '../layout/header-only.php';
                         <div class="col-md-8" id="form-cn">
                             <h3 class="text-center">THÊM ĐỘNG VẬT</h3>
                             <form action="themAnimal.php" accept-charset="UTF-8" enctype="multipart/form-data" method="POST" target="">
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="form-group row">
-                                            <div class="col-12 col-lg-4">
-                                                <label for="inputSupplierName">Tên khoa học:</label>
-                                                <input type="text" name="inputkhoahoc" class="form-control" id="inputkhoahoc" placeholder="Nhập tên khoa học" required="required">
-                                            </div>
-                                            <div class="col-12 col-lg-4">
-                                                <label for="inputSupplierName">Tên tiếng việt:</label>
-                                                <input type="text" name="inputtiengviet" class="form-control" id="inputtiengviet" required="required" placeholder="Nhập tên tiếng Việt">
-                                            </div>
-                                            <div class="col-12 col-lg-4">
-                                                <label for="inputSupplierName">Tên tiếng việt:</label>
-                                                <input type="text" name="inputdiaphuong" class="form-control" id="inputdiaphuong" required="required" placeholder="Nhập tên địa phương">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-12 col-lg-4">
-                                                <label for="inputgioi">Giới:</label>
-                                                <select name="inputgioi" class="form-control">
-                                                    <?php
-                                                    $con = new mysqli("localhost", "root", "", "web_animal");
-                                                    $con->set_charset("utf8");
-                                                    $sql = "SELECT * FROM gioi ;";
-                                                    $result = $con->query($sql);
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
-                                                        }
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-12 col-lg-4">
-                                                <label for="inputnganh">Ngành:</label>
-                                                <select name="inputnganh" class="form-control">
-                                                    <?php
-                                                    $con = new mysqli("localhost", "root", "", "web_animal");
-                                                    $con->set_charset("utf8");
-                                                    $sql = "SELECT * FROM nganh ;";
-                                                    $result = $con->query($sql);
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
-                                                        }
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-12 col-lg-4">
-                                                <label for="inputlop">Lớp</label>
-                                                <select name="inputlop" class="form-control">
-                                                    <?php
-                                                    $con = new mysqli("localhost", "root", "", "web_animal");
-                                                    $con->set_charset("utf8");
-                                                    $sql = "SELECT * FROM lop ;";
-                                                    $result = $con->query($sql);
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
-                                                        }
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-12 col-lg-6">
-                                                <label for="inputbo">Bộ:</label>
-                                                <select name="inputbo" class="form-control">
-                                                    <?php
-                                                    $con = new mysqli("localhost", "root", "", "web_animal");
-                                                    $con->set_charset("utf8");
-                                                    $sql = "SELECT * FROM bo ;";
-                                                    $result = $con->query($sql);
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
-                                                        }
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-12 col-lg-6">
-                                                <label for="inputho">Họ:</label>
-                                                <select name="inputho" class="form-control">
-                                                    <?php
-                                                    $con = new mysqli("localhost", "root", "", "web_animal");
-                                                    $con->set_charset("utf8");
-                                                    $sql = "SELECT * FROM ho ;";
-                                                    $result = $con->query($sql);
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
-                                                        }
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-12 col-lg-6">
-                                                <label for="inputSupplierName">Đặc điểm hình thái:</label>
-                                                <textarea class="form-control" id="inputhinhthai" placeholder="Nhập đặc điểm hình thái" name="inputhinhthai" rows="3" class="form-control"></textarea>
-                                            </div>
-                                            <div class="col-12 col-lg-6">
-                                                <label for="inputSupplierName">Đặc điểm sinh thái:</label>
-                                                <textarea class="form-control" id="inputsinhthai" placeholder="Nhập đặc điểm sinh thái" name="inputsinhthai" rows="3" class="form-control"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-12 col-lg-3">
-                                                <label for="inputSupplierName">Giá trị:</label>
-                                                <input type="text" name="inputgiatri" class="form-control" id="inputgiatri" placeholder="Nhập giá trị sử dụng">
-                                            </div>
-                                            <div class="col-12 col-lg-3">
-                                                <label for="inputSupplierName">IUCN:</label>
-                                                <input type="text" name="inputiucn" class="form-control" id="inputiucn" placeholder="Nhập IUCN">
-                                            </div>
-                                            <div class="col-12 col-lg-3">
-                                                <label for="inputSupplierName">Sách đỏ:</label>
-                                                <input type="text" name="inputsachdo" class="form-control" id="inputsachdo" placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam">
-                                            </div>
-                                            <div class="col-12 col-lg-3">
-                                                <label for="inputSupplierName">Nghị định:</label>
-                                                <input type="text" name="inputndcp" class="form-control" id="inputndcp" placeholder="Nhập NĐCP">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-12 col-lg-3">
-                                                <label for="inputSupplierName">CITES:</label>
-                                                <input type="text" name="inputcites" class="form-control" id="inputcites" placeholder="Nhập CITES">
-                                            </div>
-                                            <div class="col-12 col-lg-3">
-                                                <label for="inputSupplierName">Phân bố:</label>
-                                                <input type="text" name="inputphanbo" class="form-control" id="inputphanbo" placeholder="Nhập phân bố">
-                                            </div>
-                                            <div class="col-12 col-lg-3">
-                                                <label for="inputSupplierName">Tình trạng:</label>
-                                                <input type="text" name="inputtinhtrang" class="form-control" id="inputtinhtrang" placeholder="Nhập tình trạng mẫu vật">
-                                            </div>
-                                            <div class="col-12 col-lg-3">
-                                                <label for="inputSupplierName">Sinh cảnh:</label>
-                                                <input type="text" name="inputsinhcanh" class="form-control" id="inputsinhcanh" placeholder="Nhập sinh cảnh">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-12 col-lg-4">
-                                                <label for="inputSupplierName">Địa điểm:</label>
-                                                <input type="text" name="inputdiadiem" class="form-control" id="inputdiadiem" placeholder="Nhập địa điểm">
-                                            </div>
-                                            <div class="col-12 col-lg-4">
-                                                <label for="inputSupplierName">Người thu mẩu:</label>
-                                                <input type="text" name="inputnguoithumau" class="form-control" id="inputnguoithumau" placeholder="Nhập người thu mẫu">
-                                            </div>
-                                            <div class="col-12 col-lg-4">
-                                                <label for="inputSupplierName">Ngày thu thập:</label>
-                                                <input type="date" name="inputngaythuthap" class="form-control" id="inputngaythuthap" placeholder="Nhập ngày thu mẫu">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-12 col-lg-3">
-                                                <label for="inputAnimail" required="required">Thêm hình</label>
-                                                <input type="file" name="fileupload[]" id="files" multiple required>
-                                                <div class="form-group">
-                                                    <div id="image_preview"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-lg-9">
-                                                <div class="form-group row">
-                                                    <div class="col-12 col-lg-3">
-                                                        <label for="inputAnimail" required="required">Tọa độ 1</label>
-                                                        <input type="text" name="inputtoado1" class="form-control" id="inputtoado1" placeholder="Nhập tọa độ 1">
-                                                    </div>
-                                                    <div class="col-12 col-lg-3">
-                                                        <label for="inputAnimail" required="required">Tọa độ 2</label>
-                                                        <input type="text" name="inputtoado2" class="form-control" id="inputtoado2" placeholder="Nhập tọa độ 2">
-                                                    </div>
-                                                    <div class="col-12 col-lg-2">
-                                                        <label for="inputAnimail" required="required">Tọa độ 3</label>
-                                                        <input type="text" name="inputtoado3" class="form-control" id="inputtoado3" placeholder="Nhập tọa độ 3">
-                                                    </div>
-                                                    <div class="col-12 col-lg-2">
-                                                        <label for="inputAnimail" required="required">Tọa độ 4</label>
-                                                        <input type="text" name="inputtoado4" class="form-control" id="inputtoado4" placeholder="Nhập tọa độ 4">
-                                                    </div>
-                                                    <div class="col-12 col-lg-2">
-                                                        <label for="inputAnimail" required="required">Tọa độ 5</label>
-                                                        <input type="text" name="inputtoado5" class="form-control" id="inputtoado5" placeholder="Nhập tọa độ 5">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="modal-footer p-2">
-                                            <button type="submit" class="btn btn-info" name="submit"  value="Upload File">
-                                                <i class="fas fa-plus-circle"></i> Thêm Động Vật
-                                            </button>
-                                            <button type="button" class="btn btn-info" onclick="reset_text()">
-                                                <i class="fas fa-trash-restore"></i> Làm mới
-                                            </button>
+                                <div class="form-group">
+                                    <div class="gridtable">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered">
+                                                <thead class="bg-primary text-center">
+                                                    <tr>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail">Tên khoa học</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputkhoahoc" class="form-control" id="inputkhoahoc" placeholder="Nhập tên khoa học" required="required">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tên tiếng Việt</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtiengviet" class="form-control" id="inputtiengviet" required="required" placeholder="Nhập tên tiếng Việt">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tên địa phương</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputdiaphuong" class="form-control" id="inputdiaphuong" required="required" placeholder="Nhập tên địa phương">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Giới</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputgioi" class="form-control" id="inputgioi" required="required" placeholder="Nhập giới">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Ngành</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputnganh" class="form-control" id="inputnganh" required="required" placeholder="Nhập ngành">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Lớp</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputlop" class="form-control" id="inputlop" required="required" placeholder="Nhập lớp">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Bộ</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputbo" class="form-control" id="inputbo" required="required" placeholder="Nhập bộ">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Họ</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputho" class="form-control" id="inputho" required="required" placeholder="Nhập họ">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail">Mô tả đặc điểm hình thái</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputhinhthai" class="form-control" id="inputhinhthai" placeholder="Nhập đặc điểm hình thái">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Mô tả đặc điểm sinh thái</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputsinhthai" class="form-control" id="inputsinhthai" placeholder="Nhập đặc Điểm sinh thái">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Giá trị sử dụng:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputgiatri" class="form-control" id="inputgiatri" placeholder="Nhập giá trị sử dụng">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tình trạng bảo tồn theo IUCN:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputiucn" class="form-control" id="inputiucn" placeholder="Nhập IUCN">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tình trạng bảo tồn theo sách đỏ Việt Nam:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputsachdo" class="form-control" id="inputsachdo" placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputndcp" class="form-control" id="inputndcp" placeholder="Nhập NĐCP">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputcites" class="form-control" id="inputcites" placeholder="Nhập CITES">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Phân bố:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputphanbo" class="form-control" id="inputphanbo" placeholder="Nhập phân bố">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tọa độ 1</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtoado1" class="form-control" id="inputtoado1" placeholder="Nhập tọa độ 1">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tọa độ 2</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtoado2" class="form-control" id="inputtoado2" placeholder="Nhập tọa độ 2">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tọa độ 3</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtoado3" class="form-control" id="inputtoado3" placeholder="Nhập tọa độ 3">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tọa độ 4</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtoado4" class="form-control" id="inputtoado4" placeholder="Nhập tọa độ 4">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tọa độ 5</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtoado5" class="form-control" id="inputtoado5" placeholder="Nhập tọa độ 5">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Tình trạng mẫu vật:</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputtinhtrang" class="form-control" id="inputtinhtrang" placeholder="Nhập tình trạng mẫu vật">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Sinh cảnh</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputsinhcanh" class="form-control" id="inputsinhcanh" placeholder="Nhập sinh cảnh">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Địa điểm</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputdiadiem" class="form-control" id="inputdiadiem" placeholder="Nhập địa điểm">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Ngày thu mẫu</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="date" name="inputngaythuthap" class="form-control" id="inputngaythuthap" placeholder="Nhập ngày thu mẫu">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="inputAnimail" required="required">Người thu mẫu</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="inputnguoithumau" class="form-control" id="inputnguoithumau" placeholder="Nhập người thu mẫu">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <!-- <td>
+                                                            <label for="inputAnimail" required="required">Đường dẫn</label>
+                                                        </td> -->
+                                                        <!-- <td>
+                                                            <input type="text" name="inputduongdan" class="form-control" id="inputduongdan" placeholder="Đường dẫn">
+                                                        </td> -->
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <!-- <hr> -->
+                                                            <div class="form-group mt-3 field">
+                                                                <label for="inputAnimail" required="required">Thêm hình</label>
+                                                                <!--<input type="file" name="fileupload[]" multiple="multiple" /> -->
+                                                        </td>
+                                                        <td>
+                                                            <!--<input type="file" id="files" name="fileupload[]" multiple="multiple" />-->
+                                                            <!--<p><input type="submit" name="upload" value="Upload File"/></p>-->
+                                                            <input type="file" name="fileupload[]" id="files" multiple required>
+                                                            <div class="form-group">
+                                                                <div id="image_preview"></div>
+                                                            </div>
+                                                            <!-- <hr> -->
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-info" name="submit"  value="Upload File"><i class="fas fa-plus-circle"></i> Thêm Động Vật</button>
+                                                            <button type="button" class="btn btn-info" onclick="reset_text()">
+                                                            <i class="fas fa-trash-restore"></i> Làm mới
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -313,6 +360,48 @@ include '../layout/header-only.php';
         });
     </script>
 
+    <script>
+        /*        $(document).ready(function() {
+            if (window.File && window.FileList && window.FileReader) {
+                $("#files").on("change", function(e) {
+                    var files = e.target.files,
+                        filesLength = files.length;
+                    for (var i = 0; i < filesLength; i++) {
+                        var f = files[i];
+                        var fileReader = new FileReader();
+                        fileReader.onload = function(e) {
+                            var file = e.target;
+                            $(
+                                '<span class="pip">' +
+                                '<img class="imageThumb" src="' +
+                                e.target.result +
+                                '" title="' +
+                                file.name +
+                                '"/>' +
+                                '<br/><span class="remove">Xóa ảnh</span>' +
+                                "</span>"
+                            ).insertAfter("#files");
+                            $(".remove").click(function() {
+                                $(this).parent(".pip").remove();
+                            });
+
+                            // Old code here
+                            /*$("<img></img>", {
+                              class: "imageThumb",
+                              src: e.target.result,
+                              title: file.name + " | Click to remove"
+                            }).insertAfter("#files").click(function(){$(this).remove();});*/
+        /*                        };
+                                fileReader.readAsDataURL(f);
+                            }
+                            console.log(files);
+                        });
+                    } else {
+                        alert("Your browser doesn't support to File API");
+                    }
+                });*/
+    </script>
+
     <!--RESET ALL INPUT EMPTY-->
     <script>
         function reset_text() {
@@ -345,137 +434,5 @@ include '../layout/header-only.php';
         }
     </script>
 
-    <script>
-        $(function() {
-            // Get the form fields and hidden div
-            var checkbox = $("#trigger");
-            var hidden1 = $("#hidden_fields1");
-            var hidden2 = $("#hidden_fields2");
-            var hidden3 = $("#hidden_fields3");
-            var hidden4 = $("#hidden_fields4");
-            var hidden5 = $("#hidden_fields5");
-            var populate = $("#populate");
-
-            // Hide the fields.
-            // Use JS to do this in case the user doesn't have JS
-            // enabled.
-            hidden1.hide();
-            hidden2.hide();
-            hidden3.hide();
-            hidden4.hide();
-            hidden5.hide();
-
-            // Setup an event listener for when the state of the
-            // checkbox changes.
-            checkbox.change(function() {
-                // Check to see if the checkbox is checked.
-                // If it is, show the fields and populate the input.
-                // If not, hide the fields.
-                if (checkbox.is(":checked")) {
-                    // Show the hidden fields.
-                    hidden1.show();
-                    hidden2.show();
-                    hidden3.show();
-                    hidden4.show();
-                    hidden5.show();
-                    // Populate the input.
-                    populate.val("Dude, this input got populated!");
-                } else {
-                    // Make sure that the hidden fields are indeed
-                    // hidden.
-                    hidden1.hide();
-                    hidden2.hide();
-                    hidden3.hide();
-                    hidden4.hide();
-                    hidden5.hide();
-                    // You may also want to clear the value of the
-                    // hidden fields here. Just in case somebody
-                    // shows the fields, enters data to them and then
-                    // unticks the checkbox.
-                    //
-                    // This would do the job:
-                    //
-                    // $("#hidden_field").val("");
-                }
-            });
-        });
-    </script>
-
-    <script>
-        $(function() {
-            // Get the form fields and hidden div
-            var checkbox = $("#trigger1");
-            var hidden1 = $("#hidden_fields10");
-            var hidden2 = $("#hidden_fields11");
-            var hidden3 = $("#hidden_fields12");
-            var hidden4 = $("#hidden_fields13");
-            var hidden5 = $("#hidden_fields14");
-            var hidden6 = $("#hidden_fields15");
-            var hidden7 = $("#hidden_fields16");
-            var hidden8 = $("#hidden_fields17");
-            var hidden9 = $("#hidden_fields18");
-            var hidden10 = $("#hidden_fields19");
-            var hidden11 = $("#hidden_fields20");
-            // Hide the fields.
-            // Use JS to do this in case the user doesn't have JS
-            // enabled.
-            hidden1.hide();
-            hidden2.hide();
-            hidden3.hide();
-            hidden4.hide();
-            hidden5.hide();
-            hidden6.hide();
-            hidden7.hide();
-            hidden8.hide();
-            hidden9.hide();
-            hidden10.hide();
-            hidden11.hide();
-            // Setup an event listener for when the state of the
-            // checkbox changes.
-            checkbox.change(function() {
-                // Check to see if the checkbox is checked.
-                // If it is, show the fields and populate the input.
-                // If not, hide the fields.
-                if (checkbox.is(":checked")) {
-                    // Show the hidden fields.
-                    hidden1.show();
-                    hidden2.show();
-                    hidden3.show();
-                    hidden4.show();
-                    hidden5.show();
-                    hidden6.show();
-                    hidden7.show();
-                    hidden8.show();
-                    hidden9.show();
-                    hidden10.show();
-                    hidden11.show();
-                    // Populate the input.
-                    populate.val("Dude, this input got populated!");
-                } else {
-                    // Make sure that the hidden fields are indeed
-                    // hidden.
-                    hidden1.hide();
-                    hidden2.hide();
-                    hidden3.hide();
-                    hidden4.hide();
-                    hidden5.hide();
-                    hidden6.hide();
-                    hidden7.hide();
-                    hidden8.hide();
-                    hidden9.hide();
-                    hidden10.hide();
-                    hidden11.hide();
-                    // You may also want to clear the value of the
-                    // hidden fields here. Just in case somebody
-                    // shows the fields, enters data to them and then
-                    // unticks the checkbox.
-                    //
-                    // This would do the job:
-                    //
-                    // $("#hidden_field").val("");
-                }
-            });
-        });
-    </script>
 <?php endif; ?>
 <?php include '../layout/footer-only.php' ?>

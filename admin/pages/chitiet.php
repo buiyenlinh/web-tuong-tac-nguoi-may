@@ -16,11 +16,11 @@
         $tenkhoahoc = $row['tenkhoahoc'];
         $tentiengviet = $row['tentiengviet'];
         $tendiaphuong = $row['tendiaphuong'];
-       /* $gioi = $row['gioi'];
+        $gioi = $row['gioi'];
         $nganh = $row['nganh'];
         $lop = $row['lop'];
-        $bo = $row['bo'];*/
-        $hoid = $row['ho_id'];
+        $bo = $row['bo'];
+        $ho = $row['ho'];
         $hinhthai = $row['hinhthai'];
         $sinhthai = $row['sinhthai'];
         $giatri = $row['giatri'];
@@ -38,34 +38,6 @@
         $updated_at = $row['updated_at'];
         $duongdan = $row['duongdan'];
     }
-
-    $sql_1 = "SELECT * FROM ho WHERE id = ".$hoid.";";
-    $result = $con->query($sql_1);
-    $row = $result->fetch_assoc();
-    $ho = $row['ten'];
-
-    $sql_1 = "SELECT * FROM bo WHERE id = ".$hoid.";";
-    $result = $con->query($sql_1);
-    $row = $result->fetch_assoc();
-    $bo = $row['ten'];
-    $lopid = $row['lop_id'];
-
-    $sql_1 = "SELECT * FROM lop WHERE id = ".$lopid.";";
-    $result = $con->query($sql_1);
-    $row = $result->fetch_assoc();
-    $lop = $row['ten'];
-    $nganhid = $row['nganh_id'];
-
-    $sql_1 = "SELECT * FROM nganh WHERE id = ".$nganhid.";";
-    $result = $con->query($sql_1);
-    $row = $result->fetch_assoc();
-    $nganh = $row['ten'];
-    $gioiid = $row['gioi_id'];
-
-    $sql_1 = "SELECT * FROM gioi WHERE id = ".$gioiid.";";
-    $result = $con->query($sql_1);
-    $row = $result->fetch_assoc();
-    $gioi = $row['ten'];
 
     $sql_1 = "SELECT * FROM hinhanh WHERE dongvat_id = ".$iddv.";";
 //    echo $sql_1;
