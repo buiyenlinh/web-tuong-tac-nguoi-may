@@ -78,11 +78,11 @@ function getAnimalInfo(animal_id) {
                 showAnimalImgList(json.data.img[i]);
             }
             var details = `
-                <li class="pb-1"><b>Giới: </b>` + json.data.info.gioi + `</li>
-                <li class="pb-1"><b>Ngành: </b>` + json.data.info.nganh + `</li>
-                <li class="pb-1"><b>Lớp: </b>` + json.data.info.lop + `</li>
-                <li class="pb-1"><b>Bộ: </b>` + json.data.info.bo + `</li>
-                <li class="pb-1"><b>Họ: </b>` + json.data.info.ho + `</li>
+                <li class="pb-1"><b>Giới: </b>` + json.data.gioi.ten + `</li>
+                <li class="pb-1"><b>Ngành: </b>` + json.data.nganh.ten + `</li>
+                <li class="pb-1"><b>Lớp: </b>` + json.data.lop.ten + `</li>
+                <li class="pb-1"><b>Bộ: </b>` + json.data.bo.ten + `</li>
+                <li class="pb-1"><b>Họ: </b>` + json.data.ho.ten + `</li>
                 <li class="pb-1"><b>Tên địa phương: </b>` + json.data.info.tendiaphuong + `</li>
                 <li class="pb-1"><b>Tên khoa học: </b>` + json.data.info.tenkhoahoc + `</li>
                 <li class="pb-1"><b>Tên tiếng việt: </b>` + json.data.info.tentiengviet + `</li>

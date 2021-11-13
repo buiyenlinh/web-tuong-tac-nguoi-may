@@ -329,4 +329,169 @@ else if ($action == 'get-info-install') {
     _success('OK', $install);
 }
 
+
+
+
+// Lấy danh sách họ theo bộ id
+else if ($action == "get-list-ho-by-bo-id") {
+    $bo_id = _getInt('bo_id');
+    $ho = $db->query('select * from ho where bo_id=' . intval($bo_id))->fetchAll();
+    return _success("get-list-ho-by-bo-id", $ho);
+}
+
+// Lấy danh sách bộ theo lớp id
+else if ($action == "get-bo-by-lop-id") {
+    $lop_id = _getInt('lop_id');
+    $bo = $db->query('select * from bo where lop_id=' . intval($lop_id))->fetchAll();
+    return _success("get-bo-by-lop-id", $bo);
+}
+
+// Lấy danh sách lớp theo ngành id
+else if ($action == "get-lop-by-nganh-id") {
+    $nganh_id = _getInt('nganh_id');
+    $lop = $db->query('select * from lop where nganh_id=' . intval($nganh_id))->fetchAll();
+    return _success("get-lop-by-nganh-id", $lop);
+}
+
+// Lấy danh sách ngành theo giới id
+else if ($action == "get-nganh-by-gioi-id") {
+    $gioi_id = _getInt('gioi_id');
+    $nganh = $db->query('select * from nganh where gioi_id=' . intval($gioi_id))->fetchAll();
+    return _success("get-nganh-by-gioi-id", $nganh);
+}
+
+
+
+// Lấy danh sách họ và bộ
+else if ($action == "get-list-ho") {
+    $ho = $db->query('select * from ho')->fetchAll();
+    $bo = $db->query('select * from bo')->fetchAll();
+    $response = [
+        'bo' => $bo,
+        'ho' => $ho
+    ];
+    return _success("get-list-ho", $response);
+}
+
+
+// lấy danh sách giới
+else if ($action == "get-list-gioi") {
+    $gioi = $db->query('select * from gioi')->fetchAll();
+    return _success('OK', $gioi);
+}
+
+// thêm bộ
+else if ($action == "add-bo") {
+    $lop = _getInt('lop');
+    $bo = _getString('bo');
+    $check = $db->query("select * from bo where ten =" . $db->quote($bo) . " and lop_id = " . intval($lop))->fetch();
+    if ($check) {
+        return _error("Bộ đã tồn tại");
+    }
+    $db->query("Insert into bo(ten, lop_id) values (" . $db->quote($bo) . ", " . intval($lop) . ")");
+    return _success("OK");
+}
+
+// Xóa bộ
+else if ($action == "delete-bo") {
+    $bo_id = _getInt("bo_id");
+    if (!$bo_id || $bo_id < 0) {
+        return _error("Vui lòng thử lại");
+    }
+    $ho = $db->query("select * from ho where bo_id=" . intval($bo_id))->fetchAll();
+    foreach ($ho as $_ho) {
+        $db->query("delete from dongvat where ho_id=" . intval($_ho['id']));
+        $db->query("delete from ho where id=" . intval($_ho['id']));
+    }
+    $db->query("delete from bo where id = " . intval($bo_id));
+    return _success("OK");
+}
+
+
+// Lấy thông tin bộ bởi id bộ
+else if ($action == "get-info-bo-by-id") {
+    $bo_id = _getInt("bo_id");
+    $bo = $db->query("select * from bo where id = " . intval($bo_id))->fetch();
+    $lop = $db->query("select * from lop where id = " . intval($bo['lop_id']))->fetch();
+    $nganh = $db->query("select * from nganh where id = " . intval($lop['nganh_id']))->fetch();
+    $gioi = $db->query("select * from gioi where id = " . intval($nganh['gioi_id']))->fetch();
+
+    $response = [
+        'bo' => $bo,
+        'lop' => $lop,
+        'nganh' => $nganh,
+        'gioi' => $gioi,
+    ];
+
+    return _success('OK', $response);
+}
+
+// Cập nhật bộ
+else if ($action == "update-bo") {
+    $lop_id = _getInt('lop_id');
+    $bo_id = _getInt('bo_id');
+    $bo_name = _getString("bo_name");
+    if ($lop_id && $bo_id) {
+        $db->query('UPDATE bo SET lop_id = ' . intval($lop_id) . ', ten =' . $db->quote($bo_name) . ' WHERE id = ' . intval($bo_id));
+        return _success("update_bo");
+    }
+}
+
+// thêm họ
+else if ($action == "add-ho") {
+    $bo_id = _getInt('bo_id');
+    $ho = _getString('ho');
+    $check = $db->query("SELECT * FROM ho WHERE ten = " . $db->quote($ho))->fetch();
+    if ($check) {
+        return _error("Họ này đã tồn tại");
+    }
+    $db->query("INSERT INTO ho (ten, bo_id) VALUES (" . $db->quote($ho) . ", " . intval($bo_id) . ")");
+    return _success("add-ho");
+}
+
+
+// Lấy thông tin họ
+else if ($action == "get-info-ho") {
+    $ho_id = _getInt('ho_id');
+    $ho = $db->query("select * from ho where id = " . intval($ho_id))->fetch();
+
+    $bo = $db->query("select * from bo where id = " . intval($ho['bo_id']))->fetch();
+    $lop = $db->query("select * from lop where id = " . intval($bo['lop_id']))->fetch();
+    $nganh = $db->query("select * from nganh where id = " . intval($lop['nganh_id']))->fetch();
+    $gioi = $db->query("select * from gioi where id = " . intval($nganh['gioi_id']))->fetch();
+
+    $response = [
+        'ho' => $ho,
+        'bo' => $bo,
+        'lop' => $lop,
+        'nganh' => $nganh,
+        'gioi' => $gioi,
+    ];
+
+    return _success('OK', $response);   
+}
+
+// Cập nhật họ
+else if ($action == "update-ho") {
+    $ho_id = _getInt('ho_id');
+    $ho_name = _getString('ho_name');
+    $bo_id = _getInt('bo_id');
+
+    $db->query("UPDATE ho SET ten = " . $db->quote($ho_name) . ", bo_id = " . intval($bo_id) . " where id = " . $ho_id);
+    return _success("update-ho");
+}
+
+// Xóa họ
+else if ($action == "delete-ho") {
+    $ho_id = _getInt('ho_id');
+    if ($ho_id <= 0) {
+        return _error("Vui lòng thử lại");
+    }
+    $animal = $db->query("SELECT * FROM dongvat WHERE ho_id = " . intval($ho_id))->fetchAll();
+    foreach ($animal as $_ani) {
+        $db->query("DELETE FROM dongvat WHERE id = " . intval($_ani['id']));    
+    }
+    $db->query("DELETE FROM ho WHERE id = " . intval($ho_id));
+    return _success("delete-ho");
+}
 ?>

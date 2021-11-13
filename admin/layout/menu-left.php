@@ -8,6 +8,11 @@
                 <i class="fas fa-frog"></i></i>&nbsp; Động vật
             </a>
         </li>
+        <li class="nav-item nav-item-ho-bo">
+            <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/ho.php">
+                <i class="fas fa-frog"></i></i>&nbsp; Bộ - Họ
+            </a>
+        </li>
         <li class="nav-item nav-item-user">
             <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/users.php">
                 <i class="fas fa-users"></i>&nbsp; Người dùng
