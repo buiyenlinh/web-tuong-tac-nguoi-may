@@ -192,9 +192,9 @@ if (isset($_GET["iddv"])) {
                                                         }
                                                     }
                                                     ?>
-                                                    
+
                                                     <div class="input_fields_wrap">
-                                                    <label for="inputAnimail" required="required">Thêm tọa độ: </label>
+                                                        <label for="inputAnimail" required="required">Thêm tọa độ: </label>
                                                         <button class="add_field_button btn btn-primary" style="margin-top:10px; margin-left:20px">Thêm tọa độ</button>
                                                         <div>
                                                             <br>
@@ -204,24 +204,25 @@ if (isset($_GET["iddv"])) {
                                                 </div>
                                                 <div class="col-12 col-lg-7">
                                                     <div class="form-group row">
-                                                        <div class="col-12 col-lg-4">
+                                                        <div class="col-12 col-lg-6">
                                                             <label for="inputAnimail" required="required">Thêm hình</label>
                                                             <input type="file" name="fileupload[]" id="files" multiple required>
                                                             <div class="form-group">
                                                                 <div id="image_preview"></div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12 col-lg-8">
-                                                        <?php
-                                                        for ($i = 0; $i < $tonghinh; $i++) {
-                                                            if ($hinhanh[$i] != null) {
-                                                                echo "Hình ảnh " . $i + 1 . ":";
-                                                                echo "<input type='file' class='form-control' size='20' name='hinhanh" . $i . "'>";
-                                                                echo "<img src='" . $hinhanh[$i] . "' alt='hinhdongvat' class='imgSize' style='width: 50px; height: 50px; margin-right: 10px;'>";
+
+                                                        <div class="col-12 col-lg-6">
+                                                            <?php
+                                                            for ($i = 0; $i < $tonghinh; $i++) {
+                                                                if ($hinhanh[$i] != null) {
+                                                                    echo "Hình ảnh " . $i + 1 . ":";
+                                                                    echo "<input type='file' class='form-control' size='20' name='hinhanh" . $i . "'>";
+                                                                    echo "<img src='" . $hinhanh[$i] . "' alt='hinhdongvat' class='imgSize' style='width: 50px; height: 50px; border-radius: 50px; object-fit: cover;'><br>";
+                                                                }
                                                             }
-                                                        }
-                                                        ?>
+                                                            ?>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
