@@ -66,6 +66,7 @@ if (isset($_GET["iddv"])) {
         $i = 0; //Dat bien i truoc tien de khoi tao chay trong while
         while ($row = $result->fetch_assoc()) {
             $hinh[$i] = $row['duongdan'];
+            $idhinh[$i] = $row['id'];
             //           echo $hinh[$i];
             //           echo "<br>";
             $i++;
@@ -194,34 +195,48 @@ if (isset($_GET["iddv"])) {
                                                     ?>
 
                                                     <div class="input_fields_wrap">
-                                                        <label for="inputAnimail" required="required">Thêm tọa độ: </label>
-                                                        <button class="add_field_button btn btn-primary" style="margin-top:10px; margin-left:20px">Thêm tọa độ</button>
-                                                        <div>
-                                                            <br>
-                                                            <input type="text" class="form-control" name="inputtoado1">
+                                                        <div class="form-group row">
+                                                            <div class="col-12 col-lg-12" style="margin-left:15px;">
+                                                                <label for="inputAnimail" required="required">Thêm tọa độ: </label>
+                                                                <button class="add_field_button btn btn-primary" style="margin-top:10px; margin-left:20px">Thêm tọa độ</button>
+                                                                <div>
+                                                                    <br>
+                                                                    <input type="text" class="form-control" name="inputtoado1" style="width:90%;">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-lg-7">
                                                     <div class="form-group row">
-                                                        <div class="col-12 col-lg-6">
+                                                        <div class="col-12 col-lg-4">
                                                             <label for="inputAnimail" required="required">Thêm hình</label>
-                                                            <input type="file" name="fileupload[]" id="files" multiple required>
+                                                            <input type="file" name="fileupload[]" id="files" multiple required style="width:86%;">
                                                             <div class="form-group">
                                                                 <div id="image_preview"></div>
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-12 col-lg-6">
-                                                            <?php
-                                                            for ($i = 0; $i < $tonghinh; $i++) {
-                                                                if ($hinhanh[$i] != null) {
-                                                                    echo "Hình ảnh " . $i + 1 . ":";
-                                                                    echo "<input type='file' class='form-control' size='20' name='hinhanh" . $i . "'>";
-                                                                    echo "<img src='" . $hinhanh[$i] . "' alt='hinhdongvat' class='imgSize' style='width: 50px; height: 50px; border-radius: 50px; object-fit: cover;'><br>";
+                                                        <div class="col-12 col-lg-8">
+                                                            <div class="form-group row">
+                                                                <?php
+
+                                                                for ($i = 0; $i < $tonghinh; $i++) {
+                                                                    if ($hinhanh[$i] != null) {
+                                                                        echo "<div class='col-12 col-lg-6'>";
+                                                                        echo "Hình ảnh " . $i + 1 . ":";
+                                                                        echo "<input type='file' class='form-control' name='hinhanh" . $i . "'>";
+                                                                        echo "</div>";
+                                                                        echo "<div class='col-12 col-lg-3'>";
+                                                                        echo "<img src='" . $hinhanh[$i] . "' alt='hinhdongvat' class='imgSize' style='width: 50px; height: 50px; border-radius: 50px; margin-top: 20px; object-fit: cover;'><br>";
+                                                                        echo "</div>";
+                                                                        echo "<div class='col-12 col-lg-3' style='margin-top: 30px;'>";
+                                                                        echo "<a href='./xoaIMG.php?idhinhanh=" . $idhinh[$i] . "' class='confirmation'><i class='far fa-trash-alt text-danger' style='font-size: 35px;'></i></a>";
+                                                                        echo "</div>";
+                                                                    }
                                                                 }
-                                                            }
-                                                            ?>
+                                                                ?>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -375,7 +390,7 @@ if (isset($_GET["iddv"])) {
             e.preventDefault();
             if (x < max_fields) { //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<br><div><input type="text" class="form-control" name="inputtoado' + x + '" style="margin-bottom:5px; margin-top:5px;" /><a href="#" class="remove_field">Xóa</a></div>'); //add input box
+                $(wrapper).append('<div><input type="text" class="form-control" name="inputtoado' + x + '" style="margin-bottom:5px; width:90%; margin-left:15px; margin-top:5px;" /><a href="#" class="remove_field" style="margin-left:15px;">Xóa</a></div>'); //add input box
             }
         });
 
