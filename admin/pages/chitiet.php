@@ -1,92 +1,99 @@
-<?php 
-    // include '../../config.php';
-    include '../layout/header-only.php';
+<?php
+// include '../../config.php';
+include '../layout/header-only.php';
 ?>
 
 <?php
-    $iddv = $_GET['iddv'];
-    //echo $iddv;
-    $con=new mysqli("localhost","root","","web_animal");
-    $con->set_charset("utf8");
-    $sql = "SELECT * FROM dongvat WHERE id = ".$iddv.";";
- // echo $sql;
-    $result = $con->query($sql);
-    if($result -> num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $tenkhoahoc = $row['tenkhoahoc'];
-        $tentiengviet = $row['tentiengviet'];
-        $tendiaphuong = $row['tendiaphuong'];
-       /* $gioi = $row['gioi'];
+$iddv = $_GET['iddv'];
+//echo $iddv;
+$con = new mysqli("localhost", "root", "", "web_animal");
+$con->set_charset("utf8");
+$sql = "SELECT * FROM dongvat WHERE id = " . $iddv . ";";
+// echo $sql;
+$result = $con->query($sql);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $tenkhoahoc = $row['tenkhoahoc'];
+    $tentiengviet = $row['tentiengviet'];
+    $tendiaphuong = $row['tendiaphuong'];
+    /* $gioi = $row['gioi'];
         $nganh = $row['nganh'];
         $lop = $row['lop'];
         $bo = $row['bo'];*/
-        $hoid = $row['ho_id'];
-        $hinhthai = $row['hinhthai'];
-        $sinhthai = $row['sinhthai'];
-        $giatri = $row['giatri'];
-        $iucn = $row['iucn'];
-        $sachdo = $row['sachdo'];
-        $nghidinh = $row['nghidinh'];
-        $cities = $row['cities'];
-        $phanbo = $row['phanbo'];
-        $tinhtrang = $row['tinhtrang'];
-        $sinhcanh = $row['sinhcanh'];
-        $diadiem = $row['diadiem'];
-        $ngaythuthap = $row['ngaythuthap'];
-        $nguoithuthap = $row['nguoithuthap'];
-        $created_at = $row['created_at'];
-        $updated_at = $row['updated_at'];
-        $duongdan = $row['duongdan'];
-    }
+    $hoid = $row['ho_id'];
+    $hinhthai = $row['hinhthai'];
+    $sinhthai = $row['sinhthai'];
+    $giatri = $row['giatri'];
+    $iucn = $row['iucn'];
+    $sachdo = $row['sachdo'];
+    $nghidinh = $row['nghidinh'];
+    $cities = $row['cities'];
+    $phanbo = $row['phanbo'];
+    $tinhtrang = $row['tinhtrang'];
+    $sinhcanh = $row['sinhcanh'];
+    $diadiem = $row['diadiem'];
+    $ngaythuthap = $row['ngaythuthap'];
+    $nguoithuthap = $row['nguoithuthap'];
+    $created_at = $row['created_at'];
+    $updated_at = $row['updated_at'];
+    $duongdan = $row['duongdan'];
+}
 
-    $sql_1 = "SELECT * FROM ho WHERE id = ".$hoid.";";
-    $result = $con->query($sql_1);
-    $row = $result->fetch_assoc();
-    $ho = $row['ten'];
+$sql_1 = "SELECT * FROM ho WHERE id = " . $hoid . ";";
+$result = $con->query($sql_1);
+$row = $result->fetch_assoc();
+$ho = $row['ten'];
 
-    $sql_1 = "SELECT * FROM bo WHERE id = ".$hoid.";";
-    $result = $con->query($sql_1);
+$sql_1 = "SELECT * FROM bo WHERE id = " . $hoid . ";";
+$result = $con->query($sql_1);
+if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $bo = $row['ten'];
     $lopid = $row['lop_id'];
 
-    $sql_1 = "SELECT * FROM lop WHERE id = ".$lopid.";";
+    $sql_1 = "SELECT * FROM lop WHERE id = " . $lopid . ";";
     $result = $con->query($sql_1);
     $row = $result->fetch_assoc();
     $lop = $row['ten'];
     $nganhid = $row['nganh_id'];
 
-    $sql_1 = "SELECT * FROM nganh WHERE id = ".$nganhid.";";
+    $sql_1 = "SELECT * FROM nganh WHERE id = " . $nganhid . ";";
     $result = $con->query($sql_1);
     $row = $result->fetch_assoc();
     $nganh = $row['ten'];
     $gioiid = $row['gioi_id'];
 
-    $sql_1 = "SELECT * FROM gioi WHERE id = ".$gioiid.";";
+    $sql_1 = "SELECT * FROM gioi WHERE id = " . $gioiid . ";";
     $result = $con->query($sql_1);
     $row = $result->fetch_assoc();
     $gioi = $row['ten'];
+} else {
+    $bo = null;
+    $lop = null;
+    $nganh = null;
+    $gioi = null;
+}
 
-    $sql_1 = "SELECT * FROM hinhanh WHERE dongvat_id = ".$iddv.";";
+$sql_1 = "SELECT * FROM hinhanh WHERE dongvat_id = " . $iddv . ";";
 //    echo $sql_1;
-    $result = $con->query($sql_1);
-    if($result -> num_rows > 0) {
-        //$row = $result->fetch_assoc();
-        $i = 1; //Dat bien i truoc tien de khoi tao chay trong while
-        while($row = $result->fetch_assoc()) {
-            $hinh[$i] = $row['duongdan'];
- //           echo $hinh[$i];
- //           echo "<br>";
-            $i++;
-        }
+$result = $con->query($sql_1);
+if ($result->num_rows > 0) {
+    //$row = $result->fetch_assoc();
+    $i = 1; //Dat bien i truoc tien de khoi tao chay trong while
+    while ($row = $result->fetch_assoc()) {
+        $hinh[$i] = $row['duongdan'];
+        //           echo $hinh[$i];
+        //           echo "<br>";
+        $i++;
     }
+}
 
-    // $sql = "SELECT * FROM toado WHERE dongvat_id = ".$iddv."";
+// $sql = "SELECT * FROM toado WHERE dongvat_id = ".$iddv."";
 
-    $hinhanhList = $db->query('Select * from hinhanh where dongvat_id = ' . intval($iddv))->fetchAll();
-    $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv))->fetchAll();
+$hinhanhList = $db->query('Select * from hinhanh where dongvat_id = ' . intval($iddv))->fetchAll();
+$toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv))->fetchAll();
 
- // echo $sql;
+// echo $sql;
 //     $result = $con->query($sql);
 //     if($result -> num_rows > 0) {
 //         $i = 1; //Dat bien i truoc tien de khoi tao chay trong while
@@ -97,18 +104,18 @@
 //             $i++;
 //         }
 //     }
-    
-    // $hinhanh[1] = isset($hinh[1])?'../../../'.$hinh[1]:null;
-    // $hinhanh[2] = isset($hinh[2])?'../../../'.$hinh[2]:null;
-    // $hinhanh[3] = isset($hinh[3])?'../../../'.$hinh[3]:null;
-    // $hinhanh[4] = isset($hinh[4])?'../../../'.$hinh[4]:null;
-    // $hinhanh[5] = isset($hinh[5])?'../../../'.$hinh[5]:null;
 
-    // $td1 = isset($toado[1])?$toado[1]:null;
-    // $td2 = isset($toado[2])?$toado[2]:null;
-    // $td3 = isset($toado[3])?$toado[3]:null;
-    // $td4 = isset($toado[4])?$toado[4]:null;
-    // $td5 = isset($toado[5])?$toado[5]:null;
+// $hinhanh[1] = isset($hinh[1])?'../../../'.$hinh[1]:null;
+// $hinhanh[2] = isset($hinh[2])?'../../../'.$hinh[2]:null;
+// $hinhanh[3] = isset($hinh[3])?'../../../'.$hinh[3]:null;
+// $hinhanh[4] = isset($hinh[4])?'../../../'.$hinh[4]:null;
+// $hinhanh[5] = isset($hinh[5])?'../../../'.$hinh[5]:null;
+
+// $td1 = isset($toado[1])?$toado[1]:null;
+// $td2 = isset($toado[2])?$toado[2]:null;
+// $td3 = isset($toado[3])?$toado[3]:null;
+// $td4 = isset($toado[4])?$toado[4]:null;
+// $td5 = isset($toado[5])?$toado[5]:null;
 
 
 ?>
@@ -127,171 +134,191 @@
                     <h3 class="text-center">THÔNG TIN ĐỘNG VẬT</h3>
                     <ol class="list-numbered">
                         <li>
-                            <?php 
-                                echo "<b>Tên khoa học</b> </br>";
-                                echo $tenkhoahoc;
+                            <?php
+                            echo "<b>Tên khoa học</b> </br>";
+                            echo $tenkhoahoc;
                             ?>
                         </li>
                         <li>
-                        <?php
-                            echo "<b>Tên tiếng việt</b> </br>"; 
+                            <?php
+                            echo "<b>Tên tiếng việt</b> </br>";
                             echo $tentiengviet;
-                            
-                        ?>
+
+                            ?>
                         </li>
                         <li>
-                        <?php
-                            echo "<b>Tên địa phương</b> </br>"; 
+                            <?php
+                            echo "<b>Tên địa phương</b> </br>";
                             echo $tendiaphuong;
-                            
-                        ?>
+
+                            ?>
                         </li>
                         <li>
-                        <?php
+                            <?php
                             echo "<b>Giới</b> </br>";
-                            echo $gioi;
-                            
-                        ?>
+                            if ($gioi != null) {
+                                echo $gioi;
+                            } else {
+                                echo "Không xác định được Giới động vật";
+                            }
+
+
+                            ?>
                         </li>
                         <li>
-                        <?php
-                            echo "<b>Ngành:</b> </br>"; 
-                            echo $nganh;
-                            
-                        ?>
+                            <?php
+                            echo "<b>Ngành:</b> </br>";
+                            if ($nganh != null) {
+                                echo $nganh;
+                            } else {
+                                echo "Không xác định được Ngành động vật";
+                            }
+
+
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Lớp:</b> </br>";
-                            echo $lop;
-                            
-                        ?>
+                            if ($lop != null) {
+                                echo $lop;
+                            } else {
+                                echo "Không xác định được Lớp động vật";
+                            }
+
+
+                            ?>
 
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Bộ:</b> </br>";
-                            echo $bo;
-                            
-                        ?>
+                            if ($bo != null) {
+                                echo $bo;
+                            } else {
+                                echo "Không xác định được Bộ động vật";
+                            }
+
+
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Họ:</b> </br>";
                             echo $ho;
-                        ?>
+                            ?>
                         </li>
                         <li>
                             <b>Hình ảnh:</b></br>
-                            <?php foreach($hinhanhList as $ha): ?>
+                            <?php foreach ($hinhanhList as $ha) : ?>
                                 <img src="<?php echo BASE_IMG . $ha["duongdan"] ?>" alt="anh dong vat">
                             <?php endforeach; ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Mô tả đặc điểm hình thái:</b> </br>";
                             echo $hinhthai;
-                        ?>
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Mô tả đặc điểm sinh thái:</b> </br>";
                             echo $sinhthai;
-                        ?>
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Giá trị sử dụng</b> </br>";
-                            echo $giatri;              
-                        ?>
+                            echo $giatri;
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Tình trạng bảo tồn theo IUCN:</b> </br>";
-                            echo $iucn;   
-                        ?>
+                            echo $iucn;
+                            ?>
 
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Tình trạng bảo tồn theo sách đỏ Việt Nam:</b> </br>";
                             echo $sachdo;
-                        ?>
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</b> </br>";
-                            echo $nghidinh;  
-                        ?>
+                            echo $nghidinh;
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</b> </br>";
                             echo $cities;
-                        ?>
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Phân bố:</b> </br>";
                             echo $phanbo;
-                        ?>
+                            ?>
                         </li>
                         <li>
                             <b>Tọa độ:</b></br>
                             <ol style="margin: 0px">
-                            <?php foreach ($toaDoList as $tdo): ?>
-                                <li>
-                                    <?php echo $tdo["toado"]; ?>
-                                </li>
-                            <?php endforeach; ?>
+                                <?php foreach ($toaDoList as $tdo) : ?>
+                                    <li>
+                                        <?php echo $tdo["toado"]; ?>
+                                    </li>
+                                <?php endforeach; ?>
                             </ol>
                         </li>
-                        
+
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Tình trạng mẫu vật:</b> </br>";
                             echo $tinhtrang;
-                        ?>
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Sinh cảnh:</b> </br>";
-                            echo $sinhcanh;            
-                        ?>
+                            echo $sinhcanh;
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Địa điểm:</b> </br>";
-                            echo $diadiem;   
-                        ?>
+                            echo $diadiem;
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Ngày thu mẫu:</b> </br>";
                             echo $ngaythuthap;
-                        ?>
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Người thu mẫu:</b> </br>";
                             echo $nguoithuthap;
-                        ?>
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Create at:</b> </br>";
                             echo $created_at;
-                        ?>
+                            ?>
                         </li>
                         <li>
-                        <?php 
+                            <?php
                             echo "<b>Update at:</b> </br>";
                             echo $updated_at;
-                        ?>
+                            ?>
                         </li>
                     </ol>
                 </div>
-                
+
             </div>
         </div>
     </div>
