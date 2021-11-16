@@ -13,6 +13,11 @@
                 <i class="fas fa-frog"></i></i>&nbsp; Bộ - Họ
             </a>
         </li>
+        <li class="nav-item nav-item-gioi-nganh-lop">
+            <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/gioi-nganh-lop.php">
+                <i class="fas fa-frog"></i></i>&nbsp; Giới - Ngành - Lớp
+            </a>
+        </li>
         <li class="nav-item nav-item-user">
             <a class="nav-link text-light" href="<?php echo BASE?>admin/pages/users.php">
                 <i class="fas fa-users"></i>&nbsp; Người dùng

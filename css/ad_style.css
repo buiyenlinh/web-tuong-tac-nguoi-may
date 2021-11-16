@@ -119,10 +119,28 @@ ul {
 #users-page,
 #animal-list,
 #install-page,
-#ho-page {
+#ho-page,
+#gioi-nganh-lop-page {
   width: 100%;
   height: 100%;
 }
+
+
+#account-page .layout-right,
+#ho-page .layout-right,
+#gioi-nganh-lop-page .layout-right,
+#install-page .layout-right {
+  background: #e0e0e0;
+}
+
+.account__right__info__top,
+.profile-details,
+#install-page .install {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
 
 /*--------------------------------- MENU LEFT --------------------------------- */
 
@@ -134,7 +152,8 @@ ul {
 #account-page .menu-left ul .nav-item-account,
 #animal-list .menu-left ul .nav-item-animal,
 #install-page .menu-left ul .nav-item-install,
-#ho-page .nav-item-ho-bo { background: #0a4a5e }
+#ho-page .nav-item-ho-bo,
+#gioi-nganh-lop-page .nav-item-gioi-nganh-lop { background: #0a4a5e }
 
 /*--------------------------------- LOGIN --------------------------------- */
 
@@ -480,6 +499,7 @@ input[type="file"] {
 
 
 /* bộ - họ page */
-#ho-page .table-striped tbody tr:nth-of-type(odd) {
+#ho-page .table-striped tbody tr:nth-of-type(odd),
+#gioi-nganh-lop-page .table-striped tbody tr:nth-of-type(odd){
   background-color: rgb(186 186 186 / 5%);
 }

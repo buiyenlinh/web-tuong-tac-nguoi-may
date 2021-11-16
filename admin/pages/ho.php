@@ -8,7 +8,7 @@
             <div class="layout-left">
               <?php include '../layout/menu-left.php'; ?>
             </div>
-            <div class="layout-right" style="background: #eaeaea">
+            <div class="layout-right">
                 <div class="layout-right-header">
                     <?php  include '../layout/header.php';  ?>
                 </div>
@@ -27,7 +27,7 @@
                                   type="button"
                                   data-toggle="modal"
                                   data-target="#ho-page-modal-add-bo"
-                                >Thêm</button>
+                                >Thêm Bộ</button>
                               </div>
                             </div>
                             <div class="table-responsive">
@@ -49,7 +49,7 @@
                                   type="button"
                                   data-toggle="modal"
                                   data-target="#ho-page-modal-add-bo"
-                                >Thêm</button>
+                                >Thêm Họ</button>
                               </div>
                             </div>
                             <div class="table-responsive">
@@ -97,16 +97,19 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <b>Thêm bộ</b>
+            <div class="add-bo">
+              <b>Bộ</b>
+            </div>
+            <div class="add-ho">
+              <b>Họ</b>
+            </div>
           </div>
           <div class="modal-body">
             <form action="">
               <div class="text-danger add-bo-error"></div>
               <div class="form-group">
                 <label for="">Giới <span class="text-danger">*</span></label>
-                <select name="gioi_name" class="add-bo-gioi-select form-control" onchange="getNganhByGioiID(value)">
-                  
-                </select>
+                <select name="gioi_name" class="add-bo-gioi-select form-control" onchange="getNganhByGioiID(value, '.add-bo-nganh-select')"></select>
               </div>
               <div class="form-group">
                 <label for="">Ngành <span class="text-danger">*</span></label>

@@ -24,41 +24,43 @@ include '../layout/header-only.php';
                     <div class="layout-right-content-details">
                         <div class="account__right p-3">
                             <div class="account__right__info">
-                                <div class="row">
-                                    <div class="col-md-2 col-sm-5 col-xs-12 mb-2">
-                                        <div class="account__info__left--avt">
-                                            <img src="" alt="">
-                                            <i class="fas fa-edit  icon-edit-avt" title="Thay đổi ảnh đại diện"></i>
-                                            <input type="file" class="account__info__left--avt-file" id="account__info__left--avt-file">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10 col-sm-7 col-xs-12">
-                                        <div class="account__info__right">
-                                            <h3 class="account__info__right--name"></h3>
-                                            <div class="d-flex">
-                                                <div class="account__info__right--role pr-3">
-                                                    <i class="fas fa-user-circle"></i>
-                                                    <span></span>
-                                                </div>
-                                                <div class="account__info__right--phone pr-3">
-                                                    <i class="fas fa-phone-alt"></i>
-                                                    <span></span>
-                                                </div>
-                                                <div class="account__info__right--address">
-                                                    <i class="fas fa-map-marker-alt"></i>
-                                                    <span></span>
-                                                </div>
+                                <div class="account__right__info__top">
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-5 col-xs-12 mb-2">
+                                            <div class="account__info__left--avt">
+                                                <img src="" alt="">
+                                                <i class="fas fa-edit  icon-edit-avt" title="Thay đổi ảnh đại diện"></i>
+                                                <input type="file" class="account__info__left--avt-file" id="account__info__left--avt-file">
                                             </div>
-                                            <ul class="d-flex mt-4 account-post-number">
-                                                <li class="text-center mr-2">
-                                                    <b class="sum-animal"></b>
-                                                    <div>Bài đăng</div>
-                                                </li> 
-                                                <li class="text-center mr-2">
-                                                    <b class="percent"></b>
-                                                    <div>Phần trăm</div>
-                                                </li>  
-                                            </ul>
+                                        </div>
+                                        <div class="col-md-10 col-sm-7 col-xs-12">
+                                            <div class="account__info__right">
+                                                <h3 class="account__info__right--name"></h3>
+                                                <div class="d-flex">
+                                                    <div class="account__info__right--role pr-3">
+                                                        <i class="fas fa-user-circle"></i>
+                                                        <span></span>
+                                                    </div>
+                                                    <div class="account__info__right--phone pr-3">
+                                                        <i class="fas fa-phone-alt"></i>
+                                                        <span></span>
+                                                    </div>
+                                                    <div class="account__info__right--address">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                                <ul class="d-flex mt-4 account-post-number">
+                                                    <li class="text-center mr-2">
+                                                        <b class="sum-animal"></b>
+                                                        <div>Bài đăng</div>
+                                                    </li> 
+                                                    <li class="text-center mr-2">
+                                                        <b class="percent"></b>
+                                                        <div>Phần trăm</div>
+                                                    </li>  
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
