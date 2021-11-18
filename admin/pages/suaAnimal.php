@@ -218,24 +218,8 @@ if (isset($_GET["iddv"])) {
                                                         </div>
 
                                                         <div class="col-12 col-lg-8">
-                                                            <div class="form-group row">
-                                                                <?php
-
-                                                                for ($i = 0; $i < $tonghinh; $i++) {
-                                                                    if ($hinhanh[$i] != null) {
-                                                                        echo "<div class='col-12 col-lg-6'>";
-                                                                        echo "Hình ảnh " . $i + 1 . ":";
-                                                                        echo "<input type='file' class='form-control' name='hinhanh" . $i . "'>";
-                                                                        echo "</div>";
-                                                                        echo "<div class='col-12 col-lg-3'>";
-                                                                        echo "<img src='" . $hinhanh[$i] . "' alt='hinhdongvat' class='imgSize' style='width: 50px; height: 50px; border-radius: 50px; margin-top: 20px; object-fit: cover;'><br>";
-                                                                        echo "</div>";
-                                                                        echo "<div class='col-12 col-lg-3' style='margin-top: 30px;'>";
-                                                                        echo "<a href='./xoaIMG.php?idhinhanh=" . $idhinh[$i] . "' class='confirmation'><i class='far fa-trash-alt text-danger' style='font-size: 35px;'></i></a>";
-                                                                        echo "</div>";
-                                                                    }
-                                                                }
-                                                                ?>
+                                                            <div class="form-group row" id="data">
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -310,6 +294,47 @@ if (isset($_GET["iddv"])) {
     </div>
 </div>
 
+
+
+<script>
+    function DisplayData(){ //hàm hiển thị dữ liệu ra
+        
+        $.ajax({
+        url: 'data_query.php', //lấy dữ liệu ra từ csdl và hiển thị tại 
+        type: 'POST',
+        data: {
+            'res' : '<?php echo $iddv; ?>'
+        },
+        success: function(response){
+            console.log(response);
+            $('#data').html(response);  //hiển thị dữ liệu ra 
+        }
+    });
+
+}
+
+</script>
+
+<script>
+    function DeleteData(id){ //hàm hiển thị dữ liệu ra
+        
+        $.ajax({
+        url: 'delete_animal.php', //lấy dữ liệu ra từ csdl và hiển thị tại 
+        type: 'POST',
+        data: {
+            'id' : id,
+            'res' : '<?php echo $iddv; ?>'
+        },
+        success: function(response){
+            console.log(response);
+            $('#data').html(response);  //hiển thị dữ liệu ra 
+        }
+    });
+
+}
+
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
 </script>
 
@@ -317,9 +342,22 @@ if (isset($_GET["iddv"])) {
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+
+
 <script>
     $(document).ready(function() {
         var fileArr = [];
+
+        //Hien thi hinh anh
+        DisplayData();
+        //console.log("hi");
+        //Xoa hinh anh
+        $(document).on('click','.btn-xoa',function(){
+            var dt=$(this).attr("id");
+            DeleteData(dt);
+        });
+
+        //Upload nhieu hinh
         $("#files").change(function() {
             // check if fileArr length is greater than 0
             if (fileArr.length > 0) fileArr = [];

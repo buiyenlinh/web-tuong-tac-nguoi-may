@@ -13,14 +13,18 @@
     $result = $con->query($sql);
     //echo $sql;
 
-    
+    $sql_1 = "SELECT * FROM hinhanh WHERE dongvat_id = ".$iddv."";
+    $query = $con->query($sql_1);
+    //$fetch = $result->fetch_assoc();
+    while($fetch = $query->fetch_array()){
+        $img="../../../" . $fetch['duongdan'];
+        unlink($img);
+    }
+
     $sql = "DELETE FROM hinhanh WHERE dongvat_id = ".$iddv."";
     $result = $con->query($sql);
 
-    $sql_1 = "SELECT * FROM hinhanh WHERE dongvat_id = ".$iddv."";
-    $result = $con->query($sql_1);
-    $row = $result->fetch_assoc();
-    unlink("../../../" . $row['duongdan']);
+    
     //echo $sql;
 
  //           echo $hinh[$i];
