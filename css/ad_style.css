@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -8,26 +8,25 @@ html {
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    height: 100%;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 body .container {
-    max-width: 100%;
-    padding: 0px;
-    width: 100%;
-    height: 100%;
+  max-width: 100%;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
 }
-
 
 .back-to-top {
   position: fixed;
@@ -41,20 +40,20 @@ ul {
 
 /* layout */
 .layout-wrap {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .layout-left {
-    float: left;
-    width: 230px;
-    height: 100%;
+  float: left;
+  width: 230px;
+  height: 100%;
 }
 .layout-right {
-    float: left;
-    width: calc(100% - 230px);
-    height: 100%;
-    border-left: 1px solid #ddd;
+  float: left;
+  width: calc(100% - 230px);
+  height: 100%;
+  border-left: 1px solid #ddd;
 }
 
 .layout-right-header {
@@ -98,20 +97,19 @@ ul {
 .layout-right-content-details {
   position: absolute;
   top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    max-height: 100%;
-    padding: 10px;
-    overflow-x: hidden;
-    overflow-y: auto;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.layout-left .menu-left{
-    height: 100vh;
-    background: #0e768d;
+.layout-left .menu-left {
+  height: 100vh;
+  background: #0e768d;
 }
-
 
 /* MAIN PAGE */
 #main,
@@ -126,51 +124,58 @@ ul {
 /*--------------------------------- MENU LEFT --------------------------------- */
 
 .menu-left ul li {
-    border-bottom: 1px solid #3e8787;
+  border-bottom: 1px solid #3e8787;
 }
 
 #users-page .menu-left ul .nav-item-user,
 #account-page .menu-left ul .nav-item-account,
 #animal-list .menu-left ul .nav-item-animal,
-#install-page .menu-left ul .nav-item-install { background: #0a4a5e }
+#install-page .menu-left ul .nav-item-install {
+  background: #0a4a5e;
+}
 
 /*--------------------------------- LOGIN --------------------------------- */
 
 .login-form,
 .forget-password-form {
-    width: 25%;
-    margin: 150px auto;
-    padding: 20px;
-    border: 3px solid #0e768d;
+  width: 25%;
+  margin: 150px auto;
+  padding: 20px;
+  border: 3px solid #0e768d;
 }
 
 .login-form h2 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .login-alert-username,
 .login-alert-password,
 .forget-alert-username,
 .forget-alert-password,
-.forget-alert-check-password { display: none; }
-
-.go-home:hover { text-decoration: none; }
-
-.forget-password-form { 
-  display: none; 
+.forget-alert-check-password {
+  display: none;
 }
-.go-forget-password { cursor: pointer; }
 
+.go-home:hover {
+  text-decoration: none;
+}
+
+.forget-password-form {
+  display: none;
+}
+.go-forget-password {
+  cursor: pointer;
+}
 
 /*--------------------------------- ADMIN HEADER --------------------------------- */
 .header {
   background: #0e768d;
   border-bottom: 2px solid #ddd;
 }
-.header__logout { 
+.header__logout {
   cursor: pointer;
 }
-#logout:hover .text-logout{
+#logout:hover .text-logout {
   color: #0a4a5e !important;
 }
 
@@ -189,9 +194,13 @@ ul {
 }
 
 /*--------------------------------- USERS --------------------------------- */
-.list-users { width: 100%; }
+.list-users {
+  width: 100%;
+}
 .icon-delele-user,
-.icon-update-user { cursor: pointer; }
+.icon-update-user {
+  cursor: pointer;
+}
 
 .user-success-alert {
   margin-bottom: 0;
@@ -203,40 +212,51 @@ ul {
 .user-form__username-alert,
 .user-form__password-alert,
 .update-user-username-alert,
-.update-user-error-alert { display: none; }
+.update-user-error-alert {
+  display: none;
+}
 
-.toggle-delete-modal { display: none; }
-
+.toggle-delete-modal {
+  display: none;
+}
 
 /* --------------------------------- ACCOUNT --------------------------------- */
-.account__info__left--avt-file { display: none !important; }
+.account__info__left--avt-file {
+  display: none !important;
+}
 
 .account__info__left--avt img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background: #333;
-    border-radius: 10px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #333;
+  border-radius: 10px;
 }
 
-.account__info__left--avt { position: relative; }
+.account__info__left--avt {
+  position: relative;
+}
 .account__info__left--avt .icon-edit-avt {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 5px;
-    border-radius: 50%;
-    cursor: pointer;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.icon-edit-avt:hover { color: #17a2b8}
-.profile-details .nav-tabs .nav-link { color: black; }
+.icon-edit-avt:hover {
+  color: #17a2b8;
+}
+.profile-details .nav-tabs .nav-link {
+  color: black;
+}
 .profile-details .nav-tabs .nav-link.active {
   color: #0e768d;
   font-weight: bold;
- }
+}
 .profile-details .tab-content {
   border: 1px solid #ddd;
   padding: 25px;
@@ -249,14 +269,17 @@ ul {
 }
 
 .profile-details-info--username-alert,
-.profile-details-info-alert { display: none; }
+.profile-details-info-alert {
+  display: none;
+}
 
-  /* update password account admin */
+/* update password account admin */
 .change-password-alert,
 .change-password-old-password-alert,
 .change-password-new-password-alert,
-.change-password-check-new-password-alert { display: none; }
-
+.change-password-check-new-password-alert {
+  display: none;
+}
 
 /* Search */
 /* Styles for wrapping the search box */
@@ -285,33 +308,33 @@ ul {
   color: #aaa;
 }
 
- .search-box table{
-    margin: auto;
+.search-box table {
+  margin: auto;
 }
 
-.search-box table input{
-    width: 500px;
-    border-radius: 5px;
+.search-box table input {
+  width: 500px;
+  border-radius: 5px;
 }
-#result{
-    position: absolute;
-    width: 100%;
-    top: 100%;
-    background: #fff;
-    z-index: 10;
-    box-shadow: 0px 3px 6px -2px #3f6a70;
-    max-height: 92px;
-    overflow-y: scroll;
+#result {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  background: #fff;
+  z-index: 10;
+  box-shadow: 0px 3px 6px -2px #3f6a70;
+  max-height: 92px;
+  overflow-y: scroll;
 }
 
-#result a{
+#result a {
   display: inline-block;
   width: 100%;
   padding: 10px;
   border: 1px solid lightgray;
 }
 
-#result a:hover{
+#result a:hover {
   text-decoration: none;
 }
 
@@ -319,149 +342,139 @@ ul {
 
 /* Input hình */
 input[type="file"] {
-    display: block;
-  }
-  .imageThumb {
-    max-height: 75px;
-    border: 2px solid;
-    padding: 1px;
-    cursor: pointer;
-  }
-  .pip {
-    display: inline-block;
-    margin: 10px 10px 0 0;
-  }
-  .remove {
-    display: block;
-    background: #444;
-    border: 1px solid black;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-  }
-  .remove:hover {
-    background: white;
-    color: black;
-  }
-  
+  display: block;
+}
+.imageThumb {
+  max-height: 75px;
+  border: 2px solid;
+  padding: 1px;
+  cursor: pointer;
+}
+.pip {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+}
+.remove {
+  display: block;
+  background: #444;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.remove:hover {
+  background: white;
+  color: black;
+}
+
 /* Input hình */
 
 /*btn form Thêm*/
 #form-cn {
-    margin: 0 auto;
-    display: block;
+  margin: 0 auto;
+  display: block;
 }
 
-.btn-them a{
+.btn-them a {
   text-decoration: none;
 }
-#btn-animal-cn a:hover{
+#btn-animal-cn a:hover {
   color: white;
 }
-#btn-animal-cn b{
+#btn-animal-cn b {
   color: white;
 }
 
-  /* Bảng chi tiết */
+/* Bảng chi tiết */
 
-  .list-numbered img {
-    /* display: block;
+.list-numbered img {
+  /* display: block;
     margin: 1em 0; */
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-right: 10px;
-  }
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
 
-  .list-numbered ul,
-  ol {
-    margin: 0 0 1.5em 2em;
-    word-wrap: break-word;
-  }
-  .list-numbered {
-    counter-reset: li;
-    margin-left: 0;
-    padding-left: 0;
-  }
-  .list-numbered > li {
-    position: relative;
-    margin: 0 0 2rem 1.5rem;
-    padding: 0.5rem 1rem 0.5rem 2rem;
-    list-style: none;
-    border-left: 0.5px solid #ccc;
-  }
-  .list-numbered > li:before {
-    display: block;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    content: counter(li);
-    counter-increment: li;
-    position: absolute;
-    top: -0.4rem;
-    left: -1.5rem;
-    box-sizing: border-box;
-    margin-right: 0.5rem;
-    width: 3rem;
-    height: 3rem;
-    text-align: center;
-    font-weight: bold;
-    border: 0.5px solid #ccc;
-    background-color: #ffffff;
-    border-radius: 50%;
-  }
+.list-numbered ul,
+ol {
+  margin: 0 0 1.5em 2em;
+  word-wrap: break-word;
+}
+.list-numbered {
+  counter-reset: li;
+  margin-left: 0;
+  padding-left: 0;
+}
+.list-numbered > li {
+  position: relative;
+  margin: 0 0 2rem 1.5rem;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+  list-style: none;
+  border-left: 0.5px solid #ccc;
+}
+.list-numbered > li:before {
+  display: block;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  top: -0.4rem;
+  left: -1.5rem;
+  box-sizing: border-box;
+  margin-right: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  font-weight: bold;
+  border: 0.5px solid #ccc;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
 
-  .gridtable table td{
-    text-align: center;
-    
-  }
+.gridtable table td {
+  text-align: center;
+}
 
+/*Thêm hình*/
+.img-div {
+  position: relative;
+  /* width: 46%; */
+  float: left;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  max-width: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
 
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
 
+.img-div:hover .image {
+  opacity: 0.3;
+}
 
-
-
-  /*Thêm hình*/
-  .img-div {
-    position: relative;
-    /* width: 46%; */
-    float: left;
-    margin-right: 5px;
-    margin-left: 5px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
-  
-  .image {
-    opacity: 1;
-    display: block;
-    width: 100%;
-    max-width: auto;
-    transition: 0.5s ease;
-    backface-visibility: hidden;
-  }
-  
-  .middle {
-    transition: 0.5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  
-  .img-div:hover .image {
-    opacity: 0.3;
-  }
-  
-  .img-div:hover .middle {
-    opacity: 1;
-  }
-  
-
-
+.img-div:hover .middle {
+  opacity: 1;
+}
 
 #image_preview img {
   width: 50px;
@@ -470,7 +483,60 @@ input[type="file"] {
   object-fit: cover;
 }
 
-
 #install-favicon {
   display: none;
+}
+
+.chinhsua label {
+  font-weight: bold;
+}
+
+/* Thống kê */
+.statistic-section {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background: #17a2b8; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #17a2b8, #17a2b8);
+  background: linear-gradient(to right, #17a2b8, #17a2b8);
+}
+
+.count-title {
+  font-size: 50px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.stats-text {
+  font-size: 15px;
+  font-weight: normal;
+  margin-top: 15px;
+  margin-bottom: 0;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.stats-line-black {
+  margin: 12px auto 0;
+  width: 55px;
+  height: 2px;
+  background-color: #fff;
+}
+.stats-icon {
+  font-size: 35px;
+  margin: 0 auto;
+  float: none;
+  display: table;
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .counter {
+    margin-bottom: 40px;
+  }
 }

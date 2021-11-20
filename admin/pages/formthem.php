@@ -20,9 +20,9 @@ include '../layout/header-only.php';
                 <div class="layout-right-content">
                     <div class="layout-right-content-details">
                         <!--Form THÊM -->
-                        <div class="col-md-8" id="form-cn">
+                        <div class="col-md-12" id="form-cn">
                             <h3 class="text-center">THÊM ĐỘNG VẬT</h3>
-                            <form action="themAnimal.php" accept-charset="UTF-8" enctype="multipart/form-data" method="POST" target="">
+                            <form action="themAnimal.php" class="them-dongvat" accept-charset="UTF-8" enctype="multipart/form-data" method="POST" target="">
                                 <div class="card">
                                     <div class="card-body">
 
@@ -31,23 +31,23 @@ include '../layout/header-only.php';
                                                 <div class="trang-1" id="trang-1">
                                                     <div class="form-group row">
                                                         <div class="col-12 col-lg-4">
-                                                            <label for="inputSupplierName">Tên khoa học:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên khoa học</p>
                                                             <input type="text" name="inputkhoahoc" class="form-control" id="inputkhoahoc" placeholder="Nhập tên khoa học" required="required">
-                                                            <label for="inputSupplierName">Tên tiếng việt:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên tiếng việt</p>
                                                             <input type="text" name="inputtiengviet" class="form-control" id="inputtiengviet" required="required" placeholder="Nhập tên tiếng Việt">
-                                                            <label for="inputSupplierName">Tên tiếng việt:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên tiếng việt</p>
                                                             <input type="text" name="inputdiaphuong" class="form-control" id="inputdiaphuong" required="required" placeholder="Nhập tên địa phương">
-                                                            <label for="inputSupplierName">Người thu mẩu:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Người thu mẩu</p>
                                                             <input type="text" name="inputnguoithumau" class="form-control" id="inputnguoithumau" placeholder="Nhập người thu mẫu">
                                                         </div>
                                                         <div class="col-12 col-lg-8">
-                                                            <label for="inputSupplierName">Giá trị:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Giá trị sử dụng</p>
                                                             <input type="text" name="inputgiatri" class="form-control" id="inputgiatri" placeholder="Nhập giá trị sử dụng">
-                                                            <label for="inputSupplierName">IUCN:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo IUCN</p>
                                                             <input type="text" name="inputiucn" class="form-control" id="inputiucn" placeholder="Nhập IUCN">
-                                                            <label for="inputSupplierName">Sách đỏ:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo sách đỏ Việt Nam</p>
                                                             <input type="text" name="inputsachdo" class="form-control" id="inputsachdo" placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam">
-                                                            <label for="inputSupplierName">CITES:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)</p>
                                                             <input type="text" name="inputcites" class="form-control" id="inputcites" placeholder="Nhập CITES">
                                                         </div>
                                                     </div>
@@ -55,23 +55,23 @@ include '../layout/header-only.php';
                                                 <div class="trang-2" id="trang-2" style="display: none;">
                                                     <div class="form-group row">
                                                         <div class="col-12 col-lg-4">
-                                                            <label for="inputSupplierName">Nghị định:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP</p>
                                                             <input type="text" name="inputndcp" class="form-control" id="inputndcp" placeholder="Nhập NĐCP">
-                                                            <label for="inputSupplierName">Phân bố:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Phân bố</p>
                                                             <input type="text" name="inputphanbo" class="form-control" id="inputphanbo" placeholder="Nhập phân bố">
-                                                            <label for="inputSupplierName">Địa điểm:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Địa điểm</p>
                                                             <input type="text" name="inputdiadiem" class="form-control" id="inputdiadiem" placeholder="Nhập địa điểm">
-                                                            <label for="inputSupplierName">Ngày thu thập:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Ngày thu thập</p>
                                                             <input type="date" name="inputngaythuthap" class="form-control" id="inputngaythuthap" placeholder="Nhập ngày thu mẫu">
                                                         </div>
                                                         <div class="col-12 col-lg-8">
-                                                            <label for="inputSupplierName">Tình trạng:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tình trạng mẫu vật</p>
                                                             <input type="text" name="inputtinhtrang" class="form-control" id="inputtinhtrang" placeholder="Nhập tình trạng mẫu vật">
-                                                            <label for="inputSupplierName">Sinh cảnh:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Sinh cảnh:</p>
                                                             <input type="text" name="inputsinhcanh" class="form-control" id="inputsinhcanh" placeholder="Nhập sinh cảnh">
-                                                            <label for="inputSupplierName">Đặc điểm hình thái:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Mô tả đặc điểm hình thái</p>
                                                             <textarea class="form-control" id="inputhinhthai" placeholder="Nhập đặc điểm hình thái" name="inputhinhthai" rows="2" class="form-control"></textarea>
-                                                            <label for="inputSupplierName">Đặc điểm sinh thái:</label>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Mô tả đặc điểm sinh thái</p>
                                                             <textarea class="form-control" id="inputsinhthai" placeholder="Nhập đặc điểm sinh thái" name="inputsinhthai" rows="2" class="form-control"></textarea>
                                                         </div>
                                                     </div>
@@ -80,19 +80,19 @@ include '../layout/header-only.php';
                                                 <div class="trang-3" id="trang-3" style="display: none;">
                                                     <div class="form-group row">
                                                         <div class="col-12 col-lg-5">
-                                                            <label for="inputAnimail" required="required">Tọa độ 1</label>
+                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 1</p>
                                                             <input type="text" name="inputtoado1" class="form-control" id="inputtoado1" placeholder="Nhập tọa độ 1">
-                                                            <label for="inputAnimail" required="required">Tọa độ 2</label>
+                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 2</p>
                                                             <input type="text" name="inputtoado2" class="form-control" id="inputtoado2" placeholder="Nhập tọa độ 2">
-                                                            <label for="inputAnimail" required="required">Tọa độ 3</label>
+                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 3</p>
                                                             <input type="text" name="inputtoado3" class="form-control" id="inputtoado3" placeholder="Nhập tọa độ 3">
-                                                            <label for="inputAnimail" required="required">Tọa độ 4</label>
+                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 4</p>
                                                             <input type="text" name="inputtoado4" class="form-control" id="inputtoado4" placeholder="Nhập tọa độ 4">
-                                                            <label for="inputAnimail" required="required">Tọa độ 5</label>
+                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 5</p>
                                                             <input type="text" name="inputtoado5" class="form-control" id="inputtoado5" placeholder="Nhập tọa độ 5">
                                                         </div>
                                                         <div class="col-12 col-lg-7">
-                                                            <label for="inputAnimail" required="required">Thêm hình</label>
+                                                            <p for="inputAnimail" required="required">Thêm hình</p>
                                                             <input type="file" name="fileupload[]" id="files" multiple required>
                                                             <div class="form-group">
                                                                 <div id="image_preview"></div>
@@ -101,21 +101,14 @@ include '../layout/header-only.php';
                                                     </div>
                                                 </div>
 
-                                                <div class="modal-footer p-2">
-                                                    <button type="button" class="btn btn-primary" onclick="HideShow_2()">
-                                                        Quay lại
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary" onclick="HideShow()">
-                                                        Tiếp
-                                                    </button>
-                                                </div>
+                                                
                                             </div>
                                             <div class="col-12 col-lg-3">
                                                 <div class="form-group row">
                                                     <div class="col-12 col-lg-12">
-                                                        <label for="inputgioi">Giới:</label>
+                                                        <p for="inputgioi" style="font-weight: bold;">Giới</p>
                                                         <select name="inputgioi" id="inputgioi" class="form-control">
-                                                            <option value='0'>----------Chưa chọn----------</option>
+                                                            <option value='0'>Chưa chọn</option>
                                                             <?php
                                                             $con = new mysqli("localhost", "root", "", "web_animal");
                                                             $con->set_charset("utf8");
@@ -129,35 +122,43 @@ include '../layout/header-only.php';
                                                             ?>
                                                         </select>
 
-                                                        <label for="inputnganh">Ngành:</label>
+                                                        <p for="inputnganh" style="font-weight: bold;">Ngành</p>
                                                         <select name="inputnganh" id="inputnganh" class="form-control">
-                                                            <option value='0'>----------Chưa chọn----------</option>
+                                                            <option value='0' style="font-weight: bold;">Chưa chọn</option>
                                                         </select>
 
-                                                        <label for="inputlop">Lớp</label>
+                                                        <p for="inputlop" style="font-weight: bold;">Lớp</p>
                                                         <select name="inputlop" id="inputlop" class="form-control">
-                                                            <option value='0'>----------Chưa chọn----------</option>
+                                                            <option value='0'>Chưa chọn</option>
                                                         </select>
 
-                                                        <label for="inputbo">Bộ:</label>
+                                                        <p for="inputbo" style="font-weight: bold;">Bộ</p>
                                                         <select name="inputbo" id="inputbo" class="form-control">
-                                                            <option value='0'>----------Chưa chọn----------</option>
+                                                            <option value='0'>Chưa chọn</option>
                                                         </select>
 
-                                                        <label for="inputho">Họ:</label>
+                                                        <p for="inputho" style="font-weight: bold;">Họ</p>
                                                         <select name="inputho" id="inputho" class="form-control">
-                                                            <option value='0'>----------Chưa chọn----------</option>
+                                                            <option value='0'>Chưa chọn</option>
                                                         </select>
 
                                                     </div>
                                                 </div>
+                                                <div class="modal-footer p-2">
+                                                    <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow_2()">
+                                                        Quay lại
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow()">
+                                                        Tiếp
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer p-2">
-                                            <button type="submit" class="btn btn-info" name="submit"  value="Upload File">
+                                            <button type="submit" class="btn btn-primary" style="width: 10rem;" name="submit"  value="Upload File">
                                                 <i class="fas fa-plus-circle"></i> Thêm Động Vật
                                             </button>
-                                            <button type="button" class="btn btn-info" onclick="reset_text()">
+                                            <button type="button" class="btn btn-primary" style="width: 10rem;" onclick="reset_text()">
                                                 <i class="fas fa-trash-restore"></i> Làm mới
                                             </button>
                                         </div>

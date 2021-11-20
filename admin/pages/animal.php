@@ -18,6 +18,110 @@ include '../layout/header-only.php';
                 </div>
                 <div class="layout-right-content">
                     <div class="layout-right-content-details">
+
+                        <?php
+                        $con = new mysqli("localhost", "root", "", "web_animal");
+                        $con->set_charset("utf8");
+                        $sqlmax = "SELECT COUNT(id) as max FROM dongvat;";
+                        //    echo $sqlmax;
+                        $max = $con->query($sqlmax);
+                        $row = $max->fetch_assoc();
+                        //echo $row['max']."<br>";
+                        $maxx = $row['max'];
+
+                        $sqlmax = "SELECT COUNT(id) as max FROM gioi;";
+                        //    echo $sqlmax;
+                        $max = $con->query($sqlmax);
+                        $row = $max->fetch_assoc();
+                        //echo $row['max']."<br>";
+                        $maxx1 = $row['max'];
+
+                        $sqlmax = "SELECT COUNT(id) as max FROM nganh;";
+                        //    echo $sqlmax;
+                        $max = $con->query($sqlmax);
+                        $row = $max->fetch_assoc();
+                        //echo $row['max']."<br>";
+                        $maxx2 = $row['max'];
+
+                        $sqlmax = "SELECT COUNT(id) as max FROM lop;";
+                        //    echo $sqlmax;
+                        $max = $con->query($sqlmax);
+                        $row = $max->fetch_assoc();
+                        //echo $row['max']."<br>";
+                        $maxx3 = $row['max'];
+
+                        $sqlmax = "SELECT COUNT(id) as max FROM bo;";
+                        //    echo $sqlmax;
+                        $max = $con->query($sqlmax);
+                        $row = $max->fetch_assoc();
+                        //echo $row['max']."<br>";
+                        $maxx4 = $row['max'];
+
+                        $sqlmax = "SELECT COUNT(id) as max FROM ho;";
+                        //    echo $sqlmax;
+                        $max = $con->query($sqlmax);
+                        $row = $max->fetch_assoc();
+                        //echo $row['max']."<br>";
+                        $maxx5 = $row['max'];
+                        ?>
+
+                        <section id="statistic" class="statistic-section one-page-section" style="border-radius: 15px 50px 30px;">
+                            <div class="container">
+                                <div class="row text-center">
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="counter">
+                                            <i class="fas fa-paw fa-2x stats-icon"></i>
+                                            <h2 class="timer count-title count-number"><?php echo $maxx; ?></h2>
+                                            <div class="stats-line-black"></div>
+                                            <p class="stats-text">Động vật</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="counter">
+                                            <i class="fas fa-paw fa-2x stats-icon"></i>
+                                            <h2 class="timer count-title count-number"><?php echo $maxx1; ?></h2>
+                                            <div class="stats-line-black"></div>
+                                            <p class="stats-text">Giới</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="counter">
+                                            <i class="fas fa-paw fa-2x stats-icon"></i>
+                                            <h2 class="timer count-title count-number"><?php echo $maxx2; ?></h2>
+                                            <div class="stats-line-black"></div>
+                                            <p class="stats-text">Ngành</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="counter">
+                                            <i class="fas fa-paw fa-2x stats-icon"></i>
+                                            <h2 class="timer count-title count-number"><?php echo $maxx3; ?>
+                                            </h2>
+                                            <div class="stats-line-black"></div>
+                                            <p class="stats-text">Lớp</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="counter">
+                                            <i class="fas fa-paw fa-2x stats-icon"></i>
+                                            <h2 class="timer count-title count-number"><?php echo $maxx4; ?></h2>
+                                            <div class="stats-line-black"></div>
+                                            <p class="stats-text">Bộ</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="counter">
+                                            <i class="fas fa-paw fa-2x stats-icon"></i>
+                                            <h2 class="timer count-title count-number"><?php echo $maxx5; ?></h2>
+                                            <div class="stats-line-black"></div>
+                                            <p class="stats-text">Họ</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
                         <div class="animals p-3">
                             <h3 class="text-center mb-3">DANH SÁCH ĐỘNG VẬT</h3>
                             <!--Tìm kiếm -->
@@ -53,10 +157,10 @@ include '../layout/header-only.php';
 
                             <!--Danh sách động vật -->
                             <?php
-                                $con = new mysqli("localhost", "root", "", "web_animal");
-                                $con->set_charset("utf8");
-                                $sql = " SELECT * FROM dongvat ";
-                                $result = $con->query($sql);
+                            $con = new mysqli("localhost", "root", "", "web_animal");
+                            $con->set_charset("utf8");
+                            $sql = " SELECT * FROM dongvat ";
+                            $result = $con->query($sql);
                             ?>
                             <form class="danhsach" id="form-danhsach">
                                 <div class="gridtable">
@@ -100,9 +204,9 @@ include '../layout/header-only.php';
             </div>
         </div>
         <!--Danh sách động vật -->
-        
+
     </div>
-                                            
+
     <!-- JS-->
     <script type="text/javascript">
         var elems = document.getElementsByClassName('confirmation');

@@ -3,7 +3,7 @@
 include '../layout/header-only.php';
 ?>
 
-<option value='0'>----------Chưa chọn----------</option>
+<option value='0'>Chưa chọn</option>
 <?php
 $con = new mysqli("localhost", "root", "", "web_animal");
 $con->set_charset("utf8");
