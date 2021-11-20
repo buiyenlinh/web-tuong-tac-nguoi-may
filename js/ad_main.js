@@ -1317,6 +1317,10 @@ function updateLop() {
 
 $(function() {
 
+    $('#icon-bars-dev').on('click', function() {
+        $('body').toggleClass('toggle-menu');
+    })
+
     $('.website_name').on('keyup', function() {
         if ($('.website_name').val() == '') {
             $('.website-name-error').text('Tên website là bắt buộc');
@@ -1541,7 +1545,7 @@ $(function() {
         if (!checkBars) {
             $('.layout-left').css('left', '0px');
         } else {
-            $('.layout-left').css('left', '-230px');
+            $('.layout-left').css('left', '-250px');
         }
         checkBars = !checkBars;
     })

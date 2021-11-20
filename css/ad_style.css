@@ -47,14 +47,16 @@ ul {
 
 .layout-left {
     float: left;
-    width: 230px;
+    width: 250px;
     height: 100%;
+    transition: all ease-in-out 0.3s;
 }
 .layout-right {
     float: left;
-    width: calc(100% - 230px);
+    width: calc(100% - 250px);
     height: 100%;
     border-left: 1px solid #ddd;
+    transition: all ease-in-out 0.3s;
 }
 
 .layout-right-header {
@@ -98,18 +100,30 @@ ul {
 .layout-right-content-details {
   position: absolute;
   top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    max-height: 100%;
-    padding: 10px;
-    overflow-x: hidden;
-    overflow-y: auto;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .layout-left .menu-left{
-    height: 100vh;
-    background: #0e768d;
+  transition: all ease-in-out 0.3s;
+  height: 100vh;
+  background: #0e768d;
+}
+
+.menu-left li {
+  width: 100%;
+}
+
+.menu-left a{
+  white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+  width: 100%;
 }
 
 
@@ -120,7 +134,8 @@ ul {
 #animal-list,
 #install-page,
 #ho-page,
-#gioi-nganh-lop-page {
+#gioi-nganh-lop-page,
+#thong-ke {
   width: 100%;
   height: 100%;
 }
@@ -129,8 +144,9 @@ ul {
 #account-page .layout-right,
 #ho-page .layout-right,
 #gioi-nganh-lop-page .layout-right,
-#install-page .layout-right {
-  background: #e0e0e0;
+#install-page .layout-right,
+#thong-ke {
+  background: #dfe3e6;
 }
 
 .account__right__info__top,
@@ -153,7 +169,22 @@ ul {
 #animal-list .menu-left ul .nav-item-animal,
 #install-page .menu-left ul .nav-item-install,
 #ho-page .nav-item-ho-bo,
-#gioi-nganh-lop-page .nav-item-gioi-nganh-lop { background: #0a4a5e }
+#gioi-nganh-lop-page .nav-item-gioi-nganh-lop,
+#thong-ke .nav-item-thong-ke { background: #0a4a5e }
+
+
+
+.toggle-menu .layout-left {
+  width: 60px;
+}
+
+.toggle-menu .layout-right {
+  width: calc(100% - 60px);
+  float: left;
+  height: 100%;
+  border-left: 1px solid #ddd;
+}
+
 
 /*--------------------------------- LOGIN --------------------------------- */
 
@@ -502,4 +533,37 @@ input[type="file"] {
 #ho-page .table-striped tbody tr:nth-of-type(odd),
 #gioi-nganh-lop-page .table-striped tbody tr:nth-of-type(odd){
   background-color: rgb(186 186 186 / 5%);
+}
+
+/* Thống kế */
+
+.thong-ke .item {
+  border: 1px solid #fff;
+  background-color: #fff;
+  width: 100%;
+  height: 150px;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  box-shadow: 0px 3px 5px 2px #aaa;
+}
+
+.thong-ke .item:hover {
+  box-shadow: 0px 5px 5px 2px #aaa;
+}
+
+.thong-ke .item .number {
+  font-size: 50px;
+}
+
+.gioi,
+.nganh,
+.lop,
+.bo,
+.ho {
+  box-shadow: 0px 3px 5px 2px #aaa;
 }

@@ -5,7 +5,7 @@
 
   .layout-left {
     position: absolute;
-    left: -230px;
+    left: -250px;
     z-index: 100;
     top: 63px;
     transition: all ease-in-out 0.3s;
@@ -18,6 +18,10 @@
 
   #icon-bars {
     display: inline-block !important;
+  }
+
+  #icon-bars-dev {
+    display: none;
   }
 
   .table th,
