@@ -169,13 +169,13 @@ if (isset($_GET["iddv"])) {
                                         <div class="trang-1" id="trang-1">
                                             <div class="form-group row">
                                                 <div class="col-12 col-lg-6">
-                                                    <label for="inputSupplierName">Tên khoa học</label>
+                                                    <label for="inputSupplierName">Tên khoa học <strong style="color: red;">(*)</strong></label>
                                                     <input type="text" class="form-control" size="20" name="tenkhoahocsua" value='<?php echo $tenkhoahoc; ?>' placeholder="Nhập tên khoa học" required />
-                                                    <label for="inputSupplierName">Tên tiếng việt</label>
+                                                    <label for="inputSupplierName">Tên tiếng việt <strong style="color: red;">(*)</strong></label>
                                                     <input type="text" class="form-control" size="20" name="tentiengvietsua" value='<?php echo $tentiengviet; ?>' placeholder="Nhập tên tiếng Việt" />
-                                                    <label for="inputSupplierName">Tên tiếng việt</label>
+                                                    <label for="inputSupplierName">Tên tiếng việt <strong style="color: red;">(*)</strong></label>
                                                     <input type="text" class="form-control" size="20" name="tendiaphuongsua" value='<?php echo $tendiaphuong; ?>' placeholder="Nhập tên địa phương" />
-                                                    <label for="inputSupplierName">Người thu mẩu</label>
+                                                    <label for="inputSupplierName">Người thu mẩu <strong style="color: red;">(*)</strong></label>
                                                     <input type="text" class="form-control" size="20" name="nguoithuthapsua" value='<?php echo $nguoithuthap; ?>' placeholder="Nhập người thu mẫu" />
                                                 </div>
                                                 <div class="col-12 col-lg-6">
@@ -250,7 +250,7 @@ if (isset($_GET["iddv"])) {
                                                 <div class="col-12 col-lg-6">
                                                     <div class="form-group row">
                                                         <div class="col-12 col-lg-6">
-                                                            <label for="inputAnimail" required="required">Thêm hình</label>
+                                                            <label for="inputAnimail" required="required">Thêm hình <strong style="color: red;">(*)</strong></label>
                                                             <input type="file" name="fileupload[]" id="files" multiple style="width:86%;">
                                                             <div class="form-group">
                                                                 <div id="image_preview"></div>
@@ -266,13 +266,13 @@ if (isset($_GET["iddv"])) {
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <p style="font-weight: italic;"><strong style="color: red;">(*)</strong> Thông tin bắt buộc </p>
                                     </div>
 
                                     <div class="col-12 col-lg-3">
                                         <div class="form-group row">
                                             <div class="col-12 col-lg-12">
-                                                <label for="gioisua">Giới</label>
+                                                <label for="gioisua">Giới <strong style="color: red;">(*)</strong></label>
                                                 <select name="gioisua" id="inputgioi" class="form-control">
                                                     <option value='0'><?php echo $gioi; ?></option>
                                                     <?php
@@ -288,22 +288,22 @@ if (isset($_GET["iddv"])) {
                                                     ?>
                                                 </select>
 
-                                                <label for="inputnganh">Ngành</label>
+                                                <label for="inputnganh">Ngành <strong style="color: red;">(*)</strong></label>
                                                 <select name="nganhsua" id="inputnganh" class="form-control">
                                                     <option value='0'><?php echo $nganh; ?></option>
                                                 </select>
 
-                                                <label for="inputlop">Lớp</label>
+                                                <label for="inputlop">Lớp <strong style="color: red;">(*)</strong></label>
                                                 <select name="lopsua" id="inputlop" class="form-control">
                                                     <option value='0'><?php echo $lop; ?></option>
                                                 </select>
 
-                                                <label for="bosua">Bộ</label>
+                                                <label for="bosua">Bộ <strong style="color: red;">(*)</strong></label>
                                                 <select name="bosua" id="inputbo" class="form-control">
                                                     <option value='0'><?php echo $bo; ?></option>
                                                 </select>
 
-                                                <label for="inputho">Họ</label>
+                                                <label for="inputho">Họ <strong style="color: red;">(*)</strong></label>
                                                 <select name="hosua" id="inputho" class="form-control">
                                                     <option value='0'><?php echo $ho; ?></option>
                                                 </select>

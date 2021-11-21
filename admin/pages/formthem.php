@@ -31,11 +31,11 @@ include '../layout/header-only.php';
                                                 <div class="trang-1" id="trang-1">
                                                     <div class="form-group row">
                                                         <div class="col-12 col-lg-4">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên khoa học</p>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên khoa học <strong style="color: red;">(*)</strong></p>
                                                             <input type="text" name="inputkhoahoc" class="form-control" id="inputkhoahoc" placeholder="Nhập tên khoa học" required="required">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên tiếng việt</p>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên tiếng việt <strong style="color: red;">(*)</strong></p>
                                                             <input type="text" name="inputtiengviet" class="form-control" id="inputtiengviet" required="required" placeholder="Nhập tên tiếng Việt">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên tiếng việt</p>
+                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên tiếng việt <strong style="color: red;">(*)</strong></p>
                                                             <input type="text" name="inputdiaphuong" class="form-control" id="inputdiaphuong" required="required" placeholder="Nhập tên địa phương">
                                                             <p for="inputSupplierName" style="font-weight: bold;">Người thu mẩu</p>
                                                             <input type="text" name="inputnguoithumau" class="form-control" id="inputnguoithumau" placeholder="Nhập người thu mẫu">
@@ -92,7 +92,7 @@ include '../layout/header-only.php';
                                                             <input type="text" name="inputtoado5" class="form-control" id="inputtoado5" placeholder="Nhập tọa độ 5">
                                                         </div>
                                                         <div class="col-12 col-lg-7">
-                                                            <p for="inputAnimail" required="required">Thêm hình</p>
+                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Thêm hình <strong style="color: red;">(*)</strong></p>
                                                             <input type="file" name="fileupload[]" id="files" multiple required>
                                                             <div class="form-group">
                                                                 <div id="image_preview"></div>
@@ -100,13 +100,13 @@ include '../layout/header-only.php';
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <p style="font-weight: italic;"><strong style="color: red;">(*)</strong> Thông tin bắt buộc </p>
 
-                                                
                                             </div>
                                             <div class="col-12 col-lg-3">
                                                 <div class="form-group row">
                                                     <div class="col-12 col-lg-12">
-                                                        <p for="inputgioi" style="font-weight: bold;">Giới</p>
+                                                        <p for="inputgioi" style="font-weight: bold;">Giới <strong style="color: red;">(*)</strong></p>
                                                         <select name="inputgioi" id="inputgioi" class="form-control">
                                                             <option value='0'>Chưa chọn</option>
                                                             <?php
@@ -122,22 +122,22 @@ include '../layout/header-only.php';
                                                             ?>
                                                         </select>
 
-                                                        <p for="inputnganh" style="font-weight: bold;">Ngành</p>
+                                                        <p for="inputnganh" style="font-weight: bold;">Ngành <strong style="color: red;">(*)</strong></p>
                                                         <select name="inputnganh" id="inputnganh" class="form-control">
                                                             <option value='0' style="font-weight: bold;">Chưa chọn</option>
                                                         </select>
 
-                                                        <p for="inputlop" style="font-weight: bold;">Lớp</p>
+                                                        <p for="inputlop" style="font-weight: bold;">Lớp <strong style="color: red;">(*)</strong></p>
                                                         <select name="inputlop" id="inputlop" class="form-control">
                                                             <option value='0'>Chưa chọn</option>
                                                         </select>
 
-                                                        <p for="inputbo" style="font-weight: bold;">Bộ</p>
+                                                        <p for="inputbo" style="font-weight: bold;">Bộ <strong style="color: red;">(*)</strong></p>
                                                         <select name="inputbo" id="inputbo" class="form-control">
                                                             <option value='0'>Chưa chọn</option>
                                                         </select>
 
-                                                        <p for="inputho" style="font-weight: bold;">Họ</p>
+                                                        <p for="inputho" style="font-weight: bold;">Họ <strong style="color: red;">(*)</strong></p>
                                                         <select name="inputho" id="inputho" class="form-control">
                                                             <option value='0'>Chưa chọn</option>
                                                         </select>
@@ -287,16 +287,60 @@ include '../layout/header-only.php';
         });
     </script>
 
+    <!--RESET ALL INPUT EMPTY-->
+    <script>
+        function reset_text() {
+            $("#inputkhoahoc").val("");
+            $('#inputtiengviet').val('');
+            $('#inputdiaphuong').val('');
+            $('#inputgioi').val('0');
+            $('#inputnganh').val('0');
+            $('#inputlop').val('0');
+            $('#inputbo').val('0');
+            $("#inputho").val("0");
+            $('#inputhinhthai').val('');
+            $('#inputsinhthai').val('');
+            $('#inputgiatri').val('');
+            $('#inputiucn').val('');
+            $('#inputsachdo').val('');
+            $('#inputndcp').val('');
+            $("#inputcites").val("");
+            $('#inputphanbo').val('');
+            $('#inputtoado1').val('');
+            $('#inputtoado2').val('');
+            $('#inputtoado3').val('');
+            $('#inputtoado4').val('');
+            $('#inputtoado5').val('');
+            $('#inputtinhtrang').val('');
+            $('#inputsinhcanh').val('');
+            $('#inputdiadiem').val('');
+            $('#inputngaythuthap').val('');
+            $('#inputnguoithumau').val('');
+            $('#files').val('');
+
+        }
+    </script>
+
     <script>
         function HideShow() {
+            let tenkhoahoc = document.getElementById('inputkhoahoc').value;
+            let tentiengviet = document.getElementById('inputtiengviet').value;
+            let tendiaphuong = document.getElementById('inputdiaphuong').value;
+
+            let gioi = document.getElementById('inputgioi').value;
+            let nganh = document.getElementById('inputnganh').value;
+            let lop = document.getElementById('inputlop').value;
+            let bo = document.getElementById('inputbo').value;
+            let ho = document.getElementById('inputho').value;
+
             let trang_1 = document.getElementById('trang-1').style.display;
             let trang_2 = document.getElementById('trang-2').style.display;
             let trang_3 = document.getElementById('trang-3').style.display;
-            if (trang_1 !== "none") {
+            if (trang_1 !== "none" && tenkhoahoc !== "" && tentiengviet !=="" && gioi !== '0' && nganh !== '0' && lop !== '0' && bo !== '0' && ho !== '0') {
                 document.getElementById('trang-2').style.display = "block";
                 document.getElementById('trang-1').style.display = "none";
             }
-            if (trang_2 !== "none") {
+            if (trang_2 !== "none" && gioi !== '0' && nganh !== '0' && lop !== '0' && bo !== '0' && ho !== '0') {
                 document.getElementById('trang-3').style.display = "block";
                 document.getElementById('trang-1').style.display = "none";
                 document.getElementById('trang-2').style.display = "none";

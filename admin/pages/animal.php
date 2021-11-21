@@ -65,63 +65,6 @@ include '../layout/header-only.php';
                         $maxx5 = $row['max'];
                         ?>
 
-                        <section id="statistic" class="statistic-section one-page-section" style="border-radius: 15px 50px 30px;">
-                            <div class="container">
-                                <div class="row text-center">
-                                    <div class="col-xs-12 col-md-2">
-                                        <div class="counter">
-                                            <i class="fas fa-paw fa-2x stats-icon"></i>
-                                            <h2 class="timer count-title count-number"><?php echo $maxx; ?></h2>
-                                            <div class="stats-line-black"></div>
-                                            <p class="stats-text">Động vật</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-2">
-                                        <div class="counter">
-                                            <i class="fas fa-paw fa-2x stats-icon"></i>
-                                            <h2 class="timer count-title count-number"><?php echo $maxx1; ?></h2>
-                                            <div class="stats-line-black"></div>
-                                            <p class="stats-text">Giới</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-2">
-                                        <div class="counter">
-                                            <i class="fas fa-paw fa-2x stats-icon"></i>
-                                            <h2 class="timer count-title count-number"><?php echo $maxx2; ?></h2>
-                                            <div class="stats-line-black"></div>
-                                            <p class="stats-text">Ngành</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-2">
-                                        <div class="counter">
-                                            <i class="fas fa-paw fa-2x stats-icon"></i>
-                                            <h2 class="timer count-title count-number"><?php echo $maxx3; ?>
-                                            </h2>
-                                            <div class="stats-line-black"></div>
-                                            <p class="stats-text">Lớp</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-2">
-                                        <div class="counter">
-                                            <i class="fas fa-paw fa-2x stats-icon"></i>
-                                            <h2 class="timer count-title count-number"><?php echo $maxx4; ?></h2>
-                                            <div class="stats-line-black"></div>
-                                            <p class="stats-text">Bộ</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-2">
-                                        <div class="counter">
-                                            <i class="fas fa-paw fa-2x stats-icon"></i>
-                                            <h2 class="timer count-title count-number"><?php echo $maxx5; ?></h2>
-                                            <div class="stats-line-black"></div>
-                                            <p class="stats-text">Họ</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-
                         <div class="animals p-3">
                             <h3 class="text-center mb-3">DANH SÁCH ĐỘNG VẬT</h3>
                             <!--Tìm kiếm -->
@@ -144,6 +87,15 @@ include '../layout/header-only.php';
                                     </form>
                                 </div>
                                 <!--Tìm kiếm -->
+                                
+                                    <div class="form-group row" style="margin-bottom: 0; width: 12rem;">
+                                        <div class="col-12 col-lg-6">
+                                            <p data-toggle="tooltip" title="Tổng số động vật" style="font-size: 1.5rem; color:#056877;"><i class="fas fa-paw"></i> <?php echo $maxx; ?></p>
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <p data-toggle="tooltip" title="Tổng số họ động vật" style="font-size: 1.5rem; color:#056877;"><i class="fas fa-project-diagram"></i> <?php echo $maxx5; ?></p>
+                                        </div>
+                                    </div>
 
                                 <!--Button Thêm -->
                                 <div class=" mb-3 btn-them">
@@ -206,6 +158,12 @@ include '../layout/header-only.php';
         <!--Danh sách động vật -->
 
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 
     <!-- JS-->
     <script type="text/javascript">
