@@ -39,39 +39,44 @@ if ($result->num_rows > 0) {
     $duongdan = $row['duongdan'];
 }
 
+//Tim ten ho 
 $sql_1 = "SELECT * FROM ho WHERE id = " . $hoid . ";";
 $result = $con->query($sql_1);
-$row = $result->fetch_assoc();
-$ho = $row['ten'];
-
-$sql_1 = "SELECT * FROM bo WHERE id = " . $hoid . ";";
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $ho = $row['ten'];
+    $boid = $row['bo_id'];
+}
+//Tim ten bo
+$sql_1 = "SELECT * FROM bo WHERE id = " . $boid . ";";
 $result = $con->query($sql_1);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $bo = $row['ten'];
     $lopid = $row['lop_id'];
-
-    $sql_1 = "SELECT * FROM lop WHERE id = " . $lopid . ";";
-    $result = $con->query($sql_1);
+}
+//Tim nganh
+$sql_1 = "SELECT * FROM lop WHERE id = " . $lopid . ";";
+$result = $con->query($sql_1);
+if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $lop = $row['ten'];
     $nganhid = $row['nganh_id'];
-
-    $sql_1 = "SELECT * FROM nganh WHERE id = " . $nganhid . ";";
-    $result = $con->query($sql_1);
+}
+//Tim nganh
+$sql_1 = "SELECT * FROM nganh WHERE id = " . $nganhid . ";";
+$result = $con->query($sql_1);
+if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $nganh = $row['ten'];
     $gioiid = $row['gioi_id'];
-
-    $sql_1 = "SELECT * FROM gioi WHERE id = " . $gioiid . ";";
-    $result = $con->query($sql_1);
+}
+//Tim gioi
+$sql_1 = "SELECT * FROM gioi WHERE id = " . $gioiid . ";";
+$result = $con->query($sql_1);
+if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $gioi = $row['ten'];
-} else {
-    $bo = null;
-    $lop = null;
-    $nganh = null;
-    $gioi = null;
 }
 
 $sql_1 = "SELECT * FROM hinhanh WHERE dongvat_id = " . $iddv . ";";
@@ -130,198 +135,218 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
         </div>
         <div class="layout-right-content">
             <div class="layout-right-content-details">
-                <div class="p-3">
-                    <h3 class="text-center">THÔNG TIN ĐỘNG VẬT</h3>
-                    <ol class="list-numbered">
-                        <li>
-                            <?php
-                            echo "<b>Tên khoa học</b> </br>";
-                            echo $tenkhoahoc;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Tên tiếng việt</b> </br>";
-                            echo $tentiengviet;
 
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Tên địa phương</b> </br>";
-                            echo $tendiaphuong;
+                <div class="card chi-tiet">
+                    <div class="card-body">
 
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Giới</b> </br>";
-                            if ($gioi != null) {
-                                echo $gioi;
-                            } else {
-                                echo "Không xác định được Giới động vật";
-                            }
+                        <div class="form-group row">
+                            <div class="col-12 col-lg-9">
+                                <div class="trang-1" id="trang-1">
+                                    <div class="form-group row">
+                                        <div class="col-12 col-lg-6">
+                                            <b for="pSupplierName">Tên khoa học</b>
+                                            <p size="20" name="tenkhoahocsua" value='' placeholder="Nhập tên khoa học" required><?php echo $tenkhoahoc; ?></p>
+                                            <b for="pSupplierName">Tên tiếng việt</b>
+                                            <p size="20" name="tentiengvietsua" value='' placeholder="Nhập tên tiếng Việt"><?php echo $tentiengviet; ?></p>
+                                            <b for="pSupplierName">Tên tiếng việt</b>
+                                            <p size="20" name="tendiaphuongsua" value='' placeholder="Nhập tên địa phương"><?php echo $tendiaphuong; ?></p>
+                                            <b for="pSupplierName">Người thu mẩu</b>
+                                            <p size="20" name="nguoithuthapsua" value='' placeholder="Nhập người thu mẫu"><?php echo $nguoithuthap; ?></p>
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <b for="pSupplierName">Giá trị sử dụng</b>
+                                            <p size="20" name="giatrisua" value='' placeholder="Nhập giá trị sử dụng"><?php echo $giatri; ?></p>
+                                            <b for="pSupplierName">Tình trạng bảo tồn theo IUCN</b>
+                                            <p size="20" name="iucnsua" value='' placeholder="Nhập IUCN"><?php echo $iucn; ?></p>
+                                            <b for="pSupplierName">Tình trạng bảo tồn theo sách đỏ Việt Nam</b>
+                                            <p size="20" name="sachdosua" value='' placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam"><?php echo $sachdo; ?></p>
+                                            <b for="pSupplierName">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)</b>
+                                            <p size="20" name="citessua" value='' placeholder="Nhập CITES"><?php echo $cities; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="trang-2" id="trang-2" style="display: none;">
+                                    <div class="form-group row">
+                                        <div class="col-12 col-lg-4">
+                                            <b for="pSupplierName">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP</b>
+                                            <p size="20" name="ndcpsua" value='' placeholder="Nhập NĐCP"><?php echo $nghidinh; ?></p>
+                                            <b for="pSupplierName">Phân bố</b>
+                                            <p size="20" name="phanbosua" value='' placeholder="Nhập phân bố"><?php echo $phanbo; ?></p>
+                                            <b for="pSupplierName">Địa điểm</b>
+                                            <p size="20" name="diadiemsua" value='' placeholder="Nhập địa điểm"><?php echo $diadiem; ?></p>
+                                            <b for="pSupplierName">Ngày thu thập</b>
+                                            <p type="date" size="20" name="ngaythuthapsua" value='' placeholder="Ngày thu mẫu"><?php echo $ngaythuthap; ?></p>
+                                            <b for="pSupplierName">Ngày cập nhật</b>
+                                            <p size="20" name="ngaycapnhatsua" value='' disabled><?php echo $updated_at; ?></p>
+                                            <b for="pSupplierName">Đường dẫn</b>
+                                            <p size="20" disabled name="duongdansua" value='' placeholder="Nhập đường dẫn"><?php echo $duongdan; ?></p>
+                                            <p name="id" hidden value="<?php echo $iddv; ?>">
+                                        </div>
+                                        <div class="col-12 col-lg-8">
+                                            <b for="pSupplierName">Tình trạng mẫu vật</b>
+                                            <p size="20" name="tinhtrangsua" value='' placeholder="hập tình trạng mẫu vật"><?php echo $tinhtrang; ?></p>
+                                            <b for="pSupplierName">Sinh cảnh</b>
+                                            <p size="20" name="sinhcanhsua" value='' placeholder="Nhập sinh cảnh"><?php echo $sinhcanh; ?></p>
+                                            <b for="pSupplierName">Mô tả đặc điểm hình thái</b>
+                                            <textarea id="phinhthai" placeholder="Nhập đặc điểm hình thái" name="hinhthaisua" class="form-control" rows="3"><?php echo $hinhthai; ?></textarea>
+                                            <b for="pSupplierName">Mô tả đặc điểm sinh thái</b>
+                                            <textarea id="psinhthai" placeholder="Nhập đặc điểm sinh thái" name="sinhthaisua" class="form-control" rows="3"><?php echo $sinhthai; ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="trang-3" id="trang-3" style="display: none;">
+                                    <div class="form-group row">
+                                        <div class="col-12 col-lg-5">
+                                            <ol style="margin: 0px">
+                                                <b>Các tạo độ xác định:</b></br>
+                                                <?php foreach ($toaDoList as $tdo) : ?>
+                                                    <li>
+                                                        <?php echo $tdo["toado"]; ?>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ol>
 
 
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Ngành:</b> </br>";
-                            if ($nganh != null) {
-                                echo $nganh;
-                            } else {
-                                echo "Không xác định được Ngành động vật";
-                            }
-
-
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Lớp:</b> </br>";
-                            if ($lop != null) {
-                                echo $lop;
-                            } else {
-                                echo "Không xác định được Lớp động vật";
-                            }
-
-
-                            ?>
-
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Bộ:</b> </br>";
-                            if ($bo != null) {
-                                echo $bo;
-                            } else {
-                                echo "Không xác định được Bộ động vật";
-                            }
-
-
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Họ:</b> </br>";
-                            echo $ho;
-                            ?>
-                        </li>
-                        <li>
-                            <b>Hình ảnh:</b></br>
-                            <?php foreach ($hinhanhList as $ha) : ?>
-                                <img src="<?php echo BASE_IMG . $ha["duongdan"] ?>" alt="anh dong vat">
-                            <?php endforeach; ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Mô tả đặc điểm hình thái:</b> </br>";
-                            echo $hinhthai;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Mô tả đặc điểm sinh thái:</b> </br>";
-                            echo $sinhthai;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Giá trị sử dụng</b> </br>";
-                            echo $giatri;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Tình trạng bảo tồn theo IUCN:</b> </br>";
-                            echo $iucn;
-                            ?>
-
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Tình trạng bảo tồn theo sách đỏ Việt Nam:</b> </br>";
-                            echo $sachdo;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP:</b> </br>";
-                            echo $nghidinh;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT):</b> </br>";
-                            echo $cities;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Phân bố:</b> </br>";
-                            echo $phanbo;
-                            ?>
-                        </li>
-                        <li>
-                            <b>Tọa độ:</b></br>
-                            <ol style="margin: 0px">
-                                <?php foreach ($toaDoList as $tdo) : ?>
-                                    <li>
-                                        <?php echo $tdo["toado"]; ?>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ol>
-                        </li>
-
-                        <li>
-                            <?php
-                            echo "<b>Tình trạng mẫu vật:</b> </br>";
-                            echo $tinhtrang;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Sinh cảnh:</b> </br>";
-                            echo $sinhcanh;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Địa điểm:</b> </br>";
-                            echo $diadiem;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Ngày thu mẫu:</b> </br>";
-                            echo $ngaythuthap;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Người thu mẫu:</b> </br>";
-                            echo $nguoithuthap;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Create at:</b> </br>";
-                            echo $created_at;
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            echo "<b>Update at:</b> </br>";
-                            echo $updated_at;
-                            ?>
-                        </li>
-                    </ol>
+                                        </div>
+                                        <div class="col-12 col-lg-7">
+                                            <div class="form-group row" style="width: 240%;">
+                                                <div class="col-12 col-lg-4">
+                                                    <b>Hình ảnh:</b></br>
+                                                    <?php foreach ($hinhanhList as $ha) : ?>
+                                                        <img src="<?php echo BASE_IMG . $ha["duongdan"] ?>" alt="anh dong vat" style='width: 100px; height: 100px; border-radius: 50px; margin-top: 20px; object-fit: cover;'>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3">
+                                <div class="form-group row">
+                                    <div class="col-12 col-lg-12">
+                                        <?php
+                                        echo "<b>Giới</b> </br>";
+                                        if ($gioi != null) {
+                                            echo $gioi;
+                                        } else {
+                                            echo "Không xác định được Giới động vật";
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <?php
+                                        echo "<b>Ngành:</b> </br>";
+                                        if ($nganh != null) {
+                                            echo $nganh;
+                                        } else {
+                                            echo "Không xác định được Ngành động vật";
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <?php
+                                        echo "<b>Lớp:</b> </br>";
+                                        if ($lop != null) {
+                                            echo $lop;
+                                        } else {
+                                            echo "Không xác định được Lớp động vật";
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <?php
+                                        echo "<b>Bộ:</b> </br>";
+                                        if ($bo != null) {
+                                            echo $bo;
+                                        } else {
+                                            echo "Không xác định được Bộ động vật";
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <?php
+                                        echo "<b>Họ:</b> </br>";
+                                        echo $ho;
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="modal-footer p-2">
+                                    <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow_2()">
+                                        Quay lại
+                                    </button>
+                                    <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow()">
+                                        Tiếp
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             </div>
         </div>
     </div>
-</div>
+    <script>
+        function HideShow() {
+            let trang_1 = document.getElementById('trang-1').style.display;
+            let trang_2 = document.getElementById('trang-2').style.display;
+            let trang_3 = document.getElementById('trang-3').style.display;
+            if (trang_1 !== "none") {
+                document.getElementById('trang-2').style.display = "block";
+                document.getElementById('trang-1').style.display = "none";
+            }
+            if (trang_2 !== "none") {
+                document.getElementById('trang-3').style.display = "block";
+                document.getElementById('trang-1').style.display = "none";
+                document.getElementById('trang-2').style.display = "none";
+            }
+        }
+    </script>
 
-<?php include '../layout/footer-only.php' ?>
+    <script>
+        function HideShow_2() {
+            let trang_1 = document.getElementById('trang-1').style.display;
+            let trang_2 = document.getElementById('trang-2').style.display;
+            let trang_3 = document.getElementById('trang-3').style.display;
+            if (trang_2 !== "none") {
+                document.getElementById('trang-2').style.display = "none";
+                document.getElementById('trang-1').style.display = "block";
+            }
+            if (trang_3 !== "none") {
+                document.getElementById('trang-3').style.display = "none";
+                document.getElementById('trang-1').style.display = "none";
+                document.getElementById('trang-2').style.display = "block";
+            }
+        }
+    </script>
+    <?php include '../layout/footer-only.php' ?>

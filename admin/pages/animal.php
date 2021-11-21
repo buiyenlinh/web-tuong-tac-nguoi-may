@@ -18,6 +18,25 @@ include '../layout/header-only.php';
                 </div>
                 <div class="layout-right-content">
                     <div class="layout-right-content-details">
+
+                        <?php
+                        $con = new mysqli("localhost", "root", "", "web_animal");
+                        $con->set_charset("utf8");
+                        $sqlmax = "SELECT COUNT(id) as max FROM dongvat;";
+                        //    echo $sqlmax;
+                        $max = $con->query($sqlmax);
+                        $row = $max->fetch_assoc();
+                        //echo $row['max']."<br>";
+                        $maxx = $row['max'];
+
+                        $sqlmax = "SELECT COUNT(id) as max FROM ho;";
+                        //    echo $sqlmax;
+                        $max = $con->query($sqlmax);
+                        $row = $max->fetch_assoc();
+                        //echo $row['max']."<br>";
+                        $maxx5 = $row['max'];
+                        ?>
+
                         <div class="animals p-3">
                             <h3 class="text-center mb-3">DANH SÁCH ĐỘNG VẬT</h3>
                             <!--Tìm kiếm -->
@@ -27,7 +46,7 @@ include '../layout/header-only.php';
                                         <!-- Another variation with a button -->
                                         <div class="input-group search-box">
                                             <div class="input-group">
-                                                <input type="text" name="input_search" class="form-control rounded-0" placeholder="Tìm kiếm động vật..." onkeyup='livesearch(this.value);'>
+                                                <input type="text" name="input_search" class="form-control rounded-0" placeholder="Nhập tên Khoa học, tiếng Việt, Địa phương và người thu thập " onkeyup='livesearch(this.value);'>
                                                 <div class="input-group-append">
                                                     <button type="submit" name="submit" class="btn btn-secondary rounded-0" type="button" style="background-color: #0e768d;">
                                                         <i class="fa fa-search"></i>
@@ -40,12 +59,21 @@ include '../layout/header-only.php';
                                     </form>
                                 </div>
                                 <!--Tìm kiếm -->
+                                
+                                    <div class="form-group row" style="margin-bottom: 0; width: 12rem;">
+                                        <div class="col-12 col-lg-6">
+                                            <p data-toggle="tooltip" title="Tổng số động vật" style="font-size: 1.5rem; color:#056877;"><i class="fas fa-paw"></i> <?php echo $maxx; ?></p>
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <p data-toggle="tooltip" title="Tổng số họ động vật" style="font-size: 1.5rem; color:#056877;"><i class="fas fa-project-diagram"></i> <?php echo $maxx5; ?></p>
+                                        </div>
+                                    </div>
 
                                 <!--Button Thêm -->
                                 <div class=" mb-3 btn-them">
                                     <!-- <h3 class="mb-0" id="animal-list-title text-center"></h3> -->
-                                    <button type="button" class="btn btn-primary rounded-0" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d;">
-                                        <a href="./formthem.php"><b>+ Thêm</b></a>
+                                    <button type="button" class="btn btn-primary rounded-0" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d; width: 7rem;">
+                                        <a href="./formthem.php"><b>Thêm</b></a>
                                     </button>
                                 </div>
                             </div>
@@ -53,10 +81,10 @@ include '../layout/header-only.php';
 
                             <!--Danh sách động vật -->
                             <?php
-                                $con = new mysqli("localhost", "root", "", "web_animal");
-                                $con->set_charset("utf8");
-                                $sql = " SELECT * FROM dongvat ";
-                                $result = $con->query($sql);
+                            $con = new mysqli("localhost", "root", "", "web_animal");
+                            $con->set_charset("utf8");
+                            $sql = " SELECT * FROM dongvat ";
+                            $result = $con->query($sql);
                             ?>
                             <form class="danhsach" id="form-danhsach">
                                 <div class="gridtable">
@@ -100,9 +128,15 @@ include '../layout/header-only.php';
             </div>
         </div>
         <!--Danh sách động vật -->
-        
+
     </div>
-                                            
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
     <!-- JS-->
     <script type="text/javascript">
         var elems = document.getElementsByClassName('confirmation');
