@@ -29,34 +29,6 @@ include '../layout/header-only.php';
                         //echo $row['max']."<br>";
                         $maxx = $row['max'];
 
-                        $sqlmax = "SELECT COUNT(id) as max FROM gioi;";
-                        //    echo $sqlmax;
-                        $max = $con->query($sqlmax);
-                        $row = $max->fetch_assoc();
-                        //echo $row['max']."<br>";
-                        $maxx1 = $row['max'];
-
-                        $sqlmax = "SELECT COUNT(id) as max FROM nganh;";
-                        //    echo $sqlmax;
-                        $max = $con->query($sqlmax);
-                        $row = $max->fetch_assoc();
-                        //echo $row['max']."<br>";
-                        $maxx2 = $row['max'];
-
-                        $sqlmax = "SELECT COUNT(id) as max FROM lop;";
-                        //    echo $sqlmax;
-                        $max = $con->query($sqlmax);
-                        $row = $max->fetch_assoc();
-                        //echo $row['max']."<br>";
-                        $maxx3 = $row['max'];
-
-                        $sqlmax = "SELECT COUNT(id) as max FROM bo;";
-                        //    echo $sqlmax;
-                        $max = $con->query($sqlmax);
-                        $row = $max->fetch_assoc();
-                        //echo $row['max']."<br>";
-                        $maxx4 = $row['max'];
-
                         $sqlmax = "SELECT COUNT(id) as max FROM ho;";
                         //    echo $sqlmax;
                         $max = $con->query($sqlmax);
@@ -74,7 +46,7 @@ include '../layout/header-only.php';
                                         <!-- Another variation with a button -->
                                         <div class="input-group search-box">
                                             <div class="input-group">
-                                                <input type="text" name="input_search" class="form-control rounded-0" placeholder="Tìm kiếm động vật..." onkeyup='livesearch(this.value);'>
+                                                <input type="text" name="input_search" class="form-control rounded-0" placeholder="Nhập tên Khoa học, tiếng Việt, Địa phương và người thu thập " onkeyup='livesearch(this.value);'>
                                                 <div class="input-group-append">
                                                     <button type="submit" name="submit" class="btn btn-secondary rounded-0" type="button" style="background-color: #0e768d;">
                                                         <i class="fa fa-search"></i>
@@ -100,8 +72,8 @@ include '../layout/header-only.php';
                                 <!--Button Thêm -->
                                 <div class=" mb-3 btn-them">
                                     <!-- <h3 class="mb-0" id="animal-list-title text-center"></h3> -->
-                                    <button type="button" class="btn btn-primary rounded-0" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d;">
-                                        <a href="./formthem.php"><b>+ Thêm</b></a>
+                                    <button type="button" class="btn btn-primary rounded-0" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d; width: 7rem;">
+                                        <a href="./formthem.php"><b>Thêm</b></a>
                                     </button>
                                 </div>
                             </div>
