@@ -278,7 +278,7 @@ include '../layout/header-only.php';
         jQuery(document).ready(function($) {
             $("#inputbo").change(function(event) {
                 inputboId = $("#inputbo").val();
-                $.post('ho.php', {
+                $.post('ho_edit.php', {
                     "inputboid": inputboId
                 }, function(data) {
                     $("#inputho").html(data);
