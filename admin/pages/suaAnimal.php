@@ -274,7 +274,7 @@ if (isset($_GET["iddv"])) {
                                             <div class="col-12 col-lg-12">
                                                 <label for="gioisua">Giới <strong style="color: red;">(*)</strong></label>
                                                 <select name="gioisua" id="inputgioi" class="form-control">
-                                                    <option value='0'><?php echo $gioi; ?></option>
+                                                    <option value='<?php echo $gioiid; ?>'><?php echo $gioi; ?></option>
                                                     <?php
                                                     $con = new mysqli("localhost", "root", "", "web_animal");
                                                     $con->set_charset("utf8");
@@ -290,22 +290,22 @@ if (isset($_GET["iddv"])) {
 
                                                 <label for="inputnganh">Ngành <strong style="color: red;">(*)</strong></label>
                                                 <select name="nganhsua" id="inputnganh" class="form-control">
-                                                    <option value='0'><?php echo $nganh; ?></option>
+                                                    <option value='<?php echo $nganhid; ?>'><?php echo $nganh; ?></option>
                                                 </select>
 
                                                 <label for="inputlop">Lớp <strong style="color: red;">(*)</strong></label>
                                                 <select name="lopsua" id="inputlop" class="form-control">
-                                                    <option value='0'><?php echo $lop; ?></option>
+                                                    <option value='<?php echo $lopid; ?>'><?php echo $lop; ?></option>
                                                 </select>
 
                                                 <label for="bosua">Bộ <strong style="color: red;">(*)</strong></label>
                                                 <select name="bosua" id="inputbo" class="form-control">
-                                                    <option value='0'><?php echo $bo; ?></option>
+                                                    <option value='<?php echo $boid; ?>'><?php echo $bo; ?></option>
                                                 </select>
 
                                                 <label for="inputho">Họ <strong style="color: red;">(*)</strong></label>
                                                 <select name="hosua" id="inputho" class="form-control">
-                                                    <option value='0'><?php echo $ho; ?></option>
+                                                    <option value='<?php echo $hoid; ?>'><?php echo $ho; ?></option>
                                                 </select>
                                             </div>
                                         </div>

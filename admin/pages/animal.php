@@ -46,7 +46,7 @@ include '../layout/header-only.php';
                                         <!-- Another variation with a button -->
                                         <div class="input-group search-box">
                                             <div class="input-group">
-                                                <input type="text" name="input_search" class="form-control rounded-0" placeholder="Nhập tên Khoa học, tiếng Việt, Địa phương và người thu thập " onkeyup='livesearch(this.value);'>
+                                                <input type="text" name="input_search" class="form-control rounded-0" placeholder="Tên khoa học, tiếng Việt, địa phương và người thu thập " onkeyup='livesearch(this.value);'>
                                                 <div class="input-group-append">
                                                     <button type="submit" name="submit" class="btn btn-secondary rounded-0" type="button" style="background-color: #0e768d;">
                                                         <i class="fa fa-search"></i>
@@ -67,6 +67,9 @@ include '../layout/header-only.php';
                                         <div class="col-12 col-lg-6">
                                             <p data-toggle="tooltip" title="Tổng số họ động vật" style="font-size: 1.5rem; color:#056877;"><i class="fas fa-project-diagram"></i> <?php echo $maxx5; ?></p>
                                         </div>
+                                        <button type="button" class="btn btn-primary rounded-0" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d; width: 7rem;">
+                                        <a href="./export_excel.php"><b>Thêm</b></a>
+                                    </button>
                                     </div>
 
                                 <!--Button Thêm -->
