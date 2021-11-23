@@ -1,5 +1,12 @@
 var api = BASE + 'ad_api.php';
 
+var gioi = { id : 0 }
+var nganh = { id: 0 }
+var lop = { id: 0 }
+var bo = { id : 0 }
+var ho = { id: 0 }
+
+
 function myPost(action, data, callback) {
     if (data) {
         data = 'action=' + action + '&' + data;
@@ -478,7 +485,841 @@ function getInfoInstall() {
 }
 
 
+// Lấy danh sách họ
+function getListHo() {
+    myPost('get-list-ho', '', function(json) {
+        if (json.status == 'OK') {
+            $('.bo-list').text("");
+            for (let i in json.data.bo) {
+                var tr_bo = document.createElement('tr');
+                var td1 = document.createElement('td');
+                var td_bo = document.createElement('td');
+                td_bo.innerHTML = json.data.bo[i].ten;
+                
+                var icon_see = document.createElement('i');
+                icon_see.setAttribute('title', "Xem");
+                icon_see.className = "far fa-eye icon-see-bo mr-2 rounded-0";  
+                icon_see.onclick = function() {
+                    $('.ho h4').text("Danh sách họ của bộ '" + json.data.bo[i].ten + "'");
+                    getListHoByBoID(json.data.bo[i].id);
+                }
+
+                var icon_update1 = document.createElement('i');
+                icon_update1.setAttribute('title', 'Cập nhật');
+                icon_update1.className ="fas fa-edit text-info icon-update-bo mr-2 rounded-0";
+                icon_update1.setAttribute("data-toggle", "modal");
+                icon_update1.setAttribute("data-target", "#ho-page-modal-add-bo");
+                icon_update1.onclick = function() {
+                    getListGioi('.add-bo-gioi-select');
+                    $('.add-ho').hide();
+                    $('.add-bo').show();
+                    $('.ho-page-modal-add-bo-button-add').hide();
+                    $('.ho-page-modal-add-bo-button-update').show();
+                    getInfoBoById(json.data.bo[i].id);
+
+                }
+
+                var icon_delete1 = document.createElement('i');
+                icon_delete1.setAttribute('title', 'Xóa');
+                icon_delete1.className ="far fa-trash-alt text-danger icon-delele-bo rounded-0";
+                icon_delete1.onclick = function() {
+                    var btnDeleteBo = document.createElement("button");
+                    btnDeleteBo.className = "btn btn-danger btn-sm rounded-0 mr-2";
+                    btnDeleteBo.innerHTML = "Xóa";
+                    btnDeleteBo.onclick = function() {
+                        deleteBo(json.data.bo[i].id);
+                    }
+                    showNotiForDelete('Nếu xóa bộ thì các họ, động vật thuộc bộ này sẽ bị xóa.<br>'
+                        + 'Bạn có muốn xóa bộ <b>"' + json.data.bo[i].ten + '"</b> không?',
+                        btnDeleteBo,
+                        '.ho-noti-content-delete',
+                        '.ho-page-show-dialog-delete'
+                    );
+                }
+
+                td1.className = "text-right";
+                td1.append(icon_see, icon_update1, icon_delete1);
+
+                tr_bo.append(td_bo, td1);
+                $('.bo-list').append(tr_bo);
+            }
+            for (let i in json.data.ho) {
+                createItemHo(json.data.ho[i]);
+            }
+        } else {
+            return "";
+        }
+    })
+}
+
+// Xóa bộ
+function deleteBo(bo_id) {
+    myPost("delete-bo", "bo_id=" + bo_id, function(json) {
+        if (json.status == "OK") {
+            $('.ho-page-modal-delete-close').click();
+            getListHo();
+                
+            showNoti("Xóa bộ thành công", '.ho-noti-content', '.ho-page-show-dialog');
+        }
+    })
+}
+
+// Lấy danh sách họ theo id bộ
+function getListHoByBoID(bo_id) {
+    if (bo_id != null && bo_id != "" && bo_id != undefined && bo_id > 0) {
+        myPost('get-list-ho-by-bo-id', 'bo_id=' + bo_id, function(json) {
+            if (json.status == 'OK') {
+                $('.ho-list').text("");
+                for (let i in json.data) {
+                    createItemHo(json.data[i]);
+                }
+            }
+        })
+    }
+}
+
+function createItemHo(item) {
+    var tr_ho = document.createElement('tr');
+    var td2 = document.createElement('td');
+    var td_ho = document.createElement('td');
+    
+    td_ho.innerHTML = item.ten;
+    
+    var icon_update2 = document.createElement('i');
+    icon_update2.setAttribute('title', 'Cập nhật');
+    icon_update2.className ="fas fa-edit text-info icon-update-ho mr-2 rounded-0";
+    icon_update2.setAttribute("data-toggle", "modal");
+    icon_update2.setAttribute("data-target", "#ho-page-modal-add-bo");
+    icon_update2.onclick = function() {
+        getListGioi('.add-bo-gioi-select');
+        showInfoHo(item.id);
+        $('.ho-page-modal-add-ho-button-add').hide();
+        $('.ho-page-modal-add-ho-button-update').show();
+        $('.add-bo').hide();
+        $('.add-ho').show();
+    }
+
+    var icon_delete2 = document.createElement('i');
+    icon_delete2.setAttribute('title', 'Xóa');
+    icon_delete2.className ="far fa-trash-alt text-danger icon-delele-ho  rounded-0";
+    icon_delete2.onclick = function() {
+        var btnDeleteHo = document.createElement("button");
+        btnDeleteHo.className = "btn btn-danger btn-sm rounded-0 mr-2";
+        btnDeleteHo.innerHTML = "Xóa";
+        btnDeleteHo.onclick = function() {
+            deleteHo(item.id);
+        }
+        showNotiForDelete('Nếu xóa họ thì các động vật thuộc họ này sẽ bị xóa.<br>'
+            + 'Bạn có muốn xóa họ <b>"' + item.ten + '"</b> không?',
+            btnDeleteHo,
+            '.ho-noti-content-delete',
+            '.ho-page-show-dialog-delete'
+        );
+    }
+    td2.className = "text-right";
+    td2.append(icon_update2, icon_delete2);
+
+    tr_ho.append(td_ho, td2);
+    $('.ho-list').append(tr_ho);
+}
+
+// Lấy danh sách bộ theo id lớp
+function getBoByLopID(lop_id) {
+    return new Promise(function(resolve, reject) {
+        if (lop_id != null && lop_id != "" && lop_id != undefined && lop_id > 0) {
+            myPost('get-bo-by-lop-id', 'lop_id=' + lop_id, function(json) {
+                console.log(json);
+                if (json.status == 'OK') {
+                    $('.add-ho-bo-select').text("");
+                    var op = document.createElement('option');
+                    op.innerHTML = "-- Chọn --";
+                    op.setAttribute('value', "");
+                    $('.add-ho-bo-select').append(op);
+                    for (let i in json.data) {
+                        var op = document.createElement('option');
+                        op.innerHTML = json.data[i].ten;
+                        op.setAttribute('value', json.data[i].id);
+                        $('.add-ho-bo-select').append(op);
+                    }
+                    resolve(json);
+                } else {
+                    reject('');
+                }
+            })
+        }
+    })
+    
+}
+
+// Lấy danh sách lớp theo ngành id
+function getLopByNganhID(nganh_id) {
+    return new Promise(function(resolve, reject){
+        if (nganh_id != null && nganh_id != "" && nganh_id != undefined && nganh_id > 0) {
+            myPost('get-lop-by-nganh-id', 'nganh_id=' + nganh_id, function(json) {
+                if (json.status == 'OK') {
+                    $('.add-bo-lop-select').text("");
+                    var op = document.createElement('option');
+                    op.innerHTML = "-- Chọn --";
+                    op.setAttribute('value', "");
+                    $('.add-bo-lop-select').append(op);
+                    for (let i in json.data) {
+                        var op = document.createElement('option');
+                        op.innerHTML = json.data[i].ten;
+                        op.setAttribute('value', json.data[i].id);
+                        $('.add-bo-lop-select').append(op);
+                    }
+
+                    resolve(json);
+                } else {
+                    reject('');
+                }
+            })
+        }
+    })
+}
+
+// Lấy danh sách ngành theo giới id
+function getNganhByGioiID(gioi_id, el_select) {
+    return new Promise(function(resolve, reject){
+        if (gioi_id != null && gioi_id != "" && gioi_id != undefined && gioi_id > 0) {
+            myPost('get-nganh-by-gioi-id', 'gioi_id=' + gioi_id, function(json) {
+                if (json.status == 'OK') {
+                    $(el_select).text("");
+                    var op = document.createElement('option');
+                    op.innerHTML = "-- Chọn --";
+                    $(el_select).append(op);
+                    for (let i in json.data) {
+                        var op = document.createElement('option');
+                        op.innerHTML = json.data[i].ten;
+                        op.setAttribute('value', json.data[i].id);
+                        $(el_select).append(op);
+                    }
+                    resolve(json);
+                } else {
+                    reject('');
+                }
+            })
+        }
+    })
+}
+
+// Lấy danh sách giới
+function getListGioi(el_select) {
+    return new Promise(function(resolve, reject){
+        myPost('get-list-gioi', '', function(json) {
+            if (json.status == 'OK') {
+                $(el_select).text("");
+                var op = document.createElement('option');
+                op.innerHTML = "-- Chọn --";
+                op.setAttribute('value', "");
+                $(el_select).append(op);
+                
+                for (let i in json.data) {
+                    var op = document.createElement('option');
+                    op.innerHTML = json.data[i].ten;
+                    op.setAttribute('value', json.data[i].id);
+                    $(el_select).append(op);
+                }
+                resolve(json);
+            } else {
+                reject('');
+            }
+        })
+    })
+}
+
+function getListNganh(el_select) {
+    return new Promise(function(resolve, reject){
+        myPost('get-list-nganh', '', function(json) {
+            if (json.status == 'OK') {
+                $(el_select).text("");
+                var op = document.createElement('option');
+                op.innerHTML = "-- Chọn --";
+                op.setAttribute('value', "");
+                $(el_select).append(op);
+                
+                for (let i in json.data) {
+                    var op = document.createElement('option');
+                    op.innerHTML = json.data[i].ten;
+                    op.setAttribute('value', json.data[i].id);
+                    $(el_select).append(op);
+                }
+                resolve(json);
+            } else {
+                reject('');
+            }
+        })
+    })
+}
+
+// Thêm bộ
+function addBo() {
+    var bo = $('#ho-page-modal-add-bo .bo_name').val();
+    var gioi = $('.add-bo-gioi-select').val();
+    var nganh = $('.add-bo-nganh-select').val();
+    var lop = $('.add-bo-lop-select').val();
+
+    if (gioi == "" || nganh == "" || lop == "" || bo == "") {
+        console.log("Nhập đủ thông tin");
+        return;
+    }
+
+    myPost("add-bo", 'lop=' + lop + '&bo=' + bo, function(json) {
+        if (json.status == "OK") {
+            $('.ho-page-modal-add-bo-button-close').click();
+            $('.ho-noti-content').text("");
+            var button = document.createElement("button");
+            var div_1 = document.createElement("div");
+            div_1.className = "text-right";
+            button.className = "btn btn-secondary btn-sm rounded-0 mt-2";
+            button.setAttribute("data-dismiss", "modal");
+            button.innerHTML = "Đóng";
+            div_1.append(button);
+            var div = document.createElement("div");
+            div.innerHTML = "Thêm bộ thành công";
+            $('.ho-noti-content').append(div, div_1);
+            $('.ho-page-show-dialog').click();
+
+            $('.bo_name').val("");
+            getListHo();
+        } else {
+            $('.add-bo-error').text(json.error);
+        }
+    })
+}
+
+// Thêm họ
+function addHo() {
+    var gioi = $('.add-bo-gioi-select').val();
+    var nganh = $('.add-bo-nganh-select').val();
+    var lop = $('.add-bo-lop-select').val();
+    var bo = $('.add-ho-bo-select').val();
+    var ho = $('.ho_name').val();
+    
+    if (gioi == "" || nganh == "" || lop == "" || bo == "" || ho == "") {
+        console.log("Nhập đủ thông tin");
+        return;
+    }
+    myPost("add-ho", "bo_id=" + bo + "&ho=" + ho, function(json) {
+        if (json.status == "OK") {
+            $('.ho-page-modal-add-bo-button-close').click();
+            showNoti("Thêm họ thành công", '.ho-noti-content', '.ho-page-show-dialog');
+            getListHo();
+        } else {
+            $('.add-bo-error').text(json.error);
+        }
+    })
+}
+
+// Lấy thông tin bộ theo id bộ
+function getInfoBoById(bo_id) {
+    bo.id = bo_id;
+    myPost("get-info-bo-by-id", "bo_id=" + bo_id, function(json) {
+        if (json.status == "OK") {
+            $('.add-bo-gioi-select option[value=' + json.data.gioi.id +']').attr('selected','selected');
+            getNganhByGioiID(json.data.gioi.id, '.add-bo-nganh-select').then(function() {
+                $('.add-bo-nganh-select option[value=' + json.data.nganh.id +']').attr('selected','selected');
+            });
+            
+            getLopByNganhID(json.data.nganh.id).then(function(){
+                $('.add-bo-lop-select option[value=' + json.data.lop.id +']').attr('selected','selected');
+            });
+            $('.bo_name').val(json.data.bo.ten);
+        }
+    })
+}
+
+function showNoti(strNoti, el_content, el_click) {
+    $(el_content).text("");
+    var div = document.createElement("div");
+    var button = document.createElement("button");
+    var text = document.createElement("div");
+    text.innerHTML = strNoti;
+    div.className = "text-right";
+    
+    button.className = "btn btn-secondary btn-sm rounded-0";
+    button.setAttribute("data-dismiss", "modal");
+    button.innerHTML = "Đóng";
+    
+    div.append(button); 
+    $(el_content).append(text, div);
+    $(el_click).click();
+
+}
+
+function showNotiForDelete(strNoti, elButton, elContent, elClickShow) {
+    $(elContent).text("");
+    var div = document.createElement("div");
+    var button = document.createElement("button");
+    var text = document.createElement("div");
+
+    text.innerHTML = strNoti;
+    div.className = "text-right mt-2";
+    button.className = "btn btn-secondary btn-sm rounded-0 ho-page-modal-delete-close";
+    button.setAttribute("data-dismiss", "modal");
+    button.innerHTML = "Đóng";
+    div.append(elButton, button);
+
+    $(elContent).append(text, div);
+    $(elClickShow).click();
+}
+
+// Xóa họ
+function deleteHo(ho_id) {
+    if (ho_id > 0) {
+        myPost("delete-ho", "ho_id=" + ho_id, function(json) {
+            if (json.status == "OK") {
+                console.log(json);
+                $('.ho-page-modal-delete-close').click();
+                getListHo();
+                
+                showNoti("Xóa họ thành công", '.ho-noti-content', '.ho-page-show-dialog');
+            }
+        })
+    }
+}
+
+// Cập nhật bộ
+function updateBo() {
+    if (bo.id > 0) {
+        var lop_id = $('.add-bo-lop-select').val();
+        var bo_name = $('.bo_name').val();
+        myPost("update-bo", "lop_id=" + lop_id + "&bo_id=" + bo.id + "&bo_name=" + bo_name, function(json) {
+            if (json.status == 'OK') {
+                $('.bo_name').val("");
+                getListHo();
+                $('.ho-page-modal-add-bo-button-close').click();
+                
+                showNoti("Cập nhật bộ thành công", '.ho-noti-content', '.ho-page-show-dialog');
+            }
+        })
+    }
+}
+
+// hiển thị thông tin họ
+function showInfoHo(ho_id) {
+    if (ho_id > 0) {
+        ho.id = ho_id;
+        myPost("get-info-ho", "ho_id=" + ho_id, function(json) {
+            if (json.status == "OK") {
+                $('.add-bo-gioi-select option[value=' + json.data.gioi.id +']').attr('selected','selected');
+
+                getNganhByGioiID(json.data.gioi.id, '.add-bo-nganh-select').then(function() {
+                    $('.add-bo-nganh-select option[value=' + json.data.nganh.id +']').attr('selected','selected');
+                });
+                
+                getLopByNganhID(json.data.nganh.id).then(function(){
+                    $('.add-bo-lop-select option[value=' + json.data.lop.id +']').attr('selected','selected');
+                });
+
+                getBoByLopID(json.data.lop.id).then(function(){
+                    $('.add-ho-bo-select option[value=' + json.data.bo.id +']').attr('selected','selected');
+                });
+                $('.ho_name').val(json.data.ho.ten);
+            }
+        })
+    }
+}
+
+// Cập nhật bộ
+function updateHo() {
+    if (ho.id > 0) {
+        var bo_id = $('.add-ho-bo-select').val();
+        var ho_name = $('.ho_name').val();
+        myPost("update-ho", "bo_id=" + bo_id + "&ho_id=" + ho.id + "&ho_name=" + ho_name, function(json) {
+            if (json.status == 'OK') {
+                $('.ho_name').val("");
+                getListHo();
+                $('.ho-page-modal-add-bo-button-close').click();
+                
+                showNoti("Cập nhật họ thành công", '.ho-noti-content', '.ho-page-show-dialog');
+            }
+        })
+    }
+}
+
+// Lấy danh sách giới ngành lớp
+function getGioiNganhLopList() {
+    myPost("get-gioi-nganh-lop", "", function(json) {
+        if (json.status == "OK") {
+            $(".gioi-list").text("");
+            $(".nganh-list").text("");
+            $(".lop-list").text("");
+
+            for (let i in json.data.gioi) {
+                createItemGioi(json.data.gioi[i]);
+            }
+
+            for (let i in json.data.nganh) {
+                createItemNganh(json.data.nganh[i]);
+            }
+
+            for (let i in json.data.lop) {
+                createItemLop(json.data.lop[i]);
+            }
+        }
+    })
+}
+
+function createItemGioi(item) {
+    var tr = document.createElement("tr");
+    var tdname = document.createElement("td");
+    var td = document.createElement("td");
+    var icon_delete = document.createElement("i");
+    var icon_update = document.createElement("i");
+    var icon_see = document.createElement("i");
+
+    icon_delete.className = "far fa-trash-alt text-danger";
+    icon_delete.onclick = function() {
+        var btnDeleteGioi = document.createElement("button");
+        btnDeleteGioi.className = "btn btn-danger btn-sm rounded-0 mr-2";
+        btnDeleteGioi.innerHTML = "Xóa";
+        btnDeleteGioi.onclick = function() {
+            deleteGioi(item.id);
+        }
+        showNotiForDelete('Nếu xóa giới thì các ngành, lớp, bộ, họ và động vật thuộc giới này sẽ bị xóa.<br>'
+            + 'Bạn có muốn xóa họ <b>"' + item.ten + '"</b> không?',
+            btnDeleteGioi,
+            '.gioi-nganh-lop-noti-content-delete',
+            '.gioi-nganh-lop-show-dialog-delete'
+        );
+    }
+
+    icon_update.className = "fas fa-edit text-info mr-1";
+    icon_update.setAttribute("data-toggle", "modal");
+    icon_update.setAttribute("data-target", "#gioi-nganh-lop-modal-add-gioi");
+    icon_update.onclick = function() {
+        gioi.id = item.id;
+        $('.gioi-nganh-lop-modal-add-gioi-button-add').hide();
+        $('.gioi-nganh-lop-modal-add-gioi-button-update').show();
+        $(".add-gioi-name").val(item.ten);
+    }
+
+    icon_see.className = "far fa-eye mr-1";
+    td.className = "text-right";
+    icon_see.onclick = function() {
+        seeNganhInGioi(item.id);
+    }
+
+    tdname.innerHTML = item.ten;
+    td.append(icon_see, icon_update, icon_delete);
+    tr.append(tdname, td);
+    $(".gioi-list").append(tr);
+}
+
+function createItemNganh(item) {
+    var tr = document.createElement("tr");
+    var tdname = document.createElement("td");
+    var td = document.createElement("td");
+    var icon_delete = document.createElement("i");
+    var icon_update = document.createElement("i");
+    var icon_see = document.createElement("i");
+
+    icon_delete.className = "far fa-trash-alt text-danger";
+    icon_delete.onclick = function() {
+        var button = document.createElement("button");
+        button.className = "btn btn-danger btn-sm rounded-0 mr-2";
+        button.innerHTML = "Xóa";
+        button.onclick = function() {
+            deleteNganh(item.id);
+        }
+        var str = "Xóa ngành thì tất cả các lớp, bộ, họ và động vật thuộc ngành này sẽ bị xóa.<br>" + 
+            "Bạn có muốn xóa ngành '<b>" + item.ten + "'</b> không?";
+        showNotiForDelete(str, button,
+            ".gioi-nganh-lop-noti-content-delete",
+            ".gioi-nganh-lop-show-dialog-delete");
+    }
+    icon_update.className = "fas fa-edit text-info mr-1";
+    icon_update.setAttribute("data-toggle", "modal");
+    icon_update.setAttribute("data-target", "#gioi-nganh-lop-modal-add-nganh-lop");
+    icon_see.className = "far fa-eye mr-1";
+
+    icon_see.onclick = function() {
+        seeLopInNganh(item.id);
+    }
+
+    icon_update.onclick = function() {
+        $('.add-nganh').show();
+        $('.add-lop').hide();
+        $('.gioi-nganh-lop-modal-add-nganh-button-update').show();
+        $('.gioi-nganh-lop-modal-add-nganh-button-add').hide();
+
+        $('.nganh-name-input').val(item.ten);
+        getListGioi(".gioi-name-select").then(function() {
+            $('.gioi-name-select option[value=' + item.gioi_id + ']').attr("selected", "selected");
+        });
+
+        nganh.id= item.id;
+    }
+
+    tdname.innerHTML = item.ten;
+    td.className = "text-right";
+    td.append(icon_see, icon_update, icon_delete);
+    tr.append(tdname, td);
+    $(".nganh-list").append(tr);
+}
+
+function createItemLop(item) {
+    var tr = document.createElement("tr");
+    var tdname = document.createElement("td");
+    var td = document.createElement("td");
+    var icon_delete = document.createElement("i");
+    var icon_update = document.createElement("i");
+    var icon_see = document.createElement("i");
+
+    td.className = "text-right";
+    icon_delete.className = "far fa-trash-alt text-danger";
+    icon_delete.onclick = function() {
+        var button = document.createElement("button");
+        button.className = "btn btn-danger btn-sm rounded-0 mr-2";
+        button.innerHTML = "Xóa";
+        button.onclick = function() {
+            deleteLop(item.id);
+        }
+        var str = "Xóa lớp thì tất cả các bộ, họ và động vật thuộc lớp này sẽ bị xóa.<br>" + 
+            "Bạn có muốn xóa lớp '<b>" + item.ten + "'</b> không?";
+        showNotiForDelete(str, button,
+            ".gioi-nganh-lop-noti-content-delete",
+            ".gioi-nganh-lop-show-dialog-delete");
+    }
+
+    icon_update.className = "fas fa-edit text-info mr-1";
+    icon_update.setAttribute("data-toggle", "modal");
+    icon_update.setAttribute("data-target", "#gioi-nganh-lop-modal-add-nganh-lop");
+    icon_update.onclick = function() {
+        $('.add-nganh').hide();
+        $('.add-lop').show();
+        $('.gioi-nganh-lop-modal-add-lop-button-add').hide();
+        $('.gioi-nganh-lop-modal-add-lop-button-update').show();
+        lop.id = item.id;
+        showInfoLopForUpdate(item);   
+    }
+    
+    tdname.innerHTML = item.ten;
+    td.append(icon_see, icon_update, icon_delete);
+    tr.append(tdname, td);
+    $(".lop-list").append(tr);
+}
+
+
+// xem các ngành trong giới
+function seeNganhInGioi(gioi_id) {
+    if (gioi_id > 0) {
+        myPost("see-nganh-in-gioi", "gioi_id=" + gioi_id, function(json) {
+            $(".nganh-list").text("");
+            for (let i in json.data) {
+                createItemNganh(json.data[i]);
+            }
+        })
+    }
+}
+
+// xem các lớp trong ngành
+function seeLopInNganh(nganh_id) {
+    if (nganh_id > 0) {
+        myPost("see-lop-in-nganh", "nganh_id=" + nganh_id, function(json) {
+            $(".lop-list").text("");
+            for (let i in json.data) {
+                createItemLop(json.data[i]);
+            }
+        })
+    }
+}
+
+// thêm giới
+function addGioi() {
+    var gioi = $('.add-gioi-name').val();
+    if (gioi == "") {
+        $('.add-gioi-error').text("Vui lòng nhập giới");
+        return;
+    }
+    myPost("add-gioi", "gioi=" + gioi, function(json) {
+        if (json.status == "OK") {
+            $('.gioi-nganh-lop-modal-add-gioi-button-close').click();
+            getGioiNganhLopList();
+            showNoti("Thêm giới thành công", '.gioi-nganh-lop-noti-content', '.gioi-nganh-lop-show-dialog');
+        } else {
+            $('.add-gioi-error').text(json.error);
+        }
+    })
+}
+
+function updateGioi() {
+    if (gioi.id > 0) {
+        var gioi_name = $('.add-gioi-name').val();
+        console.log(gioi_name);
+        if (gioi_name == "") {
+            $('.add-gioi-error').text("Vui lòng nhập giới");
+            return;
+        }
+        myPost("update-gioi","gioi=" + gioi_name + "&gioi_id=" + gioi.id, function(json) {
+            if (json.status == "OK") {
+                $('.gioi-nganh-lop-modal-add-gioi-button-close').click();
+                getGioiNganhLopList();
+                showNoti("Cập nhật giới thành công", '.gioi-nganh-lop-noti-content', '.gioi-nganh-lop-show-dialog');
+            }
+        })
+    }
+}
+
+function deleteGioi(gioi_id) {
+    if (gioi_id > 0) {
+        myPost("delete-gioi", "gioi_id=" + gioi_id, function(json) {
+            if (json.status == "OK") {
+                $('.ho-page-modal-delete-close').click();
+                getGioiNganhLopList();
+                showNoti("Xóa giới thành công", '.gioi-nganh-lop-noti-content', '.gioi-nganh-lop-show-dialog');
+            }
+        })
+    }
+}
+
+
+// lấy thông in cho cập nhật lớp
+function showInfoLopForUpdate(item) {
+    $('.lop-name-input').val(item.ten);
+    myPost("get-gioi-nganh-for-lop", "nganh_id=" + item.nganh_id, function(json) {
+        if (json.status == "OK") {
+            getListGioi(".gioi-name-select").then(function() {
+                $('.gioi-name-select option[value=' + json.data.gioi.id + ']').attr("selected", "selected");
+            });
+
+            getListNganh(".nganh-name-select").then(function() {
+                $('.nganh-name-select option[value=' + json.data.nganh.id + ']').attr("selected", "selected");
+            })
+        }
+    })
+
+}
+
+
+// Thêm ngành
+function addNganh() {
+    var nganh_name = $('.nganh-name-input').val();
+    var gioi = $('.gioi-name-select').val();
+    
+    if (nganh_name == "") {
+        $('.add-nganh-lop-error').text("Vui lòng nhập ngành");
+        return;
+    }
+    if (gioi > 0) {
+        myPost("add-nganh", "gioi_id=" + gioi + "&nganh_name=" + nganh_name, function(json) {
+            if (json.status == "OK") {
+                $('.gioi-nganh-lop-modal-add-gioi-button-close').click();
+                showNoti("Thêm ngành thành công", '.gioi-nganh-lop-noti-content', '.gioi-nganh-lop-show-dialog');
+                getGioiNganhLopList();
+            } else {
+                $('.add-nganh-lop-error').text(json.error);
+            }
+        })
+    }
+
+}
+
+// Thêm lớp
+function addLop() {
+    var gioi = $('.gioi-name-select').val();
+    var nganh = $('.nganh-name-select').val();
+    var lop_name = $('.lop-name-input').val();
+    
+    if (lop_name == "") {
+        $('.add-nganh-lop-error').text("Vui lòng nhập lớp");
+        return;
+    }
+    if (gioi > 0 && nganh > 0) {
+        myPost("add-lop", "gioi_id=" + gioi + "&nganh_id=" + nganh + "&lop_name=" + lop_name, function(json) {
+            if (json.status == "OK") {
+                $('.gioi-nganh-lop-modal-add-gioi-button-close').click();
+                showNoti("Thêm lớp thành công", '.gioi-nganh-lop-noti-content', '.gioi-nganh-lop-show-dialog');
+                getGioiNganhLopList();
+            } else {
+                $('.add-nganh-lop-error').text(json.error);
+            }
+        })
+    }
+}
+
+// Cập nhật ngành
+function updateNganh() {
+    var nganh_name = $('.nganh-name-input').val();
+    var gioi_id = $('.gioi-name-select').val();
+    if (nganh_name == "") {
+        $('.add-nganh-lop-error').text("Ngành là bắt buộc");
+    }
+    if (gioi_id > 0 && nganh.id > 0) {
+        myPost("update-nganh", "gioi_id=" + gioi_id + "&nganh_name=" + nganh_name + "&nganh_id=" + nganh.id, function(json) {
+            if (json.status == "OK") {
+                $('.gioi-nganh-lop-modal-add-gioi-button-close').click();   
+                getGioiNganhLopList();
+                showNoti("Cập nhật ngành thành công", '.gioi-nganh-lop-noti-content', '.gioi-nganh-lop-show-dialog');
+            } else {
+                $('.add-nganh-lop-error').text(json.error);
+            }
+        })
+    }
+}
+
+// Xóa ngành
+function deleteNganh(nganh_id) {
+    if (nganh_id > 0) {
+        myPost("delete-nganh", "nganh_id=" + nganh_id, function(json) {
+            if (json.status == "OK") {
+                $('.ho-page-modal-delete-close').click();
+                getGioiNganhLopList();
+                showNoti("Xóa ngành thành công", '.gioi-nganh-lop-noti-content', '.gioi-nganh-lop-show-dialog');
+            } else {
+                $('.add-nganh-lop-error').text(json.error);
+            }
+        })
+    }
+}
+
+// Xóa lớp
+function deleteLop(lop_id) {
+    if (lop_id > 0) {
+        myPost("delete-lop", "lop_id=" + lop_id, function(json) {
+            if (json.status == "OK") {
+                $('.ho-page-modal-delete-close').click();
+                getGioiNganhLopList();
+                showNoti("Xóa lớp thành công", '.gioi-nganh-lop-noti-content', '.gioi-nganh-lop-show-dialog');
+            } else {
+                $('.add-nganh-lop-error').text(json.error);
+            }
+        });
+    }
+}
+
+
+// Cập nhật lớp
+function updateLop() {
+    var gioi = $('.gioi-name-select').val();
+    var nganh = $('.nganh-name-select').val();
+    var lop_name = $('.lop-name-input').val();
+    
+    if (lop_name == "") {
+        $('.add-nganh-lop-error').text("Lớp là bắt buộc");
+        return;
+    }
+
+    if (lop.id > 0 && gioi > 0 && nganh > 0) {
+        myPost("update-lop", "lop_name=" + lop_name + "&lop_id=" + lop.id + "&nganh_id=" + nganh, function(json) {
+            if (json.status == "OK") {
+                $('.gioi-nganh-lop-modal-add-gioi-button-close').click();
+                getGioiNganhLopList();
+                showNoti("Cập nhật lớp thành công", '.gioi-nganh-lop-noti-content', '.gioi-nganh-lop-show-dialog');
+            } else {
+                $('.add-nganh-lop-error').text(json.error);
+            }
+        })
+    }
+}
+
+
 $(function() {
+
+    $('#icon-bars-dev').on('click', function() {
+        $('body').toggleClass('toggle-menu');
+    })
 
     $('.website_name').on('keyup', function() {
         if ($('.website_name').val() == '') {
@@ -704,7 +1545,7 @@ $(function() {
         if (!checkBars) {
             $('.layout-left').css('left', '0px');
         } else {
-            $('.layout-left').css('left', '-230px');
+            $('.layout-left').css('left', '-250px');
         }
         checkBars = !checkBars;
     })
@@ -725,4 +1566,132 @@ $(function() {
         var previewAvatar = URL.createObjectURL(avt);
         $('.install-favicon-preview').attr('src', previewAvatar);
     })
+
+    // Lấy danh sách họ động vật cùng các thông tin bộ, lớp, ngành, giới
+    getListHo();
+
+    getListGioi('.add-bo-gioi-select');
+
+    $('.button-add-bo').on('click', function() {
+        getListGioi('.add-bo-gioi-select');
+        $('.ho-page-modal-add-bo-button-add').css('display', 'block');
+        $('.ho-page-modal-add-bo-button-update').css('display', 'none');
+        $('.add-bo').show();
+        $('.add-ho').hide();
+    })
+    // thêm 1 bộ
+    $('.ho-page-modal-add-bo-button-add').on('click', function() {
+        addBo();
+    })
+
+    $('.ho-page-modal-add-bo-button-update').on('click', function() {
+        updateBo();
+    })
+
+    $('.button-add-ho').on('click', function() {
+        getListGioi('.add-bo-gioi-select');
+        $('.ho-page-modal-add-ho-button-add').show();
+        $('.ho-page-modal-add-ho-button-update').hide();
+        $('.add-bo').hide();
+        $('.add-ho').show();
+    })
+    // Thêm họ
+    $('.ho-page-modal-add-ho-button-add').on('click', function() {
+        addHo();
+    })
+
+    // Cập nhật họ
+    $('.ho-page-modal-add-ho-button-update').on('click', function() {
+        updateHo();
+    })
+
+    // Đặt lại form add-update ho-bo
+    $('.ho-page-modal-add-bo-button-close').on('click', function() {
+        $('.add-bo-gioi-select').text("");
+        $('.add-bo-nganh-select').text("");
+        $('.add-bo-lop-select').text("");
+        $('.add-bo-bo-select').text("");
+        $('.bo_name').text("");
+        $('.ho_name').text("");
+        ho.id = 0;
+        bo.id = 0;
+        $('.add-bo-error').text("");
+    })
+
+    // Lấy danh sách giới ngành lớp
+    getGioiNganhLopList();
+
+    // Thêm giới
+    $('.gioi-nganh-lop-modal-add-gioi-button-add').on('click', function() {
+        addGioi();
+    })
+
+    $('.button-add-gioi').on('click', function() {
+        $('.gioi-nganh-lop-modal-add-gioi-button-add').show();
+        $('.gioi-nganh-lop-modal-add-gioi-button-update').hide();
+    })
+
+    $('.gioi-nganh-lop-modal-add-gioi-button-close').on("click", function() {
+        $('.add-gioi-name').val("");
+        $('.nganh-name-input').val("");
+        $('.lop-name-input').val("");
+        $('.add-gioi-error').text("");
+    })
+
+    $(".gioi-nganh-lop-modal-add-gioi-button-update").on('click', function() {
+        updateGioi();
+    })
+
+
+    // Add ngành - lớp
+    $('.button-add-nganh').on('click', function() {
+        $('.add-nganh').show();
+        $('.add-lop').hide();
+        $('.gioi-nganh-lop-modal-add-nganh-button-update').hide();
+        $('.gioi-nganh-lop-modal-add-nganh-button-add').show();
+        getListGioi(".gioi-name-select");
+    })
+
+    $('.button-add-lop').on('click', function() {
+        $('.add-lop').show();
+        $('.add-nganh').hide();
+        $('.gioi-nganh-lop-modal-add-lop-button-update').hide();
+        $('.gioi-nganh-lop-modal-add-lop-button-add').show();
+        getListGioi(".gioi-name-select");
+        getListNganh(".nganh-name-select");
+    })
+
+    // Thêm ngành
+    $('.gioi-nganh-lop-modal-add-nganh-button-add').on('click', function() {
+        addNganh();
+    })
+
+    // Thêm lớp
+    $('.gioi-nganh-lop-modal-add-lop-button-add').on('click', function() {
+        addLop();
+    })
+
+    $('.gioi-nganh-lop-modal-add-gioi-button-close').on("click", function() {
+        $('.add-nganh-lop-error').text("");
+        gioi.id = 0;
+        nganh.id= 0;
+        lop.id= 0;
+        bo.id = 0;
+        ho.id= 0;
+    })
+
+    // Cập nhật ngành
+    $('.gioi-nganh-lop-modal-add-nganh-button-update').on('click', function() {
+        updateNganh();
+    })
+
+    $('.ho-page-modal-delete-close').on('click', function() {
+        $('.gioi-nganh-lop-noti-content-delete').text("");
+    })
+
+    // Cập nhật lớp
+    $('.gioi-nganh-lop-modal-add-lop-button-update').on('click', function() {
+        updateLop();
+    })
+
 })

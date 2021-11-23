@@ -67,9 +67,19 @@ else if ($action == 'get-animal-info') {
     $animal_id = _getInt('animal-id');
     $info = $db->query('SELECT * FROM dongvat WHERE id = ' . intval($animal_id))->fetch();
     $img = $db->query('SELECT * FROM hinhanh WHERE dongvat_id = ' . intval($animal_id))->fetchAll();
+    $ho = $db->query('SELECT * FROM ho where id = ' . intval($info['ho_id']))->fetch();
+    $bo = $db->query('SELECT * FROM bo where id = ' . intval($ho['bo_id']))->fetch();
+    $lop = $db->query('SELECT * FROM lop where id = ' . intval($bo['lop_id']))->fetch();
+    $nganh = $db->query('SELECT * FROM nganh where id = ' . intval($lop['nganh_id']))->fetch();
+    $gioi = $db->query('SELECT * FROM gioi where id = ' . intval($nganh['gioi_id']))->fetch();
     $res = array(
         'img' => $img,
-        'info' => $info
+        'info' => $info,
+        'ho' => $ho,
+        'bo' => $bo,
+        'lop' => $lop,
+        'nganh' => $nganh,
+        'gioi' => $gioi
     );
 
     _success('OK', $res);
@@ -112,6 +122,6 @@ else if ($action == 'get-search-animal') {
     }
     _success('OK', $res);
 
-}
+} 
 
 ?>
