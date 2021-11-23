@@ -10,11 +10,11 @@ if(isset($_GET['data'])){
         echo "Lỗi kết nối: " . mysqli_connect_error();
     }
     
-    $sql = "SELECT DISTINCT tenkhoahoc, id FROM dongvat WHERE tenkhoahoc LIKE '%$data%' or tentiengviet LIKE '%$data%' or tendiaphuong LIKE '%$data%'".";";
+    $sql = "SELECT DISTINCT tenkhoahoc, id FROM dongvat WHERE tenkhoahoc LIKE '%$data%' or tentiengviet LIKE '%$data%' or tendiaphuong LIKE '%$data%' or nguoithuthap LIKE '%$data%' ".";";
     $result = mysqli_query($con, $sql);
-    $row = $result->fetch_assoc();
-    $i=1;
-    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+    
+    $i=0;
+    while($row = $result->fetch_assoc()){
         if($i < 4){
             echo "<a href='./chitiet.php?iddv=".$row['id']."'>".$row['tenkhoahoc']."</a>"."</br>";
             $i ++;
