@@ -329,7 +329,7 @@ if (isset($_GET["iddv"])) {
                             </div>
                         </div>
                     </form>
-                </div>
+                </div>  
             </div>
         </div>
     </div>
