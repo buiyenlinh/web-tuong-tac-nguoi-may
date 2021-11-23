@@ -148,7 +148,7 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
                                             <p size="20" name="tenkhoahocsua" value='' placeholder="Nhập tên khoa học" required><?php echo $tenkhoahoc; ?></p>
                                             <b for="pSupplierName">Tên tiếng việt</b>
                                             <p size="20" name="tentiengvietsua" value='' placeholder="Nhập tên tiếng Việt"><?php echo $tentiengviet; ?></p>
-                                            <b for="pSupplierName">Tên tiếng việt</b>
+                                            <b for="pSupplierName">Tên địa phương</b>
                                             <p size="20" name="tendiaphuongsua" value='' placeholder="Nhập tên địa phương"><?php echo $tendiaphuong; ?></p>
                                             <b for="pSupplierName">Người thu mẩu</b>
                                             <p size="20" name="nguoithuthapsua" value='' placeholder="Nhập người thu mẫu"><?php echo $nguoithuthap; ?></p>
