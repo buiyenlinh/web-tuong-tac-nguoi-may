@@ -18,7 +18,7 @@ include '../layout/header-only.php';
         </div>
         <div class="layout-right-content">
           <div class="layout-right-content-details">
-            <div class="install p-3">
+            <div class="install m-3">
               <h3>Cài đặt</h3>
               <form action="" method="POST">
                 <div class="form-group">
