@@ -1,6 +1,7 @@
 <?php
 // include '../../config.php';
 include '../layout/header-only.php';
+session_start();
 ?>
 <?php
 
@@ -161,9 +162,13 @@ if (isset($_POST["submit"])) {
         }
             //    echo $sql_2."<br>"; 
     }
+    
     header('Location: animal.php');
+    
+    $_SESSION["status"] = "add success";
+    
 } else {
-    echo "Error";
+    $_SESSION["status"] = "error";
 }
 
 ?>

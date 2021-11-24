@@ -56,7 +56,7 @@ else{
                                             echo "<td>" . $row['tenkhoahoc'] . "</td>";
                                             echo "<td>" . $row['tentiengviet'] . "</td>";
                                             //Ở sau  ko cần dấu ?idsp='". $var ."' Nên dùng  ?idsp=".$row['idsp']."'
-                                            echo "<td><a href='./chitiet.php?iddv=" . $row['id'] . "'>Xem chi tiết</a></td>";
+                                            echo "<td><a href='./chitiet.php?iddv=" . $row['id'] . "'><i class='fas fa-info-circle'></i></a></td>";
                                             echo "<td><a href='suaAnimal.php?iddv=" . $row['id'] . "'><i class='fas fa-pen'></i></a></td>";
                                             echo "<td><a href='./xoaAnimal.php?iddv=" . $row['id'] . "'><i class='fas fa-trash-alt text-danger'></i></a></td>";
                                             echo "</tr>";
