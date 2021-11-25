@@ -45,11 +45,11 @@ include '../layout/header-only.php';
                                 <!--Button Thêm -->
                                 <div class=" mb-3 btn-them">
                                     <!-- <h3 class="mb-0" id="animal-list-title text-center"></h3> -->
-                                    <button type="button" class="btn btn-primary rounded-0" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d; width: 7rem;">
-                                        <a href="./export_excel.php"><b>Xuất file</b></a>
+                                    <button type="button" class="btn btn-primary" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d; width: 7.5rem;">
+                                        <a href="./export_excel.php"><b><i class="fas fa-cloud-download-alt"></i> Xuất file</b></a>
                                     </button>
-                                    <button type="button" class="btn btn-primary rounded-0" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d; width: 7rem;">
-                                        <a href="./formthem.php"><b>Thêm</b></a>
+                                    <button type="button" class="btn btn-primary" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d; width: 7.5rem;">
+                                        <a href="./formthem.php"><b><i class="fas fa-plus"></i> Thêm</b></a>
                                     </button>
                                 </div>
                             </div>
@@ -111,9 +111,9 @@ include '../layout/header-only.php';
                                                     echo "<td>" . $row['tenkhoahoc'] . "</td>";
                                                     echo "<td>" . $row['tentiengviet'] . "</td>";
                                                     //Ở sau  ko cần dấu ?idsp='". $var ."' Nên dùng  ?idsp=".$row['idsp']."'
-                                                    echo "<td><a href='./chitiet.php?iddv=" . $row['id'] . "'><i class='fas fa-info-circle'></i></a></td>";
-                                                    echo "<td><a href='suaAnimal.php?iddv=" . $row['id'] . "'><i class='fas fa-edit'></i></a></td>";
-                                                    echo "<td><a href='./xoaAnimal.php?iddv=" . $row['id'] . "' class='confirmation'><i class='far fa-trash-alt text-danger'></i></a></td>";
+                                                    echo "<td><a href='./chitiet.php?iddv=" . $row['id'] . "' data-toggle='tooltip' data-placement='top' title='Chi tiết động vật'><i class='fas fa-info-circle'></i></a></td>";
+                                                    echo "<td><a href='suaAnimal.php?iddv=" . $row['id'] . "' data-toggle='tooltip' data-placement='top' title='Chỉnh sửa động vật'><i class='fas fa-edit'></i></a></td>";
+                                                    echo "<td><a href='./xoaAnimal.php?iddv=" . $row['id'] . "' data-toggle='tooltip' data-placement='top' title='Xóa động vật' class='confirmation'><i class='far fa-trash-alt text-danger'></i></a></td>";
                                                     echo "</tr>";
                                                     $i++;
                                                 }

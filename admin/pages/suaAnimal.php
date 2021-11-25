@@ -369,10 +369,10 @@ if (isset($_GET["iddv"])) {
                                             </div>
                                         </div>
                                         <div class="modal-footer p-2">
-                                            <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow_2()">
+                                            <button type="button" class="btn btn-primary btn-sm" onclick="HideShow_2()" style="width:5rem;">
                                                 Quay lại
                                             </button>
-                                            <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow()">
+                                            <button type="button" class="btn btn-primary btn-sm" onclick="HideShow()" style="width:5rem;">
                                                 Tiếp
                                             </button>
                                         </div>
