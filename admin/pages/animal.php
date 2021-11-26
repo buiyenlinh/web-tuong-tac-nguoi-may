@@ -9,6 +9,7 @@ include '../layout/header-only.php';
 <?php else : ?>
     <div id="animal-list">
         <div class="layout-wrap">
+            <div class="layout-bg"></div>
             <div class="layout-left">
                 <?php include '../layout/menu-left.php'; ?>
             </div>
@@ -123,7 +124,7 @@ include '../layout/header-only.php';
                                             </tbody>
                                         </table>
                                         <ul class="pagination justify-content-center">
-                                            
+
 
                                             <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
                                                 <li class="page-item <?php if ($page == $i) {
@@ -133,7 +134,7 @@ include '../layout/header-only.php';
                                                 </li>
                                             <?php endfor; ?>
 
-                                            
+
                                         </ul>
                                     </div>
                                 </div>

@@ -126,6 +126,7 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
 ?>
 
 <div class="layout-wrap">
+    <div class="layout-bg"></div>
     <div class="layout-left">
         <?php include '../layout/menu-left.php'; ?>
     </div>
