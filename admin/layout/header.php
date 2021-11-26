@@ -4,7 +4,7 @@
         <i class="fas fa-bars text-light" style="font-size: 25px; cursor: pointer" id="icon-bars-dev" ></i>
         <div class="header__slogan text-light">
             <i class="fas fa-frog"></i>
-            <b>ANIMALS</b>
+            <b>TRANG QUẢN LÝ ĐỘNG VẬT</b>
         </div>
         <div class="header__logout">
             <span class="header-avt-user">

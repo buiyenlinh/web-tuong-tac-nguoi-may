@@ -126,6 +126,7 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
 ?>
 
 <div class="layout-wrap">
+    <div class="layout-bg"></div>
     <div class="layout-left">
         <?php include '../layout/menu-left.php'; ?>
     </div>
@@ -135,7 +136,7 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
         </div>
         <div class="layout-right-content">
             <div class="layout-right-content-details">
-
+                <h3 class="text-center">THÔNG TIN CHI TIẾT ĐỘNG VẬT</h3>
                 <div class="card chi-tiet">
                     <div class="card-body">
 
@@ -144,53 +145,89 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
                                 <div class="trang-1" id="trang-1">
                                     <div class="form-group row">
                                         <div class="col-12 col-lg-6">
-                                            <b for="pSupplierName">Tên khoa học</b>
-                                            <p size="20" name="tenkhoahocsua" value='' placeholder="Nhập tên khoa học" required><?php echo $tenkhoahoc; ?></p>
-                                            <b for="pSupplierName">Tên tiếng việt</b>
-                                            <p size="20" name="tentiengvietsua" value='' placeholder="Nhập tên tiếng Việt"><?php echo $tentiengviet; ?></p>
-                                            <b for="pSupplierName">Tên tiếng việt</b>
-                                            <p size="20" name="tendiaphuongsua" value='' placeholder="Nhập tên địa phương"><?php echo $tendiaphuong; ?></p>
-                                            <b for="pSupplierName">Người thu mẩu</b>
-                                            <p size="20" name="nguoithuthapsua" value='' placeholder="Nhập người thu mẫu"><?php echo $nguoithuthap; ?></p>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Tên khoa học</b>
+                                                <p size="20" name="tenkhoahocsua" value='' placeholder="Nhập tên khoa học" required><?php echo $tenkhoahoc; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Tên tiếng việt</b>
+                                                <p size="20" name="tentiengvietsua" value='' placeholder="Nhập tên tiếng Việt"><?php echo $tentiengviet; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Tên địa phương</b>
+                                                <p size="20" name="tendiaphuongsua" value='' placeholder="Nhập tên địa phương"><?php echo $tendiaphuong; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Người thu mẩu</b>
+                                                <p size="20" name="nguoithuthapsua" value='' placeholder="Nhập người thu mẫu"><?php echo $nguoithuthap; ?></p>
+                                            </div>
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                            <b for="pSupplierName">Giá trị sử dụng</b>
-                                            <p size="20" name="giatrisua" value='' placeholder="Nhập giá trị sử dụng"><?php echo $giatri; ?></p>
-                                            <b for="pSupplierName">Tình trạng bảo tồn theo IUCN</b>
-                                            <p size="20" name="iucnsua" value='' placeholder="Nhập IUCN"><?php echo $iucn; ?></p>
-                                            <b for="pSupplierName">Tình trạng bảo tồn theo sách đỏ Việt Nam</b>
-                                            <p size="20" name="sachdosua" value='' placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam"><?php echo $sachdo; ?></p>
-                                            <b for="pSupplierName">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)</b>
-                                            <p size="20" name="citessua" value='' placeholder="Nhập CITES"><?php echo $cities; ?></p>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Giá trị sử dụng</b>
+                                                <p size="20" name="giatrisua" value='' placeholder="Nhập giá trị sử dụng"><?php echo $giatri; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Tình trạng bảo tồn theo IUCN</b>
+                                                <p size="20" name="iucnsua" value='' placeholder="Nhập IUCN"><?php echo $iucn; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Tình trạng bảo tồn theo sách đỏ Việt Nam</b>
+                                                <p size="20" name="sachdosua" value='' placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam"><?php echo $sachdo; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)</b>
+                                                <p size="20" name="citessua" value='' placeholder="Nhập CITES"><?php echo $cities; ?></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="trang-2" id="trang-2" style="display: none;">
                                     <div class="form-group row">
                                         <div class="col-12 col-lg-4">
-                                            <b for="pSupplierName">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP</b>
-                                            <p size="20" name="ndcpsua" value='' placeholder="Nhập NĐCP"><?php echo $nghidinh; ?></p>
-                                            <b for="pSupplierName">Phân bố</b>
-                                            <p size="20" name="phanbosua" value='' placeholder="Nhập phân bố"><?php echo $phanbo; ?></p>
-                                            <b for="pSupplierName">Địa điểm</b>
-                                            <p size="20" name="diadiemsua" value='' placeholder="Nhập địa điểm"><?php echo $diadiem; ?></p>
-                                            <b for="pSupplierName">Ngày thu thập</b>
-                                            <p type="date" size="20" name="ngaythuthapsua" value='' placeholder="Ngày thu mẫu"><?php echo $ngaythuthap; ?></p>
-                                            <b for="pSupplierName">Ngày cập nhật</b>
-                                            <p size="20" name="ngaycapnhatsua" value='' disabled><?php echo $updated_at; ?></p>
-                                            <b for="pSupplierName">Đường dẫn</b>
-                                            <p size="20" disabled name="duongdansua" value='' placeholder="Nhập đường dẫn"><?php echo $duongdan; ?></p>
-                                            <p name="id" hidden value="<?php echo $iddv; ?>">
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP</b>
+                                                <p size="20" name="ndcpsua" value='' placeholder="Nhập NĐCP"><?php echo $nghidinh; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Phân bố</b>
+                                                <p size="20" name="phanbosua" value='' placeholder="Nhập phân bố"><?php echo $phanbo; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Địa điểm</b>
+                                                <p size="20" name="diadiemsua" value='' placeholder="Nhập địa điểm"><?php echo $diadiem; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Ngày thu thập</b>
+                                                <p type="date" size="20" name="ngaythuthapsua" value='' placeholder="Ngày thu mẫu"><?php echo $ngaythuthap; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Ngày cập nhật</b>
+                                                <p size="20" name="ngaycapnhatsua" value='' disabled><?php echo $updated_at; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Đường dẫn</b>
+                                                <p size="20" disabled name="duongdansua" value='' placeholder="Nhập đường dẫn"><?php echo $duongdan; ?></p>
+                                                <p name="id" hidden value="<?php echo $iddv; ?>">
+                                            </div>
                                         </div>
                                         <div class="col-12 col-lg-8">
-                                            <b for="pSupplierName">Tình trạng mẫu vật</b>
-                                            <p size="20" name="tinhtrangsua" value='' placeholder="hập tình trạng mẫu vật"><?php echo $tinhtrang; ?></p>
-                                            <b for="pSupplierName">Sinh cảnh</b>
-                                            <p size="20" name="sinhcanhsua" value='' placeholder="Nhập sinh cảnh"><?php echo $sinhcanh; ?></p>
-                                            <b for="pSupplierName">Mô tả đặc điểm hình thái</b>
-                                            <textarea id="phinhthai" placeholder="Nhập đặc điểm hình thái" name="hinhthaisua" class="form-control" rows="3"><?php echo $hinhthai; ?></textarea>
-                                            <b for="pSupplierName">Mô tả đặc điểm sinh thái</b>
-                                            <textarea id="psinhthai" placeholder="Nhập đặc điểm sinh thái" name="sinhthaisua" class="form-control" rows="3"><?php echo $sinhthai; ?></textarea>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Tình trạng mẫu vật</b>
+                                                <p size="20" name="tinhtrangsua" value='' placeholder="hập tình trạng mẫu vật"><?php echo $tinhtrang; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Sinh cảnh</b>
+                                                <p size="20" name="sinhcanhsua" value='' placeholder="Nhập sinh cảnh"><?php echo $sinhcanh; ?></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Mô tả đặc điểm hình thái</b>
+                                                <textarea id="phinhthai" placeholder="Nhập đặc điểm hình thái" name="hinhthaisua" class="form-control" rows="3"><?php echo $hinhthai; ?></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <b for="pSupplierName">Mô tả đặc điểm sinh thái</b>
+                                                <textarea id="psinhthai" placeholder="Nhập đặc điểm sinh thái" name="sinhthaisua" class="form-control" rows="3"><?php echo $sinhthai; ?></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -198,24 +235,27 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
                                 <div class="trang-3" id="trang-3" style="display: none;">
                                     <div class="form-group row">
                                         <div class="col-12 col-lg-5">
-                                            <ol style="margin: 0px">
-                                                <b>Các tạo độ xác định:</b></br>
-                                                <?php foreach ($toaDoList as $tdo) : ?>
-                                                    <li>
-                                                        <?php echo $tdo["toado"]; ?>
-                                                    </li>
-                                                <?php endforeach; ?>
-                                            </ol>
+                                            <div class="form-group">
+                                                <ol style="margin: 0px">
+                                                    <b>Các tạo độ xác định:</b></br>
+                                                    <?php foreach ($toaDoList as $tdo) : ?>
+                                                        <li>
+                                                            <?php echo $tdo["toado"]; ?>
+                                                        </li>
+                                                    <?php endforeach; ?>
+                                                </ol>
 
-
+                                            </div>
                                         </div>
                                         <div class="col-12 col-lg-7">
                                             <div class="form-group row" style="width: 240%;">
                                                 <div class="col-12 col-lg-4">
-                                                    <b>Hình ảnh:</b></br>
-                                                    <?php foreach ($hinhanhList as $ha) : ?>
-                                                        <img src="<?php echo BASE_IMG . $ha["duongdan"] ?>" alt="anh dong vat" style='width: 100px; height: 100px; border-radius: 50px; margin-top: 20px; object-fit: cover;'>
-                                                    <?php endforeach; ?>
+                                                    <div class="form-group">
+                                                        <b>Hình ảnh:</b></br>
+                                                        <?php foreach ($hinhanhList as $ha) : ?>
+                                                            <img src="<?php echo BASE_IMG . $ha["duongdan"] ?>" alt="anh dong vat" style='width: 100px; height: 100px; border-radius: 50px; margin-top: 20px; object-fit: cover;'>
+                                                        <?php endforeach; ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -225,57 +265,67 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
                             <div class="col-12 col-lg-3">
                                 <div class="form-group row">
                                     <div class="col-12 col-lg-12">
-                                        <?php
-                                        echo "<b>Giới</b> </br>";
-                                        if ($gioi != null) {
-                                            echo $gioi;
-                                        } else {
-                                            echo "Không xác định được Giới động vật";
-                                        }
-                                        ?>
+                                        <div class="form-group">
+                                            <?php
+                                            echo "<b>Giới</b> </br>";
+                                            if ($gioi != null) {
+                                                echo $gioi;
+                                            } else {
+                                                echo "Không xác định được Giới động vật";
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-lg-12">
-                                        <?php
-                                        echo "<b>Ngành:</b> </br>";
-                                        if ($nganh != null) {
-                                            echo $nganh;
-                                        } else {
-                                            echo "Không xác định được Ngành động vật";
-                                        }
-                                        ?>
+                                        <div class="form-group">
+                                            <?php
+                                            echo "<b>Ngành:</b> </br>";
+                                            if ($nganh != null) {
+                                                echo $nganh;
+                                            } else {
+                                                echo "Không xác định được Ngành động vật";
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-lg-12">
-                                        <?php
-                                        echo "<b>Lớp:</b> </br>";
-                                        if ($lop != null) {
-                                            echo $lop;
-                                        } else {
-                                            echo "Không xác định được Lớp động vật";
-                                        }
-                                        ?>
+                                        <div class="form-group">
+                                            <?php
+                                            echo "<b>Lớp:</b> </br>";
+                                            if ($lop != null) {
+                                                echo $lop;
+                                            } else {
+                                                echo "Không xác định được Lớp động vật";
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-lg-12">
-                                        <?php
-                                        echo "<b>Bộ:</b> </br>";
-                                        if ($bo != null) {
-                                            echo $bo;
-                                        } else {
-                                            echo "Không xác định được Bộ động vật";
-                                        }
-                                        ?>
+                                        <div class="form-group">
+                                            <?php
+                                            echo "<b>Bộ:</b> </br>";
+                                            if ($bo != null) {
+                                                echo $bo;
+                                            } else {
+                                                echo "Không xác định được Bộ động vật";
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-lg-12">
-                                        <?php
-                                        echo "<b>Họ:</b> </br>";
-                                        echo $ho;
-                                        ?>
+                                        <div class="form-group">
+                                            <?php
+                                            echo "<b>Họ:</b> </br>";
+                                            echo $ho;
+                                            ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer p-2">
-                                    <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow_2()">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="HideShow_2()" style="width:5rem;">
                                         Quay lại
                                     </button>
-                                    <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow()">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="HideShow()" style="width:5rem;">
                                         Tiếp
                                     </button>
                                 </div>
@@ -283,36 +333,6 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
