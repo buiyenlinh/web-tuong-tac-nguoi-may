@@ -151,14 +151,6 @@ ul {
 }
 
 
-#account-page .layout-right,
-#ho-page .layout-right,
-#gioi-nganh-lop-page .layout-right,
-#install-page .layout-right,
-#thong-ke {
-  background: #dfe3e6;
-}
-
 .account__right__info__top,
 .profile-details,
 #install-page .install {
