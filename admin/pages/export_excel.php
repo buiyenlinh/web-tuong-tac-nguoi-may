@@ -17,7 +17,7 @@ $fileName = "dongvat-data_" . date('Y-m-d') . ".xls";
 
 // Column names 
 $fields = array(
-    'ID', 'TEN KHOA HOC', 'TEN TIENG VIET', 'TEN DIA PHUONG', 'HO', 'HINH THAI', 'SINH THAI', 'GIA TRI', 'IUCN', 'SACH DO', 'NGHI DINH', 'CITIES', 'PHAN BO', 'TINH TRANG',
+    'TEN KHOA HOC', 'TEN TIENG VIET', 'TEN DIA PHUONG', 'HO', 'HINH THAI', 'SINH THAI', 'GIA TRI', 'IUCN', 'SACH DO', 'NGHI DINH', 'CITIES', 'PHAN BO', 'TINH TRANG',
     'SINH CANH', 'DIA DIEM', 'NGAY THU THAP', 'NGUOI THU THAP', 'CREATE_AT', 'UPDATE_AT'
 );
 
@@ -30,7 +30,7 @@ if ($query->num_rows > 0) {
     // Output each row of the data 
     while ($row = $query->fetch_assoc()) {
         $lineData = array(
-            $row['id'], $row['tenkhoahoc'], $row['tentiengviet'], $row['tendiaphuong'], $row['ten'], $row['hinhthai'], $row['sinhthai'], $row['giatri'], $row['iucn'], $row['sachdo'], $row['nghidinh'], $row['cities'], $row['phanbo'], $row['tinhtrang'], $row['sinhcanh'], $row['diadiem'], $row['ngaythuthap'], $row['nguoithuthap'], $row['created_at'], $row['updated_at']
+            $row['tenkhoahoc'], $row['tentiengviet'], $row['tendiaphuong'], $row['ten'], $row['hinhthai'], $row['sinhthai'], $row['giatri'], $row['iucn'], $row['sachdo'], $row['nghidinh'], $row['cities'], $row['phanbo'], $row['tinhtrang'], $row['sinhcanh'], $row['diadiem'], $row['ngaythuthap'], $row['nguoithuthap'], $row['created_at'], $row['updated_at']
         );
         array_walk($lineData, 'filterData');
         $excelData .= implode("\t", array_values($lineData)) . "\n";
