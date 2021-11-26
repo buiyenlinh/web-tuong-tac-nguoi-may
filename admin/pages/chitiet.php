@@ -135,7 +135,7 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
         </div>
         <div class="layout-right-content">
             <div class="layout-right-content-details">
-
+                <h3 class="text-center">THÔNG TIN CHI TIẾT ĐỘNG VẬT</h3>
                 <div class="card chi-tiet">
                     <div class="card-body">
 
