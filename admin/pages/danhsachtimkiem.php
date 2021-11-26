@@ -22,6 +22,7 @@ if (isset($_POST["submit"])) {
 }
 ?>
 <div class="layout-wrap">
+    <div class="layout-bg"></div>
     <div class="layout-left">
         <?php include '../layout/menu-left.php'; ?>
     </div>

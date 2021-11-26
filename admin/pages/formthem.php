@@ -10,6 +10,7 @@ include '../layout/header-only.php';
 
     <div id="animal-list">
         <div class="layout-wrap">
+            <div class="layout-bg"></div>
             <div class="layout-left">
                 <?php include '../layout/menu-left.php'; ?>
             </div>
@@ -336,7 +337,7 @@ include '../layout/header-only.php';
             let trang_1 = document.getElementById('trang-1').style.display;
             let trang_2 = document.getElementById('trang-2').style.display;
             let trang_3 = document.getElementById('trang-3').style.display;
-            if (trang_1 !== "none" && tenkhoahoc !== "" && tentiengviet !=="" && gioi !== '0' && nganh !== '0' && lop !== '0' && bo !== '0' && ho !== '0') {
+            if (trang_1 !== "none" && tenkhoahoc !== "" && tentiengviet !== "" && gioi !== '0' && nganh !== '0' && lop !== '0' && bo !== '0' && ho !== '0') {
                 document.getElementById('trang-2').style.display = "block";
                 document.getElementById('trang-1').style.display = "none";
             }

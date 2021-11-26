@@ -148,6 +148,7 @@ if (isset($_GET["iddv"])) {
 ?>
 
 <div class="layout-wrap">
+    <div class="layout-bg"></div>
     <div class="layout-left">
         <?php include '../layout/menu-left.php'; ?>
     </div>
@@ -274,7 +275,7 @@ if (isset($_GET["iddv"])) {
                                             <div class="col-12 col-lg-12">
                                                 <label for="gioisua">Giới <strong style="color: red;">(*)</strong></label>
                                                 <select name="gioisua" id="inputgioi" class="form-control">
-                                                   
+
                                                     <?php
                                                     $con = new mysqli("localhost", "root", "", "web_animal");
                                                     $con->set_charset("utf8");
@@ -282,7 +283,7 @@ if (isset($_GET["iddv"])) {
                                                     $result = $con->query($sql);
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
-                                                            if($row['id' === $gioiid]){
+                                                            if ($row['id' === $gioiid]) {
                                                                 echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
                                                             }
                                                             echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
@@ -293,7 +294,7 @@ if (isset($_GET["iddv"])) {
 
                                                 <label for="inputnganh">Ngành <strong style="color: red;">(*)</strong></label>
                                                 <select name="nganhsua" id="inputnganh" class="form-control">
-                                                    
+
                                                     <?php
                                                     $con = new mysqli("localhost", "root", "", "web_animal");
                                                     $con->set_charset("utf8");
@@ -301,7 +302,7 @@ if (isset($_GET["iddv"])) {
                                                     $result = $con->query($sql);
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
-                                                            if($row['id' === $nganhid]){
+                                                            if ($row['id' === $nganhid]) {
                                                                 echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
                                                             }
                                                             echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
@@ -312,7 +313,7 @@ if (isset($_GET["iddv"])) {
 
                                                 <label for="inputlop">Lớp <strong style="color: red;">(*)</strong></label>
                                                 <select name="lopsua" id="inputlop" class="form-control">
-                                                    
+
                                                     <?php
                                                     $con = new mysqli("localhost", "root", "", "web_animal");
                                                     $con->set_charset("utf8");
@@ -320,7 +321,7 @@ if (isset($_GET["iddv"])) {
                                                     $result = $con->query($sql);
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
-                                                            if($row['id' === $lopid]){
+                                                            if ($row['id' === $lopid]) {
                                                                 echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
                                                             }
                                                             echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
@@ -331,7 +332,7 @@ if (isset($_GET["iddv"])) {
 
                                                 <label for="bosua">Bộ <strong style="color: red;">(*)</strong></label>
                                                 <select name="bosua" id="inputbo" class="form-control">
-                                                    
+
                                                     <?php
                                                     $con = new mysqli("localhost", "root", "", "web_animal");
                                                     $con->set_charset("utf8");
@@ -339,7 +340,7 @@ if (isset($_GET["iddv"])) {
                                                     $result = $con->query($sql);
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
-                                                            if($row['id' === $boid]){
+                                                            if ($row['id' === $boid]) {
                                                                 echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
                                                             }
                                                             echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
@@ -350,7 +351,7 @@ if (isset($_GET["iddv"])) {
 
                                                 <label for="inputho">Họ <strong style="color: red;">(*)</strong></label>
                                                 <select name="hosua" id="inputho" class="form-control">
-                                                    
+
                                                     <?php
                                                     $con = new mysqli("localhost", "root", "", "web_animal");
                                                     $con->set_charset("utf8");
@@ -358,7 +359,7 @@ if (isset($_GET["iddv"])) {
                                                     $result = $con->query($sql);
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
-                                                            if($row['id' === $hoid]){
+                                                            if ($row['id' === $hoid]) {
                                                                 echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
                                                             }
                                                             echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
@@ -664,18 +665,18 @@ if (isset($_POST["apply"])) {
 
     $con = new mysqli("localhost", "root", "", "web_animal");
     $con->set_charset("utf8");
-    if($ho != 0){
+    if ($ho != 0) {
         $sql = " UPDATE dongvat
         SET tenkhoahoc = '" . $tenkhoahoc . "' ,tentiengviet = '" . $tentiengviet . "',
             tendiaphuong = '" . $tendiaphuong . "' ,ho_id = '" . $ho . "' ,hinhthai = '" . $hinhthai . "' ,sinhthai = '" . $sinhthai . "' ,giatri = '" . $giatri . "' ,iucn = '" . $iucn . "' ,sachdo = '" . $sachdo
-        . "' ,nghidinh = '" . $ndcp . "' ,cities = '" . $cities . "' ,phanbo = '" . $phanbo . "' ,tinhtrang = '" . $tinhtrang . "' ,sinhcanh = '" . $sinhcanh
-        . "' ,diadiem = '" . $diadiem . "' ,ngaythuthap = '" . $ngaythuthap . "' ,nguoithuthap = '" . $nguoithumau . "' ,updated_at = now(), duongdan = '" . $duongdan . "'
+            . "' ,nghidinh = '" . $ndcp . "' ,cities = '" . $cities . "' ,phanbo = '" . $phanbo . "' ,tinhtrang = '" . $tinhtrang . "' ,sinhcanh = '" . $sinhcanh
+            . "' ,diadiem = '" . $diadiem . "' ,ngaythuthap = '" . $ngaythuthap . "' ,nguoithuthap = '" . $nguoithumau . "' ,updated_at = now(), duongdan = '" . $duongdan . "'
         WHERE id = " . $iddv . ";";
         $con->query($sql);
     }
     //return $sql;
     //echo $sql."<br>";
-    
+
 
     $sql_1 = "SELECT * from hinhanh WHERE dongvat_id = " . $iddv . ";";
     $result = $con->query($sql_1);
@@ -758,8 +759,7 @@ if (isset($_POST["apply"])) {
 
     header('Location: animal.php');
     $_SESSION["status"] = "edit success";
-}
-else{
+} else {
     $_SESSION["status"] = "edit error";
 }
 ob_flush();
