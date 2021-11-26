@@ -170,53 +170,89 @@ if (isset($_GET["iddv"])) {
                                         <div class="trang-1" id="trang-1">
                                             <div class="form-group row">
                                                 <div class="col-12 col-lg-6">
-                                                    <label for="inputSupplierName">Tên khoa học <strong style="color: red;">(*)</strong></label>
-                                                    <input type="text" class="form-control" size="20" name="tenkhoahocsua" value='<?php echo $tenkhoahoc; ?>' placeholder="Nhập tên khoa học" required />
-                                                    <label for="inputSupplierName">Tên tiếng việt <strong style="color: red;">(*)</strong></label>
-                                                    <input type="text" class="form-control" size="20" name="tentiengvietsua" value='<?php echo $tentiengviet; ?>' placeholder="Nhập tên tiếng Việt" />
-                                                    <label for="inputSupplierName">Tên tiếng việt <strong style="color: red;">(*)</strong></label>
-                                                    <input type="text" class="form-control" size="20" name="tendiaphuongsua" value='<?php echo $tendiaphuong; ?>' placeholder="Nhập tên địa phương" />
-                                                    <label for="inputSupplierName">Người thu mẩu <strong style="color: red;">(*)</strong></label>
-                                                    <input type="text" class="form-control" size="20" name="nguoithuthapsua" value='<?php echo $nguoithuthap; ?>' placeholder="Nhập người thu mẫu" />
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Tên khoa học <strong style="color: red;">(*)</strong></label>
+                                                        <input type="text" class="form-control" size="20" name="tenkhoahocsua" value='<?php echo $tenkhoahoc; ?>' placeholder="Nhập tên khoa học" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Tên tiếng việt <strong style="color: red;">(*)</strong></label>
+                                                        <input type="text" class="form-control" size="20" name="tentiengvietsua" value='<?php echo $tentiengviet; ?>' placeholder="Nhập tên tiếng Việt" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Tên tiếng việt <strong style="color: red;">(*)</strong></label>
+                                                        <input type="text" class="form-control" size="20" name="tendiaphuongsua" value='<?php echo $tendiaphuong; ?>' placeholder="Nhập tên địa phương" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Người thu mẩu <strong style="color: red;">(*)</strong></label>
+                                                        <input type="text" class="form-control" size="20" name="nguoithuthapsua" value='<?php echo $nguoithuthap; ?>' placeholder="Nhập người thu mẫu" />
+                                                    </div>
                                                 </div>
                                                 <div class="col-12 col-lg-6">
-                                                    <label for="inputSupplierName">Giá trị sử dụng</label>
-                                                    <input type="text" class="form-control" size="20" name="giatrisua" value='<?php echo $giatri; ?>' placeholder="Nhập giá trị sử dụng" />
-                                                    <label for="inputSupplierName">Tình trạng bảo tồn theo IUCN</label>
-                                                    <input type="text" class="form-control" size="20" name="iucnsua" value='<?php echo $iucn; ?>' placeholder="Nhập IUCN" />
-                                                    <label for="inputSupplierName">Tình trạng bảo tồn theo sách đỏ Việt Nam</label>
-                                                    <input type="text" class="form-control" size="20" name="sachdosua" value='<?php echo $sachdo; ?>' placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam" />
-                                                    <label for="inputSupplierName">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)</label>
-                                                    <input type="text" class="form-control" size="20" name="citessua" value='<?php echo $cities; ?>' placeholder="Nhập CITES" />
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Giá trị sử dụng</label>
+                                                        <input type="text" class="form-control" size="20" name="giatrisua" value='<?php echo $giatri; ?>' placeholder="Nhập giá trị sử dụng" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Tình trạng bảo tồn theo IUCN</label>
+                                                        <input type="text" class="form-control" size="20" name="iucnsua" value='<?php echo $iucn; ?>' placeholder="Nhập IUCN" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Tình trạng bảo tồn theo sách đỏ Việt Nam</label>
+                                                        <input type="text" class="form-control" size="20" name="sachdosua" value='<?php echo $sachdo; ?>' placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)</label>
+                                                        <input type="text" class="form-control" size="20" name="citessua" value='<?php echo $cities; ?>' placeholder="Nhập CITES" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="trang-2" id="trang-2" style="display: none;">
                                             <div class="form-group row">
                                                 <div class="col-12 col-lg-6">
-                                                    <label for="inputSupplierName">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP</label>
-                                                    <input type="text" class="form-control" size="20" name="ndcpsua" value='<?php echo $nghidinh; ?>' placeholder="Nhập NĐCP" />
-                                                    <label for="inputSupplierName">Phân bố</label>
-                                                    <input type="text" class="form-control" size="20" name="phanbosua" value='<?php echo $phanbo; ?>' placeholder="Nhập phân bố" />
-                                                    <label for="inputSupplierName">Địa điểm</label>
-                                                    <input type="text" class="form-control" size="20" name="diadiemsua" value='<?php echo $diadiem; ?>' placeholder="Nhập địa điểm" />
-                                                    <label for="inputSupplierName">Ngày thu thập</label>
-                                                    <input type="date" class="form-control" size="20" name="ngaythuthapsua" value='<?php echo $ngaythuthap; ?>' placeholder="Ngày thu mẫu" />
-                                                    <label for="inputSupplierName">Ngày cập nhật</label>
-                                                    <input type="text" class="form-control" size="20" name="ngaycapnhatsua" value='<?php echo $updated_at; ?>' disabled />
-                                                    <label for="inputSupplierName">Đường dẫn</label>
-                                                    <input type="text" class="form-control" size="20" disabled name="duongdansua" value='<?php echo $duongdan; ?>' placeholder="Nhập đường dẫn" />
-                                                    <input type="text" name="id" hidden value="<?php echo $iddv; ?>">
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP</label>
+                                                        <input type="text" class="form-control" size="20" name="ndcpsua" value='<?php echo $nghidinh; ?>' placeholder="Nhập NĐCP" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Phân bố</label>
+                                                        <input type="text" class="form-control" size="20" name="phanbosua" value='<?php echo $phanbo; ?>' placeholder="Nhập phân bố" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Địa điểm</label>
+                                                        <input type="text" class="form-control" size="20" name="diadiemsua" value='<?php echo $diadiem; ?>' placeholder="Nhập địa điểm" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Ngày thu thập</label>
+                                                        <input type="date" class="form-control" size="20" name="ngaythuthapsua" value='<?php echo $ngaythuthap; ?>' placeholder="Ngày thu mẫu" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Ngày cập nhật</label>
+                                                        <input type="text" class="form-control" size="20" name="ngaycapnhatsua" value='<?php echo $updated_at; ?>' disabled />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Đường dẫn</label>
+                                                        <input type="text" class="form-control" size="20" disabled name="duongdansua" value='<?php echo $duongdan; ?>' placeholder="Nhập đường dẫn" />
+                                                        <input type="text" name="id" hidden value="<?php echo $iddv; ?>">
+                                                    </div>
                                                 </div>
                                                 <div class="col-12 col-lg-6">
-                                                    <label for="inputSupplierName">Tình trạng mẫu vật</label>
-                                                    <input type="text" class="form-control" size="20" name="tinhtrangsua" value='<?php echo $tinhtrang; ?>' placeholder="hập tình trạng mẫu vật" />
-                                                    <label for="inputSupplierName">Sinh cảnh</label>
-                                                    <input type="text" class="form-control" size="20" name="sinhcanhsua" value='<?php echo $sinhcanh; ?>' placeholder="Nhập sinh cảnh" />
-                                                    <label for="inputSupplierName">Mô tả đặc điểm hình thái</label>
-                                                    <textarea class="form-control" id="inputhinhthai" placeholder="Nhập đặc điểm hình thái" name="hinhthaisua" rows="3" class="form-control"><?php echo $hinhthai; ?></textarea>
-                                                    <label for="inputSupplierName">Mô tả đặc điểm sinh thái</label>
-                                                    <textarea class="form-control" id="inputsinhthai" placeholder="Nhập đặc điểm sinh thái" name="sinhthaisua" rows="3" class="form-control"><?php echo $sinhthai; ?></textarea>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Tình trạng mẫu vật</label>
+                                                        <input type="text" class="form-control" size="20" name="tinhtrangsua" value='<?php echo $tinhtrang; ?>' placeholder="hập tình trạng mẫu vật" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Sinh cảnh</label>
+                                                        <input type="text" class="form-control" size="20" name="sinhcanhsua" value='<?php echo $sinhcanh; ?>' placeholder="Nhập sinh cảnh" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Mô tả đặc điểm hình thái</label>
+                                                        <textarea class="form-control" id="inputhinhthai" placeholder="Nhập đặc điểm hình thái" name="hinhthaisua" rows="3" class="form-control"><?php echo $hinhthai; ?></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputSupplierName">Mô tả đặc điểm sinh thái</label>
+                                                        <textarea class="form-control" id="inputsinhthai" placeholder="Nhập đặc điểm sinh thái" name="sinhthaisua" rows="3" class="form-control"><?php echo $sinhthai; ?></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -224,12 +260,15 @@ if (isset($_GET["iddv"])) {
                                         <div class="trang-3" id="trang-3" style="display: none;">
                                             <div class="form-group row">
                                                 <div class="col-12 col-lg-6">
+
                                                     <?php
                                                     for ($i = 0; $i < $tongtoado; $i++) {
                                                         if ($td[$i] != null) {
                                                             echo "<div class='col-12 col-lg-12'>";
+                                                            echo "<div class='form-group'>";
                                                             echo "<label for='inputAnimail' required='required'>Tọa độ " . ($i + 1) . ":</label>";
                                                             echo "<input type='text' class='form-control' size='20' name='toado" . $i . "' value='" . $td[$i] . "'></td>";
+                                                            echo "</div>";
                                                             echo "</div>";
                                                         }
                                                     }
@@ -238,11 +277,13 @@ if (isset($_GET["iddv"])) {
                                                     <div class="input_fields_wrap">
                                                         <div class="form-group row">
                                                             <div class="col-12 col-lg-12" style="margin-left:15px;">
-                                                                <label for="inputAnimail" required="required">Thêm tọa độ</label>
-                                                                <button class="add_field_button btn btn-primary" style="margin-top:10px; margin-left:20px">Thêm tọa độ</button>
-                                                                <div>
-                                                                    <br>
-                                                                    <input type="text" class="form-control" name="inputtoado1" style="width:90%;">
+                                                                <div class="form-group">
+                                                                    <label for="inputAnimail" required="required">Thêm tọa độ</label>
+                                                                    <button class="add_field_button btn btn-primary" style="margin-top:10px; margin-left:20px">Thêm tọa độ</button>
+                                                                    <div>
+                                                                        <br>
+                                                                        <input type="text" class="form-control" name="inputtoado1" style="width:90%;">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -251,10 +292,12 @@ if (isset($_GET["iddv"])) {
                                                 <div class="col-12 col-lg-6">
                                                     <div class="form-group row">
                                                         <div class="col-12 col-lg-6">
-                                                            <label for="inputAnimail" required="required">Thêm hình <strong style="color: red;">(*)</strong></label>
-                                                            <input type="file" name="fileupload[]" id="files" multiple style="width:86%;">
                                                             <div class="form-group">
-                                                                <div id="image_preview"></div>
+                                                                <label for="inputAnimail" required="required">Thêm hình <strong style="color: red;">(*)</strong></label>
+                                                                <input type="file" name="fileupload[]" id="files" multiple style="width:86%;">
+                                                                <div class="form-group">
+                                                                    <div id="image_preview"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -273,100 +316,106 @@ if (isset($_GET["iddv"])) {
                                     <div class="col-12 col-lg-3">
                                         <div class="form-group row">
                                             <div class="col-12 col-lg-12">
-                                                <label for="gioisua">Giới <strong style="color: red;">(*)</strong></label>
-                                                <select name="gioisua" id="inputgioi" class="form-control">
+                                                <div class="form-group">
+                                                    <label for="gioisua">Giới <strong style="color: red;">(*)</strong></label>
+                                                    <select name="gioisua" id="inputgioi" class="form-control">
 
-                                                    <?php
-                                                    $con = new mysqli("localhost", "root", "", "web_animal");
-                                                    $con->set_charset("utf8");
-                                                    $sql = "SELECT * FROM gioi ;";
-                                                    $result = $con->query($sql);
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            if ($row['id' === $gioiid]) {
-                                                                echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                        <?php
+                                                        $con = new mysqli("localhost", "root", "", "web_animal");
+                                                        $con->set_charset("utf8");
+                                                        $sql = "SELECT * FROM gioi ;";
+                                                        $result = $con->query($sql);
+                                                        if ($result->num_rows > 0) {
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                if ($row['id' === $gioiid]) {
+                                                                    echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                                }
+                                                                echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                             }
-                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                         }
-                                                    }
-                                                    ?>
-                                                </select>
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputnganh">Ngành <strong style="color: red;">(*)</strong></label>
+                                                    <select name="nganhsua" id="inputnganh" class="form-control">
 
-                                                <label for="inputnganh">Ngành <strong style="color: red;">(*)</strong></label>
-                                                <select name="nganhsua" id="inputnganh" class="form-control">
-
-                                                    <?php
-                                                    $con = new mysqli("localhost", "root", "", "web_animal");
-                                                    $con->set_charset("utf8");
-                                                    $sql = "SELECT * FROM nganh ;";
-                                                    $result = $con->query($sql);
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            if ($row['id' === $nganhid]) {
-                                                                echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                        <?php
+                                                        $con = new mysqli("localhost", "root", "", "web_animal");
+                                                        $con->set_charset("utf8");
+                                                        $sql = "SELECT * FROM nganh ;";
+                                                        $result = $con->query($sql);
+                                                        if ($result->num_rows > 0) {
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                if ($row['id' === $nganhid]) {
+                                                                    echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                                }
+                                                                echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                             }
-                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                         }
-                                                    }
-                                                    ?>
-                                                </select>
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputlop">Lớp <strong style="color: red;">(*)</strong></label>
+                                                    <select name="lopsua" id="inputlop" class="form-control">
 
-                                                <label for="inputlop">Lớp <strong style="color: red;">(*)</strong></label>
-                                                <select name="lopsua" id="inputlop" class="form-control">
-
-                                                    <?php
-                                                    $con = new mysqli("localhost", "root", "", "web_animal");
-                                                    $con->set_charset("utf8");
-                                                    $sql = "SELECT * FROM lop ;";
-                                                    $result = $con->query($sql);
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            if ($row['id' === $lopid]) {
-                                                                echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                        <?php
+                                                        $con = new mysqli("localhost", "root", "", "web_animal");
+                                                        $con->set_charset("utf8");
+                                                        $sql = "SELECT * FROM lop ;";
+                                                        $result = $con->query($sql);
+                                                        if ($result->num_rows > 0) {
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                if ($row['id' === $lopid]) {
+                                                                    echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                                }
+                                                                echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                             }
-                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                         }
-                                                    }
-                                                    ?>
-                                                </select>
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="bosua">Bộ <strong style="color: red;">(*)</strong></label>
+                                                    <select name="bosua" id="inputbo" class="form-control">
 
-                                                <label for="bosua">Bộ <strong style="color: red;">(*)</strong></label>
-                                                <select name="bosua" id="inputbo" class="form-control">
-
-                                                    <?php
-                                                    $con = new mysqli("localhost", "root", "", "web_animal");
-                                                    $con->set_charset("utf8");
-                                                    $sql = "SELECT * FROM bo ;";
-                                                    $result = $con->query($sql);
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            if ($row['id' === $boid]) {
-                                                                echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                        <?php
+                                                        $con = new mysqli("localhost", "root", "", "web_animal");
+                                                        $con->set_charset("utf8");
+                                                        $sql = "SELECT * FROM bo ;";
+                                                        $result = $con->query($sql);
+                                                        if ($result->num_rows > 0) {
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                if ($row['id' === $boid]) {
+                                                                    echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                                }
+                                                                echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                             }
-                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                         }
-                                                    }
-                                                    ?>
-                                                </select>
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputho">Họ <strong style="color: red;">(*)</strong></label>
+                                                    <select name="hosua" id="inputho" class="form-control">
 
-                                                <label for="inputho">Họ <strong style="color: red;">(*)</strong></label>
-                                                <select name="hosua" id="inputho" class="form-control">
-
-                                                    <?php
-                                                    $con = new mysqli("localhost", "root", "", "web_animal");
-                                                    $con->set_charset("utf8");
-                                                    $sql = "SELECT * FROM ho ;";
-                                                    $result = $con->query($sql);
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            if ($row['id' === $hoid]) {
-                                                                echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                        <?php
+                                                        $con = new mysqli("localhost", "root", "", "web_animal");
+                                                        $con->set_charset("utf8");
+                                                        $sql = "SELECT * FROM ho ;";
+                                                        $result = $con->query($sql);
+                                                        if ($result->num_rows > 0) {
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                if ($row['id' === $hoid]) {
+                                                                    echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                                }
+                                                                echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                             }
-                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                         }
-                                                    }
-                                                    ?>
-                                                </select>
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer p-2">

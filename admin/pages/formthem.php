@@ -32,48 +32,80 @@ include '../layout/header-only.php';
                                                 <div class="trang-1" id="trang-1">
                                                     <div class="form-group row">
                                                         <div class="col-12 col-lg-4">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên khoa học <strong style="color: red;">(*)</strong></p>
-                                                            <input type="text" name="inputkhoahoc" class="form-control" id="inputkhoahoc" placeholder="Nhập tên khoa học" required="required">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên tiếng việt <strong style="color: red;">(*)</strong></p>
-                                                            <input type="text" name="inputtiengviet" class="form-control" id="inputtiengviet" required="required" placeholder="Nhập tên tiếng Việt">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tên tiếng việt <strong style="color: red;">(*)</strong></p>
-                                                            <input type="text" name="inputdiaphuong" class="form-control" id="inputdiaphuong" required="required" placeholder="Nhập tên địa phương">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Người thu mẩu</p>
-                                                            <input type="text" name="inputnguoithumau" class="form-control" id="inputnguoithumau" placeholder="Nhập người thu mẫu">
+                                                            <div class="form-group">
+                                                                <label for="inputSupplierName" style="font-weight: bold;">Tên khoa học <strong style="color: red;">(*)</strong></label>
+                                                                <input type="text" name="inputkhoahoc" class="form-control" id="inputkhoahoc" placeholder="Nhập tên khoa học" required="required">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Tên tiếng việt <strong style="color: red;">(*)</strong></p>
+                                                                <input type="text" name="inputtiengviet" class="form-control" id="inputtiengviet" required="required" placeholder="Nhập tên tiếng Việt">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Tên tiếng việt <strong style="color: red;">(*)</strong></p>
+                                                                <input type="text" name="inputdiaphuong" class="form-control" id="inputdiaphuong" required="required" placeholder="Nhập tên địa phương">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Người thu mẩu</p>
+                                                                <input type="text" name="inputnguoithumau" class="form-control" id="inputnguoithumau" placeholder="Nhập người thu mẫu">
+                                                            </div>
                                                         </div>
                                                         <div class="col-12 col-lg-8">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Giá trị sử dụng</p>
-                                                            <input type="text" name="inputgiatri" class="form-control" id="inputgiatri" placeholder="Nhập giá trị sử dụng">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo IUCN</p>
-                                                            <input type="text" name="inputiucn" class="form-control" id="inputiucn" placeholder="Nhập IUCN">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo sách đỏ Việt Nam</p>
-                                                            <input type="text" name="inputsachdo" class="form-control" id="inputsachdo" placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)</p>
-                                                            <input type="text" name="inputcites" class="form-control" id="inputcites" placeholder="Nhập CITES">
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Giá trị sử dụng</p>
+                                                                <input type="text" name="inputgiatri" class="form-control" id="inputgiatri" placeholder="Nhập giá trị sử dụng">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo IUCN</p>
+                                                                <input type="text" name="inputiucn" class="form-control" id="inputiucn" placeholder="Nhập IUCN">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo sách đỏ Việt Nam</p>
+                                                                <input type="text" name="inputsachdo" class="form-control" id="inputsachdo" placeholder="Nhập tình trạng bảo tồn theo sách đỏ Việt Nam">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo CITES (40/2013/TT-BNNPTNT)</p>
+                                                                <input type="text" name="inputcites" class="form-control" id="inputcites" placeholder="Nhập CITES">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="trang-2" id="trang-2" style="display: none;">
                                                     <div class="form-group row">
                                                         <div class="col-12 col-lg-4">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP</p>
-                                                            <input type="text" name="inputndcp" class="form-control" id="inputndcp" placeholder="Nhập NĐCP">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Phân bố</p>
-                                                            <input type="text" name="inputphanbo" class="form-control" id="inputphanbo" placeholder="Nhập phân bố">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Địa điểm</p>
-                                                            <input type="text" name="inputdiadiem" class="form-control" id="inputdiadiem" placeholder="Nhập địa điểm">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Ngày thu thập</p>
-                                                            <input type="date" name="inputngaythuthap" class="form-control" id="inputngaythuthap" placeholder="Nhập ngày thu mẫu">
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Tình trạng bảo tồn theo Nghị định 32/2006/NĐCP</p>
+                                                                <input type="text" name="inputndcp" class="form-control" id="inputndcp" placeholder="Nhập NĐCP">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Phân bố</p>
+                                                                <input type="text" name="inputphanbo" class="form-control" id="inputphanbo" placeholder="Nhập phân bố">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Địa điểm</p>
+                                                                <input type="text" name="inputdiadiem" class="form-control" id="inputdiadiem" placeholder="Nhập địa điểm">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Ngày thu thập</p>
+                                                                <input type="date" name="inputngaythuthap" class="form-control" id="inputngaythuthap" placeholder="Nhập ngày thu mẫu">
+                                                            </div>
                                                         </div>
                                                         <div class="col-12 col-lg-8">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Tình trạng mẫu vật</p>
-                                                            <input type="text" name="inputtinhtrang" class="form-control" id="inputtinhtrang" placeholder="Nhập tình trạng mẫu vật">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Sinh cảnh:</p>
-                                                            <input type="text" name="inputsinhcanh" class="form-control" id="inputsinhcanh" placeholder="Nhập sinh cảnh">
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Mô tả đặc điểm hình thái</p>
-                                                            <textarea class="form-control" id="inputhinhthai" placeholder="Nhập đặc điểm hình thái" name="inputhinhthai" rows="2" class="form-control"></textarea>
-                                                            <p for="inputSupplierName" style="font-weight: bold;">Mô tả đặc điểm sinh thái</p>
-                                                            <textarea class="form-control" id="inputsinhthai" placeholder="Nhập đặc điểm sinh thái" name="inputsinhthai" rows="2" class="form-control"></textarea>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Tình trạng mẫu vật</p>
+                                                                <input type="text" name="inputtinhtrang" class="form-control" id="inputtinhtrang" placeholder="Nhập tình trạng mẫu vật">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Sinh cảnh:</p>
+                                                                <input type="text" name="inputsinhcanh" class="form-control" id="inputsinhcanh" placeholder="Nhập sinh cảnh">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Mô tả đặc điểm hình thái</p>
+                                                                <textarea class="form-control" id="inputhinhthai" placeholder="Nhập đặc điểm hình thái" name="inputhinhthai" rows="2" class="form-control"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputSupplierName" style="font-weight: bold;">Mô tả đặc điểm sinh thái</p>
+                                                                <textarea class="form-control" id="inputsinhthai" placeholder="Nhập đặc điểm sinh thái" name="inputsinhthai" rows="2" class="form-control"></textarea>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -81,20 +113,32 @@ include '../layout/header-only.php';
                                                 <div class="trang-3" id="trang-3" style="display: none;">
                                                     <div class="form-group row">
                                                         <div class="col-12 col-lg-5">
-                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 1</p>
-                                                            <input type="text" name="inputtoado1" class="form-control" id="inputtoado1" placeholder="Nhập tọa độ 1">
-                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 2</p>
-                                                            <input type="text" name="inputtoado2" class="form-control" id="inputtoado2" placeholder="Nhập tọa độ 2">
-                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 3</p>
-                                                            <input type="text" name="inputtoado3" class="form-control" id="inputtoado3" placeholder="Nhập tọa độ 3">
-                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 4</p>
-                                                            <input type="text" name="inputtoado4" class="form-control" id="inputtoado4" placeholder="Nhập tọa độ 4">
-                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 5</p>
-                                                            <input type="text" name="inputtoado5" class="form-control" id="inputtoado5" placeholder="Nhập tọa độ 5">
+                                                            <div class="form-group">
+                                                                <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 1</p>
+                                                                <input type="text" name="inputtoado1" class="form-control" id="inputtoado1" placeholder="Nhập tọa độ 1">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 2</p>
+                                                                <input type="text" name="inputtoado2" class="form-control" id="inputtoado2" placeholder="Nhập tọa độ 2">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 3</p>
+                                                                <input type="text" name="inputtoado3" class="form-control" id="inputtoado3" placeholder="Nhập tọa độ 3">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 4</p>
+                                                                <input type="text" name="inputtoado4" class="form-control" id="inputtoado4" placeholder="Nhập tọa độ 4">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p for="inputAnimail" required="required" style="font-weight: bold;">Tọa độ 5</p>
+                                                                <input type="text" name="inputtoado5" class="form-control" id="inputtoado5" placeholder="Nhập tọa độ 5">
+                                                            </div>
                                                         </div>
                                                         <div class="col-12 col-lg-7">
-                                                            <p for="inputAnimail" required="required" style="font-weight: bold;">Thêm hình <strong style="color: red;">(*)</strong></p>
-                                                            <input type="file" name="fileupload[]" id="files" multiple required>
+                                                            <div class="form-group">
+                                                                <p for="inputAnimail" required="required" style="font-weight: bold;">Thêm hình <strong style="color: red;">(*)</strong></p>
+                                                                <input type="file" name="fileupload[]" id="files" multiple required>
+                                                            </div>
                                                             <div class="form-group">
                                                                 <div id="image_preview"></div>
                                                             </div>
@@ -107,42 +151,47 @@ include '../layout/header-only.php';
                                             <div class="col-12 col-lg-3">
                                                 <div class="form-group row">
                                                     <div class="col-12 col-lg-12">
-                                                        <p for="inputgioi" style="font-weight: bold;">Giới <strong style="color: red;">(*)</strong></p>
-                                                        <select name="inputgioi" id="inputgioi" class="form-control">
-                                                            <option value='0'>Chưa chọn</option>
-                                                            <?php
-                                                            $con = new mysqli("localhost", "root", "", "web_animal");
-                                                            $con->set_charset("utf8");
-                                                            $sql = "SELECT * FROM gioi ;";
-                                                            $result = $con->query($sql);
-                                                            if ($result->num_rows > 0) {
-                                                                while ($row = $result->fetch_assoc()) {
-                                                                    echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                                        <div class="form-group">
+                                                            <p for="inputgioi" style="font-weight: bold;">Giới <strong style="color: red;">(*)</strong></p>
+                                                            <select name="inputgioi" id="inputgioi" class="form-control">
+                                                                <option value='0'>Chưa chọn</option>
+                                                                <?php
+                                                                $con = new mysqli("localhost", "root", "", "web_animal");
+                                                                $con->set_charset("utf8");
+                                                                $sql = "SELECT * FROM gioi ;";
+                                                                $result = $con->query($sql);
+                                                                if ($result->num_rows > 0) {
+                                                                    while ($row = $result->fetch_assoc()) {
+                                                                        echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                                                    }
                                                                 }
-                                                            }
-                                                            ?>
-                                                        </select>
-
-                                                        <p for="inputnganh" style="font-weight: bold;">Ngành <strong style="color: red;">(*)</strong></p>
-                                                        <select name="inputnganh" id="inputnganh" class="form-control">
-                                                            <option value='0' style="font-weight: bold;">Chưa chọn</option>
-                                                        </select>
-
-                                                        <p for="inputlop" style="font-weight: bold;">Lớp <strong style="color: red;">(*)</strong></p>
-                                                        <select name="inputlop" id="inputlop" class="form-control">
-                                                            <option value='0'>Chưa chọn</option>
-                                                        </select>
-
-                                                        <p for="inputbo" style="font-weight: bold;">Bộ <strong style="color: red;">(*)</strong></p>
-                                                        <select name="inputbo" id="inputbo" class="form-control">
-                                                            <option value='0'>Chưa chọn</option>
-                                                        </select>
-
-                                                        <p for="inputho" style="font-weight: bold;">Họ <strong style="color: red;">(*)</strong></p>
-                                                        <select name="inputho" id="inputho" class="form-control">
-                                                            <option value='0'>Chưa chọn</option>
-                                                        </select>
-
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <p for="inputnganh" style="font-weight: bold;">Ngành <strong style="color: red;">(*)</strong></p>
+                                                            <select name="inputnganh" id="inputnganh" class="form-control">
+                                                                <option value='0' style="font-weight: bold;">Chưa chọn</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <p for="inputlop" style="font-weight: bold;">Lớp <strong style="color: red;">(*)</strong></p>
+                                                            <select name="inputlop" id="inputlop" class="form-control">
+                                                                <option value='0'>Chưa chọn</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <p for="inputbo" style="font-weight: bold;">Bộ <strong style="color: red;">(*)</strong></p>
+                                                            <select name="inputbo" id="inputbo" class="form-control">
+                                                                <option value='0'>Chưa chọn</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <p for="inputho" style="font-weight: bold;">Họ <strong style="color: red;">(*)</strong></p>
+                                                            <select name="inputho" id="inputho" class="form-control">
+                                                                <option value='0'>Chưa chọn</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer p-2">
