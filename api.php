@@ -88,10 +88,10 @@ else if ($action == 'get-animal-info') {
 // Lấy danh sách động vật tương tự
 else if ($action == 'get-animal-list-same-family') {
     $animal_id = _getInt('animal_id');
-    $animal = $db->query('SELECT ho, bo FROM dongvat WHERE id = ' . intval($animal_id))->fetch();
+    $bo = $db->query('SELECT ho_id FROM dongvat WHERE id = ' . intval($animal_id))->fetchColumn();
 
     $list = $db->query('SELECT id, tenkhoahoc, duongdan FROM dongvat 
-    WHERE ho LIKE "%' . $animal['ho'] . '%" AND bo LIKE "%' . $animal['bo'] . '%" AND id != ' . intval($animal_id))->fetchAll();
+    WHERE ho_id= ' . intval($bo) . ' AND id != ' . intval($animal_id))->fetchAll();
     $res = array();
     foreach($list as $_list) {
         $img = $db->query('SELECT * FROM hinhanh WHERE dongvat_id = ' . intval($_list['id']))->fetch();
@@ -102,7 +102,7 @@ else if ($action == 'get-animal-list-same-family') {
         $res[] = $ani;
     }
 
-    _success('OK', $res);
+    _success('get-animal-list-same-family', $res);
 }
 
 // Search animal
@@ -120,7 +120,7 @@ else if ($action == 'get-search-animal') {
         );
         $res[] = $animal;
     }
-    _success('OK', $res);
+    _success('get-search-animal', $res);
 
 } 
 

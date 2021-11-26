@@ -5,6 +5,7 @@
 <?php else: ?>
     <div id="gioi-nganh-lop-page">
         <div class="layout-wrap">
+            <div class="layout-bg"></div>
             <div class="layout-left">
               <?php include '../layout/menu-left.php'; ?>
             </div>
@@ -15,7 +16,7 @@
                 <div class="layout-right-content">
                     <div class="layout-right-content-details">
                       <div class="row p-3">
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-4">
                           <div class="bo" style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; background: #fff">
                             <div class="row">
                               <div class="col-md-8 col-sm-12">             
@@ -37,7 +38,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-4">
                           <div class="ho" style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; background: #fff">
                             <div class="row">
                             <div class="col-md-8 col-sm-12">             
@@ -60,7 +61,7 @@
                           </div>
                       </div>
 
-                      <div class="col-md-4">
+                      <div class="col-md-4 mb-4">
                           <div class="ho" style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; background: #fff">
                             <div class="row">
                               <div class="col-md-8 col-sm-12">             

@@ -1,7 +1,7 @@
 <div id="header">
     <div class="header d-flex justify-content-between p-3">
         <i class="fas fa-bars text-light" style="font-size: 25px; display: none" id="icon-bars"></i>
-        <i class="fas fa-bars text-light" style="font-size: 25px;" id="icon-bars-dev"></i>
+        <i class="fas fa-bars text-light" style="font-size: 25px; cursor: pointer" id="icon-bars-dev" ></i>
         <div class="header__slogan text-light">
             <i class="fas fa-frog"></i>
             <b>ANIMALS</b>

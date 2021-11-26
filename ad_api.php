@@ -390,7 +390,7 @@ else if ($action == "get-list-nganh") {
 else if ($action == "add-bo") {
     $lop = _getInt('lop');
     $bo = _getString('bo');
-    $check = $db->query("select * from bo where ten =" . $db->quote($bo) . " and lop_id = " . intval($lop))->fetch();
+    $check = $db->query("select * from bo where ten =" . $db->quote($bo))->fetch();
     if ($check) {
         return _error("Bộ đã tồn tại");
     }

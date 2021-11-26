@@ -5,7 +5,7 @@
                 <div class="col-md-3 col-sm-12 col-xs-12" style="display: flex; align-items: center">
                     <a href="<?php echo BASE ?>" title="Trang chủ" style="margin-right: 5px">
                         <i class="fas fa-home text-white"></i>
-                        <b class="text-white">HOME</b>
+                        <b class="text-white">TRANG CHỦ</b>
                     </a>
                 </div>
                 <div class="col-md-9 col-sm-12 col-xs-12">

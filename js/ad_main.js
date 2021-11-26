@@ -760,7 +760,7 @@ function addBo() {
     var lop = $('.add-bo-lop-select').val();
 
     if (gioi == "" || nganh == "" || lop == "" || bo == "") {
-        console.log("Nhập đủ thông tin");
+        $('.ho-bo-error').text("Nhập đủ thông tin");
         return;
     }
 
@@ -783,7 +783,7 @@ function addBo() {
             $('.bo_name').val("");
             getListHo();
         } else {
-            $('.add-bo-error').text(json.error);
+            $('.ho-bo-error').text(json.error);
         }
     })
 }
@@ -797,7 +797,7 @@ function addHo() {
     var ho = $('.ho_name').val();
     
     if (gioi == "" || nganh == "" || lop == "" || bo == "" || ho == "") {
-        console.log("Nhập đủ thông tin");
+        $('.ho-bo-error').text("Nhập đủ thông tin");
         return;
     }
     myPost("add-ho", "bo_id=" + bo + "&ho=" + ho, function(json) {
@@ -806,7 +806,7 @@ function addHo() {
             showNoti("Thêm họ thành công", '.ho-noti-content', '.ho-page-show-dialog');
             getListHo();
         } else {
-            $('.add-bo-error').text(json.error);
+            $('.ho-bo-error').text(json.error);
         }
     })
 }
@@ -857,7 +857,7 @@ function showNotiForDelete(strNoti, elButton, elContent, elClickShow) {
     div.className = "text-right mt-2";
     button.className = "btn btn-secondary btn-sm rounded-0 ho-page-modal-delete-close";
     button.setAttribute("data-dismiss", "modal");
-    button.innerHTML = "Đóng";
+    button.innerHTML = "Hủy";
     div.append(elButton, button);
 
     $(elContent).append(text, div);
@@ -1199,7 +1199,7 @@ function addNganh() {
     var gioi = $('.gioi-name-select').val();
     
     if (nganh_name == "") {
-        $('.add-nganh-lop-error').text("Vui lòng nhập ngành");
+        $('.add-nganh-lop-error').text("Vui lòng nhập đủ thông tin");
         return;
     }
     if (gioi > 0) {
@@ -1223,7 +1223,7 @@ function addLop() {
     var lop_name = $('.lop-name-input').val();
     
     if (lop_name == "") {
-        $('.add-nganh-lop-error').text("Vui lòng nhập lớp");
+        $('.add-nganh-lop-error').text("Vui lòng nhập đủ thông tin");
         return;
     }
     if (gioi > 0 && nganh > 0) {
@@ -1540,15 +1540,25 @@ $(function() {
         }
     })
 
+
+// kích thước tablet and mobile 
     var checkBars = false;
     $('#icon-bars').on('click', function() {
         if (!checkBars) {
             $('.layout-left').css('left', '0px');
+            $('.layout-bg').show();
         } else {
             $('.layout-left').css('left', '-250px');
+            $('.layout-bg').hide();
         }
         checkBars = !checkBars;
     })
+
+    $('.layout-bg').on('click', function() {
+        $('#icon-bars').click();
+    })
+// end - kích thước tablet and mobile 
+
 
     $('form').on('click', '.install-btn-submit', function() {
         updateInfoInstall(this.form);
@@ -1615,7 +1625,7 @@ $(function() {
         $('.ho_name').text("");
         ho.id = 0;
         bo.id = 0;
-        $('.add-bo-error').text("");
+        $('.ho-bo-error').text("");
     })
 
     // Lấy danh sách giới ngành lớp

@@ -10,6 +10,7 @@ include '../layout/header-only.php';
    
     <div id="users-page">
       <div class="layout-wrap">
+        <div class="layout-bg"></div>
           <div class="layout-left">
               <?php include '../layout/menu-left.php'; ?>
           </div>
@@ -147,7 +148,7 @@ include '../layout/header-only.php';
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-info pl-4 pr-4 update-user-button rounded-0">Lưu</button>
-                                <button type="button" class="btn btn-light rounded-0 close-modal-update-user" data-dismiss="modal">Đóng</button>
+                                <button type="button" class="btn btn-secondary rounded-0 close-modal-update-user" data-dismiss="modal">Đóng</button>
                               </div>
                           </div>
                         </div>
@@ -183,7 +184,7 @@ include '../layout/header-only.php';
                 <div class="modal-body">
                     <div class="users-noti-content"></div>
                     <div class="text-right">
-                        <button type="button" class="btn btn-info btn-sm rounded-0" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-secondary btn-sm rounded-0" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>
             </div>

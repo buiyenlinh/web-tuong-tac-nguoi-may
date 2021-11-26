@@ -8,6 +8,12 @@ $bo = $db->query("SELECT COUNT(*) FROM bo")->fetchColumn();
 $ho = $db->query("SELECT COUNT(*) FROM ho")->fetchColumn();
 $dongvat = $db->query("SELECT COUNT(*) FROM dongvat")->fetchColumn();
 
+
+$UserLoginName = $_SESSION['user']['tenhienthi'];
+if ($UserLoginName == "") {
+  $UserLoginName = $_SESSION['user']['tendangnhap'];
+}
+
 ?>
 
 <?php if (empty($_SESSION['user'])): ?>
@@ -15,6 +21,7 @@ $dongvat = $db->query("SELECT COUNT(*) FROM dongvat")->fetchColumn();
 <?php else: ?>
     <div id="thong-ke">
         <div class="layout-wrap">
+          <div class="layout-bg"></div>
             <div class="layout-left">
               <?php include '../layout/menu-left.php'; ?>
             </div>
@@ -24,7 +31,11 @@ $dongvat = $db->query("SELECT COUNT(*) FROM dongvat")->fetchColumn();
                 </div>
                 <div class="layout-right-content">
                     <div class="layout-right-content-details">
-                      <div class="thong-ke p-4">
+                      <div class="thong-ke p-4">  
+                        <p style="font-size: 25px; font-weight: bold" class="mb-4">
+                          Chào mừng bạn quay lại,  
+                          <?php echo $UserLoginName ?>!
+                        </p>
                         <div class="row">
                           <div class="col-md-3 col-sm-4 col-xs-12">
                             <div class="item">

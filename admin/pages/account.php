@@ -11,6 +11,7 @@ include '../layout/header-only.php';
 <?php else: ?>
     <div id="account-page">
         <div class="layout-wrap">
+            <div class="layout-bg"></div>
             <div class="layout-left">
                 <!-- <div class="account__left"> -->
                     <?php include '../layout/menu-left.php'; ?>
@@ -171,7 +172,7 @@ include '../layout/header-only.php';
                 <div class="modal-body">
                     <div class="account-noti-content"></div>
                     <div class="text-right">
-                        <button type="button" class="btn btn-info btn-sm rounded-0" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-secondary btn-sm rounded-0" data-dismiss="modal">Đóng</button>
                     </div>
                 </div>
             </div>
