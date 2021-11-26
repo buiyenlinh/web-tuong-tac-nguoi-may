@@ -274,7 +274,7 @@ if (isset($_GET["iddv"])) {
                                             <div class="col-12 col-lg-12">
                                                 <label for="gioisua">Giới <strong style="color: red;">(*)</strong></label>
                                                 <select name="gioisua" id="inputgioi" class="form-control">
-                                                    <option value='<?php echo $gioiid; ?>'><?php echo $gioi; ?></option>
+                                                   
                                                     <?php
                                                     $con = new mysqli("localhost", "root", "", "web_animal");
                                                     $con->set_charset("utf8");
@@ -282,6 +282,9 @@ if (isset($_GET["iddv"])) {
                                                     $result = $con->query($sql);
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
+                                                            if($row['id' === $gioiid]){
+                                                                echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                            }
                                                             echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
                                                         }
                                                     }
@@ -290,30 +293,86 @@ if (isset($_GET["iddv"])) {
 
                                                 <label for="inputnganh">Ngành <strong style="color: red;">(*)</strong></label>
                                                 <select name="nganhsua" id="inputnganh" class="form-control">
-                                                    <option value='<?php echo $nganhid; ?>'><?php echo $nganh; ?></option>
+                                                    
+                                                    <?php
+                                                    $con = new mysqli("localhost", "root", "", "web_animal");
+                                                    $con->set_charset("utf8");
+                                                    $sql = "SELECT * FROM nganh ;";
+                                                    $result = $con->query($sql);
+                                                    if ($result->num_rows > 0) {
+                                                        while ($row = $result->fetch_assoc()) {
+                                                            if($row['id' === $nganhid]){
+                                                                echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                            }
+                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                                        }
+                                                    }
+                                                    ?>
                                                 </select>
 
                                                 <label for="inputlop">Lớp <strong style="color: red;">(*)</strong></label>
                                                 <select name="lopsua" id="inputlop" class="form-control">
-                                                    <option value='<?php echo $lopid; ?>'><?php echo $lop; ?></option>
+                                                    
+                                                    <?php
+                                                    $con = new mysqli("localhost", "root", "", "web_animal");
+                                                    $con->set_charset("utf8");
+                                                    $sql = "SELECT * FROM lop ;";
+                                                    $result = $con->query($sql);
+                                                    if ($result->num_rows > 0) {
+                                                        while ($row = $result->fetch_assoc()) {
+                                                            if($row['id' === $lopid]){
+                                                                echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                            }
+                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                                        }
+                                                    }
+                                                    ?>
                                                 </select>
 
                                                 <label for="bosua">Bộ <strong style="color: red;">(*)</strong></label>
                                                 <select name="bosua" id="inputbo" class="form-control">
-                                                    <option value='<?php echo $boid; ?>'><?php echo $bo; ?></option>
+                                                    
+                                                    <?php
+                                                    $con = new mysqli("localhost", "root", "", "web_animal");
+                                                    $con->set_charset("utf8");
+                                                    $sql = "SELECT * FROM bo ;";
+                                                    $result = $con->query($sql);
+                                                    if ($result->num_rows > 0) {
+                                                        while ($row = $result->fetch_assoc()) {
+                                                            if($row['id' === $boid]){
+                                                                echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                            }
+                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                                        }
+                                                    }
+                                                    ?>
                                                 </select>
 
                                                 <label for="inputho">Họ <strong style="color: red;">(*)</strong></label>
                                                 <select name="hosua" id="inputho" class="form-control">
-                                                    <option value='<?php echo $hoid; ?>'><?php echo $ho; ?></option>
+                                                    
+                                                    <?php
+                                                    $con = new mysqli("localhost", "root", "", "web_animal");
+                                                    $con->set_charset("utf8");
+                                                    $sql = "SELECT * FROM ho ;";
+                                                    $result = $con->query($sql);
+                                                    if ($result->num_rows > 0) {
+                                                        while ($row = $result->fetch_assoc()) {
+                                                            if($row['id' === $hoid]){
+                                                                echo "<option value='" . $row['id'] . "' selected>" . $row['ten'] . "</option>";
+                                                            }
+                                                            echo "<option value='" . $row['id'] . "'>" . $row['ten'] . "</option>";
+                                                        }
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="modal-footer p-2">
-                                            <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow_2()">
+                                            <button type="button" class="btn btn-primary btn-sm" onclick="HideShow_2()" style="width:5rem;">
                                                 Quay lại
                                             </button>
-                                            <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow()">
+                                            <button type="button" class="btn btn-primary btn-sm" onclick="HideShow()" style="width:5rem;">
                                                 Tiếp
                                             </button>
                                         </div>
@@ -698,6 +757,10 @@ if (isset($_POST["apply"])) {
     }
 
     header('Location: animal.php');
+    $_SESSION["status"] = "edit success";
+}
+else{
+    $_SESSION["status"] = "edit error";
 }
 ob_flush();
 ?>

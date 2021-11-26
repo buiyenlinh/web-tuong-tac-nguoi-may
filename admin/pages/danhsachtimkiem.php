@@ -17,8 +17,7 @@ if (isset($_POST["submit"])) {
         $sql = "SELECT DISTINCT tenkhoahoc, id, tentiengviet FROM dongvat WHERE tenkhoahoc LIKE '%$data%' or tentiengviet LIKE '%$data%' or tendiaphuong LIKE '%$data%' or nguoithuthap LIKE '%$data%' " . ";";
         $result = mysqli_query($con, $sql);
     }
-}
-else{
+} else {
     header('Location: animal.php');
 }
 ?>
@@ -36,6 +35,39 @@ else{
                     <div class="gridtable">
                         <h3 class="text-center">DANH SÁCH ĐỘNG VẬT</h3>
                         <div class="table-responsive">
+
+                            <?php
+                            //$con = new mysqli("localhost", "root", "", "web_animal");
+                            //$con->set_charset("utf8");
+                            //$sql = " SELECT * FROM dongvat ";
+                            //$result = $con->query($sql);
+                            if (isset($_GET['page'])) {
+                                $pageno = $_GET['page'];
+                            } else {
+                                $pageno = 1;
+                            }
+
+                            $no_of_records_per_page = 10;
+                            $offset = ($pageno - 1) * $no_of_records_per_page;
+
+                            $conn = mysqli_connect("localhost", "root", "", "web_animal");
+                            if (mysqli_connect_errno()) {
+                                echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                                die();
+                            }
+
+                            $total_pages_sql = "SELECT COUNT(*) FROM dongvat";
+                            $result = mysqli_query($conn, $total_pages_sql);
+
+                            $total_rows = mysqli_fetch_array($result)[0];
+                            $total_pages = ceil($total_rows / $no_of_records_per_page);
+
+                            $sql = "SELECT * FROM dongvat LIMIT $offset, $no_of_records_per_page";
+                            $res_data = mysqli_query($conn, $sql);
+
+
+                            ?>
+
                             <table class="table table-striped table-bordered">
                                 <thead class="bg-info text-center text-light">
                                     <tr>
@@ -47,25 +79,39 @@ else{
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $row = $result->fetch_assoc();
-                                    if ($result->num_rows > 0) {
-                                        $i = 1; //Dat bien i truoc tien de khoi tao chay trong while
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo "<tr>";
-                                            echo "<td>" . $i . "</td>";
-                                            echo "<td>" . $row['tenkhoahoc'] . "</td>";
-                                            echo "<td>" . $row['tentiengviet'] . "</td>";
-                                            //Ở sau  ko cần dấu ?idsp='". $var ."' Nên dùng  ?idsp=".$row['idsp']."'
-                                            echo "<td><a href='./chitiet.php?iddv=" . $row['id'] . "'>Xem chi tiết</a></td>";
-                                            echo "<td><a href='suaAnimal.php?iddv=" . $row['id'] . "'><i class='fas fa-pen'></i></a></td>";
-                                            echo "<td><a href='./xoaAnimal.php?iddv=" . $row['id'] . "'><i class='fas fa-trash-alt text-danger'></i></a></td>";
-                                            echo "</tr>";
-                                            $i++;
-                                        }
+                                    //$row = $result->fetch_assoc();
+                                    //if ($result->num_rows > 0) {
+                                    $i = 1; //Dat bien i truoc tien de khoi tao chay trong while
+                                    while ($row = mysqli_fetch_array($res_data)) {
+                                        echo "<tr>";
+                                        echo "<td>" . $i . "</td>";
+                                        echo "<td>" . $row['tenkhoahoc'] . "</td>";
+                                        echo "<td>" . $row['tentiengviet'] . "</td>";
+                                        //Ở sau  ko cần dấu ?idsp='". $var ."' Nên dùng  ?idsp=".$row['idsp']."'
+                                        echo "<td><a href='./chitiet.php?iddv=" . $row['id'] . "'><i class='fas fa-info-circle'></i></a></td>";
+                                        echo "<td><a href='suaAnimal.php?iddv=" . $row['id'] . "'><i class='fas fa-edit'></i></a></td>";
+                                        echo "<td><a href='./xoaAnimal.php?iddv=" . $row['id'] . "'><i class='far fa-trash-alt text-danger'></i></a></td>";
+                                        echo "</tr>";
+                                        $i++;
                                     }
+                                    //}
+                                    mysqli_close($conn);
                                     ?>
                                 </tbody>
                             </table>
+                            <ul class="pagination justify-content-center">
+
+
+                                <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                                    <li class="page-item <?php if ($page == $i) {
+                                                                echo 'active';
+                                                            } ?>">
+                                        <a class="page-link" href="animal.php?page=<?= $i; ?>"> <?= $i; ?> </a>
+                                    </li>
+                                <?php endfor; ?>
+
+
+                            </ul>
                         </div>
                     </div>
                 </form>

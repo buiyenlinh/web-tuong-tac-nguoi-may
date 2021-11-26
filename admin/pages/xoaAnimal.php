@@ -38,4 +38,5 @@
     //echo '<script>alert("Welcome to Geeks for Geeks")</script>';
     //echo "Xóa thành công !";
     header ('Location: animal.php');
+    $_SESSION["status"] = "delete success";
 ?>

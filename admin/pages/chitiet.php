@@ -135,7 +135,7 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
         </div>
         <div class="layout-right-content">
             <div class="layout-right-content-details">
-
+                <h3 class="text-center">THÔNG TIN CHI TIẾT ĐỘNG VẬT</h3>
                 <div class="card chi-tiet">
                     <div class="card-body">
 
@@ -148,7 +148,7 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
                                             <p size="20" name="tenkhoahocsua" value='' placeholder="Nhập tên khoa học" required><?php echo $tenkhoahoc; ?></p>
                                             <b for="pSupplierName">Tên tiếng việt</b>
                                             <p size="20" name="tentiengvietsua" value='' placeholder="Nhập tên tiếng Việt"><?php echo $tentiengviet; ?></p>
-                                            <b for="pSupplierName">Tên tiếng việt</b>
+                                            <b for="pSupplierName">Tên địa phương</b>
                                             <p size="20" name="tendiaphuongsua" value='' placeholder="Nhập tên địa phương"><?php echo $tendiaphuong; ?></p>
                                             <b for="pSupplierName">Người thu mẩu</b>
                                             <p size="20" name="nguoithuthapsua" value='' placeholder="Nhập người thu mẫu"><?php echo $nguoithuthap; ?></p>
@@ -272,10 +272,10 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
                                     </div>
                                 </div>
                                 <div class="modal-footer p-2">
-                                    <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow_2()">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="HideShow_2()" style="width:5rem;">
                                         Quay lại
                                     </button>
-                                    <button type="button" class="btn btn-primary col-sm-3" onclick="HideShow()">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="HideShow()" style="width:5rem;">
                                         Tiếp
                                     </button>
                                 </div>
@@ -283,36 +283,6 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
