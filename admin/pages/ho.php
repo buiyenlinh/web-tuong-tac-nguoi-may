@@ -5,6 +5,7 @@
 <?php else: ?>
     <div id="ho-page">
         <div class="layout-wrap">
+          <div class="layout-bg"></div>
             <div class="layout-left">
               <?php include '../layout/menu-left.php'; ?>
             </div>
@@ -15,7 +16,7 @@
                 <div class="layout-right-content">
                     <div class="layout-right-content-details">
                       <div class="row p-3">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-4">
                           <div class="bo" style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; background: #fff">
                             <div class="row">
                               <div class="col-md-9 col-sm-12">             
@@ -37,7 +38,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-4">
                           <div class="ho" style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; background: #fff">
                             <div class="row">
                               <div class="col-md-9 col-sm-12">             
@@ -105,8 +106,8 @@
             </div>
           </div>
           <div class="modal-body">
+            <div class="text-danger ho-bo-error"></div>
             <form action="">
-              <div class="text-danger add-bo-error"></div>
               <div class="form-group">
                 <label for="">Giới <span class="text-danger">*</span></label>
                 <select name="gioi_name" class="add-bo-gioi-select form-control" onchange="getNganhByGioiID(value, '.add-bo-nganh-select')"></select>

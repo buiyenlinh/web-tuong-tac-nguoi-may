@@ -6,6 +6,11 @@ if ($install['tenwebsite'] == '') {
     $install['tenwebsite'] = 'Tiêu đề website';
 }
 
+if (isset($_SESSION['user'])) {
+    Header("Location: " . BASE . "admin/pages/thongke.php");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>

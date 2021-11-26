@@ -9,6 +9,7 @@ include '../layout/header-only.php';
 <?php else: ?>
   <div id="install-page">
     <div class="layout-wrap">
+      <div class="layout-bg"></div>
       <div class="layout-left">
         <?php include '../layout/menu-left.php'; ?>
       </div>
