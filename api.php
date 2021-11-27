@@ -110,7 +110,7 @@ else if ($action == 'get-search-animal') {
     $text = _getString('text');
     $toado = $db->query('SELECT id FROM toado WHERE toado LIKE "%' . $text . '%"')->fetchAll();
 
-    $list = $db->query('SELECT * FROM dongvat WHERE CONCAT_WS(tenkhoahoc, tentiengviet, tendiaphuong, gioi, nganh, lop, bo, ho, hinhthai, sinhthai, giatri, iucn, sachdo, nghidinh, cities, phanbo, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap, created_at, updated_at, duongdan) LIKE "%' . $text . '%"')->fetchAll();
+    $list = $db->query('SELECT * FROM dongvat WHERE CONCAT_WS(tenkhoahoc, tentiengviet, tendiaphuong, hinhthai, sinhthai, giatri, iucn, sachdo, nghidinh, cities, phanbo, tinhtrang, sinhcanh, diadiem, ngaythuthap, nguoithuthap, created_at, updated_at, duongdan) LIKE "%' . $text . '%"')->fetchAll();
     $res = array();
     foreach($list as $_list) {
         $img = $db->query('SELECT * FROM hinhanh WHERE dongvat_id = ' . intval($_list['id']))->fetch();

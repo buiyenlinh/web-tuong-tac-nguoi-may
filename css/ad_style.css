@@ -157,6 +157,7 @@ ul {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
+  border: 1px solid #ddd;
 }
 
 
@@ -590,24 +591,17 @@ ol {
   justify-content: center;
   display: flex;
   text-align: center;
-  box-shadow: 0px 3px 5px 2px #aaa;
+  box-shadow: 0px 1px 5px 2px #aaa;
 }
 
 .thong-ke .item:hover {
-  box-shadow: 0px 5px 5px 2px #aaa;
+  box-shadow: 0px 2px 5px 2px #aaa;
 }
 
 .thong-ke .item .number {
   font-size: 50px;
 }
 
-.gioi,
-.nganh,
-.lop,
-.bo,
-.ho {
-  box-shadow: 0px 3px 5px 2px #aaa;
-}
 .stats-text {
   font-size: 15px;
   font-weight: normal;
