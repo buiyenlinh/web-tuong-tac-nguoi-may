@@ -57,13 +57,13 @@ if (isset($_POST["submit"])) {
                                 die();
                             }
 
-                            $total_pages_sql = "SELECT COUNT(*) FROM dongvat";
+                            $total_pages_sql = "SELECT COUNT(*) FROM dongvat WHERE tenkhoahoc LIKE '%$data%' or tentiengviet LIKE '%$data%' or tendiaphuong LIKE '%$data%' or nguoithuthap LIKE '%$data%'";
                             $result = mysqli_query($conn, $total_pages_sql);
 
                             $total_rows = mysqli_fetch_array($result)[0];
                             $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-                            $sql = "SELECT * FROM dongvat LIMIT $offset, $no_of_records_per_page";
+                            $sql = "SELECT DISTINCT tenkhoahoc, id, tentiengviet FROM dongvat WHERE tenkhoahoc LIKE '%$data%' or tentiengviet LIKE '%$data%' or tendiaphuong LIKE '%$data%' or nguoithuthap LIKE '%$data%' LIMIT $offset, $no_of_records_per_page";
                             $res_data = mysqli_query($conn, $sql);
 
 
