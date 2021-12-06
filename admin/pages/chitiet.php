@@ -322,10 +322,10 @@ $toaDoList = $db->query('Select * from toado where dongvat_id = ' . intval($iddv
                                     </div>
                                 </div>
                                 <div class="modal-footer p-2">
-                                    <button type="button" class="btn btn-primary btn-sm" onclick="HideShow_2()" style="width:5rem;">
+                                    <button type="button" class="btn btn-info rounded-0 btn-sm" onclick="HideShow_2()" style="width:5rem;">
                                         Quay lại
                                     </button>
-                                    <button type="button" class="btn btn-primary btn-sm" onclick="HideShow()" style="width:5rem;">
+                                    <button type="button" class="btn btn-info rounded-0 btn-sm" onclick="HideShow()" style="width:5rem;">
                                         Tiếp
                                     </button>
                                 </div>

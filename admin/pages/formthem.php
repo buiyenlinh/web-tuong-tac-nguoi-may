@@ -195,20 +195,20 @@ include '../layout/header-only.php';
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer p-2">
-                                                    <button type="button" class="btn btn-primary btn-sm" onclick="HideShow_2()" style="width:5rem;">
+                                                    <button type="button" class="btn btn-info rounded-0 btn-sm" onclick="HideShow_2()" style="width:5rem;">
                                                         Quay lại
                                                     </button>
-                                                    <button type="button" class="btn btn-primary btn-sm" onclick="HideShow()" style="width:5rem;">
+                                                    <button type="button" class="btn btn-info rounded-0 btn-sm" onclick="HideShow()" style="width:5rem;">
                                                         Tiếp
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer p-2">
-                                            <button type="submit" class="btn btn-primary" style="width: 10rem;" name="submit"  value="Upload File">
+                                            <button type="submit" class="btn btn-info rounded-0" style="width: 10rem;" name="submit"  value="Upload File">
                                                 <i class="fas fa-plus-circle"></i> Thêm Động Vật
                                             </button>
-                                            <button type="button" class="btn btn-primary" style="width: 10rem;" onclick="reset_text()">
+                                            <button type="button" class="btn btn-info rounded-0" style="width: 10rem;" onclick="reset_text()">
                                                 <i class="fas fa-trash-restore"></i> Làm mới
                                             </button>
                                         </div>
