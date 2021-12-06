@@ -31,7 +31,7 @@ include '../layout/header-only.php';
                                             <div class="input-group">
                                                 <input type="text" name="input_search" class="form-control rounded-0" placeholder="Tên khoa học, tiếng Việt, địa phương và người thu thập " onkeyup='livesearch(this.value);'>
                                                 <div class="input-group-append">
-                                                    <button type="submit" name="submit" class="btn btn-secondary rounded-0" type="button" style="background-color: #0e768d;">
+                                                    <button type="submit" name="submit" class="btn btn-info rounded-0" type="button" style="">
                                                         <i class="fa fa-search"></i>
                                                     </button>
                                                 </div>
@@ -46,10 +46,10 @@ include '../layout/header-only.php';
                                 <!--Button Thêm -->
                                 <div class=" mb-3 btn-them">
                                     <!-- <h3 class="mb-0" id="animal-list-title text-center"></h3> -->
-                                    <button type="button" class="btn btn-primary" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d; width: 7.5rem;">
+                                    <button type="button" class="btn btn-info rounded-0" id="btn-animal-cn" onclick="HideShow()" style="width: 7.5rem;">
                                         <a href="./export_excel.php"><b><i class="fas fa-cloud-download-alt"></i> Xuất file</b></a>
                                     </button>
-                                    <button type="button" class="btn btn-primary" id="btn-animal-cn" onclick="HideShow()" style="background-color: #0e768d; width: 7.5rem;">
+                                    <button type="button" class="btn btn-info rounded-0" id="btn-animal-cn" onclick="HideShow()" style="width: 7.5rem;">
                                         <a href="./formthem.php"><b><i class="fas fa-plus"></i> Thêm</b></a>
                                     </button>
                                 </div>

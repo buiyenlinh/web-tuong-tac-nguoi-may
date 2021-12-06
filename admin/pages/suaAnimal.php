@@ -279,10 +279,10 @@ if (isset($_GET["iddv"])) {
                                                             <div class="col-12 col-lg-12" style="margin-left:15px;">
                                                                 <div class="form-group">
                                                                     <label for="inputAnimail" required="required">Thêm tọa độ</label>
-                                                                    <button class="add_field_button btn btn-primary" style="margin-top:10px; margin-left:20px">Thêm tọa độ</button>
+                                                                    <button class="add_field_button btn btn-info rounded-0 btn-sm" style="margin-top:10px; margin-left:20px">Thêm tọa độ</button>
                                                                     <div>
                                                                         <br>
-                                                                        <input type="text" class="form-control" name="inputtoado1" style="width:90%;">
+                                                                        <input type="text" class="form-control" name="inputtoado1" style="width:95%;">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -419,10 +419,10 @@ if (isset($_GET["iddv"])) {
                                             </div>
                                         </div>
                                         <div class="modal-footer p-2">
-                                            <button type="button" class="btn btn-primary btn-sm" onclick="HideShow_2()" style="width:5rem;">
+                                            <button type="button" class="btn btn-info rounded-0 btn-sm" onclick="HideShow_2()" style="width:5rem;">
                                                 Quay lại
                                             </button>
-                                            <button type="button" class="btn btn-primary btn-sm" onclick="HideShow()" style="width:5rem;">
+                                            <button type="button" class="btn btn-info rounded-0 btn-sm" onclick="HideShow()" style="width:5rem;">
                                                 Tiếp
                                             </button>
                                         </div>
@@ -430,7 +430,7 @@ if (isset($_GET["iddv"])) {
                                 </div>
 
                                 <div class="modal-footer p-2">
-                                    <button type="submit" class="btn btn-primary" name="apply"  value="Upload File" style="float:right; width: 10rem;">
+                                    <button type="submit" class="btn btn-info rounded-0" name="apply"  value="Upload File" style="float:right; width: 10rem;">
                                         <i class="far fa-edit"></i>
                                         Cập nhật
                                     </button>
